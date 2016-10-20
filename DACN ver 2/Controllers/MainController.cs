@@ -147,5 +147,10 @@ namespace DACN_ver_2.Controllers
         {
             return PartialView();
         }
+
+        public ActionResult Suaphongban()
+        {
+            return PartialView();
+        }
     }
 }
