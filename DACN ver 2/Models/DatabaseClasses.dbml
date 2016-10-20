@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DACN" Class="DatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=VOIANGA\SQLEXPRESS;Initial Catalog=DACN;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DACNMVC" Class="DatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=SONPC;Initial Catalog=DACNMVC;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNMVCConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CANHOCHUNGCU" Member="CANHOCHUNGCUs">
     <Type Name="CANHOCHUNGCU">
       <Column Name="ID_CHCC" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -288,7 +288,7 @@
   </Table>
   <Table Name="dbo.HOPDONG" Member="HOPDONGs">
     <Type Name="HOPDONG">
-      <Column Name="ID_HOPDONG" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_HOPDONG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="SOHD" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NGUOILAP" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
@@ -326,7 +326,7 @@
   </Table>
   <Table Name="dbo.KHACHHANG" Member="KHACHHANGs">
     <Type Name="KHACHHANG">
-      <Column Name="ID_KH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_KH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TENKH" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="DIACHI" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="DIENTHOAI" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
@@ -451,7 +451,7 @@
   </Table>
   <Table Name="dbo.PHIEUYEUCAU" Member="PHIEUYEUCAUs">
     <Type Name="PHIEUYEUCAU">
-      <Column Name="ID_PYC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_PYC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ID_NHANVIEN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ID_HOPDONG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ID_LOAITAISAN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -556,7 +556,7 @@
   </Table>
   <Table Name="dbo.TRANGTHAI" Member="TRANGTHAIs">
     <Type Name="TRANGTHAI">
-      <Column Name="ID_TRANGTHAI" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_TRANGTHAI" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TEN" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="NGAYTAO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NGAYSUA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
