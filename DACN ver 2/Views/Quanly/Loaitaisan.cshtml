@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DACN_ver_2.Models.LOAITAISAN>
+
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Loại tài sản | <small>Thêm mới</small></h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Loại tài sản</th>
+                        <th>Trạng thái</th>
+                        <th>Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">
+                                @Html.DisplayFor(modelItem => item.ID_LOAITAISAN)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TEN)
+                            </td>
+                            <td>
+                                @if (item.TRANGTHAI == true)
+                                {
+                                    <p>Hiển thị</p>
+                                }
+                                else
+                                { <p>Ẩn</p>}
+
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID_LOAITAISAN }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ID_LOAITAISAN })
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

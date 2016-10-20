@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DACN_ver_2.Models.LOAINHANVIEN>
+
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Loại nhân viên | 
+                <!-- Large modal -->
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-nhan-vien">Thêm</button>
+                <div class="modal fade bs-example-modal-nhan-vien" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Thêm loại nhân viên</h4>
+                            </div>
+                            @Html.Action("Themloainhanvien", "Main")
+                        </div>
+                    </div>
+                </div>
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Loai nhân viên</th>
+                        <th>Trạng thái</th>
+                        <th>Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">
+                                @Html.DisplayFor(modelItem => item.ID_LOAINHANVIEN)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TEN)
+                            </td>
+                            <td>
+                                @if (item.TRANGTHAI == true)
+                                {
+                                    <p>Hiển thị</p>
+                                }
+                                else
+                                { <p>Ẩn</p>}
+
+                            </td>
+                            <td>
+                                <a href='/Main/Quantri/@item.ID_LOAINHANVIEN' class="btn btn-primary btn-update"><i class="glyphicon glyphicon-pencil"></i></a>
+                                <a href='/Main/Quantri/@item.ID_LOAINHANVIEN' class="btn btn-danger btn-delete"><i class="glyphicon glyphicon-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
