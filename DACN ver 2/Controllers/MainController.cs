@@ -148,9 +148,52 @@ namespace DACN_ver_2.Controllers
             return PartialView();
         }
 
-        public ActionResult Suaphongban()
+        public ActionResult Suaphongban(int id)
         {
-            return PartialView();
+            var spb = data.PHONGBANs.FirstOrDefault(s => s.ID_PHONGBAN == id);
+            return PartialView(spb);
+        }
+        [HttpPost]
+        public ActionResult Suaphongban(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                PHONGBAN pb = data.PHONGBANs.FirstOrDefault(s => s.ID_PHONGBAN == id);
+                pb.NGAYSUA = DateTime.Now;
+                UpdateModel(pb);
+                data.SubmitChanges();
+                return RedirectToAction("Quantri");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Xoaphongban(int id)
+        {
+            var xpb = data.PHONGBANs
+                .FirstOrDefault(s => s.ID_PHONGBAN == id);
+            return PartialView(xpb);
+        }
+
+        // POST: asdas/Delete/5
+        [HttpPost]
+        public ActionResult Xoaphongban(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                PHONGBAN pb = data.PHONGBANs.FirstOrDefault(s => s.ID_PHONGBAN == id);
+                data.PHONGBANs.DeleteOnSubmit(pb);
+                data.SubmitChanges();
+                return RedirectToAction("Quantri");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

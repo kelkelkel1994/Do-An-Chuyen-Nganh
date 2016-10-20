@@ -6,9 +6,9 @@
         <div class="x_title">
             <h2>Phòng ban |
             <!-- Large modal -->
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-phong-ban"><i class="glyphicon glyphicon-plus"></i></button>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-phong-ban"><i class="glyphicon glyphicon-plus"></i></button>
             <div class="modal fade bs-example-modal-phong-ban" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">
@@ -55,29 +55,31 @@
                             <td>
                                 <a href='#' class="btn btn-primary btn-update" data-toggle="modal" data-target=".sua-@item.ID_PHONGBAN"><i class="glyphicon glyphicon-pencil"></i></a>
                                 <div class="modal fade sua-@item.ID_PHONGBAN" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
+                                    <div class="modal-dialog modal-sm">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">
                                                     <span aria-hidden="true">×</span>
                                                 </button>
-                                                <h4 class="modal-title" id="myModalLabel">Sửa @item.ID_PHONGBAN</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Sửa phòng ban | ID = @item.ID_PHONGBAN</h4>
+                                               
                                             </div>
-
+                                            @Html.Action("Suaphongban", "Main", new { id = item.ID_PHONGBAN })
                                         </div>
                                     </div>
                                 </div>
                                 <a href='#' class="btn btn-danger btn-delete"data-toggle="modal" data-target=".xoa-@item.ID_PHONGBAN"><i class="glyphicon glyphicon-trash"></i></a>
                                 <div class="modal fade xoa-@item.ID_PHONGBAN" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
+                                    <div class="modal-dialog modal-sm">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">
                                                     <span aria-hidden="true">×</span>
                                                 </button>
-                                                <h4 class="modal-title" id="myModalLabel">xoá @item.ID_PHONGBAN</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Bạn có chắc muốn xoá? | ID: @item.ID_PHONGBAN</h4>
+                                                
                                             </div>
-
+                                            @Html.Action("Xoaphongban", "Main", new { id = item.ID_PHONGBAN })
                                         </div>
                                     </div>
                                 </div>

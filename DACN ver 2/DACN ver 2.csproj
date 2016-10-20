@@ -196,6 +196,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\asdasController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\QuanlyController.cs" />
@@ -304,11 +305,13 @@
     <Content Include="Views\Main\Themloainhanvien.cshtml" />
     <Content Include="Views\Main\Suachinhanh.cshtml" />
     <Content Include="Views\Main\Suaphongban.cshtml" />
+    <Content Include="Views\Main\Xoaphongban.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="vendors\" />
     <Folder Include="Views\asdasd\" />
+    <Folder Include="Views\asdas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
