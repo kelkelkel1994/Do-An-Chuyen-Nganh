@@ -58,10 +58,10 @@
                             <h3>General</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-home"></i>Quản trị <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="index.html">Dashboard</a></li>
-                                        <li><a href="index2.html">Dashboard2</a></li>
+                                        <li><a href="@Url.Action("Quantri", "Main")">Quản trị chung</a></li>
+                                        <li><a href="@Url.Action("Nhanvien", "Main")">Nhân sự</a></li>
                                         <li><a href="index3.html">Dashboard3</a></li>
                                     </ul>
                                 </li>
@@ -72,13 +72,13 @@
                                             <a>Thêm<span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu">
                                                 <li class="sub_menu">
-                                                    <a href="level2.html">Phiếu yêu cầu</a>
+                                                    <a href="@Url.Action("ThemPYC", "Kinhdoanh")">Phiếu yêu cầu</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#level2_1">Hợp đồng</a>
+                                                    <a href="#">Hợp đồng</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#level2_2">Chứng thư</a>
+                                                    <a href="@Url.Action("ThemCT", "Kinhdoanh")">Chứng thư</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -650,6 +650,6 @@
             gauge.setTextField(document.getElementById("gauge-text"));
         </script>
         <!-- /gauge.js -->
-    
+
 </body>
 </html>

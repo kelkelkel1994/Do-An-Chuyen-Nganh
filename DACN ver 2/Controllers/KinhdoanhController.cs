@@ -42,6 +42,27 @@ namespace DACN_ver_2.Controllers
             }
         }
 
+        public ActionResult ThemCT()
+        {
+            return View();
+        }
+
+        // POST: Kinhdoanh/Create
+        [HttpPost]
+        public ActionResult ThemCT(FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         // GET: Kinhdoanh/Edit/5
         public ActionResult Edit(int id)
         {

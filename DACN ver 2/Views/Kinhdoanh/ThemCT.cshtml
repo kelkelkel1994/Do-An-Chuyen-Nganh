@@ -1,9 +1,10 @@
-﻿@model DACN_ver_2.Models.PHIEUYEUCAU
+﻿@model DACN_ver_2.Models.CHUNGTHUTDG
 
 @{
-    ViewBag.Title = "Thêm PYC";
+    ViewBag.Title = "Thêm chứng thư Thẩm định giá";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
+
 
 <div class="right_col" role="main">
     <div class="">
@@ -11,7 +12,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Phiếu yêu cầu <small>năm 2016</small></h2>
+                        <h2>Chứng thư thẩm định giá <small>năm 2016</small></h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li>
                                 <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -38,68 +39,30 @@
                         <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                    Số PYC:
+                                    Số chứng thư:
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
                                     <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                                 <label class="control-label col-md-2 col-sm-3 col-xs-12">
-                                    Ngày lập phiếu:
+                                    Ngày xuất:
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
                                     <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                     Khách hàng:
                                 </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Địa chỉ:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                    Điện thoại:
-                                </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
                                     <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                                 <label class="control-label col-md-2 col-sm-3 col-xs-12">
-                                    Email:
+                                    theo PYC số:
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
                                     <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                    Người đại diện:
-                                </label>
-                                <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                                <label class="control-label col-md-2 col-sm-3 col-xs-12">
-                                    Chức vụ:
-                                </label>
-                                <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Người giới thiệu:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="ln_solid"></div>
@@ -126,6 +89,14 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                    Đặc điểm pháp lý:
+                                </label>
+                                <div class="col-md-8 col-sm-6 col-xs-12">
+                                    <textarea class="form-control col-md-7 col-xs-12" rows="3" placeholder="Input here"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                     Đặc điểm kinh tế - kỹ thuật tài sản:
                                 </label>
                                 <div class="col-md-8 col-sm-6 col-xs-12">
@@ -140,6 +111,7 @@
                                     <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
+                            <div class="ln_solid"></div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                     Mục đích thẩm định:
@@ -158,7 +130,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Thời hạn hoàn thành:
+                                    Cách tiếp cận TĐG:
                                 </label>
                                 <div class="col-md-8 col-sm-6 col-xs-12">
                                     <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
@@ -166,29 +138,15 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Yêu cầu khác (nếu có):
+                                    Phương pháp TĐG:
                                 </label>
                                 <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <textarea class="form-control col-md-7 col-xs-12" rows="3" placeholder="Input here"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                    Mức phí chấp thuận:
-                                </label>
-                                <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                                <label class="control-label col-md-2 col-sm-3 col-xs-12">
-                                    Ứng trước:
-                                </label>
-                                <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Thẩm định viên phụ trách:
+                                    Kết quả TĐG:
                                 </label>
                                 <div class="col-md-8 col-sm-6 col-xs-12">
                                     <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
@@ -206,20 +164,19 @@
                 </div>
             </div>
         </div>
-
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <h4>PHIEUYEUCAU</h4>
+                <h4>CHUNGTHUTDG</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ID_NHANVIEN, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.ID_PYC, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.ID_NHANVIEN, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ID_NHANVIEN, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.ID_PYC, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ID_PYC, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -232,106 +189,58 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ID_LOAITAISAN, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.SOCHUNGTHU, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.ID_LOAITAISAN, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ID_LOAITAISAN, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.SOCHUNGTHU, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SOCHUNGTHU, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.ID_KH, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.NGAYXUAT, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.ID_KH, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ID_KH, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.NGAYXUAT, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NGAYXUAT, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.SOPYC, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.THOIDIEMTDG, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.SOPYC, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.SOPYC, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.THOIDIEMTDG, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.THOIDIEMTDG, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.NGAYVIETPHIEU, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.MUCDICHTDG, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.NGAYVIETPHIEU, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NGAYVIETPHIEU, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.MUCDICHTDG, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MUCDICHTDG, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.VITRI, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.CACHTIEPCANTDG, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.VITRI, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.VITRI, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CACHTIEPCANTDG, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CACHTIEPCANTDG, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DACDIEM, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.PPTDG, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.DACDIEM, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.DACDIEM, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.PPTDG, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PPTDG, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.MDTD, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.KETQUATDG, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.MDTD, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.MDTD, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TDTD, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.TDTD, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.TDTD, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.THHT, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.THHT, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.THHT, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.YEUCAUKHAC, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.YEUCAUKHAC, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.YEUCAUKHAC, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.MUCPHICHAPTHUAN, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.MUCPHICHAPTHUAN, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.MUCPHICHAPTHUAN, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.UNGTRUOC, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.UNGTRUOC, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.UNGTRUOC, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.GHICHU, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.GHICHU, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.GHICHU, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.KETQUATDG, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.KETQUATDG, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -382,11 +291,6 @@
                 </div>
             </div>
         }
+
     </div>
 </div>
-
-
-
-
-
-
