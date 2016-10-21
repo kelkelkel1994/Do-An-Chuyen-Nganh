@@ -1,18 +1,19 @@
-﻿@model DACN_ver_2.Models.LOAICN
+﻿@model DACN_ver_2.Models.LOAINHANVIEN
 
-@using (Html.BeginForm("Suachinhanh", "Main"))
+
+@using (Html.BeginForm("Sualoainhanvien", "Main"))
 {
     @Html.AntiForgeryToken()
     <div class="modal-body">
         <div class="form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(modelscn => modelscn.ID_LOAICN)
+            @Html.HiddenFor(modelsnv => modelsnv.ID_LOAINHANVIEN)
 
             <div class="form-group">
                 @Html.Label("Tên", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(modelscn => modelscn.TEN, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(modelscn => modelscn.TEN, "", new { @class = "text-danger" })
+                    @Html.EditorFor(modelsnv => modelsnv.TEN, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(modelsnv => modelsnv.TEN, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
@@ -23,4 +24,3 @@
     </div>
 
 }
-

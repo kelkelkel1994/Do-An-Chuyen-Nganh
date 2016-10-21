@@ -6,7 +6,7 @@
         <div class="x_title">
             <h2>Loại nhân viên | 
                 <!-- Large modal -->
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-nhan-vien">Thêm</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-nhan-vien"><i class="glyphicon glyphicon-plus"></i></button>
                 <div class="modal fade bs-example-modal-nhan-vien" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -53,8 +53,36 @@
 
                             </td>
                             <td>
-                                <a href='/Main/Quantri/@item.ID_LOAINHANVIEN' class="btn btn-primary btn-update"><i class="glyphicon glyphicon-pencil"></i></a>
-                                <a href='/Main/Quantri/@item.ID_LOAINHANVIEN' class="btn btn-danger btn-delete"><i class="glyphicon glyphicon-trash"></i></a>
+                                <a class="btn btn-primary btn-update"  data-toggle="modal" data-target=".sualnv-@item.ID_LOAINHANVIEN"><i class="glyphicon glyphicon-pencil"></i></a>
+                                <div class="modal fade sualnv-@item.ID_LOAINHANVIEN" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Sửa loại nhân viên | ID = @item.ID_LOAINHANVIEN</h4>
+
+                                            </div>
+                                            @Html.Action("Sualoainhanvien", "Main", new { id = item.ID_LOAINHANVIEN })
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn btn-danger btn-delete"  data-toggle="modal" data-target=".xoalnv-@item.ID_LOAINHANVIEN"><i class="glyphicon glyphicon-trash"></i></a>
+                                <div class="modal fade xoalnv-@item.ID_LOAINHANVIEN" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Xoá loại nhân viên | ID = @item.ID_LOAINHANVIEN</h4>
+
+                                            </div>
+                                            @Html.Action("Xoaloainhanvien", "Main", new { id = item.ID_LOAINHANVIEN })
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     }

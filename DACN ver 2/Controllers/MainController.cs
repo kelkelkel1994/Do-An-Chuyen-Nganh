@@ -142,12 +142,7 @@ namespace DACN_ver_2.Controllers
                 return View();
             }
         }
-
-        public ActionResult Suachinhanh()
-        {
-            return PartialView();
-        }
-
+                
         public ActionResult Suaphongban(int id)
         {
             var spb = data.PHONGBANs.FirstOrDefault(s => s.ID_PHONGBAN == id);
@@ -195,5 +190,104 @@ namespace DACN_ver_2.Controllers
                 return View();
             }
         }
+
+        public ActionResult Suachinhanh(int id)
+        {
+            var scn = data.LOAICNs.FirstOrDefault(s => s.ID_LOAICN == id);
+            return PartialView(scn);
+        }
+        [HttpPost]
+        public ActionResult Suachinhanh(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                LOAICN cn = data.LOAICNs.FirstOrDefault(s => s.ID_LOAICN == id);
+                cn.NGAYSUA = DateTime.Now;
+                UpdateModel(cn);
+                data.SubmitChanges();
+                return RedirectToAction("Quantri");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Xoachinhanh(int id)
+        {
+            var a = data.LOAICNs
+                .FirstOrDefault(s => s.ID_LOAICN == id);
+            return PartialView(a);
+        }
+
+        // POST: asdas/Delete/5
+        [HttpPost]
+        public ActionResult Xoachinhanh(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                LOAICN a = data.LOAICNs.FirstOrDefault(s => s.ID_LOAICN == id);
+                data.LOAICNs.DeleteOnSubmit(a);
+                data.SubmitChanges();
+                return RedirectToAction("Quantri");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Sualoainhanvien(int id)
+        {
+            var a = data.LOAINHANVIENs.FirstOrDefault(s => s.ID_LOAINHANVIEN == id);
+            return PartialView(a);
+        }
+        [HttpPost]
+        public ActionResult Sualoainhanvien(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                LOAINHANVIEN a = data.LOAINHANVIENs.FirstOrDefault(s => s.ID_LOAINHANVIEN == id);
+                a.NGAYSUA = DateTime.Now;
+                UpdateModel(a);
+                data.SubmitChanges();
+                return RedirectToAction("Quantri");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Xoaloainhanvien(int id)
+        {
+            var a = data.LOAINHANVIENs
+                .FirstOrDefault(s => s.ID_LOAINHANVIEN == id);
+            return PartialView(a);
+        }
+
+        // POST: asdas/Delete/5
+        [HttpPost]
+        public ActionResult Xoaloainhanvien(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                LOAINHANVIEN a = data.LOAINHANVIENs.FirstOrDefault(s => s.ID_LOAINHANVIEN == id);
+                data.LOAINHANVIENs.DeleteOnSubmit(a);
+                data.SubmitChanges();
+                return RedirectToAction("Quantri");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+
     }
 }

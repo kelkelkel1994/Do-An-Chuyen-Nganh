@@ -1,0 +1,11 @@
+﻿@model DACN_ver_2.Models.LOAINHANVIEN
+
+
+@using (Html.BeginForm("Xoaloainhanvien", "Main"))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+        <input type="submit" value="Xoá" class="btn btn-danger" />
+    </div>
+}

@@ -303,9 +303,12 @@
     <Content Include="Views\Main\Themchinhanh.cshtml" />
     <Content Include="Views\Main\Themphongban.cshtml" />
     <Content Include="Views\Main\Themloainhanvien.cshtml" />
-    <Content Include="Views\Main\Suachinhanh.cshtml" />
     <Content Include="Views\Main\Suaphongban.cshtml" />
     <Content Include="Views\Main\Xoaphongban.cshtml" />
+    <Content Include="Views\Main\Suachinhanh.cshtml" />
+    <Content Include="Views\Main\Xoachinhanh.cshtml" />
+    <Content Include="Views\Main\Sualoainhanvien.cshtml" />
+    <Content Include="Views\Main\Xoaloainhanvien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
