@@ -122,5 +122,71 @@ namespace DACN_ver_2.Controllers
         {
             return PartialView();
         }
+        [HttpPost]
+        public ActionResult Themkhachhang(KHACHHANG kh)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                kh.NGAYTAO = DateTime.Now;
+                kh.TRANGTHAI = true;
+                data.KHACHHANGs.InsertOnSubmit(kh);
+                data.SubmitChanges();
+                return RedirectToAction("Danhsachkhachhang");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Suakhachhang(int id)
+        {
+            var spb = data.KHACHHANGs.FirstOrDefault(s => s.ID_KH == id);
+            return PartialView(spb);
+        }
+        [HttpPost]
+        public ActionResult Suakhachhang(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                KHACHHANG pb = data.KHACHHANGs.FirstOrDefault(s => s.ID_KH == id);
+                pb.NGAYSUA = DateTime.Now;
+                UpdateModel(pb);
+                data.SubmitChanges();
+                return RedirectToAction("Danhsachkhachhang");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Xoakhachhang(int id)
+        {
+            var xpb = data.KHACHHANGs
+                .FirstOrDefault(s => s.ID_KH == id);
+            return PartialView(xpb);
+        }
+
+        // POST: asdas/Delete/5
+        [HttpPost]
+        public ActionResult Xoakhachhang(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                KHACHHANG pb = data.KHACHHANGs.FirstOrDefault(s => s.ID_KH == id);
+                data.KHACHHANGs.DeleteOnSubmit(pb);
+                data.SubmitChanges();
+                return RedirectToAction("Danhsachkhachhang");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }

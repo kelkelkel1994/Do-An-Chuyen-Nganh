@@ -420,6 +420,8 @@
     <Content Include="Views\Kinhdoanh\ThemCT.cshtml" />
     <Content Include="Views\Kinhdoanh\Danhsachkhachhang.cshtml" />
     <Content Include="Views\Kinhdoanh\Themkhachhang.cshtml" />
+    <Content Include="Views\Kinhdoanh\Suakhachhang.cshtml" />
+    <Content Include="Views\Kinhdoanh\Xoakhachhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

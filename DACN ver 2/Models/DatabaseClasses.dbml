@@ -326,7 +326,7 @@
   </Table>
   <Table Name="dbo.KHACHHANG" Member="KHACHHANGs">
     <Type Name="KHACHHANG">
-      <Column Name="ID_KH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_KH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TENKH" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="DIACHI" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="DIENTHOAI" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
