@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DACN_ver_2.Models;
 
 namespace DACN_ver_2.Controllers
 {
     public class KinhdoanhController : Controller
     {
+        DatabaseClassesDataContext data = new DatabaseClassesDataContext();
         // GET: Kinhdoanh
         public ActionResult Index()
         {
@@ -105,6 +107,20 @@ namespace DACN_ver_2.Controllers
             {
                 return View();
             }
+        }
+
+        // danh sahv khach hang
+        public ActionResult Danhsachkhachhang()
+        {
+            var danhsach = data.KHACHHANGs
+                .ToList()
+                .OrderBy(s => s.ID_KH);
+            return View(danhsach);
+        }
+
+        public ActionResult Themkhachhang()
+        {
+            return PartialView();
         }
     }
 }

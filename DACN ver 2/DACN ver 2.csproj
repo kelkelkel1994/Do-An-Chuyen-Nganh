@@ -418,6 +418,8 @@
     <Content Include="vendors\jquery\README.md" />
     <Content Include="vendors\jquery\src\.jshintrc" />
     <Content Include="Views\Kinhdoanh\ThemCT.cshtml" />
+    <Content Include="Views\Kinhdoanh\Danhsachkhachhang.cshtml" />
+    <Content Include="Views\Kinhdoanh\Themkhachhang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
