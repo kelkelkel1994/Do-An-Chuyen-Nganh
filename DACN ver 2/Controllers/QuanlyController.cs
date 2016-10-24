@@ -39,5 +39,7 @@ namespace DACN_ver_2.Controllers
                 .OrderBy(s => s.ID_LOAIHINH);
             return PartialView(loaihinh);
         }        
+
+        
     }
 }

@@ -14,6 +14,7 @@ namespace DACN_ver_2.Models
         public int iPhanquyen { set; get; }
         public string sUser { set; get; }
         public string sAvatar { set; get; }
+        public int iPhongban { set; get; }
         public Dangnhap(int id)
         {
             iID = id;
@@ -22,6 +23,7 @@ namespace DACN_ver_2.Models
             iPhanquyen = sp.ID_PHANQUYEN;
             sUser = sp.USER;
             sAvatar = sp.ANH;
+            iPhongban = sp.ID_PHONGBAN;
         }
     }
 }

@@ -428,8 +428,8 @@
     <Content Include="Views\Kinhdoanh\Suakhachhang.cshtml" />
     <Content Include="Views\Kinhdoanh\Xoakhachhang.cshtml" />
     <Content Include="Views\Nhanvien\Index.cshtml" />
-    <Content Include="Views\Login\Thongtin.cshtml" />
     <Content Include="Views\Login\Topnavigation.cshtml" />
+    <Content Include="Views\Login\Leftnavigation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
