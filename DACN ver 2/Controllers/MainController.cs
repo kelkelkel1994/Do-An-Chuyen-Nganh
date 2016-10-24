@@ -13,6 +13,10 @@ namespace DACN_ver_2.Controllers
         // GET: Main
         public ActionResult Index()
         {
+            if(Session["Login"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
         }
         
@@ -65,8 +69,8 @@ namespace DACN_ver_2.Controllers
             try
             {
                 // TODO: Add insert logic here
-                cn.NGAYTAO = DateTime.Now;
-                cn.TRANGTHAI = true;
+                //cn.NGAYTAO = DateTime.Now;
+                //cn.TRANGTHAI = true;
                 data.LOAICNs.InsertOnSubmit(cn);
                 data.SubmitChanges();
                 return PartialView();
@@ -87,8 +91,8 @@ namespace DACN_ver_2.Controllers
             try
             {
                 // TODO: Add insert logic here
-                cn.NGAYTAO = DateTime.Now;
-                cn.TRANGTHAI = true;
+                //cn.NGAYTAO = DateTime.Now;
+                //cn.TRANGTHAI = true;
                 data.LOAICNs.InsertOnSubmit(cn);
                 data.SubmitChanges();
                 return RedirectToAction("Quantri");
@@ -109,8 +113,8 @@ namespace DACN_ver_2.Controllers
             try
             {
                 // TODO: Add insert logic here
-                pb.NGAYTAO = DateTime.Now;
-                pb.TRANGTHAI = true;
+                //pb.NGAYTAO = DateTime.Now;
+                //pb.TRANGTHAI = true;
                 data.PHONGBANs.InsertOnSubmit(pb);
                 data.SubmitChanges();
                 return RedirectToAction("Quantri");

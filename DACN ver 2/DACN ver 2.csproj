@@ -200,10 +200,12 @@
     <Compile Include="Controllers\KinhdoanhController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\NhanvienController.cs" />
     <Compile Include="Controllers\QuanlyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dangnhap.cs" />
     <Compile Include="Models\DatabaseClasses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -422,6 +424,7 @@
     <Content Include="Views\Kinhdoanh\Themkhachhang.cshtml" />
     <Content Include="Views\Kinhdoanh\Suakhachhang.cshtml" />
     <Content Include="Views\Kinhdoanh\Xoakhachhang.cshtml" />
+    <Content Include="Views\Nhanvien\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

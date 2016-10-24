@@ -11,9 +11,28 @@ namespace DACN_ver_2.Controllers
     {
         DatabaseClassesDataContext data = new DatabaseClassesDataContext();
         // GET: Login
+        public List<Dangnhap> kiemtradangnhap()
+        {
+            List<Dangnhap> ktdangnhap = Session["Login"] as List<Dangnhap>;
+            if (ktdangnhap == null)
+            {
+                //Neu gio hang chua ton tai thi khoi tao listGiohang
+                ktdangnhap = new List<Dangnhap>();
+                Session["Login"] = ktdangnhap;
+            }
+            return ktdangnhap;
+        }
+
         public ActionResult Login()
         {
-            return View();
+            if(Session["Login"] != null)
+            {
+                return RedirectToAction("Logout", "Login");
+            }else
+            {
+                return View();
+            }
+            
         }
         [HttpPost]
         public ActionResult Login(FormCollection collection)
@@ -34,9 +53,28 @@ namespace DACN_ver_2.Controllers
                 NHANVIEN TK = data.NHANVIENs.SingleOrDefault(n => n.USER == user && n.PASS == pass);
                 if (TK != null)
                 {
+                    List<Dangnhap> ktdangnhap = kiemtradangnhap();
+                    //Kiem tra sách này tồn tại trong Session["Giohang"] chưa?
+                    Dangnhap dn = ktdangnhap.Find(n => n.iID == TK.ID_LOAINHANVIEN);
+                    if (dn == null)
+                    {
+                        dn = new Dangnhap(TK.ID_LOAINHANVIEN);
+                        ktdangnhap.Add(dn);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Main");
+                    }
                     Session["TKAdmin"] = TK.ID_NHANVIEN;
+                    Session["Quyen"] = TK.ID_PHANQUYEN;
                     Session["Ten"] = TK.TENNV;
-                    return RedirectToAction("Index", "Main");
+                    if (TK.ID_PHANQUYEN == 1)
+                    {
+                        return RedirectToAction("Index", "Main");
+                    }
+                    else
+                        return RedirectToAction("Index", "Nhanvien");
+                    
                 }
                 else
                 {
@@ -44,6 +82,14 @@ namespace DACN_ver_2.Controllers
                 }
             }
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            List<Dangnhap> ktdangnhap = kiemtradangnhap();
+            ktdangnhap.Clear();
+            Session["Login"] = null;
+            return RedirectToAction("Login", "Login");
         }
     }
 }

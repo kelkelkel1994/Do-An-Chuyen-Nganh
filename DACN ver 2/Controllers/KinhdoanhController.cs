@@ -25,6 +25,9 @@ namespace DACN_ver_2.Controllers
         // GET: Kinhdoanh/Create
         public ActionResult ThemPYC()
         {
+            ViewData["Nhanvien"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s=>s.TENNV) , "ID_NHANVIEN", "TENNV");
+            ViewData["Khachhang"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
+            ViewData["Loaitaisan"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
             return View();
         }
 
