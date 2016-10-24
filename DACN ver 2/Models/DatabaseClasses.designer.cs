@@ -114,7 +114,7 @@ namespace DACN_ver_2.Models
     #endregion
 		
 		public DatabaseClassesDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DACNConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DACNConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -366,7 +366,7 @@ namespace DACN_ver_2.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private char _ID_CHCC;
+		private int _ID_CHCC;
 		
 		private int _ID_QUANHUYEN;
 		
@@ -466,7 +466,7 @@ namespace DACN_ver_2.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnID_CHCCChanging(char value);
+    partial void OnID_CHCCChanging(int value);
     partial void OnID_CHCCChanged();
     partial void OnID_QUANHUYENChanging(int value);
     partial void OnID_QUANHUYENChanged();
@@ -559,8 +559,8 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CHCC", DbType="Char(1) NOT NULL", IsPrimaryKey=true)]
-		public char ID_CHCC
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CHCC", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_CHCC
 		{
 			get
 			{
@@ -1824,7 +1824,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_VPCT", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_VPCT", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_VPCT
 		{
 			get
@@ -2488,7 +2488,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CAPDUONG", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CAPDUONG", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_CAPDUONG
 		{
 			get
@@ -2750,7 +2750,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CRMD", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CRMD", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_CRMD
 		{
 			get
@@ -3025,7 +3025,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CHITIETLOAI", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CHITIETLOAI", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_CHITIETLOAI
 		{
 			get
@@ -3442,7 +3442,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CHUNGTHU", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CHUNGTHU", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_CHUNGTHU
 		{
 			get
@@ -4136,7 +4136,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CTXD", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CTXD", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_CTXD
 		{
 			get
@@ -5108,7 +5108,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DDPL", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DDPL", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_DDPL
 		{
 			get
@@ -5623,7 +5623,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DAT", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_DAT", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_DAT
 		{
 			get
@@ -6918,7 +6918,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_FILEDINHKEM", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_FILEDINHKEM", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_FILEDINHKEM
 		{
 			get
@@ -7313,11 +7313,13 @@ namespace DACN_ver_2.Models
 		
 		private System.Nullable<bool> _TRANGTHAI;
 		
+		private int _ID_PYC;
+		
 		private EntitySet<CHUNGTHUTDG> _CHUNGTHUTDGs;
 		
 		private EntitySet<FILEDINHKEM> _FILEDINHKEMs;
 		
-		private EntitySet<PHIEUYEUCAU> _PHIEUYEUCAUs;
+		private EntityRef<PHIEUYEUCAU> _PHIEUYEUCAU;
 		
 		private EntityRef<TRANGTHAI> _TRANGTHAI1;
 		
@@ -7359,18 +7361,20 @@ namespace DACN_ver_2.Models
     partial void OnNGUOISUAChanged();
     partial void OnTRANGTHAIChanging(System.Nullable<bool> value);
     partial void OnTRANGTHAIChanged();
+    partial void OnID_PYCChanging(int value);
+    partial void OnID_PYCChanged();
     #endregion
 		
 		public HOPDONG()
 		{
 			this._CHUNGTHUTDGs = new EntitySet<CHUNGTHUTDG>(new Action<CHUNGTHUTDG>(this.attach_CHUNGTHUTDGs), new Action<CHUNGTHUTDG>(this.detach_CHUNGTHUTDGs));
 			this._FILEDINHKEMs = new EntitySet<FILEDINHKEM>(new Action<FILEDINHKEM>(this.attach_FILEDINHKEMs), new Action<FILEDINHKEM>(this.detach_FILEDINHKEMs));
-			this._PHIEUYEUCAUs = new EntitySet<PHIEUYEUCAU>(new Action<PHIEUYEUCAU>(this.attach_PHIEUYEUCAUs), new Action<PHIEUYEUCAU>(this.detach_PHIEUYEUCAUs));
+			this._PHIEUYEUCAU = default(EntityRef<PHIEUYEUCAU>);
 			this._TRANGTHAI1 = default(EntityRef<TRANGTHAI>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HOPDONG", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HOPDONG", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_HOPDONG
 		{
 			get
@@ -7714,6 +7718,30 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PYC", DbType="Int NOT NULL")]
+		public int ID_PYC
+		{
+			get
+			{
+				return this._ID_PYC;
+			}
+			set
+			{
+				if ((this._ID_PYC != value))
+				{
+					if (this._PHIEUYEUCAU.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PYCChanging(value);
+					this.SendPropertyChanging();
+					this._ID_PYC = value;
+					this.SendPropertyChanged("ID_PYC");
+					this.OnID_PYCChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HOPDONG_CHUNGTHUTDG", Storage="_CHUNGTHUTDGs", ThisKey="ID_HOPDONG", OtherKey="ID_HOPDONG")]
 		public EntitySet<CHUNGTHUTDG> CHUNGTHUTDGs
 		{
@@ -7740,16 +7768,37 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HOPDONG_PHIEUYEUCAU", Storage="_PHIEUYEUCAUs", ThisKey="ID_HOPDONG", OtherKey="ID_HOPDONG")]
-		public EntitySet<PHIEUYEUCAU> PHIEUYEUCAUs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEUYEUCAU_HOPDONG", Storage="_PHIEUYEUCAU", ThisKey="ID_PYC", OtherKey="ID_PYC", IsForeignKey=true)]
+		public PHIEUYEUCAU PHIEUYEUCAU
 		{
 			get
 			{
-				return this._PHIEUYEUCAUs;
+				return this._PHIEUYEUCAU.Entity;
 			}
 			set
 			{
-				this._PHIEUYEUCAUs.Assign(value);
+				PHIEUYEUCAU previousValue = this._PHIEUYEUCAU.Entity;
+				if (((previousValue != value) 
+							|| (this._PHIEUYEUCAU.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PHIEUYEUCAU.Entity = null;
+						previousValue.HOPDONGs.Remove(this);
+					}
+					this._PHIEUYEUCAU.Entity = value;
+					if ((value != null))
+					{
+						value.HOPDONGs.Add(this);
+						this._ID_PYC = value.ID_PYC;
+					}
+					else
+					{
+						this._ID_PYC = default(int);
+					}
+					this.SendPropertyChanged("PHIEUYEUCAU");
+				}
 			}
 		}
 		
@@ -7830,18 +7879,6 @@ namespace DACN_ver_2.Models
 			this.SendPropertyChanging();
 			entity.HOPDONG = null;
 		}
-		
-		private void attach_PHIEUYEUCAUs(PHIEUYEUCAU entity)
-		{
-			this.SendPropertyChanging();
-			entity.HOPDONG = this;
-		}
-		
-		private void detach_PHIEUYEUCAUs(PHIEUYEUCAU entity)
-		{
-			this.SendPropertyChanging();
-			entity.HOPDONG = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KETCAUDUONG")]
@@ -7895,7 +7932,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_KETCAUDUONG", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_KETCAUDUONG", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_KETCAUDUONG
 		{
 			get
@@ -10009,6 +10046,8 @@ namespace DACN_ver_2.Models
 		
 		private string _PASS;
 		
+		private string _ANH;
+		
 		private EntitySet<PHIEUYEUCAU> _PHIEUYEUCAUs;
 		
 		private EntityRef<LOAINHANVIEN> _LOAINHANVIEN;
@@ -10053,6 +10092,8 @@ namespace DACN_ver_2.Models
     partial void OnUSERChanged();
     partial void OnPASSChanging(string value);
     partial void OnPASSChanged();
+    partial void OnANHChanging(string value);
+    partial void OnANHChanged();
     #endregion
 		
 		public NHANVIEN()
@@ -10392,6 +10433,26 @@ namespace DACN_ver_2.Models
 					this._PASS = value;
 					this.SendPropertyChanged("PASS");
 					this.OnPASSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ANH", DbType="VarChar(250)")]
+		public string ANH
+		{
+			get
+			{
+				return this._ANH;
+			}
+			set
+			{
+				if ((this._ANH != value))
+				{
+					this.OnANHChanging(value);
+					this.SendPropertyChanging();
+					this._ANH = value;
+					this.SendPropertyChanged("ANH");
+					this.OnANHChanged();
 				}
 			}
 		}
@@ -10788,8 +10849,6 @@ namespace DACN_ver_2.Models
 		
 		private int _ID_NHANVIEN;
 		
-		private int _ID_HOPDONG;
-		
 		private int _ID_LOAITAISAN;
 		
 		private int _ID_KH;
@@ -10830,7 +10889,7 @@ namespace DACN_ver_2.Models
 		
 		private EntitySet<FILEDINHKEM> _FILEDINHKEMs;
 		
-		private EntityRef<HOPDONG> _HOPDONG;
+		private EntitySet<HOPDONG> _HOPDONGs;
 		
 		private EntityRef<KHACHHANG> _KHACHHANG;
 		
@@ -10846,8 +10905,6 @@ namespace DACN_ver_2.Models
     partial void OnID_PYCChanged();
     partial void OnID_NHANVIENChanging(int value);
     partial void OnID_NHANVIENChanged();
-    partial void OnID_HOPDONGChanging(int value);
-    partial void OnID_HOPDONGChanged();
     partial void OnID_LOAITAISANChanging(int value);
     partial void OnID_LOAITAISANChanged();
     partial void OnID_KHChanging(int value);
@@ -10890,14 +10947,14 @@ namespace DACN_ver_2.Models
 		{
 			this._CHUNGTHUTDGs = new EntitySet<CHUNGTHUTDG>(new Action<CHUNGTHUTDG>(this.attach_CHUNGTHUTDGs), new Action<CHUNGTHUTDG>(this.detach_CHUNGTHUTDGs));
 			this._FILEDINHKEMs = new EntitySet<FILEDINHKEM>(new Action<FILEDINHKEM>(this.attach_FILEDINHKEMs), new Action<FILEDINHKEM>(this.detach_FILEDINHKEMs));
-			this._HOPDONG = default(EntityRef<HOPDONG>);
+			this._HOPDONGs = new EntitySet<HOPDONG>(new Action<HOPDONG>(this.attach_HOPDONGs), new Action<HOPDONG>(this.detach_HOPDONGs));
 			this._KHACHHANG = default(EntityRef<KHACHHANG>);
 			this._LOAITAISAN = default(EntityRef<LOAITAISAN>);
 			this._NHANVIEN = default(EntityRef<NHANVIEN>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PYC", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PYC", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_PYC
 		{
 			get
@@ -10937,30 +10994,6 @@ namespace DACN_ver_2.Models
 					this._ID_NHANVIEN = value;
 					this.SendPropertyChanged("ID_NHANVIEN");
 					this.OnID_NHANVIENChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HOPDONG", DbType="Int NOT NULL")]
-		public int ID_HOPDONG
-		{
-			get
-			{
-				return this._ID_HOPDONG;
-			}
-			set
-			{
-				if ((this._ID_HOPDONG != value))
-				{
-					if (this._HOPDONG.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnID_HOPDONGChanging(value);
-					this.SendPropertyChanging();
-					this._ID_HOPDONG = value;
-					this.SendPropertyChanged("ID_HOPDONG");
-					this.OnID_HOPDONGChanged();
 				}
 			}
 		}
@@ -11359,37 +11392,16 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HOPDONG_PHIEUYEUCAU", Storage="_HOPDONG", ThisKey="ID_HOPDONG", OtherKey="ID_HOPDONG", IsForeignKey=true)]
-		public HOPDONG HOPDONG
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEUYEUCAU_HOPDONG", Storage="_HOPDONGs", ThisKey="ID_PYC", OtherKey="ID_PYC")]
+		public EntitySet<HOPDONG> HOPDONGs
 		{
 			get
 			{
-				return this._HOPDONG.Entity;
+				return this._HOPDONGs;
 			}
 			set
 			{
-				HOPDONG previousValue = this._HOPDONG.Entity;
-				if (((previousValue != value) 
-							|| (this._HOPDONG.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._HOPDONG.Entity = null;
-						previousValue.PHIEUYEUCAUs.Remove(this);
-					}
-					this._HOPDONG.Entity = value;
-					if ((value != null))
-					{
-						value.PHIEUYEUCAUs.Add(this);
-						this._ID_HOPDONG = value.ID_HOPDONG;
-					}
-					else
-					{
-						this._ID_HOPDONG = default(int);
-					}
-					this.SendPropertyChanged("HOPDONG");
-				}
+				this._HOPDONGs.Assign(value);
 			}
 		}
 		
@@ -11534,6 +11546,18 @@ namespace DACN_ver_2.Models
 		}
 		
 		private void detach_FILEDINHKEMs(FILEDINHKEM entity)
+		{
+			this.SendPropertyChanging();
+			entity.PHIEUYEUCAU = null;
+		}
+		
+		private void attach_HOPDONGs(HOPDONG entity)
+		{
+			this.SendPropertyChanging();
+			entity.PHIEUYEUCAU = this;
+		}
+		
+		private void detach_HOPDONGs(HOPDONG entity)
 		{
 			this.SendPropertyChanging();
 			entity.PHIEUYEUCAU = null;
@@ -11829,7 +11853,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_QUANHUYEN", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_QUANHUYEN", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_QUANHUYEN
 		{
 			get
@@ -12109,11 +12133,11 @@ namespace DACN_ver_2.Models
 		
 		private System.Nullable<char> _NGUOISUA;
 		
-		private System.Nullable<char> _TRANGTHAI;
+		private System.Nullable<bool> _TRANGTHAI;
 		
 		private int _ID_LOAICN;
 		
-		private char _ID;
+		private int _ID;
 		
 		private EntityRef<LOAICN> _LOAICN;
 		
@@ -12151,11 +12175,11 @@ namespace DACN_ver_2.Models
     partial void OnNGUOITAOChanged();
     partial void OnNGUOISUAChanging(System.Nullable<char> value);
     partial void OnNGUOISUAChanged();
-    partial void OnTRANGTHAIChanging(System.Nullable<char> value);
+    partial void OnTRANGTHAIChanging(System.Nullable<bool> value);
     partial void OnTRANGTHAIChanged();
     partial void OnID_LOAICNChanging(int value);
     partial void OnID_LOAICNChanged();
-    partial void OnIDChanging(char value);
+    partial void OnIDChanging(int value);
     partial void OnIDChanged();
     #endregion
 		
@@ -12465,8 +12489,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANGTHAI", DbType="Char(1)")]
-		public System.Nullable<char> TRANGTHAI
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANGTHAI", DbType="Bit")]
+		public System.Nullable<bool> TRANGTHAI
 		{
 			get
 			{
@@ -12509,8 +12533,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Char(1) NOT NULL", IsPrimaryKey=true)]
-		public char ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
 		{
 			get
 			{
@@ -12604,7 +12628,7 @@ namespace DACN_ver_2.Models
 		
 		private System.Nullable<bool> _TRANGTHAI;
 		
-		private char _ID_CHCC;
+		private int _ID_CHCC;
 		
 		private EntityRef<CANHOCHUNGCU> _CANHOCHUNGCU;
 		
@@ -12626,7 +12650,7 @@ namespace DACN_ver_2.Models
     partial void OnNGUOISUAChanged();
     partial void OnTRANGTHAIChanging(System.Nullable<bool> value);
     partial void OnTRANGTHAIChanged();
-    partial void OnID_CHCCChanging(char value);
+    partial void OnID_CHCCChanging(int value);
     partial void OnID_CHCCChanged();
     #endregion
 		
@@ -12636,7 +12660,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_TIENICH", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_TIENICH", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_TIENICH
 		{
 			get
@@ -12776,8 +12800,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CHCC", DbType="Char(1) NOT NULL")]
-		public char ID_CHCC
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CHCC", DbType="Int NOT NULL")]
+		public int ID_CHCC
 		{
 			get
 			{
@@ -12827,7 +12851,7 @@ namespace DACN_ver_2.Models
 					}
 					else
 					{
-						this._ID_CHCC = default(char);
+						this._ID_CHCC = default(int);
 					}
 					this.SendPropertyChanged("CANHOCHUNGCU");
 				}
@@ -12903,7 +12927,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_TINHTHANH", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_TINHTHANH", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_TINHTHANH
 		{
 			get
@@ -13137,7 +13161,7 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_TRANGTHAI", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_TRANGTHAI", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int ID_TRANGTHAI
 		{
 			get

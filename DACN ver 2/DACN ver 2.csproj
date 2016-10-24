@@ -227,6 +227,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\american-express.png" />
+    <Content Include="images\Avatar\admin.jpg" />
+    <Content Include="images\Avatar\picture.jpg" />
+    <Content Include="images\Avatar\user.jpg" />
     <Content Include="images\cropper.jpg" />
     <Content Include="images\img.jpg" />
     <Content Include="images\inbox.png" />
@@ -425,6 +428,8 @@
     <Content Include="Views\Kinhdoanh\Suakhachhang.cshtml" />
     <Content Include="Views\Kinhdoanh\Xoakhachhang.cshtml" />
     <Content Include="Views\Nhanvien\Index.cshtml" />
+    <Content Include="Views\Login\Thongtin.cshtml" />
+    <Content Include="Views\Login\Topnavigation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

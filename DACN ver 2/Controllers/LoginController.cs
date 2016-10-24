@@ -65,7 +65,7 @@ namespace DACN_ver_2.Controllers
                     {
                         return RedirectToAction("Index", "Main");
                     }
-                    Session["TKAdmin"] = TK.ID_NHANVIEN;
+                    Session["ID"] = TK.ID_NHANVIEN;
                     Session["Quyen"] = TK.ID_PHANQUYEN;
                     Session["Ten"] = TK.TENNV;
                     if (TK.ID_PHANQUYEN == 1)
@@ -90,6 +90,20 @@ namespace DACN_ver_2.Controllers
             ktdangnhap.Clear();
             Session["Login"] = null;
             return RedirectToAction("Login", "Login");
+        }
+
+        public ActionResult Thongtin()
+        {
+            List<Dangnhap> ktdangnhap = kiemtradangnhap();
+            var thongtin = ktdangnhap.FirstOrDefault(s=>s.iID == int.Parse(Session["ID"].ToString()));
+            return PartialView(thongtin);
+        }
+
+        public ActionResult Topnavigation()
+        {
+            List<Dangnhap> ktdangnhap = kiemtradangnhap();
+            var thongtin = ktdangnhap.FirstOrDefault(s => s.iID == int.Parse(Session["ID"].ToString()));
+            return PartialView(thongtin);
         }
     }
 }
