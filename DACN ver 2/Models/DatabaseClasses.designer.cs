@@ -10847,11 +10847,11 @@ namespace DACN_ver_2.Models
 		
 		private int _ID_PYC;
 		
-		private int _ID_NHANVIEN;
+		private System.Nullable<int> _ID_NHANVIEN;
 		
-		private int _ID_LOAITAISAN;
+		private System.Nullable<int> _ID_LOAITAISAN;
 		
-		private int _ID_KH;
+		private System.Nullable<int> _ID_KH;
 		
 		private string _SOPYC;
 		
@@ -10903,11 +10903,11 @@ namespace DACN_ver_2.Models
     partial void OnCreated();
     partial void OnID_PYCChanging(int value);
     partial void OnID_PYCChanged();
-    partial void OnID_NHANVIENChanging(int value);
+    partial void OnID_NHANVIENChanging(System.Nullable<int> value);
     partial void OnID_NHANVIENChanged();
-    partial void OnID_LOAITAISANChanging(int value);
+    partial void OnID_LOAITAISANChanging(System.Nullable<int> value);
     partial void OnID_LOAITAISANChanged();
-    partial void OnID_KHChanging(int value);
+    partial void OnID_KHChanging(System.Nullable<int> value);
     partial void OnID_KHChanged();
     partial void OnSOPYCChanging(string value);
     partial void OnSOPYCChanged();
@@ -10974,8 +10974,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NHANVIEN", DbType="Int NOT NULL")]
-		public int ID_NHANVIEN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NHANVIEN", DbType="Int")]
+		public System.Nullable<int> ID_NHANVIEN
 		{
 			get
 			{
@@ -10998,8 +10998,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_LOAITAISAN", DbType="Int NOT NULL")]
-		public int ID_LOAITAISAN
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_LOAITAISAN", DbType="Int")]
+		public System.Nullable<int> ID_LOAITAISAN
 		{
 			get
 			{
@@ -11022,8 +11022,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_KH", DbType="Int NOT NULL")]
-		public int ID_KH
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_KH", DbType="Int")]
+		public System.Nullable<int> ID_KH
 		{
 			get
 			{
@@ -11432,7 +11432,7 @@ namespace DACN_ver_2.Models
 					}
 					else
 					{
-						this._ID_KH = default(int);
+						this._ID_KH = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("KHACHHANG");
 				}
@@ -11466,7 +11466,7 @@ namespace DACN_ver_2.Models
 					}
 					else
 					{
-						this._ID_LOAITAISAN = default(int);
+						this._ID_LOAITAISAN = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("LOAITAISAN");
 				}
@@ -11500,7 +11500,7 @@ namespace DACN_ver_2.Models
 					}
 					else
 					{
-						this._ID_NHANVIEN = default(int);
+						this._ID_NHANVIEN = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("NHANVIEN");
 				}

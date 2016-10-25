@@ -454,9 +454,9 @@
   <Table Name="dbo.PHIEUYEUCAU" Member="PHIEUYEUCAUs">
     <Type Name="PHIEUYEUCAU">
       <Column Name="ID_PYC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ID_NHANVIEN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_LOAITAISAN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_KH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_NHANVIEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_LOAITAISAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_KH" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SOPYC" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="NGAYVIETPHIEU" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="VITRI" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />

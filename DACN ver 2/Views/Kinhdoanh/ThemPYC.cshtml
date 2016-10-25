@@ -35,135 +35,143 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                    Số PYC:
-                                </label>
-                                <div class="col-md-3 col-sm-3 col-xs-12">
-                                    @Html.EditorFor(model => model.SOPYC, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
-                                </div>
-                                <label class="control-label col-md-2 col-sm-3 col-xs-12">
-                                    Ngày lập phiếu:
-                                </label>
-                                <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="date" name="NGAYVIETPHIEU" id="NGAYVIETPHIEU" class="form-control col-md-7 col-xs-12"/>
-                                     @*@Html.EditorFor(model => model.NGAYVIETPHIEU, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })*@
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Khách hàng:
-                                </label>
-                                <div class="col-md-7 col-sm-5 col-xs-12">
-                                    @Html.DropDownList("Khachhang", null, "Chọn khách hàng nếu chưa có thì chọn nút thêm", new { @class = "form-control col-md-7 col-xs-12" })
-                                   </div>
-                                <div class="col-md-1 col-sm-1 col-xs-12">
-                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target=".them-khach-hang"><i class="glyphicon glyphicon-plus"></i></button>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Thẩm định viên phụ trách:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    @Html.DropDownList("Nhanvien", null, "Chọn nhân viên phụ trách", new { @class = "form-control col-md-7 col-xs-12" })
-                                    @*@Html.EditorFor(model => model.ID_NHANVIEN, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })*@
-                                    
-                                </div>
-                            </div>
-                            <div class="ln_solid"></div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name" style="text-decoration:underline; ">
-                                    Thông tin tài sản
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Loại tài sản:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    @Html.DropDownList("Loaitaisan", null, "Chọn loại tài sản", new { @class = "form-control col-md-7 col-xs-12" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Vị trí/ địa điểm:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    @Html.EditorFor(model => model.VITRI, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Đặc điểm kinh tế - kỹ thuật tài sản:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <textarea class="form-control col-md-7 col-xs-12" id="DACDIEM" name="DACDIEM" rows="3" placeholder="Input here"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Hồ sơ, tài liệu kèm theo:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Mục đích thẩm định:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    @Html.EditorFor(model => model.MDTD, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Thời điểm thẩm định:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    @Html.EditorFor(model => model.TDTD, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Thời hạn hoàn thành:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    @Html.EditorFor(model => model.THHT, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Yêu cầu khác (nếu có):
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <textarea class="form-control col-md-7 col-xs-12" id="YEUCAUKHAC" name="YEUCAUKHAC" rows="3" placeholder="Input here"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                    Mức phí chấp thuận:
-                                </label>
-                                <div class="col-md-3 col-sm-3 col-xs-12">
-                                    @Html.EditorFor(model => model.MUCPHICHAPTHUAN, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
-                                </div>
-                                <label class="control-label col-md-2 col-sm-3 col-xs-12">
-                                    Ứng trước:
-                                </label>
-                                <div class="col-md-3 col-sm-3 col-xs-12">
-                                    @Html.EditorFor(model => model.UNGTRUOC, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
-                                </div>
-                            </div>
-                            <div class="ln_solid"></div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" class="btn btn-primary">Cancel</button>
-                                    <button type="submit" class="btn btn-success">Submit</button>
-                                </div>
-                            </div>
-                        </form>
+
+                        @*<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">*@
+                            @using (Html.BeginForm("ThemPYC", "Kinhdoanh", "",
+            FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Số PYC:
+                                        </label>
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            @Html.EditorFor(model => model.SOPYC, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                            Ngày lập phiếu:
+                                        </label>
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <input type="date" name="NGAYVIETPHIEU" id="NGAYVIETPHIEU" class="form-control col-md-7 col-xs-12" />
+                                            @*@Html.EditorFor(model => model.NGAYVIETPHIEU, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })*@
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Khách hàng:
+                                        </label>
+                                        <div class="col-md-7 col-sm-5 col-xs-12">
+                                            @Html.DropDownList("Khachhang", null, "Chọn khách hàng nếu chưa có thì chọn nút thêm", new { @class = "form-control col-md-7 col-xs-12" })
+                                        </div>
+                                        <div class="col-md-1 col-sm-1 col-xs-12">
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".them-khach-hang"><i class="glyphicon glyphicon-plus"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Thẩm định viên phụ trách:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.DropDownList("Nhanvien", null, "Chọn nhân viên phụ trách", new { @class = "form-control col-md-7 col-xs-12" })
+                                            @*@Html.EditorFor(model => model.ID_NHANVIEN, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })*@
+
+                                        </div>
+                                    </div>
+                                    <div class="ln_solid"></div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name" style="text-decoration:underline; ">
+                                            Thông tin tài sản
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Loại tài sản:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.DropDownList("Loaitaisan", null, "Chọn loại tài sản", new { @class = "form-control col-md-7 col-xs-12" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Vị trí/ địa điểm:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.EditorFor(model => model.VITRI, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Đặc điểm kinh tế - kỹ thuật tài sản:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            <textarea class="form-control col-md-7 col-xs-12" id="DACDIEM" name="DACDIEM" rows="3" placeholder="Input here"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Hồ sơ, tài liệu kèm theo:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Mục đích thẩm định:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.EditorFor(model => model.MDTD, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Thời điểm thẩm định:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.EditorFor(model => model.TDTD, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Thời hạn hoàn thành:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.EditorFor(model => model.THHT, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Yêu cầu khác (nếu có):
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            <textarea class="form-control col-md-7 col-xs-12" id="YEUCAUKHAC" name="YEUCAUKHAC" rows="3" placeholder="Input here"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Mức phí chấp thuận:
+                                        </label>
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            @Html.EditorFor(model => model.MUCPHICHAPTHUAN, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                            Ứng trước:
+                                        </label>
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            @Html.EditorFor(model => model.UNGTRUOC, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                        </div>
+                                    </div>
+                                    <div class="ln_solid"></div>
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
+                            }
+@*</form>*@
                     </div>
                 </div>
             </div>

@@ -33,13 +33,23 @@ namespace DACN_ver_2.Controllers
 
         // POST: Kinhdoanh/Create
         [HttpPost]
-        public ActionResult ThemPYC(FormCollection collection)
+        public ActionResult ThemPYC(FormCollection collection, PHIEUYEUCAU pyc)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                //TODO: Add insert logic here
+                var nv = collection["Nhanvien"];
+                var lts = collection["Loaitaisan"];
+                var kh = collection["Khachhang"];
+                //no lai64 ngay đây. nếu chặn lại thì ko sao.
+                //pyc.ID_NHANVIEN = int.Parse(nv);
+                //pyc.ID_LOAITAISAN = int.Parse(lts);
+                //pyc.ID_KH = int.Parse(kh);
+                pyc.NGAYTAO = DateTime.Now;
+                pyc.TRANGTHAI = true;
+                data.PHIEUYEUCAUs.InsertOnSubmit(pyc);
+                data.SubmitChanges();
+                return RedirectToAction("ThemPYC");
             }
             catch
             {
@@ -47,6 +57,8 @@ namespace DACN_ver_2.Controllers
             }
         }
 
+
+        //Chứng thư
         public ActionResult ThemCT()
         {
             return View();
