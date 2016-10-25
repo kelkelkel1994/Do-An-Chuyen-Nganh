@@ -8175,8 +8175,6 @@ namespace DACN_ver_2.Models
 		
 		private System.Nullable<bool> _TRANGTHAI;
 		
-		private EntitySet<PHIEUYEUCAU> _PHIEUYEUCAUs;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -8211,7 +8209,6 @@ namespace DACN_ver_2.Models
 		
 		public KHACHHANG()
 		{
-			this._PHIEUYEUCAUs = new EntitySet<PHIEUYEUCAU>(new Action<PHIEUYEUCAU>(this.attach_PHIEUYEUCAUs), new Action<PHIEUYEUCAU>(this.detach_PHIEUYEUCAUs));
 			OnCreated();
 		}
 		
@@ -8475,19 +8472,6 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACHHANG_PHIEUYEUCAU", Storage="_PHIEUYEUCAUs", ThisKey="ID_KH", OtherKey="ID_KH")]
-		public EntitySet<PHIEUYEUCAU> PHIEUYEUCAUs
-		{
-			get
-			{
-				return this._PHIEUYEUCAUs;
-			}
-			set
-			{
-				this._PHIEUYEUCAUs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -8506,18 +8490,6 @@ namespace DACN_ver_2.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_PHIEUYEUCAUs(PHIEUYEUCAU entity)
-		{
-			this.SendPropertyChanging();
-			entity.KHACHHANG = this;
-		}
-		
-		private void detach_PHIEUYEUCAUs(PHIEUYEUCAU entity)
-		{
-			this.SendPropertyChanging();
-			entity.KHACHHANG = null;
 		}
 	}
 	
@@ -10048,8 +10020,6 @@ namespace DACN_ver_2.Models
 		
 		private string _ANH;
 		
-		private EntitySet<PHIEUYEUCAU> _PHIEUYEUCAUs;
-		
 		private EntityRef<LOAINHANVIEN> _LOAINHANVIEN;
 		
 		private EntityRef<PHANQUYEN> _PHANQUYEN;
@@ -10098,7 +10068,6 @@ namespace DACN_ver_2.Models
 		
 		public NHANVIEN()
 		{
-			this._PHIEUYEUCAUs = new EntitySet<PHIEUYEUCAU>(new Action<PHIEUYEUCAU>(this.attach_PHIEUYEUCAUs), new Action<PHIEUYEUCAU>(this.detach_PHIEUYEUCAUs));
 			this._LOAINHANVIEN = default(EntityRef<LOAINHANVIEN>);
 			this._PHANQUYEN = default(EntityRef<PHANQUYEN>);
 			this._PHONGBAN = default(EntityRef<PHONGBAN>);
@@ -10457,19 +10426,6 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_PHIEUYEUCAU", Storage="_PHIEUYEUCAUs", ThisKey="ID_NHANVIEN", OtherKey="ID_NHANVIEN")]
-		public EntitySet<PHIEUYEUCAU> PHIEUYEUCAUs
-		{
-			get
-			{
-				return this._PHIEUYEUCAUs;
-			}
-			set
-			{
-				this._PHIEUYEUCAUs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LOAINHANVIEN_NHANVIEN", Storage="_LOAINHANVIEN", ThisKey="ID_LOAINHANVIEN", OtherKey="ID_LOAINHANVIEN", IsForeignKey=true)]
 		public LOAINHANVIEN LOAINHANVIEN
 		{
@@ -10590,18 +10546,6 @@ namespace DACN_ver_2.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_PHIEUYEUCAUs(PHIEUYEUCAU entity)
-		{
-			this.SendPropertyChanging();
-			entity.NHANVIEN = this;
-		}
-		
-		private void detach_PHIEUYEUCAUs(PHIEUYEUCAU entity)
-		{
-			this.SendPropertyChanging();
-			entity.NHANVIEN = null;
 		}
 	}
 	
@@ -10891,11 +10835,7 @@ namespace DACN_ver_2.Models
 		
 		private EntitySet<HOPDONG> _HOPDONGs;
 		
-		private EntityRef<KHACHHANG> _KHACHHANG;
-		
 		private EntityRef<LOAITAISAN> _LOAITAISAN;
-		
-		private EntityRef<NHANVIEN> _NHANVIEN;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -10948,9 +10888,7 @@ namespace DACN_ver_2.Models
 			this._CHUNGTHUTDGs = new EntitySet<CHUNGTHUTDG>(new Action<CHUNGTHUTDG>(this.attach_CHUNGTHUTDGs), new Action<CHUNGTHUTDG>(this.detach_CHUNGTHUTDGs));
 			this._FILEDINHKEMs = new EntitySet<FILEDINHKEM>(new Action<FILEDINHKEM>(this.attach_FILEDINHKEMs), new Action<FILEDINHKEM>(this.detach_FILEDINHKEMs));
 			this._HOPDONGs = new EntitySet<HOPDONG>(new Action<HOPDONG>(this.attach_HOPDONGs), new Action<HOPDONG>(this.detach_HOPDONGs));
-			this._KHACHHANG = default(EntityRef<KHACHHANG>);
 			this._LOAITAISAN = default(EntityRef<LOAITAISAN>);
-			this._NHANVIEN = default(EntityRef<NHANVIEN>);
 			OnCreated();
 		}
 		
@@ -10985,10 +10923,6 @@ namespace DACN_ver_2.Models
 			{
 				if ((this._ID_NHANVIEN != value))
 				{
-					if (this._NHANVIEN.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnID_NHANVIENChanging(value);
 					this.SendPropertyChanging();
 					this._ID_NHANVIEN = value;
@@ -11033,10 +10967,6 @@ namespace DACN_ver_2.Models
 			{
 				if ((this._ID_KH != value))
 				{
-					if (this._KHACHHANG.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnID_KHChanging(value);
 					this.SendPropertyChanging();
 					this._ID_KH = value;
@@ -11405,40 +11335,6 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACHHANG_PHIEUYEUCAU", Storage="_KHACHHANG", ThisKey="ID_KH", OtherKey="ID_KH", IsForeignKey=true)]
-		public KHACHHANG KHACHHANG
-		{
-			get
-			{
-				return this._KHACHHANG.Entity;
-			}
-			set
-			{
-				KHACHHANG previousValue = this._KHACHHANG.Entity;
-				if (((previousValue != value) 
-							|| (this._KHACHHANG.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._KHACHHANG.Entity = null;
-						previousValue.PHIEUYEUCAUs.Remove(this);
-					}
-					this._KHACHHANG.Entity = value;
-					if ((value != null))
-					{
-						value.PHIEUYEUCAUs.Add(this);
-						this._ID_KH = value.ID_KH;
-					}
-					else
-					{
-						this._ID_KH = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("KHACHHANG");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LOAITAISAN_PHIEUYEUCAU", Storage="_LOAITAISAN", ThisKey="ID_LOAITAISAN", OtherKey="ID_LOAITAISAN", IsForeignKey=true)]
 		public LOAITAISAN LOAITAISAN
 		{
@@ -11469,40 +11365,6 @@ namespace DACN_ver_2.Models
 						this._ID_LOAITAISAN = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("LOAITAISAN");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_PHIEUYEUCAU", Storage="_NHANVIEN", ThisKey="ID_NHANVIEN", OtherKey="ID_NHANVIEN", IsForeignKey=true)]
-		public NHANVIEN NHANVIEN
-		{
-			get
-			{
-				return this._NHANVIEN.Entity;
-			}
-			set
-			{
-				NHANVIEN previousValue = this._NHANVIEN.Entity;
-				if (((previousValue != value) 
-							|| (this._NHANVIEN.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._NHANVIEN.Entity = null;
-						previousValue.PHIEUYEUCAUs.Remove(this);
-					}
-					this._NHANVIEN.Entity = value;
-					if ((value != null))
-					{
-						value.PHIEUYEUCAUs.Add(this);
-						this._ID_NHANVIEN = value.ID_NHANVIEN;
-					}
-					else
-					{
-						this._ID_NHANVIEN = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("NHANVIEN");
 				}
 			}
 		}

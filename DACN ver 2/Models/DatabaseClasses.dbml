@@ -340,7 +340,6 @@
       <Column Name="NGUOITAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NGUOISUA" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="KHACHHANG_PHIEUYEUCAU" Member="PHIEUYEUCAUs" ThisKey="ID_KH" OtherKey="ID_KH" Type="PHIEUYEUCAU" />
     </Type>
   </Table>
   <Table Name="dbo.LOAICN" Member="LOAICNs">
@@ -433,7 +432,6 @@
       <Column Name="[USER]" Member="USER" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="PASS" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="ANH" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Association Name="NHANVIEN_PHIEUYEUCAU" Member="PHIEUYEUCAUs" ThisKey="ID_NHANVIEN" OtherKey="ID_NHANVIEN" Type="PHIEUYEUCAU" />
       <Association Name="LOAINHANVIEN_NHANVIEN" Member="LOAINHANVIEN" ThisKey="ID_LOAINHANVIEN" OtherKey="ID_LOAINHANVIEN" Type="LOAINHANVIEN" IsForeignKey="true" />
       <Association Name="PHANQUYEN_NHANVIEN" Member="PHANQUYEN" ThisKey="ID_PHANQUYEN" OtherKey="ID_PHANQUYEN" Type="PHANQUYEN" IsForeignKey="true" />
       <Association Name="PHONGBAN_NHANVIEN" Member="PHONGBAN" ThisKey="ID_PHONGBAN" OtherKey="ID_PHONGBAN" Type="PHONGBAN" IsForeignKey="true" />
@@ -476,9 +474,7 @@
       <Association Name="PHIEUYEUCAU_CHUNGTHUTDG" Member="CHUNGTHUTDGs" ThisKey="ID_PYC" OtherKey="ID_PYC" Type="CHUNGTHUTDG" />
       <Association Name="PHIEUYEUCAU_FILEDINHKEM" Member="FILEDINHKEMs" ThisKey="ID_PYC" OtherKey="ID_PYC" Type="FILEDINHKEM" />
       <Association Name="PHIEUYEUCAU_HOPDONG" Member="HOPDONGs" ThisKey="ID_PYC" OtherKey="ID_PYC" Type="HOPDONG" />
-      <Association Name="KHACHHANG_PHIEUYEUCAU" Member="KHACHHANG" ThisKey="ID_KH" OtherKey="ID_KH" Type="KHACHHANG" IsForeignKey="true" />
       <Association Name="LOAITAISAN_PHIEUYEUCAU" Member="LOAITAISAN" ThisKey="ID_LOAITAISAN" OtherKey="ID_LOAITAISAN" Type="LOAITAISAN" IsForeignKey="true" />
-      <Association Name="NHANVIEN_PHIEUYEUCAU" Member="NHANVIEN" ThisKey="ID_NHANVIEN" OtherKey="ID_NHANVIEN" Type="NHANVIEN" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PHONGBAN" Member="PHONGBANs">

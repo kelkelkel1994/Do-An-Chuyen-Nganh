@@ -37,12 +37,9 @@
                         <br />
 
                         @*<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">*@
-                            @using (Html.BeginForm("ThemPYC", "Kinhdoanh", "",
-            FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                            @using (Html.BeginForm("ThemPYC", "Kinhdoanh", "",FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
                             {
                                 @Html.AntiForgeryToken()
-
-
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">
@@ -180,7 +177,7 @@
        
     </div>
 </div>
-@Html.Action("Themkhachhang", "Kinhdoanh")
+
 
 
 

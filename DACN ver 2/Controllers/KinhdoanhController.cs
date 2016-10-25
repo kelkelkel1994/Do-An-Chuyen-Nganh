@@ -25,7 +25,7 @@ namespace DACN_ver_2.Controllers
         // GET: Kinhdoanh/Create
         public ActionResult ThemPYC()
         {
-            ViewData["Nhanvien"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s=>s.TENNV) , "ID_NHANVIEN", "TENNV");
+            ViewData["Nhanvien"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s=>s.TENNV).Where(s=>s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
             ViewData["Khachhang"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
             ViewData["Loaitaisan"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
             return View();
@@ -33,6 +33,7 @@ namespace DACN_ver_2.Controllers
 
         // POST: Kinhdoanh/Create
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult ThemPYC(FormCollection collection, PHIEUYEUCAU pyc)
         {
             try
@@ -41,10 +42,10 @@ namespace DACN_ver_2.Controllers
                 var nv = collection["Nhanvien"];
                 var lts = collection["Loaitaisan"];
                 var kh = collection["Khachhang"];
-                //no lai64 ngay đây. nếu chặn lại thì ko sao.
-                //pyc.ID_NHANVIEN = int.Parse(nv);
-                //pyc.ID_LOAITAISAN = int.Parse(lts);
-                //pyc.ID_KH = int.Parse(kh);
+                //no lỗi ngay đây. nếu chặn lại thì ko sao.
+                pyc.ID_NHANVIEN = int.Parse(nv);
+                pyc.ID_LOAITAISAN = int.Parse(lts);
+                pyc.ID_KH = int.Parse(kh);
                 pyc.NGAYTAO = DateTime.Now;
                 pyc.TRANGTHAI = true;
                 data.PHIEUYEUCAUs.InsertOnSubmit(pyc);
@@ -53,6 +54,10 @@ namespace DACN_ver_2.Controllers
             }
             catch
             {
+
+                ViewData["Nhanvien"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV), "ID_NHANVIEN", "TENNV");
+                ViewData["Khachhang"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
+                ViewData["Loaitaisan"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
                 return View();
             }
         }
