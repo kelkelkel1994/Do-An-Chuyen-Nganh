@@ -63,17 +63,22 @@ namespace DACN_ver_2.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Main");
+                        return View();
                     }
                     Session["ID"] = TK.ID_NHANVIEN;
-                    Session["Quyen"] = TK.ID_PHANQUYEN;
-                    Session["Ten"] = TK.TENNV;
                     if (TK.ID_PHANQUYEN == 1)
                     {
                         return RedirectToAction("Index", "Main");
                     }
-                    else
+                    else if(TK.ID_PHANQUYEN == 2 && TK.ID_PHONGBAN == 2)
+                    {
                         return RedirectToAction("Index", "Nhanvien");
+                    } else if (TK.ID_PHANQUYEN == 2 && TK.ID_PHONGBAN == 3)
+                    {
+                        return RedirectToAction("Index", "Kinhdoanh");
+                    }
+                        //chèn them trang
+                        //return RedirectToAction("Index", "Nhanvien");
                     
                 }
                 else

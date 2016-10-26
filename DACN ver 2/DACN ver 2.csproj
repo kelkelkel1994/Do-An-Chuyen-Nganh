@@ -430,6 +430,9 @@
     <Content Include="Views\Nhanvien\Index.cshtml" />
     <Content Include="Views\Login\Topnavigation.cshtml" />
     <Content Include="Views\Login\Leftnavigation.cshtml" />
+    <Content Include="Views\Shared\_LayoutKinhdoanh.cshtml" />
+    <Content Include="Views\Shared\_LayoutThamdinh.cshtml" />
+    <Content Include="Views\Kinhdoanh\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
