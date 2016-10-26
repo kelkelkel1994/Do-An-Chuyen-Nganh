@@ -36,8 +36,8 @@ namespace DACN_ver_2.Controllers
         [ValidateInput(false)]
         public ActionResult ThemPYC(FormCollection collection, PHIEUYEUCAU pyc)
         {
-            try
-            {
+            //try
+            //{
                 //TODO: Add insert logic here
                 var nv = collection["Nhanvien"];
                 var lts = collection["Loaitaisan"];
@@ -51,15 +51,15 @@ namespace DACN_ver_2.Controllers
                 data.PHIEUYEUCAUs.InsertOnSubmit(pyc);
                 data.SubmitChanges();
                 return RedirectToAction("ThemPYC");
-            }
-            catch
-            {
+            //}
+            //catch
+            //{
 
-                ViewData["Nhanvien"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV), "ID_NHANVIEN", "TENNV");
-                ViewData["Khachhang"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
-                ViewData["Loaitaisan"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
-                return View();
-            }
+            //    ViewData["Nhanvien"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV), "ID_NHANVIEN", "TENNV");
+            //    ViewData["Khachhang"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
+            //    ViewData["Loaitaisan"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
+            //    return View();
+            //}
         }
 
 
