@@ -46,7 +46,9 @@
                                             Số PYC:
                                         </label>
                                         <div class="col-md-3 col-sm-3 col-xs-12">
-                                            @Html.EditorFor(model => model.SOPYC, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                            <input class="form-control col-md-7 col-xs-12 text-box single-line" id="SOPYC" name="SOPYC" type="number" value="">
+                                            
+                                            @*@Html.EditorFor(model => model.SOPYC, new { type = "number", min = "1", max = "10000", htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })*@
                                         </div>
                                         <label class="control-label col-md-2 col-sm-3 col-xs-12">
                                             Ngày lập phiếu:

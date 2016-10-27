@@ -44,6 +44,11 @@ namespace DACN_ver_2.Controllers
                 var lts = collection["Loaitaisan3"];
                 var kh = collection["Khachhang3"];
                 //no lỗi ngay đây. nếu chặn lại thì ko sao.
+                pyc.SOPYC = collection["SOPYC"] + "/2016/PYC-AMAX";
+                if(collection["NGAYVIETPHIEU"] == null)
+                {
+                    pyc.NGAYVIETPHIEU = DateTime.Now;
+                }
                 pyc.ID_NHANVIEN = int.Parse(nv);
                 pyc.ID_LOAITAISAN = int.Parse(lts);
                 pyc.ID_KH = int.Parse(kh);
@@ -61,6 +66,37 @@ namespace DACN_ver_2.Controllers
                 ViewData["Loaitaisan3"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
                 return View();
             }
+        }
+
+
+        //sua PYC
+        public ActionResult SuaPYC(int id)
+        {
+            var spb = data.PHONGBANs.FirstOrDefault(s => s.ID_PHONGBAN == id);
+            return PartialView(spb);
+        }
+        [HttpPost]
+        public ActionResult SuaPYC(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                PHONGBAN pb = data.PHONGBANs.FirstOrDefault(s => s.ID_PHONGBAN == id);
+                pb.NGAYSUA = DateTime.Now;
+                UpdateModel(pb);
+                data.SubmitChanges();
+                return RedirectToAction("Quantri");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //Danh sach PYC
+        public ActionResult DanhsachPYC()
+        {
+            return View();
         }
 
 
