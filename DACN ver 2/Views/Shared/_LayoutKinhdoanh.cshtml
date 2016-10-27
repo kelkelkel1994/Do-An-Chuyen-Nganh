@@ -60,7 +60,7 @@
                                 <li>
                                     <a><i class="fa fa-edit"></i> Phiếu yêu cầu <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li>
+                                        @*<li>
                                             <a>Thêm<span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu">
 
@@ -69,11 +69,11 @@
                                                 </li>
 
                                             </ul>
-                                        </li>
+                                        </li>*@
                                         <li class="sub_menu">
                                             <a href="@Url.Action("ThemPYC", "Kinhdoanh")">Thêm Phiếu yêu cầu</a>
                                         </li>
-                                        <li><a href="form_advanced.html">Danh sách PYC</a></li>
+                                        <li><a href="@Url.Action("DanhsachPYC", "Kinhdoanh")">Danh sách PYC</a></li>
                                         <li><a href="form_validation.html">Thông tin hợp đồng</a></li>
                                     </ul>
                                 </li>

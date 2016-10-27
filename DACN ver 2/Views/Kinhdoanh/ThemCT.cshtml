@@ -42,13 +42,13 @@
                                     Số chứng thư:
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input class="form-control col-md-7 col-xs-12 text-box single-line" id="SOCHUNGTHU" name="SOCHUNGTHU" type="number" value="">
                                 </div>
                                 <label class="control-label col-md-2 col-sm-3 col-xs-12">
                                     Ngày xuất:
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input type="date" name="NGAYXUAT" id="NGAYXUAT" class="form-control col-md-7 col-xs-12" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -56,13 +56,14 @@
                                     Khách hàng:
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+
+                                    @Html.DropDownList("Khachhang3", null, "Chọn khách hàng", new { @class = "form-control col-md-7 col-xs-12" })
                                 </div>
                                 <label class="control-label col-md-2 col-sm-3 col-xs-12">
                                     theo PYC số:
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                    @Html.DropDownList("pyc", null, "Chọn phiếu yêu cầu", new { @class = "form-control col-md-7 col-xs-12" })
                                 </div>
                             </div>
                             <div class="ln_solid"></div>

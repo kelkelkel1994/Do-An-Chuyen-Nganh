@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DACN" Class="DatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-IT\SQLEXPRESS;Initial Catalog=DACN;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=VOIANGA\SQLEXPRESS;Initial Catalog=DACN;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CANHOCHUNGCU" Member="CANHOCHUNGCUs">
     <Type Name="CANHOCHUNGCU">
       <Column Name="ID_CHCC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

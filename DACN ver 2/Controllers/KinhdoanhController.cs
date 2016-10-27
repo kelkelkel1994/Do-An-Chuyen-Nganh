@@ -96,13 +96,16 @@ namespace DACN_ver_2.Controllers
         //Danh sach PYC
         public ActionResult DanhsachPYC()
         {
-            return View();
+            var pyc = data.PHIEUYEUCAUs.ToList();
+            return View(pyc);
         }
 
 
         //Chứng thư
         public ActionResult ThemCT()
         {
+            ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
+            ViewData["pyc"] = new SelectList(data.PHIEUYEUCAUs.ToList().OrderByDescending(s => s.NGAYVIETPHIEU), "ID_PYC", "SOPYC");
             return View();
         }
 

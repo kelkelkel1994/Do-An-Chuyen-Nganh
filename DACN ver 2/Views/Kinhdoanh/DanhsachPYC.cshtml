@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DACN_ver_2.Models.PHIEUYEUCAU>
 
 @{
-    ViewBag.Title = "DanhsachPYC";
+    ViewBag.Title = "Danh sách PYC";
     Layout = "~/Views/Shared/_LayoutKinhdoanh.cshtml";
 }
 
@@ -18,7 +18,7 @@
                         <h2>
                             Danh sách Phiếu yêu cầu | <button type="button" class="btn btn-default" data-toggle="modal" data-target=".them-khach-hang"><i class="glyphicon glyphicon-plus"></i></button>
 
-                            @Html.Action("Themkhachhang", "Kinhdoanh")
+                           
 
                         </h2>
                         @*<ul class="nav navbar-right panel_toolbox">
@@ -37,6 +37,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Danh sách Phiếu yêu cầu</th>
+                                    <th>Khách hàng</th>
+                                    <th>Thẩm định viên</th>
                                     <th>Tác vụ</th>
                                 </tr>
                             </thead>
@@ -46,60 +48,104 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.ID_KH)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.TENKH)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ID_PYC)</td>
                                         <td>
-                                            Địa chỉ: @Html.DisplayFor(modelItem => item.DIACHI) <br />
-                                            Điện thoại: @Html.DisplayFor(modelItem => item.DIENTHOAI) <br />
-                                            Email: @Html.DisplayFor(modelItem => item.EMAIL)
-                                        </td>
-                                        <td>@Html.DisplayFor(modelItem => item.NGUON)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.NGUOIDAIDIEN)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.CHUCVU)</td>
-                                        <td>
-                                            @if (item.NGAYSUA == null)
-                                            {
-                                                <p>Chưa sửa thông tin</p>
-                                                <p>@Html.DisplayFor(modelItem => item.NGUOISUA)</p>
-                                            }
-                                            else
-                                            {
+                                            
+                                                <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
+                                                    Số PYC:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    @if (item.SOPYC == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.SOPYC)
+                                                    }
+                                                </div>
+                                             
+                                                <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
+                                                    Ngày:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    @if(item.NGAYVIETPHIEU == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.NGAYVIETPHIEU)
+                                                    }
+                                                    
+                                                </div>
+                                            <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
+                                                Mục đích thẩm định:
+                                            </label>
+                                            <div class="col-md-7 col-sm-6 col-xs-12">
+                                                @if (item.MDTD == null)
+                                                {
+                                                    <p>-/-</p>
+                                                }
+                                                else
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.MDTD)
+                                                }
+                                            </div>
+                                            <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
+                                                Mức phí chấp thuận:
+                                            </label>
+                                            <div class="col-md-7 col-sm-6 col-xs-12">
+                                                @*@if (item.MUCPHICHAPTHUAN == null)
+                                                {
+                                                    <p>-/-</p>
+                                                }
+                                                else
+                                                {*@
+                                                    @(item.MUCPHICHAPTHUAN.HasValue ? item.MUCPHICHAPTHUAN.Value.ToString("N0") : "-/-")
+                                                    @*@Html.DisplayFor(modelItem => item.MUCPHICHAPTHUAN)*@
+                                                @*}*@
+                                            </div>
+                                                @*Số Phiếu yêu cầu: @Html.DisplayFor(modelItem => item.SOPYC)*@
+</td>
+                                        <td><label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                                    Tên:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    @if (item.ID_KH == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.KHACHHANG.TENKH)
+                                                    }
+                                                </div>
 
-                                                @Html.DisplayFor(modelItem => item.NGAYSUA) <br />
-                                                @Html.DisplayFor(modelItem => item.NGUOISUA)
-                                            }
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                                    Sđt:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    
+                                                        @Html.DisplayFor(modelItem => item.KHACHHANG.DIENTHOAI)
+                                                    
+
+                                                </div>
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                                    Email:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    
+                                                        @Html.DisplayFor(modelItem => item.KHACHHANG.EMAIL)
+                                                    
+                                                </div>
                                         </td>
+                                        <td>@Html.DisplayFor(modelItem => item.NHANVIEN.TENNV)</td>
                                         <td>
                                             <a href='#' class="btn btn-primary btn-update" data-toggle="modal" data-target=".suakh-@item.ID_KH"><i class="glyphicon glyphicon-pencil"></i></a>
-                                            <div class="modal fade suakh-@item.ID_KH" tabindex="-1" role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal">
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                            <h4 class="modal-title" id="myModalLabel">Sửa phòng ban | ID = @item.ID_KH</h4>
-
-                                                        </div>
-                                                        @Html.Action("Suakhachhang", "Kinhdoanh", new { id = item.ID_KH })
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
                                             <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_KH"><i class="glyphicon glyphicon-trash"></i></a>
-                                            <div class="modal fade xoakh-@item.ID_KH" tabindex="-1" role="dialog" aria-hidden="true">
-                                                <div class="modal-dialog modal-sm">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal">
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                            <h4 class="modal-title" id="myModalLabel">Bạn có chắc muốn xoá? | ID: @item.ID_KH</h4>
-
-                                                        </div>
-                                                        @Html.Action("Xoakhachhang", "Kinhdoanh", new { id = item.ID_KH })
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
                                         </td>
                                     </tr>
                                 }
