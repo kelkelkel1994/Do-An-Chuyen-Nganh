@@ -433,6 +433,7 @@
     <Content Include="Views\Shared\_LayoutKinhdoanh.cshtml" />
     <Content Include="Views\Shared\_LayoutThamdinh.cshtml" />
     <Content Include="Views\Kinhdoanh\Index.cshtml" />
+    <Content Include="Views\Nhanvien\ThemCHCC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
