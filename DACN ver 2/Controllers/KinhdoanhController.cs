@@ -23,12 +23,11 @@ namespace DACN_ver_2.Controllers
         }
 
         // GET: Kinhdoanh/Create
-        [HttpGet]
         public ActionResult ThemPYC()
         {
-            ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s=>s.TENNV).Where(s=>s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
-            ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
-            ViewData["Loaitaisan3"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
+            ViewData["Nhanvien"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s=>s.TENNV).Where(s=>s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
+            ViewData["Khachhang"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
+            ViewData["Loaitaisan"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
             return View();
         }
 
@@ -37,12 +36,12 @@ namespace DACN_ver_2.Controllers
         [ValidateInput(false)]
         public ActionResult ThemPYC(FormCollection collection, PHIEUYEUCAU pyc)
         {
-            try
-            {
+            //try
+            //{
                 //TODO: Add insert logic here
-                var nv = collection["Nhanvien3"];
-                var lts = collection["Loaitaisan3"];
-                var kh = collection["Khachhang3"];
+                var nv = collection["Nhanvien"];
+                var lts = collection["Loaitaisan"];
+                var kh = collection["Khachhang"];
                 //no lỗi ngay đây. nếu chặn lại thì ko sao.
                 pyc.ID_NHANVIEN = int.Parse(nv);
                 pyc.ID_LOAITAISAN = int.Parse(lts);
@@ -52,15 +51,15 @@ namespace DACN_ver_2.Controllers
                 data.PHIEUYEUCAUs.InsertOnSubmit(pyc);
                 data.SubmitChanges();
                 return RedirectToAction("ThemPYC");
-            }
-            catch
-            {
+            //}
+            //catch
+            //{
 
-                ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV), "ID_NHANVIEN", "TENNV");
-                ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
-                ViewData["Loaitaisan3"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
-                return View();
-            }
+            //    ViewData["Nhanvien"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV), "ID_NHANVIEN", "TENNV");
+            //    ViewData["Khachhang"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
+            //    ViewData["Loaitaisan"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
+            //    return View();
+            //}
         }
 
 

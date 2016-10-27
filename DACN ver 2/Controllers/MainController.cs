@@ -61,31 +61,24 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Themnhanvien()
         {
-            ViewData["Phongban2"] = new SelectList(data.PHONGBANs.ToList().OrderBy(s => s.TEN), "ID_PHONGBAN", "TEN");
-            ViewData["Loainhanvien2"] = new SelectList(data.LOAINHANVIENs.ToList().OrderBy(s => s.TEN), "ID_LOAINHANVIEN", "TEN");
             return PartialView();
         }
         [HttpPost]
-        public ActionResult Themnhanvien(NHANVIEN nv, FormCollection collection)
+        public ActionResult Themnhanvien(LOAICN cn, FormCollection collection)
         {
-            //try
-            //{
-            // TODO: Add insert logic here
-            //cn.NGAYTAO = DateTime.Now;
-            //cn.TRANGTHAI = true;
-            var c = collection["Phongban2"];
-
-            var b = collection["Loainhanvien2"];
-            nv.ID_PHONGBAN = int.Parse(c);
-            nv.ID_LOAINHANVIEN = int.Parse(b);
-                data.NHANVIENs.InsertOnSubmit(nv);
+            try
+            {
+                // TODO: Add insert logic here
+                //cn.NGAYTAO = DateTime.Now;
+                //cn.TRANGTHAI = true;
+                data.LOAICNs.InsertOnSubmit(cn);
                 data.SubmitChanges();
                 return PartialView();
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         public ActionResult Themchinhanh()
