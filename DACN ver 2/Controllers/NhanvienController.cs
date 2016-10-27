@@ -9,6 +9,7 @@ namespace DACN_ver_2.Controllers
 {
     public class NhanvienController : Controller
     {
+        DatabaseClassesDataContext data = new DatabaseClassesDataContext();
         // GET: Nhanvien
         public ActionResult Index()
         {
@@ -86,5 +87,42 @@ namespace DACN_ver_2.Controllers
                 return View();
             }
         }
+
+
+
+        //them cnhh
+        public ActionResult ThemCHCC ()
+        {
+            //ViewData["quann"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN");
+            //ViewData["tinhh"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
+            //var ptypes = db.ProductTypes.OrderBy(p => p.Name);
+            //ViewBag.ProductTypes = ptypes;
+
+            var tp = data.TINHTHANHs.OrderBy(p => p.TEN);
+            ViewBag.Tentp = tp;
+
+
+            return View();
+        }
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult LoadQuannHuyen(string tpid)
+        {
+            if (string.IsNullOrEmpty(tpid))
+                return Json(HttpNotFound());
+            var categoryList = GetQuanHuyenList(Convert.ToInt32(tpid));
+            var categoryData = categoryList.Select(m => new SelectListItem()
+            {
+                Text = m.TEN,
+                Value = m.ID_TINHTHANH.ToString()
+            });
+            return Json(categoryData, JsonRequestBehavior.AllowGet);
+        }
+        private IList<QUANHUYEN> GetQuanHuyenList(int tpid)
+        {
+            return data.QUANHUYENs.OrderBy(c => c.TEN).Where(c => c.ID_TINHTHANH == tpid).ToList();
+        }
+
+
+
     }
 }
