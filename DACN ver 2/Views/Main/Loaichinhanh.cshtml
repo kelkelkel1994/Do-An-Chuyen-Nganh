@@ -1,0 +1,95 @@
+﻿@model IEnumerable<DACN_ver_2.Models.LOAICN>
+
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                Chi nhánh |
+                <!-- Large modal -->
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".chinhanh"><i class="glyphicon glyphicon-plus"></i></button>
+                <div class="modal fade chinhanh" tabindex="-1" role="dialog" aria-hidden="true" >
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Thêm chi nhánh</h4>
+                            </div>
+                            @Html.Action("Themchinhanh", "Main")
+                        </div>
+                    </div>
+                </div>
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Chi nhánh</th>
+                        <th>Trạng thái</th>
+                        <th>Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">
+                                @Html.DisplayFor(modelItem => item.ID_LOAICN)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TEN)
+                            </td>
+                            <td>
+                                @if (item.TRANGTHAI == true)
+                                {
+                                    <p>Hiển thị</p>
+                                }
+                                else
+                                { <p>Ẩn</p>}
+
+                            </td>
+                            <td>
+                                <a href='#' class="btn btn-primary btn-update" data-toggle="modal" data-target=".suacn-@item.ID_LOAICN"><i class="glyphicon glyphicon-pencil"></i></a>
+                                <div class="modal fade suacn-@item.ID_LOAICN" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Sửa chi nhánh | ID = @item.ID_LOAICN</h4>
+
+                                            </div>
+                                            @Html.Action("Suachinhanh", "Main", new { id = item.ID_LOAICN })
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoacn-@item.ID_LOAICN"><i class="glyphicon glyphicon-trash"></i></a>
+                                <div class="modal fade xoacn-@item.ID_LOAICN" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Bạn có chắc muốn xoá? | ID: @item.ID_LOAICN</h4>
+
+                                            </div>
+                                            @Html.Action("Xoachinhanh", "Main", new { id = item.ID_LOAICN })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

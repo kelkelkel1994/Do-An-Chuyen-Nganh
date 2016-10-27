@@ -1,0 +1,94 @@
+﻿@model IEnumerable<DACN_ver_2.Models.PHONGBAN>
+
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Phòng ban |
+            <!-- Large modal -->
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-phong-ban"><i class="glyphicon glyphicon-plus"></i></button>
+            <div class="modal fade bs-example-modal-phong-ban" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Thêm phòng ban</h4>
+                        </div>
+                        @Html.Action("Themphongban", "Main")
+                    </div>
+                </div>
+            </div>
+            </h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tên phòng ban</th>
+                        <th>Trạng thái</th>
+                        <th>Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">
+                                @Html.DisplayFor(modelItem => item.ID_PHONGBAN)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TEN)
+                            </td>
+                            <td>
+                                @if(item.TRANGTHAI == true)
+                                {
+                                    <p>Hiển thị</p>
+                                }
+                                else
+                                { <p>Ẩn</p>}
+
+                            </td>
+                            <td>
+                                <a href='#' class="btn btn-primary btn-update" data-toggle="modal" data-target=".sua-@item.ID_PHONGBAN"><i class="glyphicon glyphicon-pencil"></i></a>
+                                <div class="modal fade sua-@item.ID_PHONGBAN" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Sửa phòng ban | ID = @item.ID_PHONGBAN</h4>
+                                               
+                                            </div>
+                                            @Html.Action("Suaphongban", "Main", new { id = item.ID_PHONGBAN })
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoa-@item.ID_PHONGBAN"><i class="glyphicon glyphicon-trash"></i></a>
+                                <div class="modal fade xoa-@item.ID_PHONGBAN" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Bạn có chắc muốn xoá? | ID: @item.ID_PHONGBAN</h4>
+                                                
+                                            </div>
+                                            @Html.Action("Xoaphongban", "Main", new { id = item.ID_PHONGBAN })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
