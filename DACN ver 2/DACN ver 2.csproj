@@ -432,6 +432,7 @@
     <Content Include="Views\Login\Leftnavigation.cshtml" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Content Include="Views\Shared\_LayoutKinhdoanh.cshtml" />
     <Content Include="Views\Shared\_LayoutThamdinh.cshtml" />
     <Content Include="Views\Kinhdoanh\Index.cshtml" />
@@ -443,6 +444,8 @@
 >>>>>>> parent of 903ee2c... asd
 =======
 >>>>>>> parent of 932f463... DropDownlist
+=======
+>>>>>>> parent of 903ee2c... asd
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
