@@ -435,11 +435,14 @@
     <Content Include="Views\Shared\_LayoutKinhdoanh.cshtml" />
     <Content Include="Views\Shared\_LayoutThamdinh.cshtml" />
     <Content Include="Views\Kinhdoanh\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Nhanvien\ThemCHCC.cshtml" />
 =======
 >>>>>>> parent of 903ee2c... asd
 =======
 >>>>>>> parent of 903ee2c... asd
+=======
+>>>>>>> parent of 932f463... DropDownlist
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
