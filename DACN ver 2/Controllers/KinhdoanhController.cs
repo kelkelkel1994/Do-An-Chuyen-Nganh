@@ -52,8 +52,6 @@ namespace DACN_ver_2.Controllers
                 pyc.ID_NHANVIEN = int.Parse(nv);
                 pyc.ID_LOAITAISAN = int.Parse(lts);
                 pyc.ID_KH = int.Parse(kh);
-                pyc.NGAYTAO = DateTime.Now;
-                pyc.TRANGTHAI = true;
                 data.PHIEUYEUCAUs.InsertOnSubmit(pyc);
                 data.SubmitChanges();
                 return RedirectToAction("ThemPYC");
@@ -104,23 +102,37 @@ namespace DACN_ver_2.Controllers
         //Chứng thư
         public ActionResult ThemCT()
         {
-            ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
+            ViewData["hd"] = new SelectList(data.HOPDONGs.ToList().OrderBy(s => s.SOHD), "ID_HOPDONG", "SOHD");
             ViewData["pyc"] = new SelectList(data.PHIEUYEUCAUs.ToList().OrderByDescending(s => s.NGAYVIETPHIEU), "ID_PYC", "SOPYC");
             return View();
         }
 
         // POST: Kinhdoanh/Create
         [HttpPost]
-        public ActionResult ThemCT(FormCollection collection)
+        [ValidateInput(false)]
+        public ActionResult ThemCT(FormCollection collection, CHUNGTHUTDG ct)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                var hd = collection["hd"];
+                var pyc = collection["pyc"];
+                //no lỗi ngay đây. nếu chặn lại thì ko sao.
+                ct.SOCHUNGTHU = collection["SOCHUNGTHU"] + "/2016/CTTDG-AMAX";
+                if (collection["NGAYXUAT"] == null)
+                {
+                    ct.NGAYXUAT = DateTime.Now;
+                }
+                ct.ID_HOPDONG = int.Parse(hd);
+                ct.ID_PYC = int.Parse(pyc);
+                data.CHUNGTHUTDGs.InsertOnSubmit(ct);
+                data.SubmitChanges();
+                return RedirectToAction("ThemCT");
             }
             catch
             {
+                ViewData["hd"] = new SelectList(data.HOPDONGs.ToList().OrderBy(s => s.SOHD), "ID_HOPDONG", "SOHD");
+                ViewData["pyc"] = new SelectList(data.PHIEUYEUCAUs.ToList().OrderByDescending(s => s.NGAYVIETPHIEU), "ID_PYC", "SOPYC");
                 return View();
             }
         }

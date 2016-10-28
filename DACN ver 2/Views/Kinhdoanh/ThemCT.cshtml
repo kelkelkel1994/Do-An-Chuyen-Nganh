@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Thêm chứng thư Thẩm định giá";
-    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    Layout = "~/Views/Shared/_LayoutKinhdoanh.cshtml";
 }
 
 
@@ -36,7 +36,9 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        @using (Html.BeginForm("ThemCT", "Kinhdoanh", "", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                        {
+                            @Html.AntiForgeryToken()
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                     Số chứng thư:
@@ -53,11 +55,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                    Khách hàng:
+                                    Hợp đồng:
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
 
-                                    @Html.DropDownList("Khachhang3", null, "Chọn khách hàng", new { @class = "form-control col-md-7 col-xs-12" })
+                                    @Html.DropDownList("hd", null, "Chọn hợp đồng", new { @class = "form-control col-md-7 col-xs-12" })
                                 </div>
                                 <label class="control-label col-md-2 col-sm-3 col-xs-12">
                                     theo PYC số:
@@ -69,56 +71,16 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name" style="text-decoration:underline; ">
-                                    Thông tin tài sản
+                                    Thông tin chứng thư:
                                 </label>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Loại tài sản:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Vị trí/ địa điểm:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Đặc điểm pháp lý:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <textarea class="form-control col-md-7 col-xs-12" rows="3" placeholder="Input here"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Đặc điểm kinh tế - kỹ thuật tài sản:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <textarea class="form-control col-md-7 col-xs-12" rows="3" placeholder="Input here"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                    Hồ sơ, tài liệu kèm theo:
-                                </label>
-                                <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="ln_solid"></div>
+
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                     Mục đích thẩm định:
                                 </label>
                                 <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-control-label col-md-3 col-sm-3 col-xs-12name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                    @Html.EditorFor(model => model.MUCDICHTDG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -126,7 +88,7 @@
                                     Thời điểm thẩm định:
                                 </label>
                                 <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                    @Html.EditorFor(model => model.THOIDIEMTDG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -134,7 +96,7 @@
                                     Cách tiếp cận TĐG:
                                 </label>
                                 <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                    @Html.EditorFor(model => model.CACHTIEPCANTDG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -142,7 +104,7 @@
                                     Phương pháp TĐG:
                                 </label>
                                 <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                    @Html.EditorFor(model => model.PPTDG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -150,148 +112,21 @@
                                     Kết quả TĐG:
                                 </label>
                                 <div class="col-md-8 col-sm-6 col-xs-12">
-                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                    @Html.EditorFor(model => model.KETQUATDG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
                                 </div>
                             </div>
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" class="btn btn-primary">Cancel</button>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>
                             </div>
-                        </form>
+                        }
                     </div>
                 </div>
             </div>
         </div>
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-horizontal">
-                <h4>CHUNGTHUTDG</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ID_PYC, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ID_PYC, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ID_PYC, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ID_HOPDONG, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ID_HOPDONG, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ID_HOPDONG, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.SOCHUNGTHU, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.SOCHUNGTHU, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.SOCHUNGTHU, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NGAYXUAT, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NGAYXUAT, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NGAYXUAT, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.THOIDIEMTDG, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.THOIDIEMTDG, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.THOIDIEMTDG, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.MUCDICHTDG, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.MUCDICHTDG, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.MUCDICHTDG, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CACHTIEPCANTDG, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.CACHTIEPCANTDG, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CACHTIEPCANTDG, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.PPTDG, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.PPTDG, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.PPTDG, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.KETQUATDG, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.KETQUATDG, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.KETQUATDG, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NGAYTAO, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NGAYTAO, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NGAYTAO, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NGAYSUA, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NGAYSUA, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NGAYSUA, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NGUOITAO, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NGUOITAO, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NGUOITAO, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NGUOISUA, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NGUOISUA, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NGUOISUA, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.TRANGTHAI, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.TRANGTHAI, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.TRANGTHAI, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
-                </div>
-            </div>
-        }
+        
 
     </div>
 </div>
