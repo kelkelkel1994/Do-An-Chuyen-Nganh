@@ -74,26 +74,30 @@
                                             <a href="@Url.Action("ThemPYC", "Kinhdoanh")">Thêm Phiếu yêu cầu</a>
                                         </li>
                                         <li><a href="@Url.Action("DanhsachPYC", "Kinhdoanh")">Danh sách PYC</a></li>
-                                        <li><a href="form_validation.html">Thông tin hợp đồng</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-desktop"></i> Khách hàng <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
+                                        <li><a href="@Url.Action("Danhsachkhachhang", "Kinhdoanh")">Thêm khách hàng</a></li>
                                         <li><a href="@Url.Action("Danhsachkhachhang", "Kinhdoanh")">Danh sách khách hàng</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-desktop"></i> Hợp đồng <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="@Url.Action("Danhsachkhachhang", "Kinhdoanh")">Danh sách khách hàng</a></li>
+                                        <li><a href="@Url.Action("Danhsachkhachhang", "Kinhdoanh")">Thêm hợp đồng</a></li>
+                                        <li><a href="@Url.Action("Danhsachkhachhang", "Kinhdoanh")">Danh sách hợp đồng</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-desktop"></i> Chứng thư <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
-                                            <a href="@Url.Action("ThemCT", "Kinhdoanh")">Chứng thư</a>
+                                            <a href="@Url.Action("ThemCT", "Kinhdoanh")">Thêm Chứng thư</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ThemCT", "Kinhdoanh")">Danh sách Chứng thư</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -466,5 +470,9 @@
             gauge.setTextField(document.getElementById("gauge-text"));
     </script>
     <!-- /gauge.js -->
+
+    <!-- drop zone-->
+    @Scripts.Render("~/bundles/dropzonescripts")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

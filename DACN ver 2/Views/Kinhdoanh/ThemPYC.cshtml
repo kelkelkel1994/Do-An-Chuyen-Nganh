@@ -58,26 +58,20 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                             Khách hàng:
                                         </label>
-                                        <div class="col-md-7 col-sm-5 col-xs-12">
-                                            @Html.DropDownList("Khachhang3", null, "Chọn khách hàng nếu chưa có thì chọn nút thêm", new { @class = "form-control col-md-7 col-xs-12" })
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            @Html.DropDownList("Khachhang3", null, "Chọn khách hàng", new { @class = "form-control col-md-7 col-xs-12" })
                                         </div>
-                                        <div class="col-md-1 col-sm-1 col-xs-12">
-                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".them-khach-hang"><i class="glyphicon glyphicon-plus"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            Thẩm định viên phụ trách:
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                            Thẩm định viên:
                                         </label>
-                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
                                             @Html.DropDownList("Nhanvien3", null, "Chọn nhân viên phụ trách", new { @class = "form-control col-md-7 col-xs-12" })
-                                            @*@Html.EditorFor(model => model.ID_NHANVIEN, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })*@
-
                                         </div>
                                     </div>
+                                    
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name" style="text-decoration:underline; ">
@@ -108,14 +102,7 @@
                                             <textarea class="form-control col-md-7 col-xs-12" id="DACDIEM" name="DACDIEM" rows="3" placeholder="Input here"></textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            Hồ sơ, tài liệu kèm theo:
-                                        </label>
-                                        <div class="col-md-8 col-sm-6 col-xs-12">
-
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                             Mục đích thẩm định:
@@ -160,6 +147,18 @@
                                         </label>
                                         <div class="col-md-3 col-sm-3 col-xs-12">
                                             @Html.EditorFor(model => model.UNGTRUOC, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Hồ sơ, tài liệu kèm theo:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            <form action="/file-upload" class="dropzone">
+                                                <div class="fallback">
+                                                    <input name="file" type="file" multiple />
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>

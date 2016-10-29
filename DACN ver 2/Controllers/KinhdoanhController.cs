@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DACN_ver_2.Models;
+using System.IO;
 
 namespace DACN_ver_2.Controllers
 {
@@ -66,7 +67,48 @@ namespace DACN_ver_2.Controllers
             }
         }
 
+        //xem PYC
+        public ActionResult XemPYC (int id)
+        {
+            var detail = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
+            return View(detail);
+        }
+        //them file dinh kem
+        public ActionResult Themfile()
+        {
+            return View();
+        }
 
+        public ActionResult SaveDropzoneJsUploadedFiles()
+        {
+            string fName = "";
+            foreach (string fileName in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[fileName];
+                //You can Save the file content here
+                fName = file.FileName;
+                if (file != null && file.ContentLength > 0)
+                {
+
+                    var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\WallImages", Server.MapPath(@"\")));
+
+                    string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "imagepath");
+
+                    var fileName1 = Path.GetFileName(file.FileName);
+
+                    bool isExists = System.IO.Directory.Exists(pathString);
+
+                    if (!isExists)
+                        System.IO.Directory.CreateDirectory(pathString);
+
+                    var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                    file.SaveAs(path);
+
+                }
+            }
+
+            return Json(new { Message = string.Empty });
+        }
         //sua PYC
         public ActionResult SuaPYC(int id)
         {
@@ -117,12 +159,7 @@ namespace DACN_ver_2.Controllers
                 // TODO: Add insert logic here
                 var hd = collection["hd"];
                 var pyc = collection["pyc"];
-                //no lỗi ngay đây. nếu chặn lại thì ko sao.
                 ct.SOCHUNGTHU = collection["SOCHUNGTHU"] + "/2016/CTTDG-AMAX";
-                if (collection["NGAYXUAT"] == null)
-                {
-                    ct.NGAYXUAT = DateTime.Now;
-                }
                 ct.ID_HOPDONG = int.Parse(hd);
                 ct.ID_PYC = int.Parse(pyc);
                 data.CHUNGTHUTDGs.InsertOnSubmit(ct);

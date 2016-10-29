@@ -1,0 +1,389 @@
+﻿@model DACN_ver_2.Models.PHIEUYEUCAU
+
+@{
+    ViewBag.Title = "XemPYC";
+    Layout = "~/Views/Shared/_LayoutKinhdoanh.cshtml";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Phiếu yêu cầu <small>năm 2016</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+
+                        @*@using (Html.BeginForm("ThemPYC", "Kinhdoanh", "", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                            <div class="row">
+                                <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                    Số PYC:
+                                </label>
+                                <div class="col-md-4 col-sm-3 col-xs-12">
+                                    @Html.DisplayFor(model => model.SOPYC)
+                                </div>
+                                <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                    Ngày lập phiếu:
+                                </label>
+                                <div class="col-md-4 col-sm-3 col-xs-12">
+                                    @Html.DisplayFor(model => model.NGAYVIETPHIEU)
+                                </div>
+                            </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                            Khách hàng:
+                                        </label>
+                                        <div class="col-md-4 col-sm-3 col-xs-12">
+                                            @Html.DisplayFor(model => model.KHACHHANG.TENKH)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                            Thẩm định viên:
+                                        </label>
+                                        <div class="col-md-4 col-sm-3 col-xs-12">
+                                            @Html.DisplayFor(model => model.NHANVIEN.TENNV)
+                                        </div>
+                                    </div>
+
+                                    <div class="ln_solid"></div>
+                                    <div class="row">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name" style="text-decoration:underline; ">
+                                            Thông tin tài sản
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Loại tài sản:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.DisplayFor(model => model.LOAITAISAN.TEN)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Vị trí/ địa điểm:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.DisplayFor(model => model.VITRI)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Đặc điểm kinh tế - kỹ thuật tài sản:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.DisplayFor(model => model.DACDIEM)
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Mục đích thẩm định:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                           @Html.DisplayFor(model => model.MDTD)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Thời điểm thẩm định:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.DisplayFor(model => model.TDTD)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Thời hạn hoàn thành:
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.DisplayFor(model => model.THHT)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Yêu cầu khác (nếu có):
+                                        </label>
+                                        <div class="col-md-8 col-sm-6 col-xs-12">
+                                            @Html.DisplayFor(model => model.YEUCAUKHAC)
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Mức phí chấp thuận:
+                                        </label>
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                           @Html.DisplayFor(model => model.MUCPHICHAPTHUAN)
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                            Ứng trước:
+                                        </label>
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                           @Html.DisplayFor(model => model.UNGTRUOC)
+                                        </div>
+                                    </div>
+                        <div class="ln_solid"></div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                File đính kèm:
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-phong-ban">Thêm mới</button>
+                            </div>
+                            <div class="modal fade bs-example-modal-phong-ban" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel">Thêm phòng ban</h4>
+                                        </div>
+                                        @Html.Action("Themfile", "Kinhdoanh")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-6 col-xs-12">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                            <div class="ln_solid"></div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+@*<h2>XemPYC</h2>
+
+<div>
+    <h4>PHIEUYEUCAU</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_NHANVIEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_NHANVIEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_LOAITAISAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_LOAITAISAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_KH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_KH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOPYC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOPYC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYVIETPHIEU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYVIETPHIEU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VITRI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VITRI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DACDIEM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DACDIEM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MDTD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MDTD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TDTD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TDTD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.THHT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THHT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YEUCAUKHAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YEUCAUKHAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MUCPHICHAPTHUAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MUCPHICHAPTHUAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UNGTRUOC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UNGTRUOC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GHICHU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GHICHU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYTAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYTAO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYSUA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYSUA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGUOITAO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGUOITAO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGUOISUA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGUOISUA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_PYC }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

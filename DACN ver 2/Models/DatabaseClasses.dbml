@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DACN" Class="DatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-IT\SQLEXPRESS;Initial Catalog=DACN;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=VOIANGA\SQLEXPRESS;Initial Catalog=DACN;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CANHOCHUNGCU" Member="CANHOCHUNGCUs">
     <Type Name="CANHOCHUNGCU">
       <Column Name="ID_CHCC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -132,11 +132,11 @@
       <Column Name="ID_HOPDONG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="SOCHUNGTHU" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="NGAYXUAT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="THOIDIEMTDG" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="MUCDICHTDG" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="CACHTIEPCANTDG" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="PPTDG" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="KETQUATDG" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="THOIDIEMTDG" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="MUCDICHTDG" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CACHTIEPCANTDG" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PPTDG" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="KETQUATDG" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="NGAYTAO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NGAYSUA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NGUOITAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
