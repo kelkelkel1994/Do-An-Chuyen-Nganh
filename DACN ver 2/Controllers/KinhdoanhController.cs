@@ -74,15 +74,16 @@ namespace DACN_ver_2.Controllers
             return View(detail);
         }
         //them file dinh kem
-        public ActionResult Themfile()
+        public ActionResult ThemfilePYC(int id)
         {
-            return View();
+            var d = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
+            return View(d);
         }
 
         /// <summary>
         /// to Save DropzoneJs Uploaded Files
         /// </summary>
-        public ActionResult SaveDropzoneJsUploadedFiles()
+        public ActionResult SaveDropzoneJsUploadedFiles(int id, FILEDINHKEM dk)
         {
             string fName = "";
 
@@ -94,9 +95,10 @@ namespace DACN_ver_2.Controllers
                 if (file != null && file.ContentLength > 0)
                 {
 
-                    var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\WallImages", Server.MapPath(@"\")));
+                    var pyc = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
+                    var originalDirectory = new DirectoryInfo(string.Format("{0}FilePYC\\" + id, Server.MapPath(@"\")));
 
-                    string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "imagepath");
+                    string pathString = System.IO.Path.Combine(originalDirectory.ToString(), pyc.SOPYC);
 
                     var fileName1 = Path.GetFileName(file.FileName);
 
@@ -107,11 +109,24 @@ namespace DACN_ver_2.Controllers
 
                     var path = string.Format("{0}\\{1}", pathString, file.FileName);
                     file.SaveAs(path);
-
-                }
+                    dk.LIENKET = path;
+                    dk.ID_PYC = id;
+                    dk.TENFILE = file.FileName;
+                    dk.NGAYTAO = DateTime.Now;
+                    dk.TRANGTHAI = true;
+                    data.FILEDINHKEMs.InsertOnSubmit(dk);
+                    data.SubmitChanges();
+                    
+            }
             }
 
             return Json(new { Message = string.Empty });
+        }
+
+        public ActionResult DanhsachFilePYC(int id)
+        {
+            var sa = data.FILEDINHKEMs.ToList().Where(s => s.ID_PYC == id).OrderBy(s => s.ID_FILEDINHKEM);
+            return PartialView(sa);
         }
         //sua PYC
         public ActionResult SuaPYC(int id)

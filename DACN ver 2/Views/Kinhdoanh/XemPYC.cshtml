@@ -153,24 +153,13 @@
                                 File đính kèm:
                             </label>
                             <div class="col-md-8 col-sm-6 col-xs-12">
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-phong-ban">Thêm mới</button>
-                            </div>
-                            <div class="modal fade bs-example-modal-phong-ban" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
-                                            <h4 class="modal-title" id="myModalLabel">Thêm phòng ban</h4>
-                                        </div>
-                                        @Html.Action("Themfile", "Kinhdoanh")
-                                    </div>
-                                </div>
+                                @Html.ActionLink("Thêm file", "ThemfilePYC", new { id = Model.ID_PYC})
+                                @*<button type="button" class="btn btn-default" >Thêm mới</button>*@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 col-sm-6 col-xs-12">
+                            @Html.Action("DanhsachFilePYC", "Kinhdoanh", new { id = Model.ID_PYC})
+                            @*<div class="col-md-12 col-sm-6 col-xs-12">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -181,6 +170,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        
                                         <tr>
                                             <th scope="row">1</th>
                                             <td>Mark</td>
@@ -201,7 +191,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                            </div>*@
                         </div>
                             <div class="ln_solid"></div>
                             <div class="row">

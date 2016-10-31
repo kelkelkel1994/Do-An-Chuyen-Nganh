@@ -18,17 +18,15 @@
                         <h2>
                             Danh sách Phiếu yêu cầu | <button type="button" class="btn btn-default" data-toggle="modal" data-target=".them-khach-hang"><i class="glyphicon glyphicon-plus"></i></button>
 
-                           
-
                         </h2>
                         @*<ul class="nav navbar-right panel_toolbox">
-                            <li>
-                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li>
-                                <a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
-                        </ul>*@
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>*@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -43,14 +41,13 @@
                                 </tr>
                             </thead>
 
-
                             <tbody>
                                 @foreach (var item in Model)
                                 {
                                     <tr>
                                         <td>@Html.DisplayFor(modelItem => item.ID_PYC)</td>
                                         <td>
-                                            
+                                            <div class="row">
                                                 <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
                                                     Số PYC:
                                                 </label>
@@ -64,12 +61,13 @@
                                                         @Html.DisplayFor(modelItem => item.SOPYC)
                                                     }
                                                 </div>
-                                             
+                                            </div>
+                                            <div class="row">
                                                 <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
                                                     Ngày:
                                                 </label>
                                                 <div class="col-md-7 col-sm-6 col-xs-12">
-                                                    @if(item.NGAYVIETPHIEU == null)
+                                                    @if (item.NGAYVIETPHIEU == null)
                                                     {
                                                         <p>-/-</p>
                                                     }
@@ -77,82 +75,85 @@
                                                     {
                                                         @Html.DisplayFor(modelItem => item.NGAYVIETPHIEU)
                                                     }
-                                                    
+
                                                 </div>
-                                            <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
-                                                Mục đích thẩm định:
-                                            </label>
-                                            <div class="col-md-7 col-sm-6 col-xs-12">
-                                                @if (item.MDTD == null)
-                                                {
-                                                    <p>-/-</p>
-                                                }
-                                                else
-                                                {
-                                                    @Html.DisplayFor(modelItem => item.MDTD)
-                                                }
                                             </div>
-                                            <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
-                                                Mức phí chấp thuận:
-                                            </label>
-                                            <div class="col-md-7 col-sm-6 col-xs-12">
-                                                @*@if (item.MUCPHICHAPTHUAN == null)
-                                                {
-                                                    <p>-/-</p>
-                                                }
-                                                else
-                                                {*@
-                                                    @(item.MUCPHICHAPTHUAN.HasValue ? item.MUCPHICHAPTHUAN.Value.ToString("N0") : "-/-")
-                                                    @*@Html.DisplayFor(modelItem => item.MUCPHICHAPTHUAN)*@
-                                                @*}*@
-                                            </div>
-                                                @*Số Phiếu yêu cầu: @Html.DisplayFor(modelItem => item.SOPYC)*@
-</td>
-                                        <td><label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                                    Tên:
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
+                                                    Mục đích thẩm định:
                                                 </label>
                                                 <div class="col-md-7 col-sm-6 col-xs-12">
-                                                    @if (item.ID_KH == null)
+                                                    @if (item.MDTD == null)
                                                     {
                                                         <p>-/-</p>
                                                     }
                                                     else
                                                     {
-                                                        @Html.DisplayFor(modelItem => item.KHACHHANG.TENKH)
+                                                        @Html.DisplayFor(modelItem => item.MDTD)
                                                     }
                                                 </div>
-
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                                    Sđt:
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
+                                                    Mức phí chấp thuận:
                                                 </label>
                                                 <div class="col-md-7 col-sm-6 col-xs-12">
                                                     
-                                                        @Html.DisplayFor(modelItem => item.KHACHHANG.DIENTHOAI)
-                                                    
+                                                    @(item.MUCPHICHAPTHUAN.HasValue ? item.MUCPHICHAPTHUAN.Value.ToString("N0") : "-/-")
+                                                   
+                                                </div>
+                                            </div>
+                                                @*Số Phiếu yêu cầu: @Html.DisplayFor(modelItem => item.SOPYC)*@
+                                            </td>
+                                                <td>
+                                                    <div class="row">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                                            Tên:
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @if (item.ID_KH == null)
+                                                            {
+                                                                <p>-/-</p>
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.DisplayFor(modelItem => item.KHACHHANG.TENKH)
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                                            Sđt:
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
 
-                                                </div>
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                                    Email:
-                                                </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
-                                                    
-                                                        @Html.DisplayFor(modelItem => item.KHACHHANG.EMAIL)
-                                                    
-                                                </div>
-                                        </td>
-                                        <td>@Html.DisplayFor(modelItem => item.NHANVIEN.TENNV)</td>
-                                        <td>
-                                            @Html.ActionLink("Xem", "XemPYC", new { id = item.ID_PYC }) |
-                                            
-                                            <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_KH"><i class="glyphicon glyphicon-trash"></i></a>
-                                            
-                                        </td>
+                                                            @Html.DisplayFor(modelItem => item.KHACHHANG.DIENTHOAI)
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                                            Email:
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+
+                                                            @Html.DisplayFor(modelItem => item.KHACHHANG.EMAIL)
+
+                                                        </div>
+                                                    <div class="row">
+                                                </td>
+                                                <td>@Html.DisplayFor(modelItem => item.NHANVIEN.TENNV)</td>
+                                                <td>
+                                                    @Html.ActionLink("Xem", "XemPYC", new { id = item.ID_PYC }) |
+
+                                                    <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_KH"><i class="glyphicon glyphicon-trash"></i></a>
+
+                                                </td>
                                     </tr>
                                 }
-
-                            </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                                </table>
+                            </div>
                 </div>
             </div>
 

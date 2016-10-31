@@ -114,7 +114,7 @@ namespace DACN_ver_2.Models
     #endregion
 		
 		public DatabaseClassesDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DACNConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DACNConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -3360,15 +3360,15 @@ namespace DACN_ver_2.Models
 		
 		private System.Nullable<System.DateTime> _NGAYXUAT;
 		
-		private string _THOIDIEMTDG;
+		private System.Nullable<char> _THOIDIEMTDG;
 		
-		private string _MUCDICHTDG;
+		private System.Nullable<char> _MUCDICHTDG;
 		
-		private string _CACHTIEPCANTDG;
+		private System.Nullable<char> _CACHTIEPCANTDG;
 		
-		private string _PPTDG;
+		private System.Nullable<char> _PPTDG;
 		
-		private string _KETQUATDG;
+		private System.Nullable<char> _KETQUATDG;
 		
 		private System.Nullable<System.DateTime> _NGAYTAO;
 		
@@ -3408,15 +3408,15 @@ namespace DACN_ver_2.Models
     partial void OnSOCHUNGTHUChanged();
     partial void OnNGAYXUATChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYXUATChanged();
-    partial void OnTHOIDIEMTDGChanging(string value);
+    partial void OnTHOIDIEMTDGChanging(System.Nullable<char> value);
     partial void OnTHOIDIEMTDGChanged();
-    partial void OnMUCDICHTDGChanging(string value);
+    partial void OnMUCDICHTDGChanging(System.Nullable<char> value);
     partial void OnMUCDICHTDGChanged();
-    partial void OnCACHTIEPCANTDGChanging(string value);
+    partial void OnCACHTIEPCANTDGChanging(System.Nullable<char> value);
     partial void OnCACHTIEPCANTDGChanged();
-    partial void OnPPTDGChanging(string value);
+    partial void OnPPTDGChanging(System.Nullable<char> value);
     partial void OnPPTDGChanged();
-    partial void OnKETQUATDGChanging(string value);
+    partial void OnKETQUATDGChanging(System.Nullable<char> value);
     partial void OnKETQUATDGChanged();
     partial void OnNGAYTAOChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYTAOChanged();
@@ -3550,8 +3550,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THOIDIEMTDG", DbType="NVarChar(250)")]
-		public string THOIDIEMTDG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THOIDIEMTDG", DbType="Char(1)")]
+		public System.Nullable<char> THOIDIEMTDG
 		{
 			get
 			{
@@ -3570,8 +3570,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MUCDICHTDG", DbType="NVarChar(250)")]
-		public string MUCDICHTDG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MUCDICHTDG", DbType="Char(1)")]
+		public System.Nullable<char> MUCDICHTDG
 		{
 			get
 			{
@@ -3590,8 +3590,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CACHTIEPCANTDG", DbType="NVarChar(250)")]
-		public string CACHTIEPCANTDG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CACHTIEPCANTDG", DbType="Char(1)")]
+		public System.Nullable<char> CACHTIEPCANTDG
 		{
 			get
 			{
@@ -3610,8 +3610,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PPTDG", DbType="NVarChar(250)")]
-		public string PPTDG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PPTDG", DbType="Char(1)")]
+		public System.Nullable<char> PPTDG
 		{
 			get
 			{
@@ -3630,8 +3630,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KETQUATDG", DbType="NVarChar(250)")]
-		public string KETQUATDG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KETQUATDG", DbType="Char(1)")]
+		public System.Nullable<char> KETQUATDG
 		{
 			get
 			{
