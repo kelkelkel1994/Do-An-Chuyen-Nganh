@@ -79,9 +79,13 @@ namespace DACN_ver_2.Controllers
             return View();
         }
 
+        /// <summary>
+        /// to Save DropzoneJs Uploaded Files
+        /// </summary>
         public ActionResult SaveDropzoneJsUploadedFiles()
         {
             string fName = "";
+
             foreach (string fileName in Request.Files)
             {
                 HttpPostedFileBase file = Request.Files[fileName];

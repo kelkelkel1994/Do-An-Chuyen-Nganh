@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/dropzone")
     <!-- Bootstrap -->
     <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -472,7 +473,9 @@
     <!-- /gauge.js -->
 
     <!-- drop zone-->
-    @Scripts.Render("~/bundles/dropzonescripts")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/dropzone")
     @RenderSection("scripts", required: false)
 </body>
 </html>

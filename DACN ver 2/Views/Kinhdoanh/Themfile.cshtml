@@ -7,12 +7,8 @@
     <div class="">
         <h2>Themfile</h2>
         <div class="jumbotron">
-            <form action="~/Kinhdoanh/SaveUploadedFile" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
-                <div class="fallback">
-                    <input name="file" type="file" multiple />
-                    <input type="submit" value="Upload" />
-                </div>
-            </form>
+            <form action="~/Kinhdoanh/SaveDropzoneJsUploadedFiles" class="dropzone" id="dropzoneJsForm"></form>
+            <button id="submit-all">Submit All Files</button>
         </div>
     </div>
 </div>
@@ -20,40 +16,22 @@
 
 
 
-@section Scripts
-{
+
+@section scripts {
     <script type="text/javascript">
-        Dropzone.options.dropzoneForm = {
-            acceptedFiles: "image/*",
+
+        Dropzone.options.dropzoneJsForm = {
+
+            //prevents Dropzone from uploading dropped files immediately
+            autoProcessQueue: false,
+            maxFilesize: 50,
             init: function () {
-                var thisDropzone = this;
+                var submitButton = document.querySelector("#submit-all");
+                var myDropzone = this; //closure
 
-
-                $.getJSON("/Kinhdoanh/GetAttachments/").done(function (data) {
-                    if (data.Data != '') {
-
-                        $.each(data.Data, function (index, item) {
-                                //// Create the mock file:
-                                var mockFile = {
-                                    name: item.AttachmentID,
-                                    size: 12345
-                                };
-
-                                // Call the default addedfile event handler
-                                thisDropzone.emit("addedfile", mockFile);
-
-                                // And optionally show the thumbnail of the file:
-                                thisDropzone.emit("thumbnail", mockFile, item.Path);
-
-                                // If you use the maxFiles option, make sure you adjust it to the
-                                // correct amount:
-                                //var existingFileCount = 1; // The number of files already uploaded
-                                //myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
-                        });
-                    }
-
+                submitButton.addEventListener("click", function () {
+                    myDropzone.processQueue(); //tell Dropzone to process all queued files
                 });
-
 
             }
         };

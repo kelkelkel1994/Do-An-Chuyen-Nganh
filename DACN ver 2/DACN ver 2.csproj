@@ -264,6 +264,8 @@
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\custom.min.js" />
     <Content Include="Scripts\datepicker\daterangepicker.js" />
+    <Content Include="Scripts\dropzone.js" />
+    <Content Include="Scripts\dropzone.min.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
     <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
