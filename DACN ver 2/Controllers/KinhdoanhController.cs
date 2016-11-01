@@ -46,10 +46,8 @@ namespace DACN_ver_2.Controllers
                 var kh = collection["Khachhang3"];
                 //no lỗi ngay đây. nếu chặn lại thì ko sao.
                 pyc.SOPYC = collection["SOPYC"] + "/2016/PYC-AMAX";
-                if(collection["NGAYVIETPHIEU"] == null)
-                {
-                    pyc.NGAYVIETPHIEU = DateTime.Now;
-                }
+                pyc.NGAYTAO = DateTime.Now;
+                pyc.TRANGTHAI = true;
                 pyc.ID_NHANVIEN = int.Parse(nv);
                 pyc.ID_LOAITAISAN = int.Parse(lts);
                 pyc.ID_KH = int.Parse(kh);
@@ -98,7 +96,7 @@ namespace DACN_ver_2.Controllers
                     var pyc = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
                     var originalDirectory = new DirectoryInfo(string.Format("{0}FilePYC\\" + id, Server.MapPath(@"\")));
 
-                    string pathString = System.IO.Path.Combine(originalDirectory.ToString(), pyc.SOPYC);
+                    string pathString = System.IO.Path.Combine(originalDirectory.ToString()/*, pyc.ID_PYC.ToString()*/);
 
                     var fileName1 = Path.GetFileName(file.FileName);
 
@@ -181,6 +179,8 @@ namespace DACN_ver_2.Controllers
                 ct.SOCHUNGTHU = collection["SOCHUNGTHU"] + "/2016/CTTDG-AMAX";
                 ct.ID_HOPDONG = int.Parse(hd);
                 ct.ID_PYC = int.Parse(pyc);
+                ct.NGAYTAO = DateTime.Now;
+                ct.TRANGTHAI = true;
                 data.CHUNGTHUTDGs.InsertOnSubmit(ct);
                 data.SubmitChanges();
                 return RedirectToAction("ThemCT");
