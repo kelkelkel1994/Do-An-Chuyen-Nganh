@@ -477,7 +477,6 @@
     <Content Include="Views\Nhanvien\ThemCHCC.cshtml" />
     <Content Include="Views\Kinhdoanh\DanhsachPYC.cshtml" />
     <Content Include="Views\Kinhdoanh\XemPYC.cshtml" />
-    <Content Include="Views\Kinhdoanh\Themfile.cshtml" />
     <Content Include="Views\Kinhdoanh\ThemfilePYC.cshtml" />
     <Content Include="Views\Kinhdoanh\DanhsachFilePYC.cshtml" />
     <Content Include="vendors\bootstrap\.bower.json" />
@@ -579,6 +578,8 @@
     <Content Include="vendors\bootstrap\nuget\MyGet.ps1" />
     <Content Include="vendors\bootstrap\package.json" />
     <Content Include="vendors\bootstrap\README.md" />
+    <Content Include="Views\Kinhdoanh\DanhsachCT.cshtml" />
+    <Content Include="Views\Kinhdoanh\ThemHD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

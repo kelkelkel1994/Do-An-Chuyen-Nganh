@@ -87,7 +87,7 @@
                                 <li>
                                     <a><i class="fa fa-desktop"></i> Hợp đồng <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="@Url.Action("Danhsachkhachhang", "Kinhdoanh")">Thêm hợp đồng</a></li>
+                                        <li><a href="@Url.Action("ThemHD", "Kinhdoanh")">Thêm hợp đồng</a></li>
                                         <li><a href="@Url.Action("Danhsachkhachhang", "Kinhdoanh")">Danh sách hợp đồng</a></li>
                                     </ul>
                                 </li>
@@ -98,7 +98,7 @@
                                             <a href="@Url.Action("ThemCT", "Kinhdoanh")">Thêm Chứng thư</a>
                                         </li>
                                         <li>
-                                            <a href="@Url.Action("ThemCT", "Kinhdoanh")">Danh sách Chứng thư</a>
+                                            <a href="@Url.Action("DanhsachCT", "Kinhdoanh")">Danh sách Chứng thư</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -130,8 +130,8 @@
     <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="~/build/js/custom.min.js"></script>
-    <!-- iCheck -->
-    <script src="~/vendors/iCheck/icheck.min.js"></script>
+    @*<!-- iCheck -->
+    <script src="~/vendors/iCheck/icheck.min.js"></script>*@
     <!-- Datatables -->
     <script src="~/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -142,7 +142,7 @@
     <script src="~/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
     <script src="~/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
     <script src="~/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <!-- Datatables -->
+    @*<!-- Datatables -->
     <script>
         $(document).ready(function () {
             var handleDataTableButtons = function () {
@@ -222,8 +222,8 @@
             TableManageButtons.init();
         });
     </script>
-    <!-- /Datatables -->
-    <!-- Flot -->
+    <!-- /Datatables -->*@
+    @*<!-- Flot -->
     <script>
             $(document).ready(function () {
                 var data1 = [
@@ -470,10 +470,12 @@
             gauge.set(3200);
             gauge.setTextField(document.getElementById("gauge-text"));
     </script>
-    <!-- /gauge.js -->
+    <!-- /gauge.js -->*@
 
     <!-- drop zone-->
+    @RenderSection("scriptsdata", required: false)
     @Scripts.Render("~/bundles/dropzone")
     @RenderSection("scripts", required: false)
+    
 </body>
 </html>

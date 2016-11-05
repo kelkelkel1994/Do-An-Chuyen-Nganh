@@ -103,9 +103,8 @@
                                                    
                                                 </div>
                                             </div>
-                                                @*Số Phiếu yêu cầu: @Html.DisplayFor(modelItem => item.SOPYC)*@
                                             </td>
-                                                <td>
+                                            <td>
                                                     <div class="row">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                                             Tên:
@@ -140,15 +139,17 @@
                                                             @Html.DisplayFor(modelItem => item.KHACHHANG.EMAIL)
 
                                                         </div>
-                                                    <div class="row">
-                                                </td>
-                                                <td>@Html.DisplayFor(modelItem => item.NHANVIEN.TENNV)</td>
-                                                <td>
-                                                    @Html.ActionLink("Xem", "XemPYC", new { id = item.ID_PYC }) |
+                                                    </div>
+                                                    
+                                                    </td>
+                                                    <td>@Html.DisplayFor(modelItem => item.NHANVIEN.TENNV)</td>
+                                                    <td>
+                                                        @Html.ActionLink("Xem", "XemPYC", new { id = item.ID_PYC }) |
 
-                                                    <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_KH"><i class="glyphicon glyphicon-trash"></i></a>
+                                                        <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_KH"><i class="glyphicon glyphicon-trash"></i></a>
 
-                                                </td>
+                                                    </td>
+                                        
                                     </tr>
                                 }
                                 </tbody>
@@ -161,7 +162,87 @@
     </div>
 </div>
 
+@section scriptsdata {
+    <script>
+        $(document).ready(function () {
+            var handleDataTableButtons = function () {
+                if ($("#datatable-buttons").length) {
+                    $("#datatable-buttons").DataTable({
+                        dom: "Bfrtip",
+                        buttons: [
+                          {
+                              extend: "copy",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "csv",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "excel",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "pdfHtml5",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "print",
+                              className: "btn-sm"
+                          },
+                        ],
+                        responsive: true
+                    });
+                }
+            };
 
+            TableManageButtons = function () {
+                "use strict";
+                return {
+                    init: function () {
+                        handleDataTableButtons();
+                    }
+                };
+            }();
+
+            $('#datatable').dataTable();
+
+            $('#datatable-keytable').DataTable({
+                keys: true
+            });
+
+            $('#datatable-responsive').DataTable();
+
+            $('#datatable-scroller').DataTable({
+                ajax: "js/datatables/json/scroller-demo.json",
+                deferRender: true,
+                scrollY: 380,
+                scrollCollapse: true,
+                scroller: true
+            });
+
+            $('#datatable-fixed-header').DataTable({
+                fixedHeader: true
+            });
+
+            var $datatable = $('#datatable-checkbox');
+
+            $datatable.dataTable({
+                'order': [[1, 'asc']],
+                'columnDefs': [
+                  { orderable: false, targets: [0] }
+                ]
+            });
+            $datatable.on('draw.dt', function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_flat-green'
+                });
+            });
+
+            TableManageButtons.init();
+        });
+    </script>
+}
 
 
 

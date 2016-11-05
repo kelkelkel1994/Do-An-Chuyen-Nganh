@@ -1,0 +1,278 @@
+﻿@model IEnumerable<DACN_ver_2.Models.CHUNGTHUTDG>
+
+@{
+    ViewBag.Title = "Danh sách chứng thư";
+    Layout = "~/Views/Shared/_LayoutKinhdoanh.cshtml";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>
+                            Danh sách Chứng thư | <button type="button" class="btn btn-default" data-toggle="modal" data-target=".them-khach-hang"><i class="glyphicon glyphicon-plus"></i></button>
+                        </h2>
+                        @*<ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li>
+                                    <a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>*@
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Danh sách Chứng thư</th>
+                                    <th>Khách hàng</th>
+                                    <th>Thẩm định viên</th>
+                                    <th>Tác vụ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.ID_CHUNGTHU)</td>
+                                        <td>
+                                            <div class="row">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
+                                                    Số chứng thư:
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @if (item.SOCHUNGTHU == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.ID_CHUNGTHU)
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
+                                                    Số hợp đồng:
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    
+                                                        @Html.DisplayFor(modelItem => item.HOPDONG.SOHD)
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
+                                                    PYC số:
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @if (item.PHIEUYEUCAU.SOPYC == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.PHIEUYEUCAU.SOPYC)
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
+                                                    Thời điểm TĐ:
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @if (item.THOIDIEMTDG == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.THOIDIEMTDG)
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
+                                                    Ngày xuất:
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @if (item.NGAYXUAT == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.NGAYXUAT)
+                                                    }
+                                                </div>
+                                            </div>
+                                            
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
+                                                    Mục đích thẩm định:
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @if (item.MUCDICHTDG == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.MUCDICHTDG)
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
+                                                    Cách tiếp cận:
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @if (item.CACHTIEPCANTDG == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.CACHTIEPCANTDG)
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
+                                                    Phương pháp thẩm định:
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @if (item.PPTDG == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.PPTDG)
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
+                                                    Kết quả tdg:
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.DisplayFor(modelItem => item.KETQUATDG)
+                                                </div>
+                                            </div>
+                                            @*<div class="row">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                                    Email:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    @Html.DisplayFor(modelItem => item.KHACHHANG.EMAIL)
+                                                </div>
+                                            </div>*@
+
+                                        </td>
+                                        <td>@Html.DisplayFor(modelItem => item.PHIEUYEUCAU.NHANVIEN.TENNV)</td>
+                                        <td>
+                                            @Html.ActionLink("Xem", "XemPYC", new { id = item.ID_CHUNGTHU }) |
+
+                                            <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_CHUNGTHU"><i class="glyphicon glyphicon-trash"></i></a>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scriptsdata {
+    <script>
+        $(document).ready(function () {
+            var handleDataTableButtons = function () {
+                if ($("#datatable-buttons").length) {
+                    $("#datatable-buttons").DataTable({
+                        dom: "Bfrtip",
+                        buttons: [
+                          {
+                              extend: "copy",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "csv",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "excel",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "pdfHtml5",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "print",
+                              className: "btn-sm"
+                          },
+                        ],
+                        responsive: true
+                    });
+                }
+            };
+
+            TableManageButtons = function () {
+                "use strict";
+                return {
+                    init: function () {
+                        handleDataTableButtons();
+                    }
+                };
+            }();
+
+            $('#datatable').dataTable();
+
+            $('#datatable-keytable').DataTable({
+                keys: true
+            });
+
+            $('#datatable-responsive').DataTable();
+
+            $('#datatable-scroller').DataTable({
+                ajax: "js/datatables/json/scroller-demo.json",
+                deferRender: true,
+                scrollY: 380,
+                scrollCollapse: true,
+                scroller: true
+            });
+
+            $('#datatable-fixed-header').DataTable({
+                fixedHeader: true
+            });
+
+            var $datatable = $('#datatable-checkbox');
+
+            $datatable.dataTable({
+                'order': [[1, 'asc']],
+                'columnDefs': [
+                  { orderable: false, targets: [0] }
+                ]
+            });
+            $datatable.on('draw.dt', function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_flat-green'
+                });
+            });
+
+            TableManageButtons.init();
+        });
+    </script>
+}

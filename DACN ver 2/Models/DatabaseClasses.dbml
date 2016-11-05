@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DACN" Class="DatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-IT\SQLEXPRESS;Initial Catalog=DACN;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=VOIANGA\SQLEXPRESS;Initial Catalog=DACN;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CANHOCHUNGCU" Member="CANHOCHUNGCUs">
     <Type Name="CANHOCHUNGCU">
       <Column Name="ID_CHCC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -290,15 +290,14 @@
     <Type Name="HOPDONG">
       <Column Name="ID_HOPDONG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="SOHD" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NGUOILAP" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="NVKINHDOANH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NGAYLAP" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ID_NHANVIEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TONGTIEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GIAKE" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HOAHONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="CHIETKHAU" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DATHANHTOAN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="DOANHTHUTHUC" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DATHANHTOAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DOANHTHUTHUC" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ID_TRANGTHAI" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="NGAYTAO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="NGAYSUA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -306,8 +305,11 @@
       <Column Name="NGUOISUA" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="ID_PYC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_LOAIHOPDONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="HOPDONG_CHUNGTHUTDG" Member="CHUNGTHUTDGs" ThisKey="ID_HOPDONG" OtherKey="ID_HOPDONG" Type="CHUNGTHUTDG" />
       <Association Name="HOPDONG_FILEDINHKEM" Member="FILEDINHKEMs" ThisKey="ID_HOPDONG" OtherKey="ID_HOPDONG" Type="FILEDINHKEM" />
+      <Association Name="LOAIHOPDONG_HOPDONG" Member="LOAIHOPDONG" ThisKey="ID_LOAIHOPDONG" OtherKey="ID_LOAIHOPDONG" Type="LOAIHOPDONG" IsForeignKey="true" />
+      <Association Name="NHANVIEN_HOPDONG" Member="NHANVIEN" ThisKey="ID_NHANVIEN" OtherKey="ID_NHANVIEN" Type="NHANVIEN" IsForeignKey="true" />
       <Association Name="PHIEUYEUCAU_HOPDONG" Member="PHIEUYEUCAU" ThisKey="ID_PYC" OtherKey="ID_PYC" Type="PHIEUYEUCAU" IsForeignKey="true" />
       <Association Name="TRANGTHAI_HOPDONG" Member="TRANGTHAI1" ThisKey="ID_TRANGTHAI" OtherKey="ID_TRANGTHAI" Type="TRANGTHAI" IsForeignKey="true" />
     </Type>
@@ -368,6 +370,18 @@
       <Association Name="LOAIHINH_VANPHONGCHOTHUE" Member="VANPHONGCHOTHUEs" ThisKey="ID_LOAIHINH" OtherKey="ID_LOAIHINH" Type="VANPHONGCHOTHUE" />
       <Association Name="LOAIHINH_CONGTRINHXAYDUNG" Member="CONGTRINHXAYDUNGs" ThisKey="ID_LOAIHINH" OtherKey="ID_LOAIHINH" Type="CONGTRINHXAYDUNG" />
       <Association Name="LOAIHINH_DAT" Member="DATs" ThisKey="ID_LOAIHINH" OtherKey="ID_LOAIHINH" Type="DAT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LOAIHOPDONG" Member="LOAIHOPDONGs">
+    <Type Name="LOAIHOPDONG">
+      <Column Name="ID_LOAIHOPDONG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEN" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="NGAYTAO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NGAYSUA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NGUOITAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NGUOISUA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="LOAIHOPDONG_HOPDONG" Member="HOPDONGs" ThisKey="ID_LOAIHOPDONG" OtherKey="ID_LOAIHOPDONG" Type="HOPDONG" />
     </Type>
   </Table>
   <Table Name="dbo.LOAINHANVIEN" Member="LOAINHANVIENs">
@@ -433,6 +447,7 @@
       <Column Name="[USER]" Member="USER" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="PASS" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="ANH" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Association Name="NHANVIEN_HOPDONG" Member="HOPDONGs" ThisKey="ID_NHANVIEN" OtherKey="ID_NHANVIEN" Type="HOPDONG" />
       <Association Name="NHANVIEN_PHIEUYEUCAU" Member="PHIEUYEUCAUs" ThisKey="ID_NHANVIEN" OtherKey="ID_NHANVIEN" Type="PHIEUYEUCAU" />
       <Association Name="LOAINHANVIEN_NHANVIEN" Member="LOAINHANVIEN" ThisKey="ID_LOAINHANVIEN" OtherKey="ID_LOAINHANVIEN" Type="LOAINHANVIEN" IsForeignKey="true" />
       <Association Name="PHANQUYEN_NHANVIEN" Member="PHANQUYEN" ThisKey="ID_PHANQUYEN" OtherKey="ID_PHANQUYEN" Type="PHANQUYEN" IsForeignKey="true" />
