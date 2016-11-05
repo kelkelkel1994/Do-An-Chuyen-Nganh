@@ -11,19 +11,6 @@ namespace DACN_ver_2.Controllers
     public class KinhdoanhController : Controller
     {
         DatabaseClassesDataContext data = new DatabaseClassesDataContext();
-        // GET: Kinhdoanh
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Kinhdoanh/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Kinhdoanh/Create
         [HttpGet]
         public ActionResult ThemPYC()
         {
@@ -69,6 +56,7 @@ namespace DACN_ver_2.Controllers
         public ActionResult XemPYC (int id)
         {
             var detail = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
+            ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_PYC == id).Count();
             return View(detail);
         }
         //them file dinh kem
@@ -77,10 +65,7 @@ namespace DACN_ver_2.Controllers
             var d = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
             return View(d);
         }
-
-        /// <summary>
-        /// to Save DropzoneJs Uploaded Files
-        /// </summary>
+        
         public ActionResult SaveDropzoneJsUploadedFiles(int id, FILEDINHKEM dk)
         {
             string fName = "";
@@ -158,15 +143,13 @@ namespace DACN_ver_2.Controllers
         }
 
 
-        //Chứng thư
+        //Thêm Chứng thư
         public ActionResult ThemCT()
         {
             ViewData["hd"] = new SelectList(data.HOPDONGs.ToList().OrderBy(s => s.SOHD), "ID_HOPDONG", "SOHD");
             ViewData["pyc"] = new SelectList(data.PHIEUYEUCAUs.ToList().OrderByDescending(s => s.NGAYVIETPHIEU), "ID_PYC", "SOPYC");
             return View();
         }
-
-        // POST: Kinhdoanh/Create
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult ThemCT(FormCollection collection, CHUNGTHUTDG ct)
@@ -220,7 +203,7 @@ namespace DACN_ver_2.Controllers
                 var ltt = collection["loaitrangthai"];
                 var kd = collection["kinhdoanh"];
                 var pyc = collection["pyc"];
-                hd.SOHD = collection["SOCHUNGTHU"] + "/2016/HDTDG-AMAX";
+                hd.SOHD = collection["SOHOPDONG"] + "/2016/HDTDG-AMAX";
                 hd.ID_LOAIHOPDONG = int.Parse(lhd);
                 hd.ID_TRANGTHAI = int.Parse(ltt);
                 hd.ID_NHANVIEN = int.Parse(kd);
@@ -240,50 +223,12 @@ namespace DACN_ver_2.Controllers
                 return View();
             }
         }
-
-
-        // GET: Kinhdoanh/Edit/5
-        public ActionResult Edit(int id)
+        
+        // danh sách hợp đồng
+        public ActionResult DanhsachHD()
         {
-            return View();
-        }
-
-        // POST: Kinhdoanh/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Kinhdoanh/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Kinhdoanh/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var hd = data.HOPDONGs.ToList().OrderBy(s => s.ID_HOPDONG);
+            return View(hd);
         }
 
         // danh sahv khach hang

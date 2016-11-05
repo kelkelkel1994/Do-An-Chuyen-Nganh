@@ -38,11 +38,8 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Tên KH</th>
-                                    <th>Thông tin</th>
-                                    <th>Nguồn</th>
-                                    <th>Người đại diện</th>
-                                    <th>Chức vụ</th>
+                                    <th>Thông tin khách hàng</th>
+                                    <th>Thông tin nguồn</th>
                                     <th>Ghi chú</th>
                                     <th>Tác vụ</th>
                                 </tr>
@@ -54,15 +51,115 @@
                                 {
                                     <tr>
                                         <td>@Html.DisplayFor(modelItem => item.ID_KH)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.TENKH)</td>
                                         <td>
-                                            Địa chỉ: @Html.DisplayFor(modelItem => item.DIACHI) <br />
-                                            Điện thoại: @Html.DisplayFor(modelItem => item.DIENTHOAI) <br />
-                                            Email: @Html.DisplayFor(modelItem => item.EMAIL)
+                                            <div class="row">
+                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
+                                                    Họ và tên:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    @if (item.TENKH == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.TENKH)
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
+                                                    Địa chỉ:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    @if (item.DIACHI == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.DIACHI)
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
+                                                    CMND số:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    @if (item.CMND == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.CMND)
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
+                                                    Điện thoại:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    @if (item.DIENTHOAI == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.DIENTHOAI)
+                                                    }
+                                                </div>
+                                            </div>
                                         </td>
-                                        <td>@Html.DisplayFor(modelItem => item.NGUON)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.NGUOIDAIDIEN)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.CHUCVU)</td>
+                                        <td>
+                                            <div class="row">
+                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
+                                                    Nguồn:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    @if (item.NGUON == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.NGUON)
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
+                                                    Người đại diện:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    @if (item.NGUOIDAIDIEN == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.NGUOIDAIDIEN)
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
+                                                    Chức vụ:
+                                                </label>
+                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                    @if (item.CHUCVU == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.CHUCVU)
+                                                    }
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>
                                             @if (item.NGAYSUA == null)
                                             {

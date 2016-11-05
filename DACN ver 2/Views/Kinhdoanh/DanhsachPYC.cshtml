@@ -48,10 +48,10 @@
                                         <td>@Html.DisplayFor(modelItem => item.ID_PYC)</td>
                                         <td>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
                                                     Số PYC:
                                                 </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
                                                     @if (item.SOPYC == null)
                                                     {
                                                         <p>-/-</p>
@@ -63,10 +63,10 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
                                                     Ngày:
                                                 </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
                                                     @if (item.NGAYVIETPHIEU == null)
                                                     {
                                                         <p>-/-</p>
@@ -79,10 +79,10 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
                                                     Mục đích thẩm định:
                                                 </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
                                                     @if (item.MDTD == null)
                                                     {
                                                         <p>-/-</p>
@@ -94,10 +94,10 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-sm-3 col-xs-12" for="last-name">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
                                                     Mức phí chấp thuận:
                                                 </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
                                                     
                                                     @(item.MUCPHICHAPTHUAN.HasValue ? item.MUCPHICHAPTHUAN.Value.ToString("N0") : "-/-")
                                                    
@@ -109,7 +109,7 @@
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                                             Tên:
                                                         </label>
-                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
                                                             @if (item.ID_KH == null)
                                                             {
                                                                 <p>-/-</p>
@@ -124,7 +124,7 @@
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                                             Sđt:
                                                         </label>
-                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
 
                                                             @Html.DisplayFor(modelItem => item.KHACHHANG.DIENTHOAI)
 
@@ -134,7 +134,7 @@
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
                                                             Email:
                                                         </label>
-                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
 
                                                             @Html.DisplayFor(modelItem => item.KHACHHANG.EMAIL)
 

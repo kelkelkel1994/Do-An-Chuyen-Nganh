@@ -150,13 +150,23 @@
                         <div class="ln_solid"></div>
                         <div class="row">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                File đính kèm:
+                                
+                                File đính kèm: 
                             </label>
-                            <div class="col-md-8 col-sm-6 col-xs-12">
-                                @Html.ActionLink("Thêm file", "ThemfilePYC", new { id = Model.ID_PYC})
-                                @*<button type="button" class="btn btn-default" >Thêm mới</button>*@
-                            </div>
-                        </div>
+                            @if (ViewBag.Demfile == 0)
+                            {
+                                <div class="col-md-8 col-sm-6 col-xs-12">
+                                    Không có file đính kèm | @Html.ActionLink("Thêm file", "ThemfilePYC", new { id = Model.ID_PYC })
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-8 col-sm-6 col-xs-12">
+                                    @ViewBag.Demfile file | @Html.ActionLink("Thêm file", "ThemfilePYC", new { id = Model.ID_PYC })
+                                </div>
+                            }
+                                   
+                                </div>
                         <div class="row">
                             @Html.Action("DanhsachFilePYC", "Kinhdoanh", new { id = Model.ID_PYC})
                             @*<div class="col-md-12 col-sm-6 col-xs-12">

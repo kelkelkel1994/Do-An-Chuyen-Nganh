@@ -11,7 +11,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Hợp đồng <small>năm 2016</small></h2>
+                        <h2>Hợp đồng <small>năm @DateTime.Now.Year</small></h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li>
                                 <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -32,7 +32,10 @@
                                     Số Hợp đồng:
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <input class="form-control col-md-7 col-xs-12 text-box single-line" id="SOCHUNGTHU" name="SOCHUNGTHU" type="number" value="">
+                                    <div class="input-group">
+                                    <input class="form-control col-md-7 col-xs-12 text-box single-line" id="SOHOPDONG" name="SOHOPDONG" type="number" value="">
+                                    <span class="input-group-addon">/@DateTime.Now.Year/HD-AMAX</span>
+                                    </div>
                                 </div>
                                 <label class="control-label col-md-2 col-sm-3 col-xs-12">
                                     Ngày lập:

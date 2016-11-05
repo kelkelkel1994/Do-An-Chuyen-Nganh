@@ -1,9 +1,10 @@
-﻿@model IEnumerable<DACN_ver_2.Models.CHUNGTHUTDG>
+﻿@model IEnumerable<DACN_ver_2.Models.HOPDONG>
 
 @{
-    ViewBag.Title = "Danh sách chứng thư";
+    ViewBag.Title = "Danh sách hợp đồng";
     Layout = "~/Views/Shared/_LayoutKinhdoanh.cshtml";
 }
+
 
 
 <div class="right_col" role="main">
@@ -13,7 +14,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>
-                            Danh sách Chứng thư | <button type="button" class="btn btn-default" data-toggle="modal" data-target=".them-khach-hang"><i class="glyphicon glyphicon-plus"></i></button>
+                            Danh sách hợp đồng | <button type="button" class="btn btn-default" data-toggle="modal" data-target=".them-khach-hang"><i class="glyphicon glyphicon-plus"></i></button>
                         </h2>
                         @*<ul class="nav navbar-right panel_toolbox">
                                 <li>
@@ -30,9 +31,8 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Danh sách Chứng thư</th>
-                                    <th>Khách hàng</th>
-                                    <th>Thẩm định viên</th>
+                                    <th>Thông tin hợp đồng</th>
+                                    <th>Thông tin khách hàng</th>
                                     <th>Tác vụ</th>
                                 </tr>
                             </thead>
@@ -40,35 +40,35 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td>@Html.DisplayFor(modelItem => item.ID_CHUNGTHU)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ID_HOPDONG)</td>
                                         <td>
                                             <div class="row">
-                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
-                                                    Số chứng thư:
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12">
+                                                    Số hợp đồng:
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    @if (item.SOCHUNGTHU == null)
+                                                    @if (item.SOHD == null)
                                                     {
                                                         <p>-/-</p>
                                                     }
                                                     else
                                                     {
-                                                        @Html.DisplayFor(modelItem => item.SOCHUNGTHU)
+                                                        @Html.DisplayFor(modelItem => item.SOHD)
                                                     }
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
-                                                    Số hợp đồng:
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12">
+                                                    Loại HĐ:
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    
-                                                        @Html.DisplayFor(modelItem => item.HOPDONG.SOHD)
-                                                    
+
+                                                    @Html.DisplayFor(modelItem => item.LOAIHOPDONG.TEN)
+
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12">
                                                     PYC số:
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -83,106 +83,103 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
-                                                    Thời điểm TĐ:
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12">
+                                                    Giá trị hợp đồng:
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    @if (item.THOIDIEMTDG == null)
-                                                    {
-                                                        <p>-/-</p>
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.DisplayFor(modelItem => item.THOIDIEMTDG)
-                                                    }
+                                                    @(item.TONGTIEN.HasValue ? item.TONGTIEN.Value.ToString("N0") : "-/-")
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
-                                                    Ngày xuất:
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12">
+                                                    Ngày ký:
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    @if (item.NGAYXUAT == null)
+                                                    @if (item.NGAYLAP == null)
                                                     {
                                                         <p>-/-</p>
                                                     }
                                                     else
                                                     {
-                                                        @Html.DisplayFor(modelItem => item.NGAYXUAT)
+                                                        @Html.DisplayFor(modelItem => item.NGAYLAP)
                                                     }
                                                 </div>
                                             </div>
-                                            
+
                                         </td>
                                         <td>
                                             <div class="row">
-                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
-                                                    Mục đích thẩm định:
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12">
+                                                    Họ và tên:
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    @if (item.MUCDICHTDG == null)
+                                                    @if (item.PHIEUYEUCAU.KHACHHANG.TENKH == null)
                                                     {
                                                         <p>-/-</p>
                                                     }
                                                     else
                                                     {
-                                                        @Html.DisplayFor(modelItem => item.MUCDICHTDG)
+                                                        @Html.DisplayFor(modelItem => item.PHIEUYEUCAU.KHACHHANG.TENKH)
                                                     }
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
-                                                    Cách tiếp cận:
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12">
+                                                    Địa chỉ:
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    @if (item.CACHTIEPCANTDG == null)
+                                                    @if (item.PHIEUYEUCAU.KHACHHANG.DIACHI == null)
                                                     {
                                                         <p>-/-</p>
                                                     }
                                                     else
                                                     {
-                                                        @Html.DisplayFor(modelItem => item.CACHTIEPCANTDG)
+                                                        @Html.DisplayFor(modelItem => item.PHIEUYEUCAU.KHACHHANG.DIACHI)
                                                     }
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
-                                                    Phương pháp thẩm định:
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12">
+                                                    CMND số:
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    @if (item.PPTDG == null)
+                                                    @if (item.PHIEUYEUCAU.KHACHHANG.CMND == null)
                                                     {
                                                         <p>-/-</p>
                                                     }
                                                     else
                                                     {
-                                                        @Html.DisplayFor(modelItem => item.PPTDG)
+                                                        @Html.DisplayFor(modelItem => item.PHIEUYEUCAU.KHACHHANG.CMND)
                                                     }
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="last-name">
-                                                    Kết quả tdg:
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12">
+                                                    Điện thoại:
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    @Html.DisplayFor(modelItem => item.KETQUATDG)
+                                                    @if (item.PHIEUYEUCAU.KHACHHANG.DIENTHOAI == null)
+                                                    {
+                                                        <p>-/-</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(modelItem => item.PHIEUYEUCAU.KHACHHANG.DIENTHOAI)
+                                                    }
                                                 </div>
                                             </div>
-                                            @*<div class="row">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                                    Email:
-                                                </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
-                                                    @Html.DisplayFor(modelItem => item.KHACHHANG.EMAIL)
-                                                </div>
-                                            </div>*@
+                                            <div class="ln_solid"></div>
+                                            <div class="row">
+                                                    <label class="control-label col-md-12 col-sm-12 col-xs-12">
+                                                        Xem KH | Sửa KH 
+                                                    </label>
+                                            </div>
 
                                         </td>
-                                        <td>@Html.DisplayFor(modelItem => item.PHIEUYEUCAU.NHANVIEN.TENNV)</td>
                                         <td>
-                                            @Html.ActionLink("Xem", "XemPYC", new { id = item.ID_CHUNGTHU }) |
+                                            @Html.ActionLink("Xem", "XemPYC", new { id = item.ID_HOPDONG }) |
 
-                                            <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_CHUNGTHU"><i class="glyphicon glyphicon-trash"></i></a>
+                                            <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_HOPDONG"><i class="glyphicon glyphicon-trash"></i></a>
                                         </td>
 
                                     </tr>

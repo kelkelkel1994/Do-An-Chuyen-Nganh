@@ -580,6 +580,7 @@
     <Content Include="vendors\bootstrap\README.md" />
     <Content Include="Views\Kinhdoanh\DanhsachCT.cshtml" />
     <Content Include="Views\Kinhdoanh\ThemHD.cshtml" />
+    <Content Include="Views\Kinhdoanh\DanhsachHD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
