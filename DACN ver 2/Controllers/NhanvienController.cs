@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DACN_ver_2.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace DACN_ver_2.Controllers
 {
@@ -25,25 +27,45 @@ namespace DACN_ver_2.Controllers
         // GET: Nhanvien/Create
         public ActionResult Create()
         {
+            ViewData["phongban1204"] = new SelectList(data.PHONGBANs, "ID_PHONGBAN", "TEN");
+            ViewData["loainhanvien1204"] = new SelectList(data.LOAINHANVIENs, "ID_LOAINHANVIEN", "TEN");
+            ViewData["phanquyen1204"] = new SelectList(data.PHANQUYENs, "ID_PHANQUYEN", "TEN");
             return View();
         }
 
         // POST: Nhanvien/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection collection,NHANVIEN nvs)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                var pb= collection["phongban1204"];
+                var lnv= collection["loainhanvien1204"];
+                var pq= collection["phanquyen1204"];
+                var pass12 = collection["PASS12"];
+                nvs.NGAYTAO = DateTime.Now;
+                nvs.ID_PHONGBAN = int.Parse(pb);
+                nvs.ID_LOAINHANVIEN = int.Parse(lnv);
+                nvs.ID_PHANQUYEN = int.Parse(pq);
+                nvs.PASS = GenerateMD5(pass12);               
+                data.NHANVIENs.InsertOnSubmit(nvs);
+                data.SubmitChanges();
                 return RedirectToAction("Index");
             }
             catch
             {
+                ViewData["phongban1204"] = new SelectList(data.PHONGBANs, "ID_PHONGBAN", "TEN");
+                ViewData["loainhanvien1204"] = new SelectList(data.LOAINHANVIENs, "ID_LOAINHANVIEN", "TEN");
+                ViewData["phanquyen1204"] = new SelectList(data.PHANQUYENs, "ID_PHANQUYEN", "TEN");
                 return View();
             }
         }
-
+        public string GenerateMD5(string yourString)
+        {
+            return string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(yourString)).Select(s => s.ToString("x2")));
+        }
+     
         // GET: Nhanvien/Edit/5
         public ActionResult Edit(int id)
         {
