@@ -197,6 +197,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\asdasController.cs" />
+    <Compile Include="Controllers\DatController.cs" />
     <Compile Include="Controllers\KinhdoanhController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
@@ -647,6 +648,7 @@
     <Folder Include="vendors\switchery\" />
     <Folder Include="vendors\transitionize\" />
     <Folder Include="vendors\validator\" />
+    <Folder Include="Views\Dat\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
