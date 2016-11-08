@@ -9,7 +9,7 @@
     <section class="login_content">
         @using (Html.BeginForm())
         {
-            @Html.ValidationSummary(true)
+            
             <h1>Đăng nhập</h1>
             <div>
                 @Html.TextBox("Username", null, new { @class = "form-control", @placeholder = "Username" })
@@ -19,6 +19,10 @@
                 @Html.Password("Password", null, new { @class = "form-control", @placeholder = "Password" })
                 @ViewData["ErrorPass"]
                 @ViewBag.Thongbao
+            </div>            
+            <div>
+                @Html.ValidationSummary()
+                @Html.reCaptcha()
             </div>
             <div>
                 <input type="submit" value="Log in" class="btn btn-default submit" />
@@ -30,8 +34,8 @@
 
 
                 <div>
-                    <h1><i class="fa fa-paw"></i> Trần Minh Đức</h1>
-                    <p>©2016 All Rights Reserved. Trần Minh Đức. Privacy and Terms</p>
+                    <h1><i class="fa fa-paw"></i> Trần Minh Đức kun</h1>
+                    <p>©2016 All Rights Reserved. Trần Minh Đức kun. Privacy and Terms</p>
                 </div>
             </div>
         }

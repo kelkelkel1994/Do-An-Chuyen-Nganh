@@ -35,7 +35,7 @@ namespace DACN_ver_2.Controllers
             
         }
         [HttpPost]
-        public ActionResult Login(FormCollection collection)
+        public ActionResult Login(FormCollection collection, bool CaptchaValid)
         {
             var user = collection["Username"];
             var pass = collection["Password"];
@@ -48,8 +48,14 @@ namespace DACN_ver_2.Controllers
                 ViewData["ErrorPass"] = "Password không được để trống";
 
             }
+            else if(!CaptchaValid)
+                {
+                //Captcha failed to validate
+                ModelState.AddModelError("reCaptcha", "Invalid reCaptcha");
+                }
             else
             {
+                
                 NHANVIEN TK = data.NHANVIENs.SingleOrDefault(n => n.USER == user && n.PASS == pass);
                 if (TK != null)
                 {
