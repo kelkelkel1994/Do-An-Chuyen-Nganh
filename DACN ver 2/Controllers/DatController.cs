@@ -1,13 +1,16 @@
-﻿using System;
+﻿using DACN_ver_2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace DACN_ver_2.Controllers
 {
     public class DatController : Controller
     {
+        DatabaseClassesDataContext data = new DatabaseClassesDataContext();
         public ActionResult Index()
         {
             ViewData["ddpl12"] = new SelectList(data.DACDIEMPHAPLies, "ID_DDPL", "TEN");
@@ -49,7 +52,7 @@ namespace DACN_ver_2.Controllers
                 dat.ID_CAPDUONG = int.Parse(collection["capduong12"]);
                 dat.ID_KETCAUDUONG = int.Parse(collection["ketcau12"]);
                 dat.ID_CRMD = int.Parse(collection["chieurongmatduong12"]);
-                dat.ID_QUANHUYEN = int.Parse(collection["quanhuyen12"]);
+               // dat.ID_QUANHUYEN = int.Parse(collection["quanhuyen12"]);
                 dat.NGAYTAO = DateTime.Now;
                 data.DATs.InsertOnSubmit(dat);
                 data.SubmitChanges();
@@ -91,7 +94,7 @@ namespace DACN_ver_2.Controllers
                 dat.ID_CAPDUONG = int.Parse(collection["capduong12"]);
                 dat.ID_KETCAUDUONG = int.Parse(collection["ketcau12"]);
                 dat.ID_CRMD = int.Parse(collection["chieurongmatduong12"]);
-                dat.ID_QUANHUYEN = int.Parse(collection["quanhuyen12"]);
+                //dat.ID_QUANHUYEN = int.Parse(collection["quanhuyen12"]);
                 dat.NGAYSUA = DateTime.Now;
                 UpdateModel(dat);
                 data.SubmitChanges();

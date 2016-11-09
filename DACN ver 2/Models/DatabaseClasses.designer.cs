@@ -22,7 +22,7 @@ namespace DACN_ver_2.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DACN")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DoAn07-11")]
 	public partial class DatabaseClassesDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -120,7 +120,7 @@ namespace DACN_ver_2.Models
     #endregion
 		
 		public DatabaseClassesDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DACNConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DoAn07_11ConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -8852,14 +8852,6 @@ namespace DACN_ver_2.Models
 		
 		private System.Nullable<bool> _TRANGTHAI;
 		
-		private string _CMND;
-		
-		private System.Nullable<System.DateTime> _NGAYCAP;
-		
-		private string _NOICAP;
-		
-		private string _MST;
-		
 		private EntitySet<PHIEUYEUCAU> _PHIEUYEUCAUs;
 		
     #region Extensibility Method Definitions
@@ -8892,14 +8884,6 @@ namespace DACN_ver_2.Models
     partial void OnNGUOISUAChanged();
     partial void OnTRANGTHAIChanging(System.Nullable<bool> value);
     partial void OnTRANGTHAIChanged();
-    partial void OnCMNDChanging(string value);
-    partial void OnCMNDChanged();
-    partial void OnNGAYCAPChanging(System.Nullable<System.DateTime> value);
-    partial void OnNGAYCAPChanged();
-    partial void OnNOICAPChanging(string value);
-    partial void OnNOICAPChanged();
-    partial void OnMSTChanging(string value);
-    partial void OnMSTChanged();
     #endregion
 		
 		public KHACHHANG()
@@ -9164,86 +9148,6 @@ namespace DACN_ver_2.Models
 					this._TRANGTHAI = value;
 					this.SendPropertyChanged("TRANGTHAI");
 					this.OnTRANGTHAIChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CMND", DbType="VarChar(9)")]
-		public string CMND
-		{
-			get
-			{
-				return this._CMND;
-			}
-			set
-			{
-				if ((this._CMND != value))
-				{
-					this.OnCMNDChanging(value);
-					this.SendPropertyChanging();
-					this._CMND = value;
-					this.SendPropertyChanged("CMND");
-					this.OnCMNDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYCAP", DbType="DateTime")]
-		public System.Nullable<System.DateTime> NGAYCAP
-		{
-			get
-			{
-				return this._NGAYCAP;
-			}
-			set
-			{
-				if ((this._NGAYCAP != value))
-				{
-					this.OnNGAYCAPChanging(value);
-					this.SendPropertyChanging();
-					this._NGAYCAP = value;
-					this.SendPropertyChanged("NGAYCAP");
-					this.OnNGAYCAPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOICAP", DbType="NVarChar(250)")]
-		public string NOICAP
-		{
-			get
-			{
-				return this._NOICAP;
-			}
-			set
-			{
-				if ((this._NOICAP != value))
-				{
-					this.OnNOICAPChanging(value);
-					this.SendPropertyChanging();
-					this._NOICAP = value;
-					this.SendPropertyChanged("NOICAP");
-					this.OnNOICAPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MST", DbType="VarChar(10)")]
-		public string MST
-		{
-			get
-			{
-				return this._MST;
-			}
-			set
-			{
-				if ((this._MST != value))
-				{
-					this.OnMSTChanging(value);
-					this.SendPropertyChanging();
-					this._MST = value;
-					this.SendPropertyChanged("MST");
-					this.OnMSTChanged();
 				}
 			}
 		}

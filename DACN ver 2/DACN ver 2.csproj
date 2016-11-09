@@ -203,9 +203,11 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\NhanvienController.cs" />
     <Compile Include="Controllers\QuanlyController.cs" />
+    <Compile Include="Filters\RecaptchaFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers.cs" />
     <Compile Include="Models\Dangnhap.cs" />
     <Compile Include="Models\DatabaseClasses.designer.cs">
       <AutoGen>True</AutoGen>
