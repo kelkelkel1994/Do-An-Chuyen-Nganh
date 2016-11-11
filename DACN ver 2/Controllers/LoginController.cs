@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DACN_ver_2.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace DACN_ver_2.Controllers
 {
@@ -22,7 +24,10 @@ namespace DACN_ver_2.Controllers
             }
             return ktdangnhap;
         }
-
+        public string BamMD5(string yourString)
+        {
+            return string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(yourString)).Select(s => s.ToString("x2")));
+        }
         public ActionResult Login()
         {
             if(Session["Login"] != null)
@@ -38,7 +43,7 @@ namespace DACN_ver_2.Controllers
         public ActionResult Login(FormCollection collection, bool CaptchaValid)
         {
             var user = collection["Username"];
-            var pass = collection["Password"];
+            var pass = BamMD5(collection["Password"]);
             if (String.IsNullOrEmpty(user))
             {
                 ViewData["ErrorUser"] = "Username không được để trống";
@@ -122,6 +127,32 @@ namespace DACN_ver_2.Controllers
                 var thongtin = ktdangnhap.FirstOrDefault(s => s.iID == int.Parse(Session["ID"].ToString()));
                 return PartialView(thongtin);
             }
+        }
+
+        public ActionResult Menuleft(int id)
+        {
+            
+            if(id == 1)
+            {
+                var menu1 = data.MENUs.ToList().Where(s => s.ADMIN == true);
+                return PartialView(menu1);
+            }
+            else if(id == 2)
+            {
+                var menu1 = data.MENUs.ToList().Where(s => s.THAMDINH == true);
+                return PartialView(menu1);
+            }
+            else
+            {
+                var menu1 = data.MENUs.ToList().Where(s => s.KINHDOANH == true);
+                return PartialView(menu1);
+            }            
+        }
+
+        public ActionResult Submenu(int id)
+        {
+            var submenu = data.SUBMENUs.ToList().Where(s => s.ID_MENU == id);
+            return PartialView(submenu);
         }
     }
 }

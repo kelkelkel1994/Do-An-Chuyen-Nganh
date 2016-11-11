@@ -1,0 +1,127 @@
+﻿@model IEnumerable<DACN_ver_2.Models.BANGGIADAT>
+
+
+
+<div class="x_content">
+    <table id="datatable-buttons" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Loại hình</th>
+                <th>Quận/ Huyện</th>
+                <th>Tên đường</th>
+                <th>Đoạn đường</th>
+                <th>VT1</th>
+                <th>VT2</th>
+                <th>VT3</th>
+                <th>VT4</th>
+                <th>VT5</th>
+                <th>Loại</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.ID_BANGGIADAT)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LOAIHINH.TEN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QUANHUYEN.TEN)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.TENDUONG)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DOANTU)</td>
+                    <td>@Html.DisplayFor(modelItem => item.VT1)</td>
+                    <td>@Html.DisplayFor(modelItem => item.VT2)</td>
+                    <td>@Html.DisplayFor(modelItem => item.VT3)</td>
+                    <td>@Html.DisplayFor(modelItem => item.VT4)</td>
+                    <td>@Html.DisplayFor(modelItem => item.VT5)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CHITIETLOAI.TEN)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+                    
+                
+
+@*<table class="table">
+    <tr>
+        <th>
+            Quận/ Huyện
+        </th>
+        <th>
+            Tên Đường
+        </th>
+        <th>
+            Đoạn từ
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VT1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VT2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VT3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VT4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VT5)
+        </th>
+        <th>
+            Loại hình
+        </th>
+        <th>
+            Chi tiết loại
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.QUANHUYEN.TEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENDUONG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOANTU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VT1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VT2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VT3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VT4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VT5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOAIHINH.TEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CHITIETLOAI.TEN)
+            </td>
+        </tr>
+    }
+</table>*@

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<DACN_ver_2.Models.MENU>
+
+        <ul class="nav side-menu">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a><i class="fa fa-edit"></i> @Html.DisplayFor(modelItem => item.TEN) <span class="fa fa-chevron-down"></span></a>
+                    @Html.Action("Submenu", "Login", new { id = item.ID_MENU})
+                    
+                </li>
+            }
+        </ul>
+    

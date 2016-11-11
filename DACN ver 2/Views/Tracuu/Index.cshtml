@@ -1,0 +1,100 @@
+﻿@model DACN_ver_2.Models.BANGGIADAT
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutKinhdoanh.cshtml";
+}
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Chọn Tỉnh thành: </span>
+                                    @Html.DropDownListFor(model => model.ID_QUANHUYEN, new SelectList(
+                                                        @ViewBag.LTinhThanh, "ID_TINHTHANH", "TEN"),
+                                                        "--Chọn Tỉnh thành--",
+                                                        new
+                                                        {
+                                                            id = "ddlProductTypes",
+                                                            @class = "form-control col-md-7 col-xs-12"
+                                                        })
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Chọn Quận huyện: </span>
+                                    @Html.DropDownList("ID_TINHTHANH", new SelectList(Enumerable.Empty<SelectListItem>(), "ID_QUANHUYEN", "TEN"),
+                                                                            "-- Chọn Quận huyện--",
+                                                                            new
+                                                                            {
+                                                                                id = "ddlProductCategorys",
+                                                                                data_url = Url.Action("GetGiaDat", "Tracuu"),
+                                                                                @class = "form-control col-md-7 col-xs-12"
+                                                                            })
+                                </div>
+                            </div>
+                            @using (Html.BeginForm())
+                            {
+                                <div class="col-md-4 col-sm-4 col-xs-12">
+                                    <div class="input-group">
+
+                                        @Html.TextBox("SearchString", "", new { @class = "form-control col-md-7 col-xs-12", @placeholder = "Nhập tên đường" })
+                                        <span class="input-group-btn"><input type="submit" value="Tìm kiếm" class="btn btn-primary" /></span>
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="products">
+                        @Html.Action("SearchTenduong", "Tracuu")
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $("#ddlProductTypes").change(function () {
+            var typeid = $(this).val();
+            $('#products').html("");
+            $.getJSON("../Tracuu/LoadQuanHuyen", { typeid: typeid },
+                function (categoryData) {
+                    var select = $("#ddlProductCategorys");
+                    select.empty();
+                    select.append($('<option/>', {
+                        value: 0,
+                        text: "-- Chọn quận --"
+                    }));
+                    $.each(categoryData, function (index, itemData) {
+                        select.append($('<option/>', {
+                            value: itemData.Value,
+                            text: itemData.Text
+                        }));
+                    });
+                });
+
+        });
+        $(function () {
+            $('#ddlProductCategorys').change(function () {
+                var url = $(this).data('url');
+                var value = $(this).val();
+                $('#products').load(url, { id: value });
+
+            });
+        });
+
+    });
+
+</script>

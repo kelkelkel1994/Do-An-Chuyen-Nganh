@@ -25,11 +25,15 @@ namespace DACN_ver_2.Controllers
         }
 
         // GET: Dat/Create
-        public ActionResult Create()
+        public ActionResult ThemDAT()
         {
+            ViewData["tp12"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
+            ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
+            ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
             ViewData["ddpl12"] = new SelectList(data.DACDIEMPHAPLies, "ID_DDPL", "TEN");
             ViewData["loaihinh12"] = new SelectList(data.LOAIHINHs, "ID_LOAIHINH", "TEN");
-            ViewData["loaithongtin12"] = new SelectList(data.LOAITHONGTINs, "ID_LTT", "TEN");
+            ViewData["ddpl12"] = new SelectList(data.DACDIEMPHAPLies.Where(s=>s.ID_LOAITAISAN == 1), "ID_DDPL", "TEN");
+            ViewData["loaithongtin12"] = new SelectList(data.LOAITHONGTINs.Where(s=>s.ID_LOAITAISAN == 1), "ID_LTT", "TEN");
             ViewData["chitietloai12"] = new SelectList(data.CHITIETLOAIs, "ID_CHITIETLOAI", "TEN");
             ViewData["capduong12"] = new SelectList(data.CAPDUONGs, "ID_CAPDUONG", "TEN");
             ViewData["ketcau12"] = new SelectList(data.KETCAUDUONGs, "ID_KETCAUDUONG", "TEN");
@@ -40,7 +44,7 @@ namespace DACN_ver_2.Controllers
 
         // POST: Dat/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection, DAT dat)
+        public ActionResult ThemDAT(FormCollection collection, DAT dat)
         {
             try
             {
@@ -60,6 +64,18 @@ namespace DACN_ver_2.Controllers
             }
             catch
             {
+                ViewData["tp12"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
+                ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
+                ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
+                ViewData["ddpl12"] = new SelectList(data.DACDIEMPHAPLies, "ID_DDPL", "TEN");
+                ViewData["loaihinh12"] = new SelectList(data.LOAIHINHs, "ID_LOAIHINH", "TEN");
+                ViewData["ddpl12"] = new SelectList(data.DACDIEMPHAPLies.Where(s => s.ID_LOAITAISAN == 1), "ID_DDPL", "TEN");
+                ViewData["loaithongtin12"] = new SelectList(data.LOAITHONGTINs.Where(s => s.ID_LOAITAISAN == 1), "ID_LTT", "TEN");
+                ViewData["chitietloai12"] = new SelectList(data.CHITIETLOAIs, "ID_CHITIETLOAI", "TEN");
+                ViewData["capduong12"] = new SelectList(data.CAPDUONGs, "ID_CAPDUONG", "TEN");
+                ViewData["ketcau12"] = new SelectList(data.KETCAUDUONGs, "ID_KETCAUDUONG", "TEN");
+                ViewData["chieurongmatduong12"] = new SelectList(data.CHIEURONGMATDUONGs, "ID_CRMD", "TEN");
+                ViewData["quanhuyen12"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN");
                 return View();
             }
         }
@@ -114,22 +130,6 @@ namespace DACN_ver_2.Controllers
             data.SubmitChanges();
             return RedirectToAction("Index");
         }
-
-        //// POST: Dat/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
 
         public ActionResult LayoutTimKiem()
         {

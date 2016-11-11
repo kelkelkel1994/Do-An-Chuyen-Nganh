@@ -203,6 +203,7 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\NhanvienController.cs" />
     <Compile Include="Controllers\QuanlyController.cs" />
+    <Compile Include="Controllers\TracuuController.cs" />
     <Compile Include="Filters\RecaptchaFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -476,7 +477,6 @@
     <Content Include="Views\Login\Leftnavigation.cshtml" />
     <Content Include="Views\Shared\_LayoutKinhdoanh.cshtml" />
     <Content Include="Views\Shared\_LayoutThamdinh.cshtml" />
-    <Content Include="Views\Kinhdoanh\Index.cshtml" />
     <Content Include="Views\Nhanvien\ThemCHCC.cshtml" />
     <Content Include="Views\Kinhdoanh\DanhsachPYC.cshtml" />
     <Content Include="Views\Kinhdoanh\XemPYC.cshtml" />
@@ -584,6 +584,14 @@
     <Content Include="Views\Kinhdoanh\DanhsachCT.cshtml" />
     <Content Include="Views\Kinhdoanh\ThemHD.cshtml" />
     <Content Include="Views\Kinhdoanh\DanhsachHD.cshtml" />
+    <Content Include="Views\Kinhdoanh\Index.cshtml" />
+    <Content Include="Views\Tracuu\SearchTenduong.cshtml" />
+    <Content Include="Views\Tracuu\GetGiaDat.cshtml" />
+    <Content Include="Views\Tracuu\Index.cshtml" />
+    <Content Include="Views\Dat\Create.cshtml" />
+    <Content Include="Views\Dat\ThemDAT.cshtml" />
+    <Content Include="Views\Login\Menuleft.cshtml" />
+    <Content Include="Views\Login\Submenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -650,7 +658,6 @@
     <Folder Include="vendors\switchery\" />
     <Folder Include="vendors\transitionize\" />
     <Folder Include="vendors\validator\" />
-    <Folder Include="Views\Dat\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

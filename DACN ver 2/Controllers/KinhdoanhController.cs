@@ -11,6 +11,10 @@ namespace DACN_ver_2.Controllers
     public class KinhdoanhController : Controller
     {
         DatabaseClassesDataContext data = new DatabaseClassesDataContext();
+        public ActionResult Index()
+        {
+            return View();
+        }
         [HttpGet]
         public ActionResult ThemPYC()
         {
@@ -48,6 +52,7 @@ namespace DACN_ver_2.Controllers
                 ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
                 ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
                 ViewData["Loaitaisan3"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
+                ViewBag.Thongbao = "0";
                 return View();
             }
         }

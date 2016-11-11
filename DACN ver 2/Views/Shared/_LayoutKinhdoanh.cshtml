@@ -43,73 +43,15 @@
                     </div>
                     <div class="clearfix"></div>
                     <!-- menu profile quick info -->
-                    @*<div class="profile">
-                            <div class="profile_pic">
-                                <img src="~/images/Avatar/@Html.DisplayFor(model => model.sAvatar)" alt="..." class="img-circle profile_img">
-                            </div>
-                            <div class="profile_info">
-                                <span>Welcome,</span>
-                                <h2>@Html.DisplayFor(model => model.sTennv)</h2>
-                            </div>
-                        </div>*@
+                    @Html.Action("Leftnavigation", "Login")
                     <!-- /menu profile quick info -->
-                    <br />
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                        <div class="menu_section">
-                            <h3>General</h3>
-                            <ul class="nav side-menu">
-                                <li>
-                                    <a><i class="fa fa-edit"></i> Phiếu yêu cầu <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        @*<li>
-                                            <a>Thêm<span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-
-                                                <li>
-                                                    <a href="#">Hợp đồng</a>
-                                                </li>
-
-                                            </ul>
-                                        </li>*@
-                                        <li class="sub_menu">
-                                            <a href="@Url.Action("ThemPYC", "Kinhdoanh")">Thêm Phiếu yêu cầu</a>
-                                        </li>
-                                        <li><a href="@Url.Action("DanhsachPYC", "Kinhdoanh")">Danh sách PYC</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-desktop"></i> Khách hàng <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="@Url.Action("Danhsachkhachhang", "Kinhdoanh")">Thêm khách hàng</a></li>
-                                        <li><a href="@Url.Action("Danhsachkhachhang", "Kinhdoanh")">Danh sách khách hàng</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-desktop"></i> Hợp đồng <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="@Url.Action("ThemHD", "Kinhdoanh")">Thêm hợp đồng</a></li>
-                                        <li><a href="@Url.Action("DanhsachHD", "Kinhdoanh")">Danh sách hợp đồng</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-desktop"></i> Chứng thư <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li>
-                                            <a href="@Url.Action("ThemCT", "Kinhdoanh")">Thêm Chứng thư</a>
-                                        </li>
-                                        <li>
-                                            <a href="@Url.Action("DanhsachCT", "Kinhdoanh")">Danh sách Chứng thư</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
             <!-- left navigation -->
             <!-- top navigation -->
+            @Html.Action("Topnavigation", "Login")
             <!-- top navigation -->
             <!-- page content -->
             @RenderBody()
