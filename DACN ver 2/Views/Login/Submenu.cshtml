@@ -1,12 +1,6 @@
 ﻿@model IEnumerable<DACN_ver_2.Models.SUBMENU>
 
 <ul class="nav child_menu">
-    @*<li class="sub_menu">
-        <a href="@Url.Action("ThemPYC", "Kinhdoanh")">Thêm Phiếu yêu cầu</a>
-    </li>
-    <li><a href="@Url.Action("DanhsachPYC", "Kinhdoanh")">Danh sách PYC</a></li>*@
-
-
     @foreach (var item in Model)
     {
         <li><a href="/@item.CONTROLLER/@item.VIEW">@Html.DisplayFor(modelItem => item.TEN)</a></li>

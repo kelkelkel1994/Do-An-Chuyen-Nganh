@@ -196,7 +196,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\asdasController.cs" />
     <Compile Include="Controllers\DatController.cs" />
     <Compile Include="Controllers\KinhdoanhController.cs" />
     <Compile Include="Controllers\LoginController.cs" />

@@ -27,6 +27,8 @@ namespace DACN_ver_2.Controllers
         // GET: Dat/Create
         public ActionResult ThemDAT()
         {
+            var tp = data.TINHTHANHs.OrderBy(p => p.TEN);
+            ViewBag.Tentp = tp;
             ViewData["tp12"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
             ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
             ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");

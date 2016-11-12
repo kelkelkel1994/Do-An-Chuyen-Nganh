@@ -347,19 +347,32 @@
                                         Vị trí/ địa điểm:
                                     </label>
                                 </div>
+                                
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Tỉnh thành:
                                     </label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
-                                        @Html.DropDownList("tp12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
-                                        @Html.ValidationMessageFor(model => model.ID_QUANHUYEN, "", new { @class = "text-danger" })
+                                        @Html.DropDownListFor(model => model.ID_QUANHUYEN, new SelectList(
+                                                        @ViewBag.Tentp, "ID_TINHTHANH", "TEN"),
+                                                        "Chọn Tỉnh/ thành",
+                                                        new
+                                                        {
+                                                            id = "ddlProductTypes",
+                                                            @class = "form-control col-md-7 col-xs-12"
+                                                        })
                                     </div>
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Quận huyện:
                                     </label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
-                                        @Html.DropDownList("quanhuyen12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
+                                        @Html.DropDownList("ID_TINHTHANH", new SelectList(Enumerable.Empty<SelectListItem>(), "ID_QUANHUYEN", "TEN"),
+                                                                            "Chọn Quận/ huyện",
+                                                                            new
+                                                                            {
+                                                                                id = "ddlProductCategorys",
+                                                                                @class = "form-control col-md-7 col-xs-12"
+                                                                            })
                                         @Html.ValidationMessageFor(model => model.ID_QUANHUYEN, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -438,3 +451,39 @@
 
     </div>
 </div>
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+
+		$("#ddlProductTypes").change(function () {
+			var tpid = $(this).val();
+			$('#products').html("");
+			$.getJSON("../Nhanvien/LoadQuannHuyen", { tpid: tpid },
+				function (categoryData) {
+					var select = $("#ddlProductCategorys");
+					select.empty();
+					select.append($('<option/>', {
+						value: 0,
+						text: "Chọn Quận/ huyện"
+					}));
+					$.each(categoryData, function (index, itemData) {
+						select.append($('<option/>', {
+							value: itemData.Value,
+							text: itemData.Text
+						}));
+					});
+				});
+
+		});
+		$(function () {
+				$('#ddlProductCategorys').change(function () {
+					var url = $(this).data('url');
+					var value = $(this).val();
+					$('#products').load(url, { id: value });
+
+				});
+			});
+
+	});
+
+</script>
