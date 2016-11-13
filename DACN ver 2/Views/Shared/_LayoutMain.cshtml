@@ -43,7 +43,8 @@
                     </div>
                     <div class="clearfix"></div>
                     <!-- menu profile quick info -->
-                    @Html.Action("Leftnavigation", "Login")
+                    @{ Html.RenderAction("Leftnavigation", "Login"); }
+                    @*@Html.Action("Leftnavigation", "Login")*@
                     <!-- /menu profile quick info -->
 
                 </div>

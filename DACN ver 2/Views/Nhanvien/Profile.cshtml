@@ -1,0 +1,78 @@
+﻿@model DACN_ver_2.Models.NHANVIEN
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<div class="right_col" role="main">
+    <div class="">
+        
+
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Thông tin cá nhân @*<small>Activity report</small>*@</h2>
+                        
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                            <div class="profile_img">
+                                <div id="crop-avatar">
+                                    <!-- Current avatar -->
+                                    <img class="img-responsive avatar-view" src="~/images/Avatar/@Html.DisplayFor(model => model.ANH)" alt="@Html.DisplayFor(model => model.ANH)" title="Change the avatar">
+                                </div>
+                            </div>
+                            @*<h3>@Html.DisplayFor(model => model.TENNV)</h3>
+                            <ul class="list-unstyled user_data">
+                                <li>
+                                    <i class="fa fa-map-marker user-profile-icon"></i> @Html.DisplayFor(model => model.DIACHI)</li>
+                                <li>
+                                    <i class="fa fa-briefcase user-profile-icon"></i> @Html.DisplayFor(model => model.LOAINHANVIEN.TEN)
+                                </li>
+                                <li>
+                                    <i class="fa fa-briefcase user-profile-icon"></i> @Html.DisplayFor(model => model.PHONGBAN.TEN)
+                                </li>
+                                <li class="m-top-xs">
+                                    <i class="fa fa-inbox user-profile-icon"></i>
+                                    <a href="/" target="_blank">@Html.DisplayFor(model => model.EMAIL)</a>
+                                </li>
+                            </ul>
+                            <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>*@
+                            <br />
+                            
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <div class="x_content">
+                                <h3>@Html.DisplayFor(model => model.TENNV)</h3>
+                                <ul class="list-unstyled user_data">
+                                    <li>
+                                        <i class="fa fa-map-marker user-profile-icon"></i>  @Html.DisplayFor(model => model.DIACHI)
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-phone-square user-profile-icon"></i>  @Html.DisplayFor(model => model.DIENTHOAI)
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-briefcase user-profile-icon"></i>  @Html.DisplayFor(model => model.LOAINHANVIEN.TEN)
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-briefcase user-profile-icon"></i>  Bộ phận: @Html.DisplayFor(model => model.PHONGBAN.TEN)
+                                    </li>
+                                    <li class="m-top-xs">
+                                        <i class="fa fa-inbox user-profile-icon"></i>  @Html.DisplayFor(model => model.EMAIL)
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("SuaProfile", "Nhanvien", new { id = Model.ID_NHANVIEN})" class="btn btn-link">Chỉnh sửa thông tin cá nhân</a> | <a href="@Url.Action("SuaAnh", "Nhanvien", new { id = Model.ID_NHANVIEN})" class="btn btn-link">Thay ảnh đại diện</a> | <a href="@Url.Action("SuaPassword", "Nhanvien", new { id = Model.ID_NHANVIEN})" class="btn btn-link">Đổi mật khẩu</a>
+</li>
+                                </ul>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

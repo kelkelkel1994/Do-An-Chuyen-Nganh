@@ -92,5 +92,90 @@ namespace DACN_ver_2.Controllers
         {
             return data.QUANHUYENs.OrderBy(c => c.TEN).Where(c => c.ID_TINHTHANH == tpid).ToList();
         }
+
+        public ActionResult Profile(int id)
+        {
+            if (Session["Login"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                var profi = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
+                return View(profi);
+            }
+        }
+
+        public ActionResult SuaProfile(int id)
+        {
+            var dt = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
+            return PartialView(dt);
+        }
+        public ActionResult SuaPassword(int id)
+        {
+            var dt = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
+            return View(dt);
+        }
+        public string BamMD5(string yourString)
+        {
+            return string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(yourString)).Select(s => s.ToString("x2")));
+        }
+        [HttpPost]
+        public ActionResult SuaPassword(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                if (collection["NewPass"].Length < 6 || collection["ReNewPass"].Length < 6)
+                {
+                    ViewData["ErrorNewPass"] = "Mật khẩu phải nhiều hơn 6 ký tự";
+                    ViewData["ErrorReNewPass"] = "Mật khẩu phải nhiều hơn 6 ký tự";
+                }
+                else
+                {
+                    NHANVIEN dtnv = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
+                    String oldpass = BamMD5(collection["OldPass"]);
+                    String newpass = BamMD5(collection["NewPass"]);
+                    String renewpass = BamMD5(collection["ReNewPass"]);
+                    if (String.IsNullOrEmpty(oldpass) || oldpass != dtnv.PASS)
+                    {
+                        ViewData["ErrorOldPass"] = "Mật khẩu cũ sai hoặc để trống";
+                    }
+                    else if (String.IsNullOrEmpty(newpass))
+                    {
+                        ViewData["ErrorNewPass"] = "Không được để trống";
+                    }
+                    else if (String.IsNullOrEmpty(renewpass))
+                    {
+                        ViewData["ErrorReNewPass"] = "Không được để trống";
+                    }
+                    else if (renewpass != newpass)
+                    {
+                        ViewData["ErrorNewPass"] = "Không trùng nhau";
+                        ViewData["ErrorReNewPass"] = "Không trùng nhau";
+                    }
+                    else
+                    {
+                        dtnv.NGAYSUA = DateTime.Now;
+                        dtnv.PASS = newpass;
+                        UpdateModel(dtnv);
+                        data.SubmitChanges();
+                        return RedirectToAction("Profile", "Nhanvien", new { id = dtnv.ID_NHANVIEN});
+                    }
+                }
+                return View();
+                
+            }
+            catch
+            {
+                return View();
+            }
+
+        }
+        public ActionResult SuaAvatar(int id)
+        {
+            var dt = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
+            return PartialView(dt);
+        }
     }
 }

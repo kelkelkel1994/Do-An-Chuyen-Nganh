@@ -53,11 +53,7 @@ namespace DACN_ver_2.Controllers
             var nv = data.NHANVIENs.ToList().Where(c => c.TRANGTHAI == true).OrderBy(s => s.ID_NHANVIEN);
             return View(nv);
         }
-        public ActionResult Danhsachnhanvien()
-        {
-            var nv = data.NHANVIENs.ToList().Where(c => c.TRANGTHAI == true).OrderBy(s => s.ID_NHANVIEN);
-            return View(nv);
-        }
+        
 
         public ActionResult Themnhanvien()
         {

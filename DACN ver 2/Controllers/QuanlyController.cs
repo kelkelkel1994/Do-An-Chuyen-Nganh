@@ -13,7 +13,14 @@ namespace DACN_ver_2.Controllers
         // GET: Quanly
         public ActionResult Danhmuc()
         {
-            return View();
+            if (Session["Login"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Loaitaisan()

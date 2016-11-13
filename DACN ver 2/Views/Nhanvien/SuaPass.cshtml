@@ -1,0 +1,42 @@
+﻿
+
+@using (Html.BeginForm())
+{
+    
+        <div class="form-group col-md-12">
+            @Html.Label("Tên đăng nhập: ", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @ViewData["username"]
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+            @Html.Label("Mật khẩu cũ: ", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-5">
+                @Html.TextBox("OldPass", null, new { @class = "form-control", @type = "password" })
+                @ViewData["ErrorOldPass"]
+            </div>
+        </div>
+        <div class="form-group col-md-12">
+            @Html.Label("Mật khẩu mới: ", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-5">
+                @Html.TextBox("NewPass", null, new { @class = "form-control", @type = "password" })
+                @ViewData["ErrorNewPass"]
+            </div>
+        </div>
+        <div class="form-group col-md-12">
+            @Html.Label("Nhập lại mật khẩu: ", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-5">
+                @Html.TextBox("ReNewPass", null, new { @class = "form-control", @type = "password" })
+                @ViewData["ErrorReNewPass"]
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    
+}
+

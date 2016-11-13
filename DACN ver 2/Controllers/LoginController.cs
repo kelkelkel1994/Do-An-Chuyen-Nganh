@@ -40,7 +40,7 @@ namespace DACN_ver_2.Controllers
             
         }
         [HttpPost]
-        public ActionResult Login(FormCollection collection, bool CaptchaValid)
+        public ActionResult Login(FormCollection collection/*, bool CaptchaValid*/)
         {
             var user = collection["Username"];
             var pass = BamMD5(collection["Password"]);
@@ -53,11 +53,11 @@ namespace DACN_ver_2.Controllers
                 ViewData["ErrorPass"] = "Password không được để trống";
 
             }
-            else if(!CaptchaValid)
-                {
-                //Captcha failed to validate
-                ModelState.AddModelError("reCaptcha", "Invalid reCaptcha");
-                }
+            //else if(!CaptchaValid)
+            //    {
+            //    //Captcha failed to validate
+            //    ModelState.AddModelError("reCaptcha", "Invalid reCaptcha");
+            //    }
             else
             {
                 
@@ -117,15 +117,23 @@ namespace DACN_ver_2.Controllers
         }
         public ActionResult Leftnavigation()
         {
-            if (Session["Login"] == null)
+            try
             {
-                return RedirectToAction("Login", "Login");
+
+                if (Session["Login"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
+                else
+                {
+                    List<Dangnhap> ktdangnhap = kiemtradangnhap();
+                    var thongtin = ktdangnhap.FirstOrDefault(s => s.iID == int.Parse(Session["ID"].ToString()));
+                    return PartialView(thongtin);
+                }
             }
-            else
+            catch
             {
-                List<Dangnhap> ktdangnhap = kiemtradangnhap();
-                var thongtin = ktdangnhap.FirstOrDefault(s => s.iID == int.Parse(Session["ID"].ToString()));
-                return PartialView(thongtin);
+                return View("Login", "Login");
             }
         }
 

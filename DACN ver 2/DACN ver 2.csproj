@@ -448,7 +448,6 @@
     <Content Include="Views\Quanly\Loaitaisan.cshtml" />
     <Content Include="Views\Quanly\Loaithongtin.cshtml" />
     <Content Include="Views\Quanly\Loaihinh.cshtml" />
-    <Content Include="Views\Main\Danhsachnhanvien.cshtml" />
     <Content Include="Views\Main\Themnhanvien.cshtml" />
     <Content Include="Views\Main\Themchinhanh.cshtml" />
     <Content Include="Views\Main\Themphongban.cshtml" />
@@ -591,6 +590,11 @@
     <Content Include="Views\Dat\ThemDAT.cshtml" />
     <Content Include="Views\Login\Menuleft.cshtml" />
     <Content Include="Views\Login\Submenu.cshtml" />
+    <Content Include="Views\Nhanvien\Profile.cshtml" />
+    <Content Include="Views\Nhanvien\SuaProfile.cshtml" />
+    <Content Include="Views\Nhanvien\SuaPass.cshtml" />
+    <Content Include="Views\Nhanvien\SuaPassword.cshtml" />
+    <Content Include="Views\Nhanvien\SuaAvatar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
