@@ -238,8 +238,8 @@
   <Table Name="dbo.DAT" Member="DATs">
     <Type Name="DAT">
       <Column Name="ID_DAT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ID_DDPL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_LOAIHINH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_DDPL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_LOAIHINH" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ID_CHUNGTHU" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SOHIEU" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="DIENTICHLODAT" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -262,7 +262,7 @@
       <Column Name="NGUOITAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NGUOISUA" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="ID_LTT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_LTT" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MDSD" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="CTHH" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="HINHDANG" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
@@ -278,10 +278,10 @@
       <Column Name="THUADAT" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="TOBANDO" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
       <Column Name="DIACHI" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="ID_CHITIETLOAI" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_CAPDUONG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_KETCAUDUONG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_CRMD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_CHITIETLOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CAPDUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_KETCAUDUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CRMD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ID_QUANHUYEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="CAPDUONG_DAT" Member="CAPDUONG" ThisKey="ID_CAPDUONG" OtherKey="ID_CAPDUONG" Type="CAPDUONG" IsForeignKey="true" />
       <Association Name="CHITIETLOAI_DAT" Member="CHITIETLOAI" ThisKey="ID_CHITIETLOAI" OtherKey="ID_CHITIETLOAI" Type="CHITIETLOAI" IsForeignKey="true" />
@@ -501,6 +501,8 @@
       <Association Name="NHANVIEN_DAT1" Member="DATs1" ThisKey="ID_NHANVIEN" OtherKey="NGUOILAPPHIEU" Type="DAT" />
       <Association Name="NHANVIEN_HOPDONG" Member="HOPDONGs" ThisKey="ID_NHANVIEN" OtherKey="ID_NHANVIEN" Type="HOPDONG" />
       <Association Name="NHANVIEN_PHIEUYEUCAU" Member="PHIEUYEUCAUs" ThisKey="ID_NHANVIEN" OtherKey="ID_NHANVIEN" Type="PHIEUYEUCAU" />
+      <Association Name="NHANVIEN_THONGBAO" Member="THONGBAOs" ThisKey="ID_NHANVIEN" OtherKey="ID_NGUOIGUI" Type="THONGBAO" />
+      <Association Name="NHANVIEN_THONGBAO1" Member="THONGBAOs1" ThisKey="ID_NHANVIEN" OtherKey="ID_NGUOINHAN" Type="THONGBAO" />
       <Association Name="LOAINHANVIEN_NHANVIEN" Member="LOAINHANVIEN" ThisKey="ID_LOAINHANVIEN" OtherKey="ID_LOAINHANVIEN" Type="LOAINHANVIEN" IsForeignKey="true" />
       <Association Name="PHANQUYEN_NHANVIEN" Member="PHANQUYEN" ThisKey="ID_PHANQUYEN" OtherKey="ID_PHANQUYEN" Type="PHANQUYEN" IsForeignKey="true" />
       <Association Name="PHONGBAN_NHANVIEN" Member="PHONGBAN" ThisKey="ID_PHONGBAN" OtherKey="ID_PHONGBAN" Type="PHONGBAN" IsForeignKey="true" />
@@ -592,6 +594,19 @@
       <Column Name="KINHDOANH" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="THAMDINH" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="MENU_SUBMENU" Member="MENU" ThisKey="ID_MENU" OtherKey="ID_MENU" Type="MENU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.THONGBAO" Member="THONGBAOs">
+    <Type Name="THONGBAO">
+      <Column Name="ID_THONGBAO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_NGUOIGUI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_NGUOINHAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NOIDUNG" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NGAYGUI" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TRANGTHAIXEM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="NHANVIEN_THONGBAO" Member="NHANVIEN" ThisKey="ID_NGUOIGUI" OtherKey="ID_NHANVIEN" Type="NHANVIEN" IsForeignKey="true" />
+      <Association Name="NHANVIEN_THONGBAO1" Member="NHANVIEN1" ThisKey="ID_NGUOINHAN" OtherKey="ID_NHANVIEN" Type="NHANVIEN" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.THONGTINCONGTY" Member="THONGTINCONGTies">

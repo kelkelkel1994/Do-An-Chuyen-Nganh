@@ -84,7 +84,7 @@ namespace DACN_ver_2.Controllers
             var categoryData = categoryList.Select(m => new SelectListItem()
             {
                 Text = m.TEN,
-                Value = m.ID_TINHTHANH.ToString()
+                Value = m.ID_QUANHUYEN.ToString()
             });
             return Json(categoryData, JsonRequestBehavior.AllowGet);
         }
@@ -101,18 +101,55 @@ namespace DACN_ver_2.Controllers
             }
             else
             {
+                if (id != int.Parse(Session["ID"].ToString()))
+                {
+                    id = int.Parse(Session["ID"].ToString());
+                }
                 var profi = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
                 return View(profi);
             }
         }
 
-        public ActionResult SuaProfile(int id)
+        public ActionResult SuaThongtin(int id)
         {
+            if ( id != int.Parse(Session["ID"].ToString()))
+            {
+                id = int.Parse(Session["ID"].ToString());
+            }          
+              
             var dt = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
-            return PartialView(dt);
+            return View(dt);
+        }
+        [HttpPost]
+        public ActionResult SuaThongtin(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                if (id != int.Parse(Session["ID"].ToString()))
+                {
+                    id = int.Parse(Session["ID"].ToString());
+                }
+                NHANVIEN nv = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
+                nv.NGAYSUA = DateTime.Now;
+                UpdateModel(nv);
+                data.SubmitChanges();
+                ViewData["Thongbao"] = 0;
+                return View();
+
+            }
+            catch
+            {
+                ViewData["Thongbao"] = 1;
+                return View();
+            }
         }
         public ActionResult SuaPassword(int id)
         {
+            if (id != int.Parse(Session["ID"].ToString()))
+            {
+                id = int.Parse(Session["ID"].ToString());
+            }
             var dt = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
             return View(dt);
         }
@@ -174,8 +211,12 @@ namespace DACN_ver_2.Controllers
         }
         public ActionResult SuaAvatar(int id)
         {
+            if (id != int.Parse(Session["ID"].ToString()))
+            {
+                id = int.Parse(Session["ID"].ToString());
+            }
             var dt = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
-            return PartialView(dt);
+            return View(dt);
         }
     }
 }

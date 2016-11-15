@@ -594,6 +594,7 @@
     <Content Include="Views\Nhanvien\SuaProfile.cshtml" />
     <Content Include="Views\Nhanvien\SuaPass.cshtml" />
     <Content Include="Views\Nhanvien\SuaPassword.cshtml" />
+    <Content Include="Views\Nhanvien\SuaThongtin.cshtml" />
     <Content Include="Views\Nhanvien\SuaAvatar.cshtml" />
   </ItemGroup>
   <ItemGroup>

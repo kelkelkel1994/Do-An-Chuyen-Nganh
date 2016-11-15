@@ -52,13 +52,14 @@ namespace DACN_ver_2.Controllers
             {
                 // TODO: Add insert logic here
                 dat.ID_DDPL = int.Parse(collection["ddpl12"]);
+                var qh = collection["qqqq"];
+                dat.ID_QUANHUYEN = int.Parse(qh);
                 dat.ID_LOAIHINH = int.Parse(collection["loaihinh12"]);
                 dat.ID_LTT = int.Parse(collection["loaithongtin12"]);
                 dat.ID_CHITIETLOAI = int.Parse(collection["chitietloai12"]);
                 dat.ID_CAPDUONG = int.Parse(collection["capduong12"]);
                 dat.ID_KETCAUDUONG = int.Parse(collection["ketcau12"]);
                 dat.ID_CRMD = int.Parse(collection["chieurongmatduong12"]);
-               // dat.ID_QUANHUYEN = int.Parse(collection["quanhuyen12"]);
                 dat.NGAYTAO = DateTime.Now;
                 data.DATs.InsertOnSubmit(dat);
                 data.SubmitChanges();

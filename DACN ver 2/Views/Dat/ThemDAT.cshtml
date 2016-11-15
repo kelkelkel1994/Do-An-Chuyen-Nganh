@@ -231,7 +231,7 @@
                                     </label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
 
-                                        @Html.EditorFor(model => model.ID_CAPDUONG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.DropDownList("capduong12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
                                         @Html.ValidationMessageFor(model => model.ID_CAPDUONG, "", new { @class = "text-danger" })
 
                                     </div>
@@ -240,7 +240,7 @@
                                     </label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
                                         
-                                            @Html.EditorFor(model => model.ID_KETCAUDUONG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                            @Html.DropDownList("ketcau12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
                                             @Html.ValidationMessageFor(model => model.ID_KETCAUDUONG, "", new { @class = "text-danger" })
                                             
                                     </div>
@@ -251,7 +251,7 @@
                                     </label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
 
-                                        @Html.EditorFor(model => model.ID_CRMD, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.DropDownList("chieurongmatduong12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
                                         @Html.ValidationMessageFor(model => model.ID_CRMD, "", new { @class = "text-danger" })
 
                                     </div>
@@ -353,7 +353,7 @@
                                         Tỉnh thành:
                                     </label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
-                                        @Html.DropDownListFor(model => model.ID_QUANHUYEN, new SelectList(
+                                        @Html.DropDownList("ahii", new SelectList(
                                                         @ViewBag.Tentp, "ID_TINHTHANH", "TEN"),
                                                         "Chọn Tỉnh/ thành",
                                                         new
@@ -366,7 +366,7 @@
                                         Quận huyện:
                                     </label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
-                                        @Html.DropDownList("ID_TINHTHANH", new SelectList(Enumerable.Empty<SelectListItem>(), "ID_QUANHUYEN", "TEN"),
+                                        @Html.DropDownList("qqqq", new SelectList(Enumerable.Empty<SelectListItem>(), "ID_QUANHUYEN", "TEN"),
                                                                             "Chọn Quận/ huyện",
                                                                             new
                                                                             {

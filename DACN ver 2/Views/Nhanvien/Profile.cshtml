@@ -1,7 +1,7 @@
 ﻿@model DACN_ver_2.Models.NHANVIEN
 
 @{
-    ViewBag.Title = "Profile";
+    ViewBag.Title = "Thông tin cá nhân";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 <div class="right_col" role="main">
@@ -64,7 +64,7 @@
                                         <i class="fa fa-inbox user-profile-icon"></i>  @Html.DisplayFor(model => model.EMAIL)
                                     </li>
                                     <li>
-                                        <a href="@Url.Action("SuaProfile", "Nhanvien", new { id = Model.ID_NHANVIEN})" class="btn btn-link">Chỉnh sửa thông tin cá nhân</a> | <a href="@Url.Action("SuaAnh", "Nhanvien", new { id = Model.ID_NHANVIEN})" class="btn btn-link">Thay ảnh đại diện</a> | <a href="@Url.Action("SuaPassword", "Nhanvien", new { id = Model.ID_NHANVIEN})" class="btn btn-link">Đổi mật khẩu</a>
+                                        <a href="@Url.Action("SuaThongtin", "Nhanvien", new { id = Model.ID_NHANVIEN})" class="btn btn-link">Chỉnh sửa thông tin cá nhân</a> | <a href="@Url.Action("SuaAvatar", "Nhanvien", new { id = Model.ID_NHANVIEN})" class="btn btn-link">Thay ảnh đại diện</a> | <a href="@Url.Action("SuaPassword", "Nhanvien", new { id = Model.ID_NHANVIEN})" class="btn btn-link">Đổi mật khẩu</a>
 </li>
                                 </ul>
                                 <br />
