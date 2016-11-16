@@ -77,6 +77,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.6.4\lib\net40\Rotativa.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -196,12 +200,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\DatController.cs" />
     <Compile Include="Controllers\KinhdoanhController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\NhanvienController.cs" />
     <Compile Include="Controllers\QuanlyController.cs" />
+    <Compile Include="Controllers\TaisanController.cs" />
+    <Compile Include="Controllers\ThongkeController.cs" />
     <Compile Include="Controllers\TracuuController.cs" />
     <Compile Include="Filters\RecaptchaFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -251,6 +256,7 @@
     <Content Include="images\spritemap.png" />
     <Content Include="images\user.png" />
     <Content Include="images\visa.png" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -263,7 +269,9 @@
       <LastGenOutput>DatabaseClasses.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\canvasjs.min.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\custom.min.js" />
     <Content Include="Scripts\datepicker\daterangepicker.js" />
@@ -277,9 +285,15 @@
     <Content Include="Scripts\dropzone\dropzone.js" />
     <Content Include="Scripts\dropzone\dropzone.min.css" />
     <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\highcharts.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery.canvasjs.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -586,8 +600,6 @@
     <Content Include="Views\Tracuu\SearchTenduong.cshtml" />
     <Content Include="Views\Tracuu\GetGiaDat.cshtml" />
     <Content Include="Views\Tracuu\Index.cshtml" />
-    <Content Include="Views\Dat\Create.cshtml" />
-    <Content Include="Views\Dat\ThemDAT.cshtml" />
     <Content Include="Views\Login\Menuleft.cshtml" />
     <Content Include="Views\Login\Submenu.cshtml" />
     <Content Include="Views\Nhanvien\Profile.cshtml" />
@@ -596,6 +608,15 @@
     <Content Include="Views\Nhanvien\SuaPassword.cshtml" />
     <Content Include="Views\Nhanvien\SuaThongtin.cshtml" />
     <Content Include="Views\Nhanvien\SuaAvatar.cshtml" />
+    <Content Include="Views\Nhanvien\ThongbaoTOP.cshtml" />
+    <Content Include="Views\Taisan\ThemCHCC.cshtml" />
+    <Content Include="Views\Kinhdoanh\ChiTietCT.cshtml" />
+    <Content Include="Views\Kinhdoanh\XemTruoc.cshtml" />
+    <Content Include="Views\Kinhdoanh\SuaNDCT.cshtml" />
+    <Content Include="Views\Thongke\Index.cshtml" />
+    <Content Include="Views\Taisan\ThemDAT.cshtml" />
+    <Content Include="Views\Taisan\ThemVPCT.cshtml" />
+    <Content Include="Views\Tracuu\BanggiadatNB.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

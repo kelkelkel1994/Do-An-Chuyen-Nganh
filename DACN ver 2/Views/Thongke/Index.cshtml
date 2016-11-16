@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<h2>Index</h2>
+
+<!--Load the AJAX API-->
+<script src="~/Scripts/jquery.canvasjs.min.js"></script>
+<script src="~/Scripts/canvasjs.min.js"></script>
+<script src="~/Scripts/jquery-2.1.1.js"></script>
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script src="~/Scripts/highcharts.js"></script>
+<script src="~/Scripts/excanvas.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var dataPoints = [];
+        $.getJSON("../Thongke/GetDoanhthuNV", function (data) {
+            for (var i = 0; i <= data.length -1; i++) {
+                dataPoints.push({ label: data[i].tennv, y: parseInt(data[i].tong) });
+            }
+            var chart = new CanvasJS.Chart("chartContainer", {
+                theme: "theme2",//theme1
+                title: {
+                    text: "Doanh thu từng nhân viên"
+                },
+                data: [
+                {
+                    // Change type to "bar", "splineArea", "area", "spline", "pie",etc.
+                    type: "column",
+                    dataPoints: dataPoints
+                }
+                ]
+            });
+
+            chart.render();
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var dataPoints = [];
+        $.getJSON("../Thongke/Getsoluonghd", function (data) {
+            for (var i = 0; i <= data.length - 1; i++) {
+                dataPoints.push({ label: "Tháng " + data[i].thang, y: parseInt(data[i].sl) });
+            }
+            var chart = new CanvasJS.Chart("chartContainer1", {
+                theme: "theme2",//theme1
+                title: {
+                    text: "Hợp đồng theo tháng năm @Html.Raw(ViewBag.nam)"
+                },
+                data: [
+                {
+                    // Change type to "bar", "splineArea", "area", "spline", "pie",etc.
+                    type: "line",
+                    dataPoints: dataPoints
+                }
+                ]
+            });
+
+            chart.render();
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var dataPoints = [];
+        $.getJSON("../Thongke/GetPYCNhanVien", function (data) {
+            for (var i = 0; i <= data.length -1; i++) {
+                dataPoints.push({ label: data[i].tennv, legendText: data[i].tennv, y: parseInt(data[i].sl) });
+            }
+            var chart = new CanvasJS.Chart("chartContainer2", {
+                theme: "theme2",//theme1
+                title: {
+                    text: "Số phiếu yêu cầu"
+                },
+                data: [
+                {
+                    // Change type to "bar", "splineArea", "area", "spline", "pie",etc.
+                    type: "pie",
+                    showInLegend: true,
+                    indexLabel: "{label}:{y} phiếu",
+                    dataPoints: dataPoints
+                }
+                ]
+            });
+
+            chart.render();
+        });
+
+    });
+</script>
+ doah thu tung thằng
+<div id="chartContainer" style="height: 300px; width: 50%;"></div>
+<br />
+ Tong hợp đồng theo thnag1 @ViewBag.nam
+<div id="chartContainer1" style="height: 300px; width: 50%;"></div>
+<br />
+ Phieu yêu cầu của nhân viên
+<div id="chartContainer2" style="height: 300px; width: 50%;"></div>
+<br />

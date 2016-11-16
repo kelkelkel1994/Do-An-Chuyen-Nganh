@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using DACN_ver_2.Models;
 using System.IO;
+using Rotativa.Options;
+using Rotativa;
 
 namespace DACN_ver_2.Controllers
 {
@@ -27,7 +29,7 @@ namespace DACN_ver_2.Controllers
         // POST: Kinhdoanh/Create
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult ThemPYC(FormCollection collection, PHIEUYEUCAU pyc)
+        public ActionResult ThemPYC(FormCollection collection, PHIEUYEUCAU pyc, THONGBAO tb)
         {
             try
             {
@@ -43,6 +45,14 @@ namespace DACN_ver_2.Controllers
                 pyc.ID_LOAITAISAN = int.Parse(lts);
                 pyc.ID_KH = int.Parse(kh);
                 data.PHIEUYEUCAUs.InsertOnSubmit(pyc);
+                data.SubmitChanges();
+                tb.ID_NGUOIGUI = 1;
+                tb.ID_NGUOINHAN = int.Parse(nv);
+                tb.NOIDUNG = "Bạn được giao: "+ collection["SOPYC"] + "/2016/PYC-AMAX";
+                tb.NGAYGUI = DateTime.Now;
+                tb.TRANGTHAIXEM = false;
+                tb.TRANGTHAI = true;
+                data.THONGBAOs.InsertOnSubmit(tb);
                 data.SubmitChanges();
                 return RedirectToAction("ThemPYC");
             }
@@ -308,6 +318,60 @@ namespace DACN_ver_2.Controllers
                 data.KHACHHANGs.DeleteOnSubmit(pb);
                 data.SubmitChanges();
                 return RedirectToAction("Danhsachkhachhang");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //Xem va in chung thu
+        public ActionResult ChiTietCT(int id)
+        {
+            var ct = from c in data.CHUNGTHUTDGs
+                     where c.ID_CHUNGTHU == id
+                     select c;
+            return PartialView(ct.Single());
+        }
+        public ActionResult XemTruoc(int id)
+        {
+            var ct = from c in data.CHUNGTHUTDGs
+                     where c.ID_CHUNGTHU == id
+                     select c;
+            ViewBag.IDCT = id;
+            return PartialView(ct.Single());
+        }
+        public ActionResult PrintChiTietCT(int id)
+        {
+            return new ActionAsPdf(
+                           "ChiTietCT",
+                           new { id = id })
+            {
+                FileName = "Invoice.pdf",
+                PageSize = Size.A4,
+                PageOrientation = Orientation.Portrait,
+                PageMargins = { Left = 25, Right = 25, Top = 10, Bottom = 10 },
+                PageWidth = 210,
+                PageHeight = 297
+
+            };
+        }
+        //sửa nội dung chứng thư
+        public ActionResult SuaNDCT()
+        {
+            var x = data.NOIDUNGCTs.FirstOrDefault(s => s.ID_NOIDUNG == 1);
+            return View(x);
+        }
+        [HttpPost]
+        public ActionResult SuaNDCT(FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                NOIDUNGCT x = data.NOIDUNGCTs.FirstOrDefault(s => s.ID_NOIDUNG == 1);
+                UpdateModel(x);
+                data.SubmitChanges();
+                return RedirectToAction("Kinhdoanh");
             }
             catch
             {

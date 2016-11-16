@@ -53,5 +53,12 @@ namespace DACN_ver_2.Controllers
             }
             return PartialView(tenduong);
         }
+
+        // load danh sach tai san dat
+        public ActionResult BanggiadatNB()
+        {
+            var a = data.DATs.ToList();
+            return View(a);
+        }
     }
 }

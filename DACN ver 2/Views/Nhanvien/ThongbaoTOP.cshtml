@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DACN_ver_2.Models.THONGBAO>
+
+@if (int.Parse(ViewData["dem"].ToString()) == 0)
+{
+    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-envelope-o"></i>
+    </a>
+}
+else
+{
+    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+        <i class="fa fa-envelope-o"></i>
+        <span class="badge bg-green">@ViewData["dem"]</span>
+    </a>
+}
+
+<ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="/thongbao/@item.ID_THONGBAO">
+                <span class="image"><img src="~/images/Avatar/@item.NHANVIEN.ANH" alt="Profile Image" /></span>
+                <span>
+                    <span>@Html.DisplayFor(modelItem => item.NHANVIEN.TENNV)</span>
+                    
+                        
+                        @if ((DateTime.Now.Day - item.NGAYGUI.Value.Day) > 0)
+                        {
+                            <span class="time">
+                                @(DateTime.Now.Day - item.NGAYGUI.Value.Day) day ago
+                            </span>
+                        }
+                        else if ((DateTime.Now.Hour - item.NGAYGUI.Value.Hour) > 0)
+                        {
+                                <span class="time">
+                                    @(DateTime.Now.Hour - item.NGAYGUI.Value.Hour) hour ago
+                                </span>
+                                    }
+                                    else
+                                    {
+                                    <span class="time">
+                                        @(DateTime.Now.Minute - item.NGAYGUI.Value.Minute) min ago
+                                    </span>
+                                        }
+                                    
+                </span>
+                <span class="message">
+                    @Html.DisplayFor(modelItem => item.NOIDUNG)
+                </span>
+            </a>
+        </li>
+    }
+    <li>
+        <div class="text-center">
+            <a>
+                <strong>See All Alerts</strong>
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </li>
+</ul>
+
+

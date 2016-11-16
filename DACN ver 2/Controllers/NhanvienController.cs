@@ -218,5 +218,12 @@ namespace DACN_ver_2.Controllers
             var dt = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
             return View(dt);
         }
+
+        public ActionResult ThongbaoTOP(int id)
+        {
+            var tbt = data.THONGBAOs.ToList().Where(s => s.ID_NGUOINHAN == id).OrderByDescending(s => s.NGAYGUI).Take(5);
+            ViewData["dem"] = data.THONGBAOs.ToList().Where(s => s.ID_NGUOINHAN == id).Count();
+            return PartialView(tbt);
+        }
     }
 }

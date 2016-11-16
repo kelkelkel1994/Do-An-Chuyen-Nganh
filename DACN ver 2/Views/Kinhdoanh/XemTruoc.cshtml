@@ -1,0 +1,372 @@
+﻿@model DACN_ver_2.Models.CHUNGTHUTDG
+
+@*@Html.DisplayFor(model => model.ID_PYC)
+
+
+    @Html.DisplayFor(model => model.ID_HOPDONG)
+
+
+
+    @Html.DisplayFor(model => model.NGAYXUAT)
+
+    @Html.DisplayFor(model => model.THOIDIEMTDG)
+
+    @Html.DisplayFor(model => model.MUCDICHTDG)
+
+    @Html.DisplayFor(model => model.CACHTIEPCANTDG)
+
+    @Html.DisplayFor(model => model.PPTDG)
+
+    @Html.DisplayFor(model => model.KETQUATDG)
+
+    @Html.DisplayFor(model => model.NGAYTAO)
+
+    @Html.DisplayFor(model => model.NGAYSUA)
+
+    @Html.DisplayFor(model => model.NGUOITAO)
+
+    @Html.DisplayFor(model => model.NGUOISUA)*@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title></title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+
+        td {
+            padding: 0;
+        }
+
+        .header h2 {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            font-size: 18px;
+            color: #0A73C3;
+        }
+
+        .header h3 {
+            padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .np1 {
+            color: #666;
+            font-size: 14px;
+            margin: -18px 18px 0;
+        }
+
+        .mp1 {
+            float: right;
+            margin: 0 22px 0 0;
+        }
+
+        .header_sub {
+            width: 960px;
+            margin: 5px 0 0;
+            border-radius: 5px 5px 0 0;
+        }
+
+            .header_sub h2 {
+                padding: 20px;
+                font-size: 18px;
+                color: #0A73C3;
+                margin: -15px 3px 0 0;
+                height: 10px;
+            }
+
+        #f1 {
+            padding-top: 10px;
+        }
+
+        #ip1 {
+            width: 100%;
+            text-align: justify;
+            font-size: 12px;
+            color: #333;
+        }
+
+            #ip1 h3 {
+                font-size: 12px;
+            }
+
+        .im1 {
+            float: right;
+            margin: -40px 0 0 0;
+            font-size: 8px;
+        }
+
+        .alfin {
+            margin-left: 18px;
+            width: 300px;
+            color: #2b2b2b;
+            width: 400px;
+            font-size: 13px;
+            background: url("/images/bg.widget.png") repeat scroll;
+            border: 0.3px solid #b6b6b6;
+        }
+
+        .p th {
+            font-size: 12px;
+            width: 140px;
+        }
+
+        .prdt tr {
+            background: #fff;
+        }
+
+        .espaco {
+            height: 5px;
+        }
+
+        #borderrightCF {
+            border-right: 1px solid #ccc;
+        }
+
+        .alfin {
+            padding: 10px 20px 10px;
+            font-size: 13px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .alrsp {
+            margin: -18px 0px 0;
+            font-size: 13px;
+        }
+
+            .alrsp span {
+                color: #000;
+                text-decoration: underline;
+                margin: 0 5px;
+            }
+
+        .albr {
+            padding: 10px 0 0 0;
+        }
+
+        .iwg {
+            font-size: 9px;
+            color: #0A73C3;
+            width: 200px;
+            text-align: justify;
+        }
+
+        .tp01 {
+            border-collapse: collapse;
+        }
+
+            .tp01 th {
+                color: white;
+                border: 1px solid #fff;
+            }
+
+            .tp01 td, .myTable th {
+                padding: 5px;
+                border: 0px solid #424242;
+            }
+
+        .auto-style1 {
+            height: 30px;
+            width: 566px;
+        }
+
+        .auto-style3 {
+            width: 609px;
+        }
+    </style>
+</head>
+<body bgcolor="#424242" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" style="-webkit-font-smoothing: antialiased; width: 100% !important; background: #424242; -webkit-text-size-adjust: none;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#424242">
+        <tr>
+            <td bgcolor="#424242" width="100%">
+                <table width="960" cellpadding="0" cellspacing="0" border="0" align="center" class="table">
+                    <br />
+                    <table align="center" style="width: 960px; height: auto; background: #fff; border-radius: 5px 5px 5px 5px; border: 1px solid #ccc; ">
+                        <tr style="border: 1px solid #ccc;">
+                            <td class="auto-style3">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="header">
+
+                                                @Html.ActionLink("XUẤT VĂN BẢN ", "PrintChiTietCT", new { id = ViewBag.IDCT }) ----
+                                                @Html.ActionLink("Back to list", "DanhsachCT", "Kinhdoanh")
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td style="padding-left: 20px; " class="auto-style1">
+                                            <div class="mp1">
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <table align="center" style="width: 960px; height: auto; background: #fff; border-radius: 5px 5px 5px 5px; border: 1px solid #ccc; padding-bottom: 15px;">
+                        <tr>
+                            <td>
+                                <div class="header_sub">
+                                    <table class="tp01" cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
+                                        <tr>
+                                            <td>
+                                                <div style="width: 842px;
+                             margin: 0px auto;">
+                                                    <p style="margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;"><span style="font-size: 19.0pt;">&nbsp;</span></p>
+                                                    <p style="margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;"><span style="font-size: 19.0pt;">&nbsp;</span></p>
+                                                    <p style="margin: 6pt 0cm; line-height: 150%; font-size: 18pt; font-family: 'Times New Roman', serif;"><span style="font-size: 2.0pt; line-height: 150%; color: black;">&nbsp;</span></p>
+                                                    <p style="margin: 6pt 0cm; line-height: 150%; font-size: 18pt; font-family: 'Times New Roman', serif;"><span style="font-size: 6.0pt; line-height: 150%; color: black;">&nbsp;</span></p>
+                                                    <table class="MsoNormalTable" style=" margin-left 6.75pt; margin-right 6.75pt; width 846px;" border="0" cellspacing="0" cellpadding="0" align="left">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="width: 316px; padding: 0cm 5.4pt;" valign="top">
+                                                                    <p style="line-height: 150%; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;"><span style="color: black;">Số @Html.DisplayFor(model => model.SOCHUNGTHU)</span></p>
+                                                                </td>
+                                                                <td style="width: 500px; padding: 0cm 5.4pt;" valign="top">
+                                                                    <p style="text-align: right; line-height: 150%; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="right"><em><span style="color: black;">@Html.DisplayFor(model => model.NOIDUNGCT.LOCAL), ng&agrave;y @DateTime.Now.Day th&aacute;ng @DateTime.Now.Month năm @DateTime.Now.Year</span></em></p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+
+                                                    <p style="margin: 6pt 0cm 24pt; text-align: center; line-height: 150%; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center">&nbsp;</p>
+                                                    <p style="margin: 6pt 0cm 24pt; text-align: center; line-height: 150%; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 25.0pt; line-height: 150%; color: black;">@Html.DisplayFor(model => model.NOIDUNGCT.TIEUDE)</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+
+                                                    <p style="margin: 18pt 0cm 18pt; text-indent: 36pt; line-height: 150%; font-size: 18pt; font-family: 'Times New Roman', serif;"><span style="font-size: 19.0pt; line-height: 150%; color: black;">Kính gửi: <strong>Ông/Bà @Html.DisplayFor(model => model.PHIEUYEUCAU.KHACHHANG.TENKH)</strong></span></p>
+                                                    <p style="margin: 6pt 0cm 0.0001pt; text-align: justify; line-height: 150%; font-size: 18pt; font-family: 'Times New Roman', serif;"><span style="font-size: 19.0pt; line-height: 150%;">Thực hiện theo yêu cầu của quý Ông (Phiếu yêu cầu thẩm định giá số @Html.DisplayFor(model => model.PHIEUYEUCAU.SOPYC) ngày @Html.DisplayFor(model => model.PHIEUYEUCAU.NGAYTAO.Value.Day)/@Html.DisplayFor(model => model.PHIEUYEUCAU.NGAYTAO.Value.Month)/@Html.DisplayFor(model => model.PHIEUYEUCAU.NGAYTAO.Value.Year);</span></p>
+                                                    <p style="margin: 6pt 0cm 0.0001pt; text-align: justify; line-height: 150%; font-size: 18pt; font-family: 'Times New Roman', serif;"><span style="font-size: 19.0pt; line-height: 150%;">Và trên cơ sở Báo cáo kết quả thẩm định giá số 238/BCTĐG-AMAX ngày 19/9/2016;</span></p>
+                                                    <p style="margin: 6pt 0cm 0.0001pt; text-align: justify; line-height: 150%; font-size: 18pt; font-family: 'Times New Roman', serif;"><span style="font-size: 19.0pt; line-height: 150%;">Công ty TNHH Tư vấn đầu tư và Thẩm định giá AMAX (“AMAX”) cung cấp chứng thư thẩm định giá đến quý Ông với các nội dung như sau:</span></p>
+                                                    <ol style="margin-bottom: 0cm;font-size: 19.0pt;">
+                                                        <li><strong><span style="font-size: 19.0pt; line-height: 150%;">Tài sản thẩm định giá</span></strong></li>
+                                                    </ol>
+                                                    <ul style="margin-bottom: 0cm;font-size: 19.0pt; line-height: 150%;">
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%;">Loại tài sản: @Html.DisplayFor(model => model.PHIEUYEUCAU.LOAITAISAN.TEN);</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%;">Vị trí tài sản: Căn hộ 9.12, lô 3C, khu A, chung cư Phú Thọ, phường 15, quận 11, Tp.HCM (thuộc thửa đất số 36 và 3, tờ bản đồ số 42);</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%;">Đặc điểm pháp lý: Giấy chứng nhận quyền sử dụng đất, quyền sở hữu nhà ở và tài sản khác gắn liền với đất số CĐ 380788 do UBND quận 11, thành phố Hồ Chí Minh cấp ngày 05/8/2016;</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%; color: black;">Đặc điểm kinh tế - kỹ thuật và hiện trạng: </span><em><span style="font-size: 19.0pt; line-height: 150%;">(Chi tiết tại báo cáo thẩm định giá).</span></em></p></li>
+                                                    </ul>
+                                                    <ol style="margin-bottom: 0cm;font-size: 19.0pt; line-height: 150%;" start="2">
+                                                        <li><p><strong><span style="font-size: 19.0pt; line-height: 150%; color: black;">Thời điểm thẩm định giá: </span></strong><span style="font-size: 19.0pt; line-height: 150%; color: black;">Tháng 9/2016.</span></p></li>
+                                                        <li><p><strong><span style="font-size: 19.0pt; line-height: 150%; color: black;">Mục đích thẩm định giá: </span></strong><span style="font-size: 19.0pt; line-height: 150%;">Thế chấp vay vốn.</span></p></li>
+                                                        <li><p><strong><span style="font-size: 19.0pt; line-height: 150%; color: black;">Căn cứ pháp lý để thẩm định giá:</span></strong></p></li>
+                                                    </ol>
+                                                    <ul style="margin-bottom: 0cm;">
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%; color: black;">Luật giá và các quy định hiện hành về thẩm định giá tài sản;</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%; color: black;">Các tiêu chuẩn thẩm định giá Việt Nam;</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%; color: black;">Các quy định khác có liên quan.</span></p></li>
+                                                    </ul>
+
+                                                    <ol style="margin-bottom: 0cm;font-size: 19.0pt;" start="5">
+                                                        <li><p><strong><span style="font-size: 19.0pt; line-height: 150%;">Cơ sở giá trị: </span></strong><span style="font-size: 19.0pt; line-height: 150%;">&nbsp;<em>giá trị thị trường.</em></span></p><br><br /><br /><p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman';" align="center"><span style="font-size: 12.0pt;">1</span></p><br><br></li>
+
+                                                        <li><p><strong><span style="font-size: 19.0pt; line-height: 150%; color: black;">Giả thiết và giả thiết đặc biệt: </span></strong><span style="font-size: 19.0pt; line-height: 150%;">-/-</span></p></li>
+                                                        <li><p><strong><span style="font-size: 19.0pt; line-height: 150%; color: black;">Cách tiếp cận thẩm định giá: </span></strong><span style="font-size: 19.0pt; line-height: 150%;">Cách tiếp cận từ thị trường<em><span style="color: red;">.</span></em></span></p></li>
+                                                        <li><p><strong><span style="font-size: 19.0pt; line-height: 150%; color: black;">Phương pháp thẩm định giá: </span></strong><span style="font-size: 19.0pt; line-height: 150%;">Phương pháp so sánh.</span></p></li>
+                                                        <li><p><strong><span style="font-size: 19.0pt; line-height: 150%; color: black;">Kết quả thẩm định giá: 1500000 @Html.DisplayFor(model => model.NOIDUNGCT.TIENTE)</span></strong></p></li>
+                                                        <li><p><strong><span style="font-size: 19.0pt; line-height: 150%; color: black;">Những lưu ý:</span></strong></p></li>
+                                                    </ol>
+                                                    <ul style="margin-bottom: 0cm;font-size: 19.0pt;">
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%; color: black;">Những điều khoản loại trừ v&agrave; hạn chế kết quả thẩm định gi&aacute;: <em>(Xem trang 3)</em>.</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%;">Kh&aacute;ch h&agrave;ng kh&ocirc;ng đồng thời l&agrave; chủ sở hữu/sử dụng t&agrave;i sản, b&ecirc;n thứ ba sử dụng kết quả chứng thư thẩm định gi&aacute; cần lưu &yacute; điều n&agrave;y.</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%; color: black;">Thời hạn hiệu lực của kết quả thẩm định gi&aacute; </span><span style="font-size: 19.0pt; line-height: 150%;">l&agrave; 06 (s&aacute;u) th&aacute;ng kể từ thời điểm thẩm định gi&aacute;. Ngo&agrave;i thời điểm n&ecirc;u tr&ecirc;n, gi&aacute; trị t&agrave;i sản cần được đ&aacute;nh gi&aacute; lại tr&ecirc;n cơ sở c&aacute;c th&ocirc;ng tin, số liệu được cập nhật một c&aacute;ch ph&ugrave; hợp.</span></p></li>
+                                                    </ul>
+                                                    <table class="MsoNormalTable" style="width: 885.188px; margin-left: 27.9pt; border-collapse: collapse;" border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr style="height: 32.95pt;">
+                                                                <td style="width: 398px; padding: 0cm 5.4pt; height: 32.95pt;" valign="top">
+                                                                    <p style="margin: 18pt 0cm 6pt; text-align: center; line-height: 150%; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="color: black;">Thẩm định vi&ecirc;n về gi&aacute;</span></strong></p>
+                                                                    <p style="line-height: 150%; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;"><strong><span style="color: black;">&nbsp;</span></strong></p>
+                                                                    <p style="line-height: 150%; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;"><strong><span style="color: black;">&nbsp;</span></strong></p>
+                                                                    <p style="line-height: 150%; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;"><strong><span style="font-size: 10.0pt; line-height: 150%; color: black;">&nbsp;</span></strong></p>
+                                                                </td>
+                                                                <td style="width: 457.188px; padding: 0cm 5.4pt; height: 32.95pt;" valign="top">
+                                                                    <p style="margin: 18pt 0cm 6pt; text-align: center; line-height: 150%; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="color: black;">Gi&aacute;m đốc</span></strong></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr style="height: 36.35pt;">
+                                                                <td style="width: 398px; padding: 0cm 5.4pt; height: 36.35pt;" valign="top">
+                                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong>@Html.DisplayFor(model => model.NOIDUNGCT.TDV)</strong></p>
+                                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><em>Thẻ thẩm định vi&ecirc;n về gi&aacute;</em></p>
+                                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><em>số: @Html.DisplayFor(model => model.NOIDUNGCT.SOTHE)</em></p>
+                                                                </td>
+                                                                <td style="width: 457.188px; padding: 0cm 5.4pt; height: 36.35pt;" valign="top">
+                                                                    <p style="text-align: center; text-indent: -27.25pt; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Html.DisplayFor(model => model.NOIDUNGCT.GIAMDOC)</span></strong></p>
+                                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><em><span style="color: black;">Thẻ thẩm định vi&ecirc;n về gi&aacute; </span></em></p>
+                                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><em><span style="color: black;">số: @Html.DisplayFor(model => model.NOIDUNGCT.SOTHEGIAMDOC)</span></em></p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+
+
+
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 15.0pt;">&nbsp;</span></strong></p>
+
+                                                    <br><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman';" align="center"><span style="font-size: 12.0pt;">2</span></p>
+
+
+                                                    <br /><br /><br /><br />
+                                                    <p style="margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;"><span style="font-size: 15.0pt; font-family: 'Times New Roman',serif;"><br style="page-break-before: always;" clear="all" /> </span></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 17pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 25.0pt;">NHỮNG ĐIỀU KHOẢN LOẠI TRỪ V&Agrave; HẠN CHẾ CỦA</span></strong></p>
+                                                    <p style="margin: 0cm 0cm 16pt; text-align: center; font-size: 17pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 25.0pt;">KẾT QUẢ</span></strong><strong><span style="font-size: 25.0pt;"> THẨM ĐỊNH GI&Aacute;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 17pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 17pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+
+                                                    <ul style="margin-bottom: 0cm;">
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%;">Chứng thư thẩm định gi&aacute; được ph&aacute;t h&agrave;nh dựa tr&ecirc;n <em>b&aacute;o c&aacute;o kết quả thẩm định gi&aacute;</em> (đ&iacute;nh k&egrave;m) do thẩm định vi&ecirc;n trực tiếp lập.</span> <span style="font-size: 19.0pt; line-height: 150%;">Chứng thư n&agrave;y kh&ocirc;ng c&oacute; gi&aacute; trị thay thế giấy tờ ph&aacute;p l&yacute; về quyền sở hữu/sử dụng t&agrave;i sản. Chứng thư cũng chỉ x&aacute;c nhận gi&aacute; trị t&agrave;i sản trong phạm vi kh&aacute;ch h&agrave;ng c&oacute; đầy đủ cơ sở ph&aacute;p l&yacute; về quyền sở hữu/sử dụng theo quy định của ph&aacute;p luật Việt Nam. Mọi</span><span style="font-size: 19.0pt; line-height: 150%;"> h&igrave;nh thức sao ch&eacute;p chứng thư thẩm định gi&aacute; kh&ocirc;ng c&oacute; sự đồng &yacute; bằng văn bản của AMAX đều l&agrave; h&agrave;nh vi vi phạm ph&aacute;p luật.</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%;">Kết quả thẩm định chỉ phản &aacute;nh gi&aacute; trị thị trường của t&agrave;i sản tại thời điểm thẩm định gi&aacute; v&agrave; ph&ugrave; hợp với mục đ&iacute;ch thẩm định gi&aacute; đ&atilde; được đề cập.</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%;">Những thiếu s&oacute;t, bất hợp l&yacute; (nếu c&oacute;) của những th&ocirc;ng tin, số liệu trong hồ sơ, t&agrave;i liệu, giấy tờ ph&aacute;p l&yacute; li&ecirc;n quan đến t&agrave;i sản do qu&yacute; kh&aacute;ch h&agrave;ng cung cấp kh&ocirc;ng thuộc tr&aacute;ch nhiệm của thẩm định vi&ecirc;n v&agrave; c&ocirc;ng ty thẩm định gi&aacute;.</span></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%; color: black;">Những hạn chế của qu&aacute; tr&igrave;nh thẩm định gi&aacute;, những giả định (nếu c&oacute;) v&agrave; c&aacute;c lập luận nhằm đưa ra kết luận cuối c&ugrave;ng về gi&aacute; trị hợp l&yacute; của t&agrave;i sản được tr&igrave;nh b&agrave;y chi tiết trong b&aacute;o c&aacute;o kết quả thẩm định gi&aacute;</span><span style="font-size: 19.0pt; line-height: 150%; color: black;">.</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%;">Thẩm định vi&ecirc;n kh&ocirc;ng c&oacute; điều kiện kiểm tra thực tế chi tiết đặc điểm cấu tr&uacute;c &amp; hiện trạng của c&aacute;c bộ phận khuất/ngầm của phần c&ocirc;ng tr&igrave;nh x&acirc;y dựng, vật kiến tr&uacute;c gắn liền với đất cũng như hồ sơ, t&agrave;i liệu thể hiện chi tiết điều n&agrave;y c&ograve;n hạn chế.</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%;">Kh&aacute;ch h&agrave;ng thẩm định gi&aacute; v&agrave; b&ecirc;n thứ ba sử dụng kết quả thẩm định gi&aacute; (nếu c&oacute;) cần c&oacute; những hiểu biết cần thiết về c&aacute;c nguy&ecirc;n tắc, ti&ecirc;u chuẩn thẩm định gi&aacute; v&agrave; c&aacute;c quy định li&ecirc;n quan nhằm c&oacute; thể sử dụng kết quả thẩm định gi&aacute; một c&aacute;ch hiệu quả cũng như khi cần xử l&yacute; c&aacute;c quan hệ li&ecirc;n quan đến kết quả thẩm định gi&aacute; n&agrave;y.</span></p></li>
+                                                        <li style="margin:0pt 1cm 0pt"><p><span style="font-size: 19.0pt; line-height: 150%;">Kết quả thẩm định gi&aacute; chỉ được sử dụng đ&uacute;ng mục đ&iacute;ch thẩm định gi&aacute; v&agrave; trong thời hạn c&ograve;n hiệu lực như đ&atilde; n&ecirc;u tr&ecirc;n.</span></p></li>
+                                                    </ul>
+                                                    <p style="text-align: center; line-height: 150%; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 17.0pt; line-height: 150%; color: black;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; line-height: 150%; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 17.0pt; line-height: 150%; color: black;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; line-height: 150%; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 17.0pt; line-height: 150%; color: black;">&nbsp;</span></strong></p>
+                                                    <p style="margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;">&nbsp;</p>
+                                                    <p style="margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;">&nbsp;</p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman', serif;" align="center"><strong><span style="font-size: 14.0pt;">&nbsp;</span></strong></p>
+                                                    <p style="text-align: center; margin: 0cm 0cm 0.0001pt; font-size: 18pt; font-family: 'Times New Roman';" align="center"><span style="font-size: 12.0pt;">3</span></p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+            </td>
+        </tr>
+    </table>
+</body>
