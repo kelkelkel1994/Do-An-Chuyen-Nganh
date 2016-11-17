@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DACN_ver_2.Models.FILEDINHKEM>
+
+
+
+<div class="col-md-12 col-sm-6 col-xs-12">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Hợp đồng số</th>
+                <th>Tên file</th>
+                <th>Ngày thêm</th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_FILEDINHKEM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HOPDONG.SOHD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TENFILE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NGAYTAO)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

@@ -248,6 +248,66 @@ namespace DACN_ver_2.Controllers
             var hd = data.HOPDONGs.ToList().OrderBy(s => s.ID_HOPDONG);
             return View(hd);
         }
+        //Xem chi tiết hop đồng
+        public ActionResult XemCTHopDdong(int id)
+        {
+            var detail = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
+            ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_HOPDONG == id).Count();
+            return View(detail);
+        }
+
+        //thê file hop đồng
+        public ActionResult ThemfileHD(int id)
+        {
+            var d = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
+            return View(d);
+        }
+        //danh sách file chứng thư
+        public ActionResult DanhsachFileHD(int id)
+        {
+            var sa = data.FILEDINHKEMs.ToList().Where(s => s.ID_HOPDONG == id).OrderBy(s => s.ID_FILEDINHKEM);
+            return PartialView(sa);
+        }
+        public ActionResult SaveDropzoneJsUploadedFilesHD(int id, FILEDINHKEM dk)
+        {
+            string fName = "";
+
+            foreach (string fileName in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[fileName];
+                //You can Save the file content here
+                fName = file.FileName;
+                if (file != null && file.ContentLength > 0)
+                {
+
+                    var pyc = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
+                    var originalDirectory = new DirectoryInfo(string.Format("{0}FileHD\\" + id, Server.MapPath(@"\")));
+
+                    string pathString = System.IO.Path.Combine(originalDirectory.ToString()/*, pyc.ID_HOPDONG.ToString()*/);
+
+                    var fileName1 = Path.GetFileName(file.FileName);
+
+                    bool isExists = System.IO.Directory.Exists(pathString);
+
+                    if (!isExists)
+                        System.IO.Directory.CreateDirectory(pathString);
+
+                    var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                    file.SaveAs(path);
+                    dk.LIENKET = path;
+                    dk.ID_HOPDONG = id;
+                    dk.TENFILE = file.FileName;
+                    dk.NGAYTAO = DateTime.Now;
+                    dk.TRANGTHAI = true;
+                    data.FILEDINHKEMs.InsertOnSubmit(dk);
+                    data.SubmitChanges();
+
+                }
+            }
+
+            return Json(new { Message = string.Empty });
+        }
+
 
         // danh sahv khach hang
         public ActionResult Danhsachkhachhang()
@@ -359,6 +419,66 @@ namespace DACN_ver_2.Controllers
 
             };
         }
+        //Xem chứng thư
+        public ActionResult XemCTChungThu(int id)
+        {
+            var detail = data.CHUNGTHUTDGs.FirstOrDefault(s => s.ID_CHUNGTHU == id);
+            ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_CHUNGTHU == id).Count();
+            return View(detail);
+        }
+
+        //thê file chứng thư
+        public ActionResult ThemfileCT(int id)
+        {
+            var d = data.CHUNGTHUTDGs.FirstOrDefault(s => s.ID_CHUNGTHU == id);
+            return View(d);
+        }
+        //danh sách file chứng thư
+        public ActionResult DanhsachFileCT(int id)
+        {
+            var sa = data.FILEDINHKEMs.ToList().Where(s => s.ID_CHUNGTHU == id).OrderBy(s => s.ID_FILEDINHKEM);
+            return PartialView(sa);
+        }
+        public ActionResult SaveDropzoneJsUploadedFilesCT(int id, FILEDINHKEM dk)
+        {
+            string fName = "";
+
+            foreach (string fileName in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[fileName];
+                //You can Save the file content here
+                fName = file.FileName;
+                if (file != null && file.ContentLength > 0)
+                {
+
+                    var pyc = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
+                    var originalDirectory = new DirectoryInfo(string.Format("{0}FileCT\\" + id, Server.MapPath(@"\")));
+
+                    string pathString = System.IO.Path.Combine(originalDirectory.ToString()/*, pyc.ID_CHUNGTHU.ToString()*/);
+
+                    var fileName1 = Path.GetFileName(file.FileName);
+
+                    bool isExists = System.IO.Directory.Exists(pathString);
+
+                    if (!isExists)
+                        System.IO.Directory.CreateDirectory(pathString);
+
+                    var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                    file.SaveAs(path);
+                    dk.LIENKET = path;
+                    dk.ID_CHUNGTHU = id;
+                    dk.TENFILE = file.FileName;
+                    dk.NGAYTAO = DateTime.Now;
+                    dk.TRANGTHAI = true;
+                    data.FILEDINHKEMs.InsertOnSubmit(dk);
+                    data.SubmitChanges();
+
+                }
+            }
+
+            return Json(new { Message = string.Empty });
+        }
+
         //sửa nội dung chứng thư
         public ActionResult SuaNDCT()
         {

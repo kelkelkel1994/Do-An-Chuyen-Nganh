@@ -1,0 +1,243 @@
+﻿@model DACN_ver_2.Models.CHUNGTHUTDG
+
+@{
+    ViewBag.Title = "XemCTChungThu";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Chứng thư<small>năm 2016</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+
+
+                        <div class="row">
+                            <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                Số Chứng thư:
+                            </label>
+                            <div class="col-md-4 col-sm-3 col-xs-12">
+                                @Html.DisplayFor(model => model.SOCHUNGTHU)
+                            </div>
+                            <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                Ngày xuất chứng thư:
+                            </label>
+                            <div class="col-md-4 col-sm-3 col-xs-12">
+                                @Html.DisplayFor(model => model.NGAYXUAT)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                Khách hàng:
+                            </label>
+                            <div class="col-md-4 col-sm-3 col-xs-12">
+                                @Html.DisplayFor(model => model.PHIEUYEUCAU.KHACHHANG.TENKH)
+                            </div>
+                            <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                Thẩm định viên:
+                            </label>
+                            <div class="col-md-4 col-sm-3 col-xs-12">
+                               @Html.DisplayFor(model => model.PHIEUYEUCAU.NHANVIEN.TENNV)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                               Mục đích thẩm định:
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                @Html.DisplayFor(model => model.MUCDICHTDG)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Cách tiép cận:
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                @Html.DisplayFor(model => model.CACHTIEPCANTDG)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Kết quả GD:
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                @Html.DisplayFor(model => model.KETQUATDG)
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name" style="text-decoration:underline; ">
+                                Thông tin tài sản
+                            </label>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Loại tài sản:
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                @Html.DisplayFor(model => model.PHIEUYEUCAU.LOAITAISAN.TEN)
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Vị trí/ địa điểm:
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                @Html.DisplayFor(model => model.PHIEUYEUCAU.VITRI)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Đặc điểm kinh tế - kỹ thuật tài sản:
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                @Html.DisplayFor(model => model.PHIEUYEUCAU.DACDIEM)
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Mục đích thẩm định:
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                @Html.DisplayFor(model => model.PHIEUYEUCAU.MDTD)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Thời điểm thẩm định:
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                @Html.DisplayFor(model => model.PHIEUYEUCAU.TDTD)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Thời hạn hoàn thành:
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                @Html.DisplayFor(model => model.PHIEUYEUCAU.THHT)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                Yêu cầu khác (nếu có):
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                @Html.DisplayFor(model => model.PHIEUYEUCAU.YEUCAUKHAC)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Mức phí chấp thuận:
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.DisplayFor(model => model.PHIEUYEUCAU.MUCPHICHAPTHUAN)
+                            </div>
+                            <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                                Ứng trước:
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.DisplayFor(model => model.PHIEUYEUCAU.UNGTRUOC)
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+
+                                File đính kèm:
+                            </label>
+                            @if (ViewBag.Demfile == 0)
+                            {
+                                <div class="col-md-8 col-sm-6 col-xs-12">
+                                    Không có file đính kèm | @Html.ActionLink("Thêm file", "ThemfileCT", new { id = Model.ID_CHUNGTHU })
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-8 col-sm-6 col-xs-12">
+                                    @ViewBag.Demfile file | @Html.ActionLink("Thêm file", "ThemfileCT", new { id = Model.ID_CHUNGTHU })
+                                </div>
+                            }
+
+                        </div>
+                        <div class="row">
+                            @Html.Action("DanhsachFileCT", "Kinhdoanh", new { id = Model.ID_CHUNGTHU })
+                            @*<div class="col-md-12 col-sm-6 col-xs-12">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>fat</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>*@
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+

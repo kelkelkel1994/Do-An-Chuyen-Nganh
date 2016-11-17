@@ -1,0 +1,37 @@
+﻿@model DACN_ver_2.Models.CHUNGTHUTDG
+
+@{
+    ViewBag.Title = "ThemfileCT";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <h2>Thêm file đính kèm cho CHứng thư số @Html.DisplayFor(model => model.SOCHUNGTHU)</h2>
+
+        <form action="~/Kinhdoanh/SaveDropzoneJsUploadedFilesCT/@Model.ID_CHUNGTHU" class="dropzone" id="dropzoneJsForm"></form>
+        <button id="submit-all" class="btn btn-round btn-primary">Thêm file</button>
+
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript">
+
+        Dropzone.options.dropzoneJsForm = {
+
+            //prevents Dropzone from uploading dropped files immediately
+            autoProcessQueue: false,
+            maxFilesize: 50,
+            init: function () {
+                var submitButton = document.querySelector("#submit-all");
+                var myDropzone = this; //closure
+
+                submitButton.addEventListener("click", function () {
+                    myDropzone.processQueue(); //tell Dropzone to process all queued files
+                });
+
+            }
+        };
+
+    </script>
+}

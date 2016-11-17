@@ -181,9 +181,9 @@
                                         <td>@Html.DisplayFor(modelItem => item.PHIEUYEUCAU.NHANVIEN.TENNV)</td>
                                         <td>
                                             @Html.ActionLink("Xem trước văn bản", "XemTruoc", new { id = item.ID_CHUNGTHU }) |
-                                            @Html.ActionLink("Xuất file in", "PrintChiTietCT", new { id = item.ID_CHUNGTHU })
+                                            @Html.ActionLink("Xuất file in", "PrintChiTietCT", new { id = item.ID_CHUNGTHU })|
                                             
-                                            @Html.ActionLink("Xem", "XemPYC", new { id = item.ID_CHUNGTHU }) |
+                                            @Html.ActionLink("Xem", "XemCTChungThu", new { id = item.ID_CHUNGTHU }) |
 
                                             <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_CHUNGTHU"><i class="glyphicon glyphicon-trash"></i></a>
                                         </td>
