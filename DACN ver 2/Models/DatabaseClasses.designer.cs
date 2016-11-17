@@ -12995,6 +12995,8 @@ namespace DACN_ver_2.Models
 		
 		private EntitySet<HOPDONG> _HOPDONGs;
 		
+		private EntitySet<THONGBAO> _THONGBAOs;
+		
 		private EntityRef<KHACHHANG> _KHACHHANG;
 		
 		private EntityRef<LOAITAISAN> _LOAITAISAN;
@@ -13052,6 +13054,7 @@ namespace DACN_ver_2.Models
 			this._CHUNGTHUTDGs = new EntitySet<CHUNGTHUTDG>(new Action<CHUNGTHUTDG>(this.attach_CHUNGTHUTDGs), new Action<CHUNGTHUTDG>(this.detach_CHUNGTHUTDGs));
 			this._FILEDINHKEMs = new EntitySet<FILEDINHKEM>(new Action<FILEDINHKEM>(this.attach_FILEDINHKEMs), new Action<FILEDINHKEM>(this.detach_FILEDINHKEMs));
 			this._HOPDONGs = new EntitySet<HOPDONG>(new Action<HOPDONG>(this.attach_HOPDONGs), new Action<HOPDONG>(this.detach_HOPDONGs));
+			this._THONGBAOs = new EntitySet<THONGBAO>(new Action<THONGBAO>(this.attach_THONGBAOs), new Action<THONGBAO>(this.detach_THONGBAOs));
 			this._KHACHHANG = default(EntityRef<KHACHHANG>);
 			this._LOAITAISAN = default(EntityRef<LOAITAISAN>);
 			this._NHANVIEN = default(EntityRef<NHANVIEN>);
@@ -13509,6 +13512,19 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEUYEUCAU_THONGBAO", Storage="_THONGBAOs", ThisKey="ID_PYC", OtherKey="ID_PYC")]
+		public EntitySet<THONGBAO> THONGBAOs
+		{
+			get
+			{
+				return this._THONGBAOs;
+			}
+			set
+			{
+				this._THONGBAOs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACHHANG_PHIEUYEUCAU", Storage="_KHACHHANG", ThisKey="ID_KH", OtherKey="ID_KH", IsForeignKey=true)]
 		public KHACHHANG KHACHHANG
 		{
@@ -13662,6 +13678,18 @@ namespace DACN_ver_2.Models
 		}
 		
 		private void detach_HOPDONGs(HOPDONG entity)
+		{
+			this.SendPropertyChanging();
+			entity.PHIEUYEUCAU = null;
+		}
+		
+		private void attach_THONGBAOs(THONGBAO entity)
+		{
+			this.SendPropertyChanging();
+			entity.PHIEUYEUCAU = this;
+		}
+		
+		private void detach_THONGBAOs(THONGBAO entity)
 		{
 			this.SendPropertyChanging();
 			entity.PHIEUYEUCAU = null;
@@ -14668,9 +14696,13 @@ namespace DACN_ver_2.Models
 		
 		private System.Nullable<bool> _TRANGTHAI;
 		
+		private System.Nullable<int> _ID_PYC;
+		
 		private EntityRef<NHANVIEN> _NHANVIEN;
 		
 		private EntityRef<NHANVIEN> _NHANVIEN1;
+		
+		private EntityRef<PHIEUYEUCAU> _PHIEUYEUCAU;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -14690,12 +14722,15 @@ namespace DACN_ver_2.Models
     partial void OnTRANGTHAIXEMChanged();
     partial void OnTRANGTHAIChanging(System.Nullable<bool> value);
     partial void OnTRANGTHAIChanged();
+    partial void OnID_PYCChanging(System.Nullable<int> value);
+    partial void OnID_PYCChanged();
     #endregion
 		
 		public THONGBAO()
 		{
 			this._NHANVIEN = default(EntityRef<NHANVIEN>);
 			this._NHANVIEN1 = default(EntityRef<NHANVIEN>);
+			this._PHIEUYEUCAU = default(EntityRef<PHIEUYEUCAU>);
 			OnCreated();
 		}
 		
@@ -14847,6 +14882,30 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_PYC", DbType="Int")]
+		public System.Nullable<int> ID_PYC
+		{
+			get
+			{
+				return this._ID_PYC;
+			}
+			set
+			{
+				if ((this._ID_PYC != value))
+				{
+					if (this._PHIEUYEUCAU.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_PYCChanging(value);
+					this.SendPropertyChanging();
+					this._ID_PYC = value;
+					this.SendPropertyChanged("ID_PYC");
+					this.OnID_PYCChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_THONGBAO", Storage="_NHANVIEN", ThisKey="ID_NGUOIGUI", OtherKey="ID_NHANVIEN", IsForeignKey=true)]
 		public NHANVIEN NHANVIEN
 		{
@@ -14911,6 +14970,40 @@ namespace DACN_ver_2.Models
 						this._ID_NGUOINHAN = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("NHANVIEN1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEUYEUCAU_THONGBAO", Storage="_PHIEUYEUCAU", ThisKey="ID_PYC", OtherKey="ID_PYC", IsForeignKey=true)]
+		public PHIEUYEUCAU PHIEUYEUCAU
+		{
+			get
+			{
+				return this._PHIEUYEUCAU.Entity;
+			}
+			set
+			{
+				PHIEUYEUCAU previousValue = this._PHIEUYEUCAU.Entity;
+				if (((previousValue != value) 
+							|| (this._PHIEUYEUCAU.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PHIEUYEUCAU.Entity = null;
+						previousValue.THONGBAOs.Remove(this);
+					}
+					this._PHIEUYEUCAU.Entity = value;
+					if ((value != null))
+					{
+						value.THONGBAOs.Add(this);
+						this._ID_PYC = value.ID_PYC;
+					}
+					else
+					{
+						this._ID_PYC = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PHIEUYEUCAU");
 				}
 			}
 		}

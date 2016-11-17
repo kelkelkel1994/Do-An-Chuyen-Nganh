@@ -1,0 +1,46 @@
+﻿@model DACN_ver_2.Models.THONGBAO
+
+@{
+    ViewBag.Title = "XemThongbao";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+<div class="right_col" role="main">
+    <div class="">
+        <h2>Thông báo</h2>
+
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    Người gửi: 
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NHANVIEN.TENNV)
+                </dd>
+
+                <dt>
+                    Nội dung: 
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NOIDUNG)
+                </dd>
+
+                <dt>
+                    Thời gian gửi: 
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NGAYGUI)
+                </dd>
+                <dt>
+                    PYC xử lý: 
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PHIEUYEUCAU.SOPYC)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+</div>

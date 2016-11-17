@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using DACN_ver_2.Models;
 using System.Security.Cryptography;
 using System.Text;
+using System.IO;
 
 namespace DACN_ver_2.Controllers
 {
@@ -218,12 +219,61 @@ namespace DACN_ver_2.Controllers
             var dt = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
             return View(dt);
         }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SuaAvatar(int id, FormCollection collection, HttpPostedFileBase fileanh)
+        {
+            //try
+            //{
+                // TODO: Add insert logic here
+                if (id != int.Parse(Session["ID"].ToString()))
+                {
+                    id = int.Parse(Session["ID"].ToString());
+                }
+                NHANVIEN dt = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == id);
+                if (fileanh != null)
+                {
+                    var hinh = Path.GetFileName(fileanh.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images/Avatar/"), hinh);
+                    fileanh.SaveAs(path);
+                    dt.ANH = hinh;
+                    dt.NGAYSUA = DateTime.Now;
+                    UpdateModel(dt);
+                    data.SubmitChanges();
+                    return RedirectToAction("Profile", "Nhanvien", new { id = dt.ID_NHANVIEN });
+                }
+                return RedirectToAction("Profile", "Nhanvien", new { id = dt.ID_NHANVIEN });
+
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
+
+        }
 
         public ActionResult ThongbaoTOP(int id)
         {
-            var tbt = data.THONGBAOs.ToList().Where(s => s.ID_NGUOINHAN == id).OrderByDescending(s => s.NGAYGUI).Take(5);
-            ViewData["dem"] = data.THONGBAOs.ToList().Where(s => s.ID_NGUOINHAN == id).Count();
+            var tbt = data.THONGBAOs.ToList().Where(s => s.ID_NGUOINHAN == id && s.TRANGTHAIXEM == false).OrderByDescending(s => s.NGAYGUI).Take(5);
+            ViewData["dem"] = data.THONGBAOs.ToList().Where(s => s.ID_NGUOINHAN == id && s.TRANGTHAIXEM == false).Count();
             return PartialView(tbt);
+        }
+
+        public ActionResult XemThongbao (int id)
+        {
+            var d = data.THONGBAOs.FirstOrDefault(s => s.ID_THONGBAO == id);
+            THONGBAO tb = data.THONGBAOs.FirstOrDefault(s => s.ID_THONGBAO == id);
+            tb.TRANGTHAIXEM = true;
+            UpdateModel(tb);
+            data.SubmitChanges();
+            return View(d);
+        }
+
+        public ActionResult AllThongbao ()
+        {
+            int id = int.Parse(Session["ID"].ToString());
+            var tb = data.THONGBAOs.ToList().Where(s => s.ID_NGUOINHAN == id);
+            return View(tb);
         }
     }
 }

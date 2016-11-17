@@ -18,7 +18,7 @@ else
     @foreach (var item in Model)
     {
         <li>
-            <a href="/thongbao/@item.ID_THONGBAO">
+            <a href="/Nhanvien/XemThongbao/@item.ID_THONGBAO">
                 <span class="image"><img src="~/images/Avatar/@item.NHANVIEN.ANH" alt="Profile Image" /></span>
                 <span>
                     <span>@Html.DisplayFor(modelItem => item.NHANVIEN.TENNV)</span>
@@ -48,11 +48,12 @@ else
                     @Html.DisplayFor(modelItem => item.NOIDUNG)
                 </span>
             </a>
+            
         </li>
     }
     <li>
         <div class="text-center">
-            <a>
+            <a href="/Nhanvien/AllThongbao">
                 <strong>See All Alerts</strong>
                 <i class="fa fa-angle-right"></i>
             </a>

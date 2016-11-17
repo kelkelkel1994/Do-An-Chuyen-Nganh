@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DACN_ver_2.Models.DAT>
 
 @{
-    ViewBag.Title = "Bảng giá đất nội bộ";
+    ViewBag.Title = "Bảng giá đất thị trường";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 <div class="right_col" role="main">
@@ -12,7 +12,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>
-                            Bảng giá đất nội bộ
+                            Bảng giá đất thị trường
                         </h2>
                         <div class="clearfix"></div>
                     </div>
@@ -142,7 +142,8 @@
                                             </div>*@
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.GIABAN)
+                                            @*@Html.DisplayFor(modelItem => item.GIABAN.HasValue ? item.GIABAN.Value.ToString("N0") : "-/-")*@
+                                            @(item.GIABAN.HasValue ? item.GIABAN.Value.ToString("N0") : "-/-")
                                             @*<label class="control-label col-md-5 col-sm-3 col-xs-12">
                                                 @Html.DisplayFor(modelItem => item.GIABAN)
                                             </label>*@

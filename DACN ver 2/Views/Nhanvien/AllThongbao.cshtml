@@ -1,0 +1,143 @@
+﻿@model IEnumerable<DACN_ver_2.Models.THONGBAO>
+
+@{
+    ViewBag.Title = "Tất cả thông báo";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="col-md-6">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Xem tất cả thông báo </h2>
+                    @*<ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>*@
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <ul class="list-unstyled msg_list">
+                        @foreach (var item in Model)
+                        {
+                        <li>
+                            <a>
+                                <span class="image">
+                                    <img src="~/images/Avatar/@item.NHANVIEN.ANH" alt="img" />
+                                </span>
+                                <span>
+                                    <span>@item.NHANVIEN.TENNV</span>
+                                    @if ((DateTime.Now.Day - item.NGAYGUI.Value.Day) > 0)
+                                    {
+                                        <span class="time">
+                                            @(DateTime.Now.Day - item.NGAYGUI.Value.Day) day ago
+                                        </span>
+                                    }
+                                    else if ((DateTime.Now.Hour - item.NGAYGUI.Value.Hour) > 0)
+                                    {
+                                        <span class="time">
+                                            @(DateTime.Now.Hour - item.NGAYGUI.Value.Hour) hour ago
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="time">
+                                            @(DateTime.Now.Minute - item.NGAYGUI.Value.Minute) min ago
+                                        </span>
+                                    }
+                                </span>
+                                <span class="message">
+                                    @Html.DisplayFor(model => item.NOIDUNG)
+                                    @*@if (item.TRANGTHAIXEM == false)
+                                    { }
+                                    else
+                                    {
+                                        <span class="seen">đã xem</span>
+                                    }*@
+                                    
+                                </span>
+                            </a>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID_NGUOIGUI)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID_NGUOINHAN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NOIDUNG)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NGAYGUI)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TRANGTHAIXEM)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TRANGTHAI)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID_PYC)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_NGUOIGUI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_NGUOINHAN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOIDUNG)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NGAYGUI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TRANGTHAIXEM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_PYC)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID_THONGBAO }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID_THONGBAO }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID_THONGBAO })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+            </div>

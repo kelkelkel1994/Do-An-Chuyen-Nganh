@@ -617,6 +617,8 @@
     <Content Include="Views\Taisan\ThemDAT.cshtml" />
     <Content Include="Views\Taisan\ThemVPCT.cshtml" />
     <Content Include="Views\Tracuu\BanggiadatNB.cshtml" />
+    <Content Include="Views\Nhanvien\XemThongbao.cshtml" />
+    <Content Include="Views\Nhanvien\AllThongbao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

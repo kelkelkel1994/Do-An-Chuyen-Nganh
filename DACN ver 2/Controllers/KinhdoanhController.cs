@@ -46,6 +46,9 @@ namespace DACN_ver_2.Controllers
                 pyc.ID_KH = int.Parse(kh);
                 data.PHIEUYEUCAUs.InsertOnSubmit(pyc);
                 data.SubmitChanges();
+                
+                var id = data.PHIEUYEUCAUs.FirstOrDefault(s => s.SOPYC == pyc.SOPYC);
+                tb.ID_PYC = id.ID_PYC;
                 tb.ID_NGUOIGUI = 1;
                 tb.ID_NGUOINHAN = int.Parse(nv);
                 tb.NOIDUNG = "Bạn được giao: "+ collection["SOPYC"] + "/2016/PYC-AMAX";
