@@ -6,100 +6,7 @@
     ViewBag.Title = "LoadFile";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
-<div class="right_col" role="main">
-    <div class="">
-        <h2>LoadFile</h2>
 
-        <div>
-            <h4>FILEDINHKEM</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.TENFILE)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.TENFILE)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.LIENKET)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.LIENKET)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.NGAYTAO)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.NGAYTAO)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.NGAYSUA)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.NGAYSUA)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.NGUOITAO)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.NGUOITAO)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.NGUOISUA)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.NGUOISUA)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.TRANGTHAI)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.TRANGTHAI)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ID_PYC)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ID_PYC)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ID_HOPDONG)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ID_HOPDONG)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ID_CHUNGTHU)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ID_CHUNGTHU)
-                </dd>
-
-            </dl>
-        </div>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.ID_FILEDINHKEM }) |
-            @Html.ActionLink("Back to List", "Index")
-        </p>
         @{
             var tenfile = @Html.DisplayFor(model => model.LIENKET).ToHtmlString();
 
@@ -114,14 +21,70 @@
                 Document = tenfile,
             };
         }
-        </div>
-    </div>
+ 
+
         <head>
             @Html.RenderCss(documentViewer)
             @Html.RenderJs(documentViewer)
         </head>
-        <h2>LoadTaiLieu</h2>
+        
         <div class="right_col" role="main">
+            <div>
+                <div>
+                    <h2>Thông tin file đính kèm</h2>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Tên file:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TENFILE)
+                        </dd>
+                        <dt>
+                            Ngày Tạo:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.NGAYTAO)
+                        </dd>
+
+                        <dt>
+                            Người upload:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.NGUOITAO)
+                        </dd>
+
+                        <dt>
+                            Trạng thái
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TRANGTHAI)
+                        </dd>
+                        <dt>
+                            Phiếu yêu cầu số:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.PHIEUYEUCAU.SOPYC)
+                        </dd>
+                        <dt>
+                            Hợp đồng số:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.HOPDONG.SOHD)
+                        </dd>
+                        <dt>
+                            CHứng thư số:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.CHUNGTHUTDG.SOCHUNGTHU)
+                        </dd>
+                    </dl>
+                </div>
+                <p>
+                   
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
             <div class="">
 
                 @Html.RenderControl(documentViewer)

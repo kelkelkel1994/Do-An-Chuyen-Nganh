@@ -22,7 +22,7 @@ namespace DACN_ver_2.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DACN")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DoAn17-11")]
 	public partial class DatabaseClassesDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -132,7 +132,7 @@ namespace DACN_ver_2.Models
     #endregion
 		
 		public DatabaseClassesDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DACNConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DoAn17_11ConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

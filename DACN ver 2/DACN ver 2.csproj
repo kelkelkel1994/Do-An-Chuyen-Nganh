@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GleamTech.Core, Version=1.5.0.0, Culture=neutral, PublicKeyToken=a05198837413a6d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\GleamTech.Core.1.5.1\lib\net40\GleamTech.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="GleamTech.DocumentUltimate, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a05198837413a6d8, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentUltimate.2.1.0\lib\net40\GleamTech.DocumentUltimate.dll</HintPath>
       <Private>True</Private>

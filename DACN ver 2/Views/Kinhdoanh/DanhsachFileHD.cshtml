@@ -10,6 +10,7 @@
                 <th>Hợp đồng số</th>
                 <th>Tên file</th>
                 <th>Ngày thêm</th>
+                <th>Tác vụ</th>
             </tr>
         </thead>
 
@@ -27,6 +28,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.NGAYTAO)
+                </td>
+                <td>
+                    @Html.ActionLink("Xem", "LoadFile", new { id = item.ID_FILEDINHKEM })
                 </td>
             </tr>
         }

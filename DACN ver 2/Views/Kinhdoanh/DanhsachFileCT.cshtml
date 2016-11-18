@@ -11,11 +11,13 @@
                 <th>Chứng thư số</th>
                 <th>Tên file</th>
                 <th>Ngày thêm</th>
+                <th>Tác vụ</th>
             </tr>
         </thead>
 
         @foreach (var item in Model)
         {
+
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.ID_FILEDINHKEM)
@@ -28,6 +30,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.NGAYTAO)
+                </td>
+                <td>
+                    @Html.ActionLink("Xem", "LoadFile", new { id = item.ID_FILEDINHKEM})
                 </td>
             </tr>
         }
