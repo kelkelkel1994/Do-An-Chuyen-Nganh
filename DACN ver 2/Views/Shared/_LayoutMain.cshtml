@@ -420,5 +420,83 @@
     @Scripts.Render("~/bundles/dropzone")
     @RenderSection("scripts", required: false)
 
+
+    <div id="cfacebook">
+        <a href="javascript:;" class="chat_fb" onclick="return:false;"><span class="glyphicon glyphicon-comment mr10"></span>Chat trực tuyến</a>
+        <div class="fchat">
+            <div>
+                Ahi hi
+            </div>
+            <div style="bottom:auto">
+                @Html.Action("GuiThongBao","Nhanvien")
+            </div>
+
+
+        </div>
+    </div>
+    <div id="fb-root"></div>
 </body>
 </html>
+
+
+<!-- Style, toogle chat fb -->
+<style>
+    #cfacebook {
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        z-index: 999999999999999;
+        width: 250px;
+        height: auto;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        overflow: hidden;
+    }
+
+        #cfacebook .fchat {
+            float: left;
+            width: 100%;
+            height: 270px;
+            overflow: hidden;
+            display: none;
+            background-color: #fff;
+        }
+
+            #cfacebook .fchat .fb-page {
+                margin-top: -130px;
+                float: left;
+            }
+
+        #cfacebook a.chat_fb {
+            float: left;
+            padding: 0 25px;
+            width: 250px;
+            color: #fff;
+            text-decoration: none;
+            height: 30px;
+            line-height: 35px;
+            text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAqCAMAAABFoMFOAAAAWlBMV…8/UxBxQDQuFwlpqgBZBq6+P+unVY1GnDgwqbD2zGz5e1lBdwvGGPE6OgAAAABJRU5ErkJggg==);
+            background-repeat: repeat-x;
+            background-size: auto;
+            background-position: 0 0;
+            background-color: #3a5795;
+            border: 0;
+            border-bottom: 1px solid #133783;
+            z-index: 9999999;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+            #cfacebook a.chat_fb:hover {
+                color: yellow;
+                text-decoration: none;
+            }
+</style>
+<script>
+	  jQuery(document).ready(function () {
+	  jQuery(".chat_fb").click(function() {
+	jQuery('.fchat').toggle('slow');
+	  });
+	  });
+</script>

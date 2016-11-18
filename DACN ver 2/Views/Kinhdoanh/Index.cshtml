@@ -235,6 +235,36 @@
             </div>
         </div>
 
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Line graph<small>Sessions</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="chartContainer7" style="height: 300px; width:100%">
+
+                </div>
+            </div>
+        </div>
      
     </div>
 </div>
@@ -505,6 +535,121 @@
                     type: "area",
                     dataPoints: dataPoints
                 }
+                ]
+            });
+
+            chart.render();
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    var dataPoints1=[];
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("GetSoHop1", "Thongke")',
+        data: {},
+        dataType: "json",
+        cache: false,
+        async: false,
+        success: function (data) {
+            for (var i = 0; i <= data.length -1; i++) {
+                dataPoints1.push({ label: data[i].thang, y: parseInt(data[i].sl) });
+            }
+        },
+        error: function(errorMsg) {
+            alert(errorMsg);
+        }
+    });
+    var dataPoints2 = [];
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("GetSoHop3", "Thongke")',
+        data: {},
+        dataType: "json",
+        cache: false,
+        async: false,
+        success: function (data) {
+            for (var i = 0; i <= data.length - 1; i++) {
+                dataPoints2.push({ label: data[i].thang, y: parseInt(data[i].sl) });
+            }
+        },
+        error: function (errorMsg) {
+            alert(errorMsg);
+        }
+    });
+    var dataPoints3 = [];
+    $.ajax({
+        type: 'GET',
+        url: '@Url.Action("GetSoHop4", "Thongke")',
+        data: {},
+        dataType: "json",
+        cache: false,
+        async: false,
+        success: function (data) {
+            for (var i = 0; i <= data.length - 1; i++) {
+                dataPoints3.push({ label: data[i].thang, y: parseInt(data[i].sl) });
+            }
+        },
+        error: function (errorMsg) {
+            alert(errorMsg);
+        }
+    });
+    $(document).ready(function () {
+        var dataPoints = [];
+        $.getJSON("../Thongke/GetSoHop2", function (data) {
+            for (var i = 0; i <= data.length -1; i++) {
+                dataPoints.push({ label: data[i].thang, y: parseInt(data[i].sl) });
+            }
+
+            var chart = new CanvasJS.Chart("chartContainer7", {
+                theme: "theme2",//theme1
+                animationEnabled: true,
+                title: {
+                    fontFamily: "tahoma",
+                    text: "Hợp đồng theo tháng"
+                },
+                axisX: {
+                    title: "Tháng"
+                },
+                axisY: {
+                    title: "Số Lượng"
+                },
+                data: [
+                {
+                    // Change type to "bar", "splineArea", "area", "spline", "pie",etc.
+                    type: "column",
+                    legendText: "Đang chờ",
+                    showInLegend: "true",                    
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    dataPoints: dataPoints
+                },
+                 {
+                     type: "column",
+                     legendText: "Đang thực hiện",
+                     showInLegend: "true",                     
+                     indexLabelPlacement: "inside",
+                     indexLabelFontColor: "white",
+                     dataPoints: dataPoints1,
+                 },
+                 {
+                     type: "column",
+                     legendText: "Đã kết thúc",
+                     showInLegend: "true",
+                     indexLabelPlacement: "inside",
+                     indexLabelFontColor: "white",
+                     dataPoints: dataPoints2,
+                 },
+                 {
+                     type: "column",
+                     legendText: "Đã huỷ",
+                     showInLegend: "true",
+                     indexLabelPlacement: "inside",
+                     indexLabelFontColor: "white",
+                     dataPoints: dataPoints3,
+                 }
                 ]
             });
 

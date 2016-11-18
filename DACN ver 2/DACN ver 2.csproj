@@ -765,6 +765,7 @@
     <Content Include="Views\Kinhdoanh\SuaPYC.cshtml" />
     <Content Include="Views\Kinhdoanh\XemHD.cshtml" />
     <Content Include="Views\Kinhdoanh\LoadFile.cshtml" />
+    <Content Include="Views\Nhanvien\GuiThongBao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

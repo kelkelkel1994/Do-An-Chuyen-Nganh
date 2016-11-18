@@ -275,5 +275,25 @@ namespace DACN_ver_2.Controllers
             var tb = data.THONGBAOs.ToList().Where(s => s.ID_NGUOINHAN == id);
             return View(tb);
         }
+
+        public ActionResult GuiThongBao()
+        {
+            ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult GuiThongBao(FormCollection collection, THONGBAO tb)
+        {
+            ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
+            var nv = collection["Nhanvien3"];
+            tb.ID_NGUOIGUI = int.Parse(Session["ID"].ToString());
+            data.THONGBAOs.InsertOnSubmit(tb);
+            tb.ID_NGUOINHAN = int.Parse(nv);
+            tb.NGAYGUI = DateTime.Now;
+            tb.TRANGTHAIXEM = false;
+            tb.TRANGTHAI = true;
+            data.SubmitChanges();
+            return PartialView();
+        }
     }
 }
