@@ -1,6 +1,6 @@
 ﻿@model DACN_ver_2.Models.KHACHHANG
 
-@using (Html.BeginForm("Suakhachhang", "Kinhdoanh"))
+@using (Html.BeginForm("Suakhachhang", "Kinhdoanh", "", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
 {
     @Html.AntiForgeryToken()
     <div class="modal-body">

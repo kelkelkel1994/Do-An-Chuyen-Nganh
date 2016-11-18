@@ -766,6 +766,10 @@
     <Content Include="Views\Kinhdoanh\XemHD.cshtml" />
     <Content Include="Views\Kinhdoanh\LoadFile.cshtml" />
     <Content Include="Views\Nhanvien\GuiThongBao.cshtml" />
+    <Content Include="Views\Kinhdoanh\SuaHD.cshtml" />
+    <Content Include="Views\Kinhdoanh\XoaHD.cshtml" />
+    <Content Include="Views\Tracuu\BanggiaCanho.cshtml" />
+    <Content Include="Views\Tracuu\BanggiaVanphong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

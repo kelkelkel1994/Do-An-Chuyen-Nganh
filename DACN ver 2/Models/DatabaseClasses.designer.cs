@@ -22,7 +22,7 @@ namespace DACN_ver_2.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DoAn17-11")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DACN")]
 	public partial class DatabaseClassesDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -132,7 +132,7 @@ namespace DACN_ver_2.Models
     #endregion
 		
 		public DatabaseClassesDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DoAn17_11ConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DACNConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1003,9 +1003,9 @@ namespace DACN_ver_2.Models
 		
 		private System.Nullable<System.DateTime> _THOIDIEMGIAODICH;
 		
-		private string _NGUOILAPPHIEU;
+		private System.Nullable<int> _NGUOILAPPHIEU;
 		
-		private string _NGUOIKIEMDUYET;
+		private System.Nullable<int> _NGUOIKIEMDUYET;
 		
 		private System.Nullable<System.DateTime> _NGAYTAO;
 		
@@ -1021,6 +1021,8 @@ namespace DACN_ver_2.Models
 		
 		private string _DIACHI;
 		
+		private System.Nullable<int> _ID_QUANHUYEN;
+		
 		private EntityRef<CHITIETLOAI> _CHITIETLOAI;
 		
 		private EntityRef<CHUNGTHUTDG> _CHUNGTHUTDG;
@@ -1028,6 +1030,12 @@ namespace DACN_ver_2.Models
 		private EntityRef<LOAIHINH> _LOAIHINH;
 		
 		private EntityRef<LOAITHONGTIN> _LOAITHONGTIN;
+		
+		private EntityRef<NHANVIEN> _NHANVIEN;
+		
+		private EntityRef<NHANVIEN> _NHANVIEN1;
+		
+		private EntityRef<QUANHUYEN> _QUANHUYEN;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1059,9 +1067,9 @@ namespace DACN_ver_2.Models
     partial void OnMUCGIAChanged();
     partial void OnTHOIDIEMGIAODICHChanging(System.Nullable<System.DateTime> value);
     partial void OnTHOIDIEMGIAODICHChanged();
-    partial void OnNGUOILAPPHIEUChanging(string value);
+    partial void OnNGUOILAPPHIEUChanging(System.Nullable<int> value);
     partial void OnNGUOILAPPHIEUChanged();
-    partial void OnNGUOIKIEMDUYETChanging(string value);
+    partial void OnNGUOIKIEMDUYETChanging(System.Nullable<int> value);
     partial void OnNGUOIKIEMDUYETChanged();
     partial void OnNGAYTAOChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYTAOChanged();
@@ -1077,6 +1085,8 @@ namespace DACN_ver_2.Models
     partial void OnID_LTTChanged();
     partial void OnDIACHIChanging(string value);
     partial void OnDIACHIChanged();
+    partial void OnID_QUANHUYENChanging(System.Nullable<int> value);
+    partial void OnID_QUANHUYENChanged();
     #endregion
 		
 		public VANPHONGCHOTHUE()
@@ -1085,6 +1095,9 @@ namespace DACN_ver_2.Models
 			this._CHUNGTHUTDG = default(EntityRef<CHUNGTHUTDG>);
 			this._LOAIHINH = default(EntityRef<LOAIHINH>);
 			this._LOAITHONGTIN = default(EntityRef<LOAITHONGTIN>);
+			this._NHANVIEN = default(EntityRef<NHANVIEN>);
+			this._NHANVIEN1 = default(EntityRef<NHANVIEN>);
+			this._QUANHUYEN = default(EntityRef<QUANHUYEN>);
 			OnCreated();
 		}
 		
@@ -1360,8 +1373,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGUOILAPPHIEU", DbType="NVarChar(250)")]
-		public string NGUOILAPPHIEU
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGUOILAPPHIEU", DbType="Int")]
+		public System.Nullable<int> NGUOILAPPHIEU
 		{
 			get
 			{
@@ -1371,6 +1384,10 @@ namespace DACN_ver_2.Models
 			{
 				if ((this._NGUOILAPPHIEU != value))
 				{
+					if (this._NHANVIEN.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnNGUOILAPPHIEUChanging(value);
 					this.SendPropertyChanging();
 					this._NGUOILAPPHIEU = value;
@@ -1380,8 +1397,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGUOIKIEMDUYET", DbType="NVarChar(250)")]
-		public string NGUOIKIEMDUYET
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGUOIKIEMDUYET", DbType="Int")]
+		public System.Nullable<int> NGUOIKIEMDUYET
 		{
 			get
 			{
@@ -1391,6 +1408,10 @@ namespace DACN_ver_2.Models
 			{
 				if ((this._NGUOIKIEMDUYET != value))
 				{
+					if (this._NHANVIEN1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnNGUOIKIEMDUYETChanging(value);
 					this.SendPropertyChanging();
 					this._NGUOIKIEMDUYET = value;
@@ -1544,6 +1565,30 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_QUANHUYEN", DbType="Int")]
+		public System.Nullable<int> ID_QUANHUYEN
+		{
+			get
+			{
+				return this._ID_QUANHUYEN;
+			}
+			set
+			{
+				if ((this._ID_QUANHUYEN != value))
+				{
+					if (this._QUANHUYEN.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_QUANHUYENChanging(value);
+					this.SendPropertyChanging();
+					this._ID_QUANHUYEN = value;
+					this.SendPropertyChanged("ID_QUANHUYEN");
+					this.OnID_QUANHUYENChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHITIETLOAI_VANPHONGCHOTHUE", Storage="_CHITIETLOAI", ThisKey="ID_CHITIETLOAI", OtherKey="ID_CHITIETLOAI", IsForeignKey=true)]
 		public CHITIETLOAI CHITIETLOAI
 		{
@@ -1680,6 +1725,108 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_VANPHONGCHOTHUE", Storage="_NHANVIEN", ThisKey="NGUOILAPPHIEU", OtherKey="ID_NHANVIEN", IsForeignKey=true)]
+		public NHANVIEN NHANVIEN
+		{
+			get
+			{
+				return this._NHANVIEN.Entity;
+			}
+			set
+			{
+				NHANVIEN previousValue = this._NHANVIEN.Entity;
+				if (((previousValue != value) 
+							|| (this._NHANVIEN.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NHANVIEN.Entity = null;
+						previousValue.VANPHONGCHOTHUEs.Remove(this);
+					}
+					this._NHANVIEN.Entity = value;
+					if ((value != null))
+					{
+						value.VANPHONGCHOTHUEs.Add(this);
+						this._NGUOILAPPHIEU = value.ID_NHANVIEN;
+					}
+					else
+					{
+						this._NGUOILAPPHIEU = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("NHANVIEN");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_VANPHONGCHOTHUE1", Storage="_NHANVIEN1", ThisKey="NGUOIKIEMDUYET", OtherKey="ID_NHANVIEN", IsForeignKey=true)]
+		public NHANVIEN NHANVIEN1
+		{
+			get
+			{
+				return this._NHANVIEN1.Entity;
+			}
+			set
+			{
+				NHANVIEN previousValue = this._NHANVIEN1.Entity;
+				if (((previousValue != value) 
+							|| (this._NHANVIEN1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NHANVIEN1.Entity = null;
+						previousValue.VANPHONGCHOTHUEs1.Remove(this);
+					}
+					this._NHANVIEN1.Entity = value;
+					if ((value != null))
+					{
+						value.VANPHONGCHOTHUEs1.Add(this);
+						this._NGUOIKIEMDUYET = value.ID_NHANVIEN;
+					}
+					else
+					{
+						this._NGUOIKIEMDUYET = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("NHANVIEN1");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QUANHUYEN_VANPHONGCHOTHUE", Storage="_QUANHUYEN", ThisKey="ID_QUANHUYEN", OtherKey="ID_QUANHUYEN", IsForeignKey=true)]
+		public QUANHUYEN QUANHUYEN
+		{
+			get
+			{
+				return this._QUANHUYEN.Entity;
+			}
+			set
+			{
+				QUANHUYEN previousValue = this._QUANHUYEN.Entity;
+				if (((previousValue != value) 
+							|| (this._QUANHUYEN.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._QUANHUYEN.Entity = null;
+						previousValue.VANPHONGCHOTHUEs.Remove(this);
+					}
+					this._QUANHUYEN.Entity = value;
+					if ((value != null))
+					{
+						value.VANPHONGCHOTHUEs.Add(this);
+						this._ID_QUANHUYEN = value.ID_QUANHUYEN;
+					}
+					else
+					{
+						this._ID_QUANHUYEN = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("QUANHUYEN");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1741,9 +1888,9 @@ namespace DACN_ver_2.Models
 		
 		private System.Nullable<int> _GIABAN;
 		
-		private string _NGUOILAPPHIEU;
+		private System.Nullable<int> _NGUOILAPPHIEU;
 		
-		private string _NGUOIKIEMDUYET;
+		private System.Nullable<int> _NGUOIKIEMDUYET;
 		
 		private System.Nullable<System.DateTime> _NGAYTAO;
 		
@@ -1803,6 +1950,10 @@ namespace DACN_ver_2.Models
 		
 		private EntityRef<LOAITHONGTIN> _LOAITHONGTIN;
 		
+		private EntityRef<NHANVIEN> _NHANVIEN;
+		
+		private EntityRef<NHANVIEN> _NHANVIEN1;
+		
 		private EntityRef<QUANHUYEN> _QUANHUYEN;
 		
 		private EntityRef<TIENDO> _TIENDO;
@@ -1845,9 +1996,9 @@ namespace DACN_ver_2.Models
     partial void OnTHOIDIEMGIAODICHChanged();
     partial void OnGIABANChanging(System.Nullable<int> value);
     partial void OnGIABANChanged();
-    partial void OnNGUOILAPPHIEUChanging(string value);
+    partial void OnNGUOILAPPHIEUChanging(System.Nullable<int> value);
     partial void OnNGUOILAPPHIEUChanged();
-    partial void OnNGUOIKIEMDUYETChanging(string value);
+    partial void OnNGUOIKIEMDUYETChanging(System.Nullable<int> value);
     partial void OnNGUOIKIEMDUYETChanged();
     partial void OnNGAYTAOChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYTAOChanged();
@@ -1903,6 +2054,8 @@ namespace DACN_ver_2.Models
 			this._KETCAUDUONG = default(EntityRef<KETCAUDUONG>);
 			this._LOAIHINH = default(EntityRef<LOAIHINH>);
 			this._LOAITHONGTIN = default(EntityRef<LOAITHONGTIN>);
+			this._NHANVIEN = default(EntityRef<NHANVIEN>);
+			this._NHANVIEN1 = default(EntityRef<NHANVIEN>);
 			this._QUANHUYEN = default(EntityRef<QUANHUYEN>);
 			this._TIENDO = default(EntityRef<TIENDO>);
 			OnCreated();
@@ -2268,8 +2421,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGUOILAPPHIEU", DbType="NVarChar(250)")]
-		public string NGUOILAPPHIEU
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGUOILAPPHIEU", DbType="Int")]
+		public System.Nullable<int> NGUOILAPPHIEU
 		{
 			get
 			{
@@ -2279,6 +2432,10 @@ namespace DACN_ver_2.Models
 			{
 				if ((this._NGUOILAPPHIEU != value))
 				{
+					if (this._NHANVIEN.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnNGUOILAPPHIEUChanging(value);
 					this.SendPropertyChanging();
 					this._NGUOILAPPHIEU = value;
@@ -2288,8 +2445,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGUOIKIEMDUYET", DbType="NVarChar(250)")]
-		public string NGUOIKIEMDUYET
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGUOIKIEMDUYET", DbType="Int")]
+		public System.Nullable<int> NGUOIKIEMDUYET
 		{
 			get
 			{
@@ -2299,6 +2456,10 @@ namespace DACN_ver_2.Models
 			{
 				if ((this._NGUOIKIEMDUYET != value))
 				{
+					if (this._NHANVIEN1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnNGUOIKIEMDUYETChanging(value);
 					this.SendPropertyChanging();
 					this._NGUOIKIEMDUYET = value;
@@ -3016,6 +3177,74 @@ namespace DACN_ver_2.Models
 						this._ID_LTT = default(int);
 					}
 					this.SendPropertyChanged("LOAITHONGTIN");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_CANHOCHUNGCU", Storage="_NHANVIEN", ThisKey="NGUOILAPPHIEU", OtherKey="ID_NHANVIEN", IsForeignKey=true)]
+		public NHANVIEN NHANVIEN
+		{
+			get
+			{
+				return this._NHANVIEN.Entity;
+			}
+			set
+			{
+				NHANVIEN previousValue = this._NHANVIEN.Entity;
+				if (((previousValue != value) 
+							|| (this._NHANVIEN.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NHANVIEN.Entity = null;
+						previousValue.CANHOCHUNGCUs.Remove(this);
+					}
+					this._NHANVIEN.Entity = value;
+					if ((value != null))
+					{
+						value.CANHOCHUNGCUs.Add(this);
+						this._NGUOILAPPHIEU = value.ID_NHANVIEN;
+					}
+					else
+					{
+						this._NGUOILAPPHIEU = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("NHANVIEN");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_CANHOCHUNGCU1", Storage="_NHANVIEN1", ThisKey="NGUOIKIEMDUYET", OtherKey="ID_NHANVIEN", IsForeignKey=true)]
+		public NHANVIEN NHANVIEN1
+		{
+			get
+			{
+				return this._NHANVIEN1.Entity;
+			}
+			set
+			{
+				NHANVIEN previousValue = this._NHANVIEN1.Entity;
+				if (((previousValue != value) 
+							|| (this._NHANVIEN1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NHANVIEN1.Entity = null;
+						previousValue.CANHOCHUNGCUs1.Remove(this);
+					}
+					this._NHANVIEN1.Entity = value;
+					if ((value != null))
+					{
+						value.CANHOCHUNGCUs1.Add(this);
+						this._NGUOIKIEMDUYET = value.ID_NHANVIEN;
+					}
+					else
+					{
+						this._NGUOIKIEMDUYET = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("NHANVIEN1");
 				}
 			}
 		}
@@ -11754,6 +11983,14 @@ namespace DACN_ver_2.Models
 		
 		private string _ANH;
 		
+		private EntitySet<VANPHONGCHOTHUE> _VANPHONGCHOTHUEs;
+		
+		private EntitySet<VANPHONGCHOTHUE> _VANPHONGCHOTHUEs1;
+		
+		private EntitySet<CANHOCHUNGCU> _CANHOCHUNGCUs;
+		
+		private EntitySet<CANHOCHUNGCU> _CANHOCHUNGCUs1;
+		
 		private EntitySet<DAT> _DATs;
 		
 		private EntitySet<DAT> _DATs1;
@@ -11814,6 +12051,10 @@ namespace DACN_ver_2.Models
 		
 		public NHANVIEN()
 		{
+			this._VANPHONGCHOTHUEs = new EntitySet<VANPHONGCHOTHUE>(new Action<VANPHONGCHOTHUE>(this.attach_VANPHONGCHOTHUEs), new Action<VANPHONGCHOTHUE>(this.detach_VANPHONGCHOTHUEs));
+			this._VANPHONGCHOTHUEs1 = new EntitySet<VANPHONGCHOTHUE>(new Action<VANPHONGCHOTHUE>(this.attach_VANPHONGCHOTHUEs1), new Action<VANPHONGCHOTHUE>(this.detach_VANPHONGCHOTHUEs1));
+			this._CANHOCHUNGCUs = new EntitySet<CANHOCHUNGCU>(new Action<CANHOCHUNGCU>(this.attach_CANHOCHUNGCUs), new Action<CANHOCHUNGCU>(this.detach_CANHOCHUNGCUs));
+			this._CANHOCHUNGCUs1 = new EntitySet<CANHOCHUNGCU>(new Action<CANHOCHUNGCU>(this.attach_CANHOCHUNGCUs1), new Action<CANHOCHUNGCU>(this.detach_CANHOCHUNGCUs1));
 			this._DATs = new EntitySet<DAT>(new Action<DAT>(this.attach_DATs), new Action<DAT>(this.detach_DATs));
 			this._DATs1 = new EntitySet<DAT>(new Action<DAT>(this.attach_DATs1), new Action<DAT>(this.detach_DATs1));
 			this._HOPDONGs = new EntitySet<HOPDONG>(new Action<HOPDONG>(this.attach_HOPDONGs), new Action<HOPDONG>(this.detach_HOPDONGs));
@@ -12178,6 +12419,58 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_VANPHONGCHOTHUE", Storage="_VANPHONGCHOTHUEs", ThisKey="ID_NHANVIEN", OtherKey="NGUOILAPPHIEU")]
+		public EntitySet<VANPHONGCHOTHUE> VANPHONGCHOTHUEs
+		{
+			get
+			{
+				return this._VANPHONGCHOTHUEs;
+			}
+			set
+			{
+				this._VANPHONGCHOTHUEs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_VANPHONGCHOTHUE1", Storage="_VANPHONGCHOTHUEs1", ThisKey="ID_NHANVIEN", OtherKey="NGUOIKIEMDUYET")]
+		public EntitySet<VANPHONGCHOTHUE> VANPHONGCHOTHUEs1
+		{
+			get
+			{
+				return this._VANPHONGCHOTHUEs1;
+			}
+			set
+			{
+				this._VANPHONGCHOTHUEs1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_CANHOCHUNGCU", Storage="_CANHOCHUNGCUs", ThisKey="ID_NHANVIEN", OtherKey="NGUOILAPPHIEU")]
+		public EntitySet<CANHOCHUNGCU> CANHOCHUNGCUs
+		{
+			get
+			{
+				return this._CANHOCHUNGCUs;
+			}
+			set
+			{
+				this._CANHOCHUNGCUs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_CANHOCHUNGCU1", Storage="_CANHOCHUNGCUs1", ThisKey="ID_NHANVIEN", OtherKey="NGUOIKIEMDUYET")]
+		public EntitySet<CANHOCHUNGCU> CANHOCHUNGCUs1
+		{
+			get
+			{
+				return this._CANHOCHUNGCUs1;
+			}
+			set
+			{
+				this._CANHOCHUNGCUs1.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_DAT", Storage="_DATs", ThisKey="ID_NHANVIEN", OtherKey="NGUOIKIEMDUYET")]
 		public EntitySet<DAT> DATs
 		{
@@ -12376,6 +12669,54 @@ namespace DACN_ver_2.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_VANPHONGCHOTHUEs(VANPHONGCHOTHUE entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHANVIEN = this;
+		}
+		
+		private void detach_VANPHONGCHOTHUEs(VANPHONGCHOTHUE entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHANVIEN = null;
+		}
+		
+		private void attach_VANPHONGCHOTHUEs1(VANPHONGCHOTHUE entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHANVIEN1 = this;
+		}
+		
+		private void detach_VANPHONGCHOTHUEs1(VANPHONGCHOTHUE entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHANVIEN1 = null;
+		}
+		
+		private void attach_CANHOCHUNGCUs(CANHOCHUNGCU entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHANVIEN = this;
+		}
+		
+		private void detach_CANHOCHUNGCUs(CANHOCHUNGCU entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHANVIEN = null;
+		}
+		
+		private void attach_CANHOCHUNGCUs1(CANHOCHUNGCU entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHANVIEN1 = this;
+		}
+		
+		private void detach_CANHOCHUNGCUs1(CANHOCHUNGCU entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHANVIEN1 = null;
 		}
 		
 		private void attach_DATs(DAT entity)
@@ -13954,6 +14295,8 @@ namespace DACN_ver_2.Models
 		
 		private EntitySet<BANGGIADAT> _BANGGIADATs;
 		
+		private EntitySet<VANPHONGCHOTHUE> _VANPHONGCHOTHUEs;
+		
 		private EntitySet<CANHOCHUNGCU> _CANHOCHUNGCUs;
 		
 		private EntitySet<DAT> _DATs;
@@ -13985,6 +14328,7 @@ namespace DACN_ver_2.Models
 		public QUANHUYEN()
 		{
 			this._BANGGIADATs = new EntitySet<BANGGIADAT>(new Action<BANGGIADAT>(this.attach_BANGGIADATs), new Action<BANGGIADAT>(this.detach_BANGGIADATs));
+			this._VANPHONGCHOTHUEs = new EntitySet<VANPHONGCHOTHUE>(new Action<VANPHONGCHOTHUE>(this.attach_VANPHONGCHOTHUEs), new Action<VANPHONGCHOTHUE>(this.detach_VANPHONGCHOTHUEs));
 			this._CANHOCHUNGCUs = new EntitySet<CANHOCHUNGCU>(new Action<CANHOCHUNGCU>(this.attach_CANHOCHUNGCUs), new Action<CANHOCHUNGCU>(this.detach_CANHOCHUNGCUs));
 			this._DATs = new EntitySet<DAT>(new Action<DAT>(this.attach_DATs), new Action<DAT>(this.detach_DATs));
 			this._TINHTHANH = default(EntityRef<TINHTHANH>);
@@ -14168,6 +14512,19 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QUANHUYEN_VANPHONGCHOTHUE", Storage="_VANPHONGCHOTHUEs", ThisKey="ID_QUANHUYEN", OtherKey="ID_QUANHUYEN")]
+		public EntitySet<VANPHONGCHOTHUE> VANPHONGCHOTHUEs
+		{
+			get
+			{
+				return this._VANPHONGCHOTHUEs;
+			}
+			set
+			{
+				this._VANPHONGCHOTHUEs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="QUANHUYEN_CANHOCHUNGCU", Storage="_CANHOCHUNGCUs", ThisKey="ID_QUANHUYEN", OtherKey="ID_QUANHUYEN")]
 		public EntitySet<CANHOCHUNGCU> CANHOCHUNGCUs
 		{
@@ -14255,6 +14612,18 @@ namespace DACN_ver_2.Models
 		}
 		
 		private void detach_BANGGIADATs(BANGGIADAT entity)
+		{
+			this.SendPropertyChanging();
+			entity.QUANHUYEN = null;
+		}
+		
+		private void attach_VANPHONGCHOTHUEs(VANPHONGCHOTHUE entity)
+		{
+			this.SendPropertyChanging();
+			entity.QUANHUYEN = this;
+		}
+		
+		private void detach_VANPHONGCHOTHUEs(VANPHONGCHOTHUE entity)
 		{
 			this.SendPropertyChanging();
 			entity.QUANHUYEN = null;

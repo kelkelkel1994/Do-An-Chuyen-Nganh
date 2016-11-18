@@ -60,5 +60,16 @@ namespace DACN_ver_2.Controllers
             var a = data.DATs.ToList();
             return View(a);
         }
+
+        public ActionResult BanggiaCanho()
+        {
+            var a = data.CANHOCHUNGCUs.ToList();
+            return View(a);
+        }
+        public ActionResult BanggiaVanphong()
+        {
+            var a = data.VANPHONGCHOTHUEs.ToList();
+            return View(a);
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace DACN_ver_2.Controllers
         [HttpGet]
         public ActionResult ThemPYC()
         {
-            ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s=>s.TENNV).Where(s=>s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
+            ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
             ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
             ViewData["Loaitaisan3"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
             return View();
@@ -46,12 +46,12 @@ namespace DACN_ver_2.Controllers
                 pyc.ID_KH = int.Parse(kh);
                 data.PHIEUYEUCAUs.InsertOnSubmit(pyc);
                 data.SubmitChanges();
-                
+
                 var id = data.PHIEUYEUCAUs.FirstOrDefault(s => s.SOPYC == pyc.SOPYC);
                 tb.ID_PYC = id.ID_PYC;
-                tb.ID_NGUOIGUI = int.Parse(Session["ID"].ToString());
+                tb.ID_NGUOIGUI = 1;
                 tb.ID_NGUOINHAN = int.Parse(nv);
-                tb.NOIDUNG = "Bạn được giao: "+ collection["SOPYC"] + "/2016/PYC-AMAX";
+                tb.NOIDUNG = "Bạn được giao: " + collection["SOPYC"] + "/2016/PYC-AMAX";
                 tb.NGAYGUI = DateTime.Now;
                 tb.TRANGTHAIXEM = false;
                 tb.TRANGTHAI = true;
@@ -71,7 +71,7 @@ namespace DACN_ver_2.Controllers
         }
 
         //xem PYC
-        public ActionResult XemPYC (int id)
+        public ActionResult XemPYC(int id)
         {
             var detail = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
             ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_PYC == id).Count();
@@ -83,7 +83,7 @@ namespace DACN_ver_2.Controllers
             var d = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
             return View(d);
         }
-        
+
         public ActionResult SaveDropzoneJsUploadedFiles(int id, FILEDINHKEM dk)
         {
             string fName = "";
@@ -118,8 +118,8 @@ namespace DACN_ver_2.Controllers
                     dk.TRANGTHAI = true;
                     data.FILEDINHKEMs.InsertOnSubmit(dk);
                     data.SubmitChanges();
-                    
-            }
+
+                }
             }
 
             return Json(new { Message = string.Empty });
@@ -133,7 +133,7 @@ namespace DACN_ver_2.Controllers
         //sua PYC
         public ActionResult SuaPYC(int id)
         {
-            
+
             var pyc = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
             ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_PYC == id).Count();
             ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV", pyc.ID_NHANVIEN);
@@ -157,7 +157,7 @@ namespace DACN_ver_2.Controllers
                 pyc.NGAYSUA = DateTime.Now;
                 UpdateModel(pyc);
                 data.SubmitChanges();
-                return RedirectToAction("XemPYC", "Kinhdoanh", new { id = id});
+                return RedirectToAction("XemPYC", "Kinhdoanh", new { id = id });
             }
             catch
             {
@@ -257,11 +257,12 @@ namespace DACN_ver_2.Controllers
                 return View();
             }
         }
-        
+
+
         // danh sách hợp đồng
         public ActionResult DanhsachHD()
         {
-            var hd = data.HOPDONGs.ToList().OrderBy(s => s.ID_HOPDONG);
+            var hd = data.HOPDONGs.ToList().OrderBy(s => s.ID_HOPDONG).Where(s=>s.TRANGTHAI == true);
             return View(hd);
         }
         //Xem chi tiết hop đồng
@@ -270,6 +271,76 @@ namespace DACN_ver_2.Controllers
             var detail = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
             ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_HOPDONG == id).Count();
             return View(detail);
+        }
+
+        //sua hd
+        public ActionResult SuaHD(int id)
+        {
+
+            var hd = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
+            ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_HOPDONG == id).Count();
+            ViewData["lhd3"] = new SelectList(data.LOAIHOPDONGs.ToList().OrderBy(s => s.TEN), "ID_LOAIHOPDONG", "TEN", hd.ID_LOAIHOPDONG);
+            ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 3), "ID_NHANVIEN", "TENNV", hd.ID_NHANVIEN);
+            ViewData["Loaihopdong3"] = new SelectList(data.TRANGTHAIs.ToList().OrderBy(s => s.TEN), "ID_TRANGTHAI", "TEN", hd.ID_TRANGTHAI);
+            ViewData["Pyc3"] = new SelectList(data.PHIEUYEUCAUs.ToList().OrderBy(s => s.SOPYC), "ID_PYC", "SOPYC", hd.ID_PYC);
+            return View(hd);
+        }
+        [HttpPost]
+        public ActionResult SuaHD(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                HOPDONG hd = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
+                ViewData["lhd3"] = new SelectList(data.LOAIHOPDONGs.ToList().OrderBy(s => s.TEN), "ID_LOAIHOPDONG", "TEN", hd.ID_LOAIHOPDONG);
+                var lhd = collection["Lhd3"];
+                var nv = collection["Nhanvien3"];
+                var tt = collection["Loaihopdong3"];
+                var pyc = collection["Pyc3"];
+                hd.ID_LOAIHOPDONG = int.Parse(lhd);
+                hd.ID_NHANVIEN = int.Parse(nv);
+                hd.ID_TRANGTHAI = int.Parse(tt);
+                hd.ID_PYC = int.Parse(pyc);
+                hd.NGAYSUA = DateTime.Now;
+                UpdateModel(hd);
+                data.SubmitChanges();
+                return RedirectToAction("XemHD", "Kinhdoanh", new { id = id });
+            }
+            catch
+            {
+                var hd = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
+                ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 3), "ID_NHANVIEN", "TENNV", hd.ID_NHANVIEN);
+                ViewData["Loaihopdong3"] = new SelectList(data.TRANGTHAIs.ToList().OrderBy(s => s.TEN), "ID_TRANGTHAI", "TEN", hd.ID_TRANGTHAI);
+                ViewData["Pyc3"] = new SelectList(data.PHIEUYEUCAUs.ToList().OrderBy(s => s.SOPYC), "ID_PYC", "SOPYC", hd.ID_PYC);
+                return View();
+            }
+        }
+
+        //xoa hd
+        public ActionResult XoaHD(int id)
+        {
+            var xpb = data.HOPDONGs
+                .FirstOrDefault(s => s.ID_HOPDONG == id);
+            return PartialView(xpb);
+        }
+
+        // POST: asdas/Delete/5
+        [HttpPost]
+        public ActionResult XoaHD(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                HOPDONG pb = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
+                pb.TRANGTHAI = false;
+                UpdateModel(pb);
+                data.SubmitChanges();
+                return RedirectToAction("DanhsachHD");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         //thê file hop đồng

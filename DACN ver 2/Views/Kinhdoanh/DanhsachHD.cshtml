@@ -177,9 +177,23 @@
 
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Xem", "XemHD", new { id = item.ID_HOPDONG }) |
+                                            @Html.ActionLink("Xem", "XemHD", new { id = item.ID_HOPDONG }) |@Html.ActionLink("Sửa", "SuaHD", new { id = item.ID_HOPDONG }) |
 
                                             <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_HOPDONG"><i class="glyphicon glyphicon-trash"></i></a>
+                                            <div class="modal fade xoakh-@item.ID_HOPDONG" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog modal-sm">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                            <h4 class="modal-title" id="myModalLabel">Bạn có chắc muốn xoá? | Hợp đồng số: @item.SOHD</h4>
+
+                                                        </div>
+                                                        @Html.Action("XoaHD", "Kinhdoanh", new { id = item.ID_HOPDONG })
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
 
                                     </tr>
