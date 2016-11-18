@@ -1,0 +1,270 @@
+﻿@model IEnumerable<DACN_ver_2.Models.MENU>
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        @*<div class="page-title">
+                <div class="title_left">
+                    <h3>Quản lý <small>Danh sách nhân viên AMAX</small></h3>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>*@
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>
+                            Quản lý thanh Menu
+                        </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tên hiển thị</th>
+                                    <th>Admin</th>
+                                    <th>Kinhdoanh</th>
+                                    <th>Thẩm định</th>
+                                    <th>Tác vụ</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ID_MENU)
+                                        </td>
+                                        <td>
+                                            <div class="row">
+                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
+                                                    @Html.DisplayFor(modelItem => item.TEN)
+                                                </label>
+                                            </div>
+                                            @Html.Action("Submenu", "Main", new { id = item.ID_MENU })
+                                        </td>
+                                        <td>
+                                            @if (item.ADMIN == true)
+                                            {
+                                                <input checked="checked"
+                                                       id="ADMIN"
+                                                       name="ADMIN"
+                                                       type="checkbox"
+                                                       value="true" disabled="disabled" />
+                                            }
+                                            else
+                                            {
+                                                <input id="ADMIN"
+                                                       name="ADMIN"
+                                                       type="checkbox"
+                                                       value="false" disabled="disabled" />
+                                            }
+
+                                        </td>
+                                        <td>
+                                            @if (item.KINHDOANH == true)
+                                            {
+                                                <input checked="checked"
+                                                       id="KINHDOANH"
+                                                       name="KINHDOANH"
+                                                       type="checkbox"
+                                                       value="true" disabled="disabled" />
+                                            }
+                                            else
+                                            {
+                                                <input id="KINHDOANH"
+                                                       name="KINHDOANH"
+                                                       type="checkbox"
+                                                       value="false" disabled="disabled" />
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.THAMDINH == true)
+                                            {
+                                                <input checked="checked"
+                                                       id="THAMDINH"
+                                                       name="THAMDINH"
+                                                       type="checkbox"
+                                                       value="true" disabled="disabled" />
+                                            }
+                                            else
+                                            {
+                                                <input id="THAMDINH"
+                                                       name="THAMDINH"
+                                                       type="checkbox"
+                                                       value="false" disabled="disabled" />
+                                            }
+                                        </td>
+                                        <td>
+                                            <a href='#' class="btn btn-primary btn-update" data-toggle="modal" data-target=".suakh-@item.ID_MENU"><i class="glyphicon glyphicon-pencil"></i></a>
+                                            <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_MENU"><i class="glyphicon glyphicon-trash"></i></a>
+                                        </td>
+                                    </tr>
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@section scriptsdata {
+    <script>
+        $(document).ready(function () {
+            var handleDataTableButtons = function () {
+                if ($("#datatable-buttons").length) {
+                    $("#datatable-buttons").DataTable({
+                        dom: "Bfrtip",
+                        buttons: [
+                          {
+                              extend: "copy",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "csv",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "excel",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "pdfHtml5",
+                              className: "btn-sm"
+                          },
+                          {
+                              extend: "print",
+                              className: "btn-sm"
+                          },
+                        ],
+                        responsive: true
+                    });
+                }
+            };
+
+            TableManageButtons = function () {
+                "use strict";
+                return {
+                    init: function () {
+                        handleDataTableButtons();
+                    }
+                };
+            }();
+
+            $('#datatable').dataTable();
+
+            $('#datatable-keytable').DataTable({
+                keys: true
+            });
+
+            $('#datatable-responsive').DataTable();
+
+            $('#datatable-scroller').DataTable({
+                ajax: "js/datatables/json/scroller-demo.json",
+                deferRender: true,
+                scrollY: 380,
+                scrollCollapse: true,
+                scroller: true
+            });
+
+            $('#datatable-fixed-header').DataTable({
+                fixedHeader: true
+            });
+
+            var $datatable = $('#datatable-checkbox');
+
+            $datatable.dataTable({
+                'order': [[1, 'asc']],
+                'columnDefs': [
+                  { orderable: false, targets: [0] }
+                ]
+            });
+            $datatable.on('draw.dt', function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_flat-green'
+                });
+            });
+
+            TableManageButtons.init();
+        });
+    </script>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONTROLLER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VIEW)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADMIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KINHDOANH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.THAMDINH)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRANGTHAI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CONTROLLER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VIEW)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADMIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KINHDOANH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.THAMDINH)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_MENU }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_MENU }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_MENU })
+            </td>
+        </tr>
+    }
+
+</table>

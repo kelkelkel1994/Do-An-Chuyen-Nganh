@@ -245,6 +245,7 @@
     <Content Include="images\inbox.png" />
     <Content Include="images\mastercard.png" />
     <Content Include="images\media.jpg" />
+    <Content Include="images\Avatar\original.jpg" />
     <Content Include="images\paypal.png" />
     <Content Include="images\picture.jpg" />
     <Content Include="images\prod-1.jpg" />
@@ -750,6 +751,9 @@
     <Content Include="vendors\Chart.js\LICENSE.md" />
     <Content Include="vendors\Chart.js\package.json" />
     <Content Include="vendors\Chart.js\README.md" />
+    <Content Include="Views\Main\Menu.cshtml" />
+    <Content Include="Views\Main\Submenu.cshtml" />
+    <Content Include="Views\Main\SuaMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

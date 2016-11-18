@@ -294,7 +294,23 @@ namespace DACN_ver_2.Controllers
             }
         }
 
+        public ActionResult Menu()
+        {
+            var menu = data.MENUs.ToList();
+            return View(menu);
+        }
 
+        public ActionResult Submenu(int id)
+        {
+            var submenu = data.SUBMENUs.ToList().Where(s => s.ID_MENU == id);
+            return PartialView(submenu);
+        }
+
+        public ActionResult SuaMenu(int id)
+        {
+            var sua = data.MENUs.FirstOrDefault(s => s.ID_MENU == id);
+            return View(sua);
+        }
 
     }
 }

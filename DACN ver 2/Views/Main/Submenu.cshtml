@@ -1,0 +1,10 @@
+﻿
+@model IEnumerable<DACN_ver_2.Models.SUBMENU>
+
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        ||+  @Html.DisplayFor(modelItem => item.TEN)
+    </div>
+}
