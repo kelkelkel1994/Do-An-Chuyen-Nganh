@@ -311,6 +311,7 @@ namespace DACN_ver_2.Controllers
             var sua = data.MENUs.FirstOrDefault(s => s.ID_MENU == id);
             return View(sua);
         }
+        
 
     }
 }

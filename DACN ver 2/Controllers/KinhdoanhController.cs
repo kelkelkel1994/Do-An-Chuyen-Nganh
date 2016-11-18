@@ -132,8 +132,13 @@ namespace DACN_ver_2.Controllers
         //sua PYC
         public ActionResult SuaPYC(int id)
         {
-            var spb = data.PHONGBANs.FirstOrDefault(s => s.ID_PHONGBAN == id);
-            return PartialView(spb);
+            
+            var pyc = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
+            ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_PYC == id).Count();
+            ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV", pyc.ID_NHANVIEN);
+            ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH", pyc.ID_KH);
+            ViewData["Loaitaisan3"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN", pyc.ID_LOAITAISAN);
+            return View(pyc);
         }
         [HttpPost]
         public ActionResult SuaPYC(int id, FormCollection collection)

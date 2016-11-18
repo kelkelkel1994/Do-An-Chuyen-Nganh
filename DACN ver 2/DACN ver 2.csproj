@@ -754,6 +754,7 @@
     <Content Include="Views\Main\Menu.cshtml" />
     <Content Include="Views\Main\Submenu.cshtml" />
     <Content Include="Views\Main\SuaMenu.cshtml" />
+    <Content Include="Views\Kinhdoanh\SuaPYC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
