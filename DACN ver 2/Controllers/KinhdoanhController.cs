@@ -146,14 +146,23 @@ namespace DACN_ver_2.Controllers
             try
             {
                 // TODO: Add update logic here
-                PHONGBAN pb = data.PHONGBANs.FirstOrDefault(s => s.ID_PHONGBAN == id);
-                pb.NGAYSUA = DateTime.Now;
-                UpdateModel(pb);
+                PHIEUYEUCAU pyc = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
+                var nv = collection["Nhanvien3"];
+                var lts = collection["Loaitaisan3"];
+                var kh = collection["Khachhang3"];
+                pyc.ID_NHANVIEN = int.Parse(nv);
+                pyc.ID_KH = int.Parse(nv);
+                pyc.ID_LOAITAISAN = int.Parse(lts);
+                pyc.NGAYSUA = DateTime.Now;
+                UpdateModel(pyc);
                 data.SubmitChanges();
-                return RedirectToAction("Quantri");
+                return RedirectToAction("XemPYC", "Kinhdoanh", new { id = id});
             }
             catch
             {
+                ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV", pyc.ID_NHANVIEN);
+                ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH", pyc.ID_KH);
+                ViewData["Loaitaisan3"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN", pyc.ID_LOAITAISAN);
                 return View();
             }
         }

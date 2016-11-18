@@ -144,7 +144,7 @@
                                                     </td>
                                                     <td>@Html.DisplayFor(modelItem => item.NHANVIEN.TENNV)</td>
                                                     <td>
-                                                        @Html.ActionLink("Xem", "XemPYC", new { id = item.ID_PYC }) |
+                                                        @Html.ActionLink("Xem", "XemPYC", new { id = item.ID_PYC }) |@Html.ActionLink("Sửa", "SuaPYC", new { id = item.ID_PYC }) |
 
                                                         <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_KH"><i class="glyphicon glyphicon-trash"></i></a>
 

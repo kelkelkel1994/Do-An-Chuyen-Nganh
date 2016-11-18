@@ -118,7 +118,7 @@
                                         Thời điểm thẩm định:
                                     </label>
                                     <div class="col-md-8 col-sm-6 col-xs-12">
-                                        @Html.DisplayFor(model => model.TDTD)
+                                        @Html.EditorFor(model => model.TDTD, new { htmlAttributes = new { @class = "form-control" } })
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -126,7 +126,7 @@
                                         Thời hạn hoàn thành:
                                     </label>
                                     <div class="col-md-8 col-sm-6 col-xs-12">
-                                        @Html.EditorFor(model => model.TDTD, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.EditorFor(model => model.THHT, new { htmlAttributes = new { @class = "form-control" } })
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -134,7 +134,8 @@
                                         Yêu cầu khác (nếu có):
                                     </label>
                                     <div class="col-md-8 col-sm-6 col-xs-12">
-                                        @Html.EditorFor(model => model.YEUCAUKHAC, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.TextAreaFor(model => model.YEUCAUKHAC,  new { @class = "form-control", @rows ="3"} )
+                                        @*@Html.EditorFor(model => model.YEUCAUKHAC, new { htmlAttributes = new { @class = "form-control" } })*@
                                     </div>
                                 </div>
                                 <div class="form-group">
