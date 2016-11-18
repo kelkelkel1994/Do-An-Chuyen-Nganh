@@ -160,6 +160,7 @@ namespace DACN_ver_2.Controllers
             }
             catch
             {
+                var pyc = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
                 ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV", pyc.ID_NHANVIEN);
                 ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH", pyc.ID_KH);
                 ViewData["Loaitaisan3"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN", pyc.ID_LOAITAISAN);
@@ -263,7 +264,7 @@ namespace DACN_ver_2.Controllers
             return View(hd);
         }
         //Xem chi tiết hop đồng
-        public ActionResult XemCTHopDdong(int id)
+        public ActionResult XemHD(int id)
         {
             var detail = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
             ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_HOPDONG == id).Count();
@@ -514,6 +515,12 @@ namespace DACN_ver_2.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult LoadFile(int id)
+        {
+            var abc = data.FILEDINHKEMs.FirstOrDefault(s => s.ID_FILEDINHKEM == id);
+            return View(abc);
         }
 
     }

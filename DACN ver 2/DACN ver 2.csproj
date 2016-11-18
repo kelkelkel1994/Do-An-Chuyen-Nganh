@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GleamTech.DocumentUltimate, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a05198837413a6d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentUltimate.2.1.0\lib\net40\GleamTech.DocumentUltimate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -755,6 +759,8 @@
     <Content Include="Views\Main\Submenu.cshtml" />
     <Content Include="Views\Main\SuaMenu.cshtml" />
     <Content Include="Views\Kinhdoanh\SuaPYC.cshtml" />
+    <Content Include="Views\Kinhdoanh\XemHD.cshtml" />
+    <Content Include="Views\Kinhdoanh\LoadFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
