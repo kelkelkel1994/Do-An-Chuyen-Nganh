@@ -109,8 +109,9 @@ namespace DACN_ver_2.Controllers
                         System.IO.Directory.CreateDirectory(pathString);
 
                     var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                    var luu = "~/FilePYC/" + id + "/" + file.FileName;
                     file.SaveAs(path);
-                    dk.LIENKET = path;
+                    dk.LIENKET = luu;
                     dk.ID_PYC = id;
                     dk.TENFILE = file.FileName;
                     dk.NGAYTAO = DateTime.Now;
@@ -308,8 +309,9 @@ namespace DACN_ver_2.Controllers
                         System.IO.Directory.CreateDirectory(pathString);
 
                     var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                    var luu = "~/FileHD/" + id + "/" + file.FileName;
                     file.SaveAs(path);
-                    dk.LIENKET = path;
+                    dk.LIENKET = luu;
                     dk.ID_HOPDONG = id;
                     dk.TENFILE = file.FileName;
                     dk.NGAYTAO = DateTime.Now;
@@ -479,8 +481,9 @@ namespace DACN_ver_2.Controllers
                         System.IO.Directory.CreateDirectory(pathString);
 
                     var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                    var luu = "~/FileCT/" + id + "/" + file.FileName;
                     file.SaveAs(path);
-                    dk.LIENKET = path;
+                    dk.LIENKET = luu;
                     dk.ID_CHUNGTHU = id;
                     dk.TENFILE = file.FileName;
                     dk.NGAYTAO = DateTime.Now;
