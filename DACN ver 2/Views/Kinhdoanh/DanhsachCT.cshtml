@@ -15,14 +15,6 @@
                         <h2>
                             Danh sách Chứng thư | <button type="button" class="btn btn-default" data-toggle="modal" data-target=".them-khach-hang"><i class="glyphicon glyphicon-plus"></i></button>
                         </h2>
-                        @*<ul class="nav navbar-right panel_toolbox">
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li>
-                                    <a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>*@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -168,23 +160,18 @@
                                                     @Html.DisplayFor(modelItem => item.KETQUATDG)
                                                 </div>
                                             </div>
-                                            @*<div class="row">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                                    Email:
-                                                </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
-                                                    @Html.DisplayFor(modelItem => item.KHACHHANG.EMAIL)
-                                                </div>
-                                            </div>*@
 
                                         </td>
                                         <td>@Html.DisplayFor(modelItem => item.PHIEUYEUCAU.NHANVIEN.TENNV)</td>
                                         <td>
-                                            @Html.ActionLink("Xem trước văn bản", "XemTruoc", new { id = item.ID_CHUNGTHU }) |
+                                            @*@Html.ActionLink("Xem trước văn bản", "XemTruoc", new { id = item.ID_CHUNGTHU }) |
                                             @Html.ActionLink("Xuất file in", "PrintChiTietCT", new { id = item.ID_CHUNGTHU })|
                                             
-                                            @Html.ActionLink("Xem", "XemCTChungThu", new { id = item.ID_CHUNGTHU }) |
-
+                                            @Html.ActionLink("Xem", "XemCTChungThu", new { id = item.ID_CHUNGTHU }) |*@
+                                            <a href='~/Kinhdoanh/Xemtruoc/@item.ID_CHUNGTHU' class="btn btn-info"><i class="glyphicon glyphicon-print"></i></a>
+                                            <a href='~/Kinhdoanh/PrintChiTietCT/@item.ID_CHUNGTHU' class="btn btn-info"><i class="glyphicon glyphicon-download-alt"></i></a>
+                                            <a href='~/Kinhdoanh/XemCTChungThu/@item.ID_CHUNGTHU' class="btn btn-success"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                            
                                             <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_CHUNGTHU"><i class="glyphicon glyphicon-trash"></i></a>
                                         </td>
 
