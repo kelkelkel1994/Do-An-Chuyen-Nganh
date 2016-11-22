@@ -4,7 +4,10 @@
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Loại thông tin | <small>Thêm mới</small></h2>
+            <h2>Loại thông tin 
+                
+            </h2>
+            
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -37,8 +40,36 @@
 
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ID_LOAIHINH }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ID_LOAIHINH })
+                                <a href='#' class="btn btn-primary btn-update" data-toggle="modal" data-target=".suacn-@item.ID_LOAIHINH"><i class="glyphicon glyphicon-pencil"></i></a>
+                                <div class="modal fade suacn-@item.ID_LOAIHINH" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Sửa chi nhánh | ID = @item.ID_LOAIHINH</h4>
+
+                                            </div>
+                                            @Html.Action("SuaLoaihinh", "Quanly", new { id = item.ID_LOAIHINH })
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoacn-@item.ID_LOAIHINH"><i class="glyphicon glyphicon-trash"></i></a>
+                                <div class="modal fade xoacn-@item.ID_LOAIHINH" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Bạn có chắc muốn xoá? | ID: @item.ID_LOAIHINH</h4>
+
+                                            </div>
+                                            @Html.Action("XoaLoaihinh", "Quanly", new { id = item.ID_LOAIHINH })
+                                        </div>
+                                    </div>
+                                </div>*@
                             </td>
                         </tr>
                     }

@@ -47,6 +47,27 @@ namespace DACN_ver_2.Controllers
             return PartialView(loaihinh);
         }        
 
-        
+        public ActionResult SuaLoaihinh (int id)
+        {
+            var d = data.LOAIHINHs.FirstOrDefault(s => s.ID_LOAIHINH == id);
+            return PartialView(d);
+        }
+        [HttpPost]
+        public ActionResult SuaLoaihinh(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                LOAIHINH d = data.LOAIHINHs.FirstOrDefault(s => s.ID_LOAIHINH == id);
+                d.NGAYSUA = DateTime.Now;
+                UpdateModel(d);
+                data.SubmitChanges();
+                return RedirectToAction("Danhmuc");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

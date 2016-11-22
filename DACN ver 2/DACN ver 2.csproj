@@ -770,6 +770,7 @@
     <Content Include="Views\Kinhdoanh\XoaHD.cshtml" />
     <Content Include="Views\Tracuu\BanggiaCanho.cshtml" />
     <Content Include="Views\Tracuu\BanggiaVanphong.cshtml" />
+    <Content Include="Views\Quanly\SuaLoaihinh.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

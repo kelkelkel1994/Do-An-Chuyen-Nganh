@@ -64,24 +64,20 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Themnhanvien(NHANVIEN nv, FormCollection collection)
         {
-            //try
-            //{
-            // TODO: Add insert logic here
-            //cn.NGAYTAO = DateTime.Now;
-            //cn.TRANGTHAI = true;
+            try
+            {
             var c = collection["Phongban2"];
-
             var b = collection["Loainhanvien2"];
             nv.ID_PHONGBAN = int.Parse(c);
             nv.ID_LOAINHANVIEN = int.Parse(b);
                 data.NHANVIENs.InsertOnSubmit(nv);
                 data.SubmitChanges();
                 return PartialView();
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
+           }
+            catch
+            {
+                return View();
+            }
         }
 
         public ActionResult Themchinhanh()
