@@ -1,0 +1,299 @@
+﻿@model DACN_ver_2.Models.CANHOCHUNGCU
+
+@{
+    ViewBag.Title = "XemCHCC";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Phiếu thông tin về giá | Căn hộ chung cư <small>năm @DateTime.Now.Year</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                            <div class="row">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Số hiệu:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="input-group">
+                                        @Html.DisplayFor(model => model.SOHIEU)
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Ngày lập:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    Tháng: @Html.DisplayFor(model => model.THANG)/@Html.DisplayFor(model => model.NAM)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Loại hình giá trị:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    @Html.DisplayFor(model => model.LOAIHINH.TEN)
+                                </div>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Loại căn hộ:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    @Html.DisplayFor(model => model.CHITIETLOAI.TEN)
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="row">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-decoration:underline; ">
+                                    Đặc điểm căn hộ:
+                                </label>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Tổng diện tích :
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="input-group">
+                                        @Html.DisplayFor(model => model.DIENTICHCANHO) m<sup>2</sup>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Số phòng ngủ:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    @Html.DisplayFor(model => model.SOPHONGNGU)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Số phòng WC :
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    @Html.DisplayFor(model => model.SOPHONGWC)
+                                </div>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Nội thất:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                   @Html.DisplayFor(model => model.NOITHAT)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Số tầng cao :
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    @Html.DisplayFor(model => model.SOTANGCAO)
+                                </div>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Tiện ích:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    @Html.DisplayFor(model => model.TIENICH)
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Tiến độ:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                   @Html.DisplayFor(model => model.TIENDO.TEN)
+
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-decoration:underline; ">
+                                        Đặc điểm bên ngoài
+                                    </label>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Cấp đường/ hẻm:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.CAPDUONG.TEN)
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Kết cấu đường:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.KETCAUDUONG.TEN)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Chiều rộng mặt đường:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.CHIEURONGMATDUONG.TEN)
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Phân luồng:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.PHANLUONG)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Cơ sở hạ tầng:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.CSHT)
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Quy hoạch:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.QUYHOACH)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Cảnh quan môi trường:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                       @Html.DisplayFor(model => model.CQMT)
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Điều kiện thanh toán:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.DKTT)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Tình trạng giao dịch:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.TTGD)
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Tình hình thị trường:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.THTT)
+                                    </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Đặc điểm pháp lý:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.DACDIEMPHAPLY.TEN)
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Loại thông tin:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.LOAITHONGTIN.TEN)
+                                    </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-decoration:underline; ">
+                                        Vị trí/ địa điểm:
+                                    </label>
+                                </div>
+
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Tỉnh thành:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.QUANHUYEN.TINHTHANH.TEN)
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Quận huyện:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.QUANHUYEN.TEN)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Địa chỉ:
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        @Html.DisplayFor(model => model.DIACHI)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Thửa đất:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.THUADAT)
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Tờ bản đồ:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.TOBANDO)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Thời điểm giao dịch:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.THOIDIEMGIAODICH)
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Giá bán/ Thương lượng:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.GIABAN)
+                                    </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="row">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Người lập phiếu:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                       @Html.DisplayFor(model => model.NHANVIEN.TENNV)
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Người kiểm duyệt:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DisplayFor(model => model.NHANVIEN1.TENNV)
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

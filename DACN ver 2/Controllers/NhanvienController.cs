@@ -16,6 +16,7 @@ namespace DACN_ver_2.Controllers
         // GET: Nhanvien
         public ActionResult Index()
         {
+            ViewBag.Thongbao = "0";
             return View();
         }
 

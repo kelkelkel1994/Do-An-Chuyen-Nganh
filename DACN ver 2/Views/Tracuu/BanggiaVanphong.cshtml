@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DACN_ver_2.Models.VANPHONGCHOTHUE>
 
 @{
-    ViewBag.Title = "BanggiaVanphong";
+    ViewBag.Title = "Bảng giá Văn phòng cho thuê";
     Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 
@@ -28,6 +28,7 @@
                                     <th>Địa chỉ</th>
                                     <th>Mức giá</th>
                                     <th>Chứng thư</th>
+                                    <th>Xem</th>
                                 </tr>
                             </thead>
 
@@ -69,6 +70,9 @@
                                             }
 
 
+                                        </td>
+                                        <td>
+                                            <a href='~/Taisan/XemVPCT/@item.ID_VPCT' class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a>
                                         </td>
                                     </tr>
                                 }

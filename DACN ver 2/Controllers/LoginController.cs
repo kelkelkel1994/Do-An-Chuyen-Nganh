@@ -77,6 +77,7 @@ namespace DACN_ver_2.Controllers
                         return View();
                     }
                     Session["ID"] = TK.ID_NHANVIEN;
+                    Session["Quyen"] = TK.ID_PHANQUYEN;
                     if (TK.ID_PHANQUYEN == 1)
                     {
                         return RedirectToAction("Index", "Main");

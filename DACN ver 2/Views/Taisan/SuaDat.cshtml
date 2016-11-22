@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ĐẤT | Phiếu thông tin về giá.";
-    Layout = "~/Views/Shared/_LayoutKinhdoanh.cshtml";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
 }
 <div class="right_col" role="main">
     <div class="">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        @using (Html.BeginForm("ThemDAT", "Taisan", "", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                        @using (Html.BeginForm("SuaDat", "Taisan", "", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
                         {
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -160,53 +160,53 @@
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
                                     <div class="input-group">
-                                        @Html.EditorFor(model => model.MATDOXAYDUNG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
-                                        @Html.ValidationMessageFor(model => model.MATDOXAYDUNG, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.MDSD, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.ValidationMessageFor(model => model.MDSD, "", new { @class = "text-danger" })
                                         <span class="input-group-addon">%</span>
                                     </div>
                                 </div>
                             </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                        Diện tích sử dụng:
-                                    </label>
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <div class="input-group">
-                                            @Html.EditorFor(model => model.DIENTICHXAYDUNG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
-                                            @Html.ValidationMessageFor(model => model.DIENTICHXAYDUNG, "", new { @class = "text-danger" })
-                                            <span class="input-group-addon">m<sup>2</sup></span>
-                                        </div>
-                                    </div>
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                        Năm xây dựng:
-                                    </label>
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        @Html.EditorFor(model => model.MDSD, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
-                                        @Html.ValidationMessageFor(model => model.MDSD, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Diện tích sử dụng:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.DIENTICHXAYDUNG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.ValidationMessageFor(model => model.DIENTICHXAYDUNG, "", new { @class = "text-danger" })
+                                        <span class="input-group-addon">m<sup>2</sup></span>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                        Chất lượng còn lại:
-                                    </label>
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <div class="input-group">
-                                            @Html.EditorFor(model => model.CHATLUONGCONLAI, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
-                                            @Html.ValidationMessageFor(model => model.CHATLUONGCONLAI, "", new { @class = "text-danger" })
-                                            <span class="input-group-addon">%</span>
-                                        </div>
-                                    </div>
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                        Mức độ hoàn thành:
-                                    </label>
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <div class="input-group">
-                                            @Html.EditorFor(model => model.MUCDOHOANTHANH, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
-                                            @Html.ValidationMessageFor(model => model.MUCDOHOANTHANH, "", new { @class = "text-danger" })
-                                            <span class="input-group-addon">%</span>
-                                        </div>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Năm xây dựng:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    @Html.EditorFor(model => model.MDSD, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                    @Html.ValidationMessageFor(model => model.MDSD, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Chất lượng còn lại:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.CHATLUONGCONLAI, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.ValidationMessageFor(model => model.CHATLUONGCONLAI, "", new { @class = "text-danger" })
+                                        <span class="input-group-addon">%</span>
                                     </div>
                                 </div>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Mức độ hoàn thành:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.MUCDOHOANTHANH, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.ValidationMessageFor(model => model.MUCDOHOANTHANH, "", new { @class = "text-danger" })
+                                        <span class="input-group-addon">%</span>
+                                    </div>
+                                </div>
+                            </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Giá trị còn lại:
@@ -260,7 +260,7 @@
                                     </label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
 
-                                        @Html.EditorFor(model => model.PHANLUONG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12"} })
+                                        @Html.EditorFor(model => model.PHANLUONG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
                                         @Html.ValidationMessageFor(model => model.PHANLUONG, "", new { @class = "text-danger" })
 
                                     </div>
@@ -349,32 +349,17 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                        Tỉnh thành:
-                                    </label>
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        @Html.DropDownList("ahii", new SelectList(
-                                                        @ViewBag.Tentp, "ID_TINHTHANH", "TEN"),
-                                                        "Chọn Tỉnh/ thành",
-                                                        new
-                                                        {
-                                                            id = "ddlProductTypes",
-                                                            @class = "form-control col-md-7 col-xs-12"
-                                                        })
-                                    </div>
+
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Quận huyện:
                                     </label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
-                                        @Html.DropDownList("qqqq", new SelectList(Enumerable.Empty<SelectListItem>(), "ID_QUANHUYEN", "TEN"),
-                                                                            "Chọn Quận/ huyện",
-                                                                            new
-                                                                            {
-                                                                                id = "ddlProductCategorys",
-                                                                                @class = "form-control col-md-7 col-xs-12"
-                                                                            })
-                                        @Html.ValidationMessageFor(model => model.ID_QUANHUYEN, "", new { @class = "text-danger" })
+                                        @Html.DropDownList("quanhuyen12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
+
+
                                     </div>
+
+
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
@@ -426,20 +411,18 @@
                                     </label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
                                         @Html.DropDownList("nlp12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
-                                        @Html.ValidationMessageFor(model => model.ID_QUANHUYEN, "", new { @class = "text-danger" })
                                     </div>
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                         Người kiểm duyệt:
                                     </label>
                                     <div class="col-md-3 col-sm-3 col-xs-12">
                                         @Html.DropDownList("nkd12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
-                                        @Html.ValidationMessageFor(model => model.ID_QUANHUYEN, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="Create" class="btn btn-default" />
+                                        <input type="submit" value="Save" class="btn btn-default" />
                                     </div>
                                 </div>
 
@@ -451,39 +434,3 @@
 
     </div>
 </div>
-<script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script type="text/javascript">
-	$(function () {
-
-		$("#ddlProductTypes").change(function () {
-			var tpid = $(this).val();
-			$('#products').html("");
-			$.getJSON("../Nhanvien/LoadQuannHuyen", { tpid: tpid },
-				function (categoryData) {
-					var select = $("#ddlProductCategorys");
-					select.empty();
-					select.append($('<option/>', {
-						value: 0,
-						text: "Chọn Quận/ huyện"
-					}));
-					$.each(categoryData, function (index, itemData) {
-						select.append($('<option/>', {
-							value: itemData.Value,
-							text: itemData.Text
-						}));
-					});
-				});
-
-		});
-		$(function () {
-				$('#ddlProductCategorys').change(function () {
-					var url = $(this).data('url');
-					var value = $(this).val();
-					$('#products').load(url, { id: value });
-
-				});
-			});
-
-	});
-
-</script>

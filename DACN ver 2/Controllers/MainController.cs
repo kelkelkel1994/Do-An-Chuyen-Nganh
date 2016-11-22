@@ -61,21 +61,43 @@ namespace DACN_ver_2.Controllers
             ViewData["Loainhanvien2"] = new SelectList(data.LOAINHANVIENs.ToList().OrderBy(s => s.TEN), "ID_LOAINHANVIEN", "TEN");
             return PartialView();
         }
+        public bool kiemtrauser(string name)
+        {
+            var a = data.NHANVIENs.FirstOrDefault(s => s.USER == name);
+            if (a == null)
+            {
+                return true;
+            }
+            return false;
+        }
         [HttpPost]
         public ActionResult Themnhanvien(NHANVIEN nv, FormCollection collection)
         {
             try
             {
-            var c = collection["Phongban2"];
-            var b = collection["Loainhanvien2"];
-            nv.ID_PHONGBAN = int.Parse(c);
-            nv.ID_LOAINHANVIEN = int.Parse(b);
-                data.NHANVIENs.InsertOnSubmit(nv);
-                data.SubmitChanges();
-                return PartialView();
-           }
+                ViewData["Phongban2"] = new SelectList(data.PHONGBANs.ToList().OrderBy(s => s.TEN), "ID_PHONGBAN", "TEN");
+                ViewData["Loainhanvien2"] = new SelectList(data.LOAINHANVIENs.ToList().OrderBy(s => s.TEN), "ID_LOAINHANVIEN", "TEN");
+                var c = collection["Phongban2"];
+                var b = collection["Loainhanvien2"];
+                
+                    nv.ID_PHONGBAN = int.Parse(c);
+                    nv.ID_LOAINHANVIEN = int.Parse(b);
+                    nv.NGAYTAO = DateTime.Now;
+                    nv.NGUOITAO = int.Parse(Session["ID"].ToString());
+                    nv.PASS = "e10adc3949ba59abbe56e057f20f883e";//pass 123456
+                    nv.TRANGTHAI = true;
+                    nv.ID_PHANQUYEN = 2;
+                nv.ANH = "user.jpg";
+                    data.NHANVIENs.InsertOnSubmit(nv);
+                    data.SubmitChanges();
+                    return RedirectToAction("Themnhanvien");
+                
+                
+            }
             catch
             {
+                ViewData["Phongban2"] = new SelectList(data.PHONGBANs.ToList().OrderBy(s => s.TEN), "ID_PHONGBAN", "TEN");
+                ViewData["Loainhanvien2"] = new SelectList(data.LOAINHANVIENs.ToList().OrderBy(s => s.TEN), "ID_LOAINHANVIEN", "TEN");
                 return View();
             }
         }

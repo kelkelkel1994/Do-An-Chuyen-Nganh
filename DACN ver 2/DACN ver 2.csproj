@@ -777,6 +777,10 @@
     <Content Include="Views\Quanly\XoaLoaitaisan.cshtml" />
     <Content Include="Views\Quanly\SuaLoaithongtin.cshtml" />
     <Content Include="Views\Quanly\XoaLoaithongtin.cshtml" />
+    <Content Include="Views\Taisan\XemDAT.cshtml" />
+    <Content Include="Views\Taisan\XemVPCT.cshtml" />
+    <Content Include="Views\Taisan\XemCHCC.cshtml" />
+    <Content Include="Views\Taisan\SuaDat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

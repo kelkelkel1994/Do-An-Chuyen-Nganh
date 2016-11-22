@@ -27,6 +27,7 @@
                                     <th>Địa chỉ</th>
                                     <th>Mức giá</th>
                                     <th>Chứng thư</th>
+                                    <th>Tác vụ</th>
                                 </tr>
                             </thead>
 
@@ -38,115 +39,22 @@
                                         <td>@Html.DisplayFor(modelItem => item.ID_DAT)</td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.CHITIETLOAI.TEN)
-                                            @*<label class="control-label col-md-5 col-sm-3 col-xs-12">
-                                                @Html.DisplayFor(modelItem => item.CHITIETLOAI.TEN)
-                                            </label>*@
-                                        </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.QUANHUYEN.TINHTHANH.TEN)
-                                            @*<div class="row">
-                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
-                                                    Diện tích:
-                                                </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
-                                                    @if (item.DIENTICHLODAT == null)
-                                                    {
-                                                        <p>-/-</p>
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.DisplayFor(modelItem => item.DIENTICHLODAT)
-                                                    }
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
-                                                    Mục đích sử dụng:
-                                                </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
-                                                    @if (item.MDSD == null)
-                                                    {
-                                                        <p>-/-</p>
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.DisplayFor(modelItem => item.MDSD)
-                                                    }
-                                                </div>
-                                            </div>*@
+                                            
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.QUANHUYEN.TEN)
-                                            @*<div class="row">
-                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
-                                                    Cấp hẻm:
-                                                </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
-                                                    @if (item.CAPDUONG.TEN == null)
-                                                    {
-                                                        <p>-/-</p>
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.DisplayFor(modelItem => item.CAPDUONG.TEN)
-                                                    }
-                                                </div>
-                                            </div>*@
+                                            
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.DIACHI)
-                                            @*<div class="row">
-                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
-                                                    Thành phố:
-                                                </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
-                                                    @if (item.QUANHUYEN.TINHTHANH.TEN == null)
-                                                    {
-                                                        <p>-/-</p>
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.DisplayFor(modelItem => item.QUANHUYEN.TINHTHANH.TEN)
-                                                    }
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
-                                                    Quận/ huyện:
-                                                </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
-                                                    @if (item.QUANHUYEN.TEN == null)
-                                                    {
-                                                        <p>-/-</p>
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.DisplayFor(modelItem => item.QUANHUYEN.TEN)
-                                                    }
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <label class="control-label col-md-5 col-sm-3 col-xs-12">
-                                                    Địa chỉ:
-                                                </label>
-                                                <div class="col-md-7 col-sm-6 col-xs-12">
-                                                    @if (item.DIACHI == null)
-                                                    {
-                                                        <p>-/-</p>
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.DisplayFor(modelItem => item.DIACHI)
-                                                    }
-                                                </div>
-                                            </div>*@
+                                            
                                         </td>
                                         <td>
-                                            @*@Html.DisplayFor(modelItem => item.GIABAN.HasValue ? item.GIABAN.Value.ToString("N0") : "-/-")*@
+                                            
                                             @(item.GIABAN.HasValue ? item.GIABAN.Value.ToString("N0") : "-/-")
-                                            @*<label class="control-label col-md-5 col-sm-3 col-xs-12">
-                                                @Html.DisplayFor(modelItem => item.GIABAN)
-                                            </label>*@
+                                            
                                         </td>
                                         <td>
                                             @if (item.ID_CHUNGTHU == null)
@@ -157,10 +65,9 @@
                                             {
                                                 @Html.DisplayFor(modelItem => item.CHUNGTHUTDG.SOCHUNGTHU)
                                             }
-                                            @*<a href='#' class="btn btn-primary btn-update" data-toggle="modal" data-target=".suakh-@item.ID_DAT"><i class="glyphicon glyphicon-pencil"></i></a>
-                                            
-                                            <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoakh-@item.ID_DAT"><i class="glyphicon glyphicon-trash"></i></a>*@
-                                            
+                                        </td>
+                                        <td>
+                                            <a href='~/Taisan/XemDAT/@item.ID_DAT' class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a>
                                         </td>
                                     </tr>
                                 }

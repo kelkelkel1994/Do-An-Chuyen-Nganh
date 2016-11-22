@@ -40,6 +40,8 @@ namespace DACN_ver_2.Controllers
                 // TODO: Add insert logic here
                 chcc.NGUOILAPPHIEU = int.Parse(collection["nlp12"]);
                 chcc.NGUOIKIEMDUYET = int.Parse(collection["nkd12"]);
+                chcc.NGUOILAPPHIEU = int.Parse(collection["nlp12"]);
+                chcc.NGUOIKIEMDUYET = int.Parse(collection["nkd12"]);
                 chcc.ID_DDPL = int.Parse(collection["ddpl12"]);
                 chcc.ID_TIENDO = int.Parse(collection["tiendo12"]);
                 var qh = collection["qqqq"];
@@ -52,6 +54,7 @@ namespace DACN_ver_2.Controllers
                 chcc.ID_CRMD = int.Parse(collection["chieurongmatduong12"]);
                 chcc.SOHIEU = collection["SOHIEU"] + "/2016/PTT-CHCC";
                 chcc.NGAYTAO = DateTime.Now;
+                chcc.TRANGTHAI = true;
                 data.CANHOCHUNGCUs.InsertOnSubmit(chcc);
                 data.SubmitChanges();
                 return RedirectToAction("Index");
@@ -62,6 +65,12 @@ namespace DACN_ver_2.Controllers
             }
         }
 
+        //xem CHCC
+        public ActionResult XemCHCC(int id)
+        {
+            var d = data.CANHOCHUNGCUs.FirstOrDefault(s => s.ID_CHCC == id && s.TRANGTHAI == true);
+            return View(d);
+        }
         public ActionResult ThemDAT()
         {
             var tp = data.TINHTHANHs.OrderBy(p => p.TEN);
@@ -122,7 +131,66 @@ namespace DACN_ver_2.Controllers
                 return View();
             }
         }
+        //xem dat
+        public ActionResult XemDAT(int id)
+        {
+            var d = data.DATs.FirstOrDefault(s => s.ID_DAT == id && s.TRANGTHAI == true);
+            return View(d);
+        }
+        //sua dat
+        [HttpGet]
+        public ActionResult SuaDat(int id)
+        {
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
 
+
+                var tp = data.TINHTHANHs.OrderBy(p => p.TEN);
+                ViewBag.Tentp = tp;
+                ViewData["tp12"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
+                ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
+                ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
+                ViewData["ddpl12"] = new SelectList(data.DACDIEMPHAPLies, "ID_DDPL", "TEN");
+                ViewData["loaihinh12"] = new SelectList(data.LOAIHINHs, "ID_LOAIHINH", "TEN");
+                ViewData["ddpl12"] = new SelectList(data.DACDIEMPHAPLies.Where(s => s.ID_LOAITAISAN == 1), "ID_DDPL", "TEN");
+                ViewData["loaithongtin12"] = new SelectList(data.LOAITHONGTINs.Where(s => s.ID_LOAITAISAN == 1), "ID_LTT", "TEN");
+                ViewData["chitietloai12"] = new SelectList(data.CHITIETLOAIs, "ID_CHITIETLOAI", "TEN");
+                ViewData["capduong12"] = new SelectList(data.CAPDUONGs, "ID_CAPDUONG", "TEN");
+                ViewData["ketcau12"] = new SelectList(data.KETCAUDUONGs, "ID_KETCAUDUONG", "TEN");
+                ViewData["chieurongmatduong12"] = new SelectList(data.CHIEURONGMATDUONGs, "ID_CRMD", "TEN");
+                ViewData["quanhuyen12"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN");
+
+                DAT dat = data.DATs.FirstOrDefault(s => s.ID_DAT == id);
+                return View(dat);
+            }
+            else
+            {
+                ViewBag.Thongbao = "0";
+                return RedirectToAction("Index", "Nhanvien");
+            }
+        }
+        [HttpPost]
+        public ActionResult SuaDat(int id, FormCollection collection)
+        {
+            DAT dat = data.DATs.FirstOrDefault(s => s.ID_DAT == id);
+
+            dat.NGUOILAPPHIEU = int.Parse(collection["nlp12"]);
+            dat.NGUOIKIEMDUYET = int.Parse(collection["nkd12"]);
+            dat.ID_DDPL = int.Parse(collection["ddpl12"]);
+            var qh = collection["quanhuyen12"];
+            dat.ID_QUANHUYEN = int.Parse(qh);
+            dat.ID_LOAIHINH = int.Parse(collection["loaihinh12"]);
+            dat.ID_LTT = int.Parse(collection["loaithongtin12"]);
+            dat.ID_CHITIETLOAI = int.Parse(collection["chitietloai12"]);
+            dat.ID_CAPDUONG = int.Parse(collection["capduong12"]);
+            dat.ID_KETCAUDUONG = int.Parse(collection["ketcau12"]);
+            dat.ID_CRMD = int.Parse(collection["chieurongmatduong12"]);
+            dat.SOHIEU = collection["SOHIEU"] + "/2016/PTT-DAT";
+            dat.NGAYSUA = DateTime.Now;
+            UpdateModel(dat);
+            data.SubmitChanges();
+            return RedirectToAction("XemDAT", "Taisan", new { id = dat.ID_DAT});
+        }
         //Them văn phong cho thue
         public ActionResult ThemVPCT()
         {
@@ -153,6 +221,7 @@ namespace DACN_ver_2.Controllers
                 vp.ID_CHITIETLOAI = int.Parse(collection["chitietloai12"]);
                 vp.SOHIEU = collection["SOHIEU"] + "/2016/PTT-CHCC";
                 vp.NGAYTAO = DateTime.Now;
+                vp.THANGTHAI = true;
                 data.VANPHONGCHOTHUEs.InsertOnSubmit(vp);
                 data.SubmitChanges();
                 return RedirectToAction("Index");
@@ -170,5 +239,11 @@ namespace DACN_ver_2.Controllers
             }
         }
 
+        //xem VPCT
+        public ActionResult XemVPCT(int id)
+        {
+            var d = data.VANPHONGCHOTHUEs.FirstOrDefault(s => s.ID_VPCT == id && s.THANGTHAI == true);
+            return View(d);
+        }
     }
 }
