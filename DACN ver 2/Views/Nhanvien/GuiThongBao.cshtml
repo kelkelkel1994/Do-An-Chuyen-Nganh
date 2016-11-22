@@ -1,7 +1,7 @@
 ﻿@model DACN_ver_2.Models.THONGBAO
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("GuiThongBao", "Nhanvien", new { @strURL = Request.Url.ToString() }))
 {
     @Html.AntiForgeryToken()
 

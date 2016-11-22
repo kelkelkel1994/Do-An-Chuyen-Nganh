@@ -282,7 +282,7 @@ namespace DACN_ver_2.Controllers
             return PartialView();
         }
         [HttpPost]
-        public ActionResult GuiThongBao(FormCollection collection, THONGBAO tb)
+        public ActionResult GuiThongBao(FormCollection collection, THONGBAO tb, string strURL)
         {
             ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
             var nv = collection["Nhanvien3"];
@@ -293,7 +293,7 @@ namespace DACN_ver_2.Controllers
             tb.TRANGTHAIXEM = false;
             tb.TRANGTHAI = true;
             data.SubmitChanges();
-            return PartialView();
+            return Redirect(strURL);
         }
     }
 }
