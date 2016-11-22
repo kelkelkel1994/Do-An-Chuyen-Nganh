@@ -771,6 +771,12 @@
     <Content Include="Views\Tracuu\BanggiaCanho.cshtml" />
     <Content Include="Views\Tracuu\BanggiaVanphong.cshtml" />
     <Content Include="Views\Quanly\SuaLoaihinh.cshtml" />
+    <Content Include="Views\Quanly\ThemLoaitaisan.cshtml" />
+    <Content Include="Views\Quanly\ThemLoaithongtin.cshtml" />
+    <Content Include="Views\Quanly\SuaLoaitaisan.cshtml" />
+    <Content Include="Views\Quanly\XoaLoaitaisan.cshtml" />
+    <Content Include="Views\Quanly\SuaLoaithongtin.cshtml" />
+    <Content Include="Views\Quanly\XoaLoaithongtin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

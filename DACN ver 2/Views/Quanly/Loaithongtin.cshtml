@@ -4,7 +4,24 @@
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Loại thông tin | <small>Thêm mới</small></h2>
+            <h2>
+                Loại thông tin |
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".loaithongtin"><i class="glyphicon glyphicon-plus"></i></button>
+
+            </h2>
+            <div class="modal fade loaithongtin" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Thêm Loại thông tin</h4>
+                        </div>
+                        @Html.Action("ThemLoaithongtin", "Quanly")
+                    </div>
+                </div>
+            </div>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -12,7 +29,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Loại thông tin</th>
+                        <th>Tên</th>
+                        <th>Loại tài sản</th>
                         <th>Trạng thái</th>
                         <th>Tác vụ</th>
                     </tr>
@@ -28,6 +46,9 @@
                                 @Html.DisplayFor(modelItem => item.TEN)
                             </td>
                             <td>
+                                @Html.DisplayFor(modelItem => item.LOAITAISAN.TEN)
+                            </td>
+                            <td>
                                 @if (item.TRANGTHAI == true)
                                 {
                                     <p>Hiển thị</p>
@@ -37,8 +58,34 @@
 
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.ID_LTT }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.ID_LTT })
+                                <a href='#' class="btn btn-primary btn-update" data-toggle="modal" data-target=".suatt-@item.ID_LTT"><i class="glyphicon glyphicon-pencil"></i></a>
+                                <div class="modal fade suatt-@item.ID_LTT" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Sửa Loại thông tin | ID = @item.ID_LTT</h4>
+                                            </div>
+                                            @Html.Action("SuaLoaithongtin", "Quanly", new { id = item.ID_LTT })
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href='#' class="btn btn-danger btn-delete" data-toggle="modal" data-target=".xoatt-@item.ID_LTT"><i class="glyphicon glyphicon-trash"></i></a>
+                                <div class="modal fade xoatt-@item.ID_LTT" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">Bạn có chắc muốn xoá? | ID: @item.ID_LTT</h4>
+                                            </div>
+                                            @Html.Action("XoaLoaithongtin", "Quanly", new { id = item.ID_LTT })
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     }
