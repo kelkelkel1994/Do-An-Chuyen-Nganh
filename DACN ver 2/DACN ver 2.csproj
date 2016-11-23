@@ -208,6 +208,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\KinhdoanhController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
@@ -543,9 +544,6 @@
     <Content Include="vendors\jquery\src\var\support.js" />
     <Content Include="vendors\jquery\src\var\toString.js" />
     <Content Include="vendors\jquery\src\wrap.js" />
-    <Content Include="Views\Error\403.html" />
-    <Content Include="Views\Error\404.html" />
-    <Content Include="Views\Error\500.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -784,6 +782,10 @@
     <Content Include="Views\Taisan\XemVPCT.cshtml" />
     <Content Include="Views\Taisan\XemCHCC.cshtml" />
     <Content Include="Views\Taisan\SuaDat.cshtml" />
+    <Content Include="Views\Main\SuaNhanvien.cshtml" />
+    <Content Include="Views\Taisan\SuaCHCC.cshtml" />
+    <Content Include="Views\Taisan\SuaVPCT.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

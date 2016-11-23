@@ -1,0 +1,220 @@
+﻿@model DACN_ver_2.Models.VANPHONGCHOTHUE
+
+@{
+    ViewBag.Title = "SuaVPCT";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Phiếu thông tin về giá | Văn phòng cho thuê <small>năm @DateTime.Now.Year</small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+                        @using (Html.BeginForm("SuaVPCT", "Taisan", "", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Số hiệu:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.SOHIEU, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.ValidationMessageFor(model => model.SOHIEU, "", new { @class = "text-danger" })
+                                        <span class="input-group-addon">/@DateTime.Now.Year/PTT-VPCT</span>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Ngày lập:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Tháng</span>
+                                        @Html.EditorFor(model => model.THANG, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.ValidationMessageFor(model => model.THANG, "", new { @class = "text-danger" })
+                                        <span class="input-group-addon">năm</span>
+                                        @Html.EditorFor(model => model.NAM, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.ValidationMessageFor(model => model.NAM, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Loại hình giá trị:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    @Html.DropDownList("loaihinh12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
+                                    @Html.ValidationMessageFor(model => model.ID_LOAIHINH, "", new { @class = "text-danger" })
+                                </div>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Loại văn phòng:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    @Html.DropDownList("chitietloai12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
+                                    @Html.ValidationMessageFor(model => model.ID_CHITIETLOAI, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-decoration:underline; ">
+                                    Đặc điểm căn hộ:
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Diện tích thuê :
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.DIENTICHTHUE, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.ValidationMessageFor(model => model.DIENTICHTHUE, "", new { @class = "text-danger" })
+                                        <span class="input-group-addon">m<sup>2</sup></span>
+                                    </div>
+                                </div>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Thời hạn thuê:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <div class="input-group">
+                                        @Html.EditorFor(model => model.THOIHANTHUE, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.ValidationMessageFor(model => model.THOIHANTHUE, "", new { @class = "text-danger" })
+                                        <span class="input-group-addon">năm</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Điều kiện khác :
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+
+                                    @Html.EditorFor(model => model.DIEUKIENKHAC, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                    @Html.ValidationMessageFor(model => model.DIEUKIENKHAC, "", new { @class = "text-danger" })
+
+                                </div>
+
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Loại thông tin:
+                                </label>
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    @Html.DropDownList("loaithongtin12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
+                                    @Html.ValidationMessageFor(model => model.ID_LTT, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" style="text-decoration:underline; ">
+                                        Vị trí/ địa điểm:
+                                    </label>
+                                </div>
+
+                                <div class="form-group">
+                                    @*<label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Tỉnh thành:
+                                        </label>
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            @Html.DropDownList("ahii", new SelectList(
+                                                            @ViewBag.Tentp, "ID_TINHTHANH", "TEN"),
+                                                            "Chọn Tỉnh/ thành",
+                                                            new
+                                                            {
+                                                                id = "ddlProductTypes",
+                                                                @class = "form-control col-md-7 col-xs-12"
+                                                            })
+                                        </div>*@
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Quận huyện:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+
+                                        @Html.DropDownList("quanhuyen12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
+
+
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Địa chỉ:
+                                    </label>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        @Html.EditorFor(model => model.DIACHI, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                        @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Thời điểm giao dịch:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.EditorFor(model => model.THOIDIEMGIAODICH, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "datetime" } })
+                                        @Html.ValidationMessageFor(model => model.THOIDIEMGIAODICH, "", new { @class = "text-danger" })
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Giá bán cho thuê:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.EditorFor(model => model.GIABAN, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12", @type = "number" } })
+                                        @Html.ValidationMessageFor(model => model.GIABAN, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Người lập phiếu:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DropDownList("nlp12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Người kiểm duyệt:
+                                    </label>
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        @Html.DropDownList("nkd12", null, null, new { @class = "form-control col-md-7 col-xs-12" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
+                                </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

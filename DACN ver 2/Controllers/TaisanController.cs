@@ -71,6 +71,46 @@ namespace DACN_ver_2.Controllers
             var d = data.CANHOCHUNGCUs.FirstOrDefault(s => s.ID_CHCC == id && s.TRANGTHAI == true);
             return View(d);
         }
+        //sua CHCC
+        public ActionResult SuaCHCC(int id)
+        {
+            CANHOCHUNGCU chcc = data.CANHOCHUNGCUs.FirstOrDefault(s => s.ID_CHCC == id);
+            ViewData["tp12"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
+            ViewData["tiendo12"] = new SelectList(data.TIENDOs, "ID_TIENDO", "TEN");
+            ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
+            ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
+            ViewData["chieurongmatduong12"] = new SelectList(data.CHIEURONGMATDUONGs, "ID_CRMD", "TEN");
+            ViewData["loaihinh12"] = new SelectList(data.LOAIHINHs, "ID_LOAIHINH", "TEN");
+            ViewData["ddpl12"] = new SelectList(data.DACDIEMPHAPLies.Where(s => s.ID_LOAITAISAN == 2), "ID_DDPL", "TEN");
+            ViewData["loaithongtin12"] = new SelectList(data.LOAITHONGTINs.Where(s => s.ID_LOAITAISAN == 2), "ID_LTT", "TEN");
+            ViewData["chitietloai12"] = new SelectList(data.CHITIETLOAIs.Where(s => s.ID_LOAITAISAN == 2), "ID_CHITIETLOAI", "TEN");
+            ViewData["capduong12"] = new SelectList(data.CAPDUONGs, "ID_CAPDUONG", "TEN");
+            ViewData["ketcau12"] = new SelectList(data.KETCAUDUONGs, "ID_KETCAUDUONG", "TEN");
+            ViewData["quanhuyen12"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN");
+            return View(chcc);
+        }
+        [HttpPost]
+        public ActionResult SuaCHCC(int id, FormCollection collection)
+        {
+            CANHOCHUNGCU chcc = data.CANHOCHUNGCUs.FirstOrDefault(s => s.ID_CHCC == id);
+            chcc.NGUOILAPPHIEU = int.Parse(collection["nlp12"]);
+            chcc.NGUOIKIEMDUYET = int.Parse(collection["nkd12"]);
+            chcc.ID_DDPL = int.Parse(collection["ddpl12"]);
+            chcc.ID_TIENDO = int.Parse(collection["tiendo12"]);
+            var qh = collection["quanhuyen12"];
+            chcc.ID_QUANHUYEN = int.Parse(qh);
+            chcc.ID_LOAIHINH = int.Parse(collection["loaihinh12"]);
+            chcc.ID_LTT = int.Parse(collection["loaithongtin12"]);
+            chcc.ID_CHITIETLOAI = int.Parse(collection["chitietloai12"]);
+            chcc.ID_CAPDUONG = int.Parse(collection["capduong12"]);
+            chcc.ID_KETCAUDUONG = int.Parse(collection["ketcau12"]);
+            chcc.ID_CRMD = int.Parse(collection["chieurongmatduong12"]);
+            chcc.SOHIEU = collection["SOHIEU"];
+            chcc.NGAYTAO = DateTime.Now;
+            UpdateModel(chcc);
+            data.SubmitChanges();
+            return RedirectToAction("Index");
+        }
         public ActionResult ThemDAT()
         {
             var tp = data.TINHTHANHs.OrderBy(p => p.TEN);
@@ -89,8 +129,6 @@ namespace DACN_ver_2.Controllers
             ViewData["quanhuyen12"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN");
             return View();
         }
-
-        // POST: Dat/Create
         [HttpPost]
         public ActionResult ThemDAT(FormCollection collection, DAT dat)
         {
@@ -244,6 +282,36 @@ namespace DACN_ver_2.Controllers
         {
             var d = data.VANPHONGCHOTHUEs.FirstOrDefault(s => s.ID_VPCT == id && s.THANGTHAI == true);
             return View(d);
+        }
+        //sua VPCT
+        public ActionResult SuaVPCT(int id)
+        {
+            VANPHONGCHOTHUE vp = data.VANPHONGCHOTHUEs.FirstOrDefault(s => s.ID_VPCT == id);
+            ViewData["tp12"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
+            ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
+            ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
+            ViewData["loaihinh12"] = new SelectList(data.LOAIHINHs, "ID_LOAIHINH", "TEN");
+            ViewData["loaithongtin12"] = new SelectList(data.LOAITHONGTINs.Where(s => s.ID_LOAITAISAN == 3), "ID_LTT", "TEN");
+            ViewData["chitietloai12"] = new SelectList(data.CHITIETLOAIs.Where(s => s.ID_LOAITAISAN == 3), "ID_CHITIETLOAI", "TEN");
+            ViewData["quanhuyen12"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN");
+            return View(vp);
+        }
+        [HttpPost]
+        public ActionResult SuaVPCT(int id, FormCollection collection)
+        {
+            VANPHONGCHOTHUE vp = data.VANPHONGCHOTHUEs.FirstOrDefault(s => s.ID_VPCT == id);
+            vp.NGUOILAPPHIEU = int.Parse(collection["nlp12"]);
+            vp.NGUOIKIEMDUYET = int.Parse(collection["nkd12"]);
+            var qh = collection["quanhuyen12"];
+            vp.ID_QUANHUYEN = int.Parse(qh);
+            vp.ID_LOAIHINH = int.Parse(collection["loaihinh12"]);
+            vp.ID_LTT = int.Parse(collection["loaithongtin12"]);
+            vp.ID_CHITIETLOAI = int.Parse(collection["chitietloai12"]);
+            vp.SOHIEU = collection["SOHIEU"] + "/2016/PTT-CHCC";
+            vp.NGAYTAO = DateTime.Now;
+            UpdateModel(vp);
+            data.SubmitChanges();
+            return View(vp);
         }
     }
 }

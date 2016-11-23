@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DACN_ver_2.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace DACN_ver_2.Controllers
 {
@@ -101,7 +103,77 @@ namespace DACN_ver_2.Controllers
                 return View();
             }
         }
+        public string GenerateMD5(string yourString)
+        {
+            return string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(yourString)).Select(s => s.ToString("x2")));
+        }
+        //sua nhan vien
+        public ActionResult SuaNhanvien(int id)
+        {
+            var tt = data.NHANVIENs.First(s => s.ID_NHANVIEN == id);
+            ViewData["phongban1204"] = new SelectList(data.PHONGBANs, "ID_PHONGBAN", "TEN", tt.ID_PHONGBAN);
+            ViewData["loainhanvien1204"] = new SelectList(data.LOAINHANVIENs, "ID_LOAINHANVIEN", "TEN", tt.ID_LOAINHANVIEN);
+            ViewData["phanquyen1204"] = new SelectList(data.PHANQUYENs, "ID_PHANQUYEN", "TEN", tt.ID_PHANQUYEN);
+            return View(tt);
+        }
 
+        // POST: NhanCMNVien/Edit/5
+        [HttpPost]
+        public ActionResult SuaNhanvien(int id, FormCollection collection)
+        {
+            try
+            {
+                NHANVIEN nvs = data.NHANVIENs.SingleOrDefault(s => s.ID_NHANVIEN == id);
+                ViewData["phongban1204"] = new SelectList(data.PHONGBANs, "ID_PHONGBAN", "TEN", nvs.ID_PHONGBAN);
+                ViewData["loainhanvien1204"] = new SelectList(data.LOAINHANVIENs, "ID_LOAINHANVIEN", "TEN", nvs.ID_LOAINHANVIEN);
+                ViewData["phanquyen1204"] = new SelectList(data.PHANQUYENs, "ID_PHANQUYEN", "TEN", nvs.ID_PHANQUYEN);
+                var pb = collection["phongban1204"];
+                var lnv = collection["loainhanvien1204"];
+                var pq = collection["phanquyen1204"];
+                var repass = collection["Repass"];
+                var pass12 = collection["PASS12"];
+                if (string.IsNullOrEmpty(pass12) || string.IsNullOrEmpty(repass))
+                {
+                    nvs.NGAYSUA = DateTime.Now;
+                    nvs.ID_PHONGBAN = int.Parse(pb);
+                    nvs.ID_LOAINHANVIEN = int.Parse(lnv);
+                    nvs.ID_PHANQUYEN = int.Parse(pq);
+                    UpdateModel(nvs);
+                    data.SubmitChanges();
+                    return RedirectToAction("Nhanvien");
+                }else
+                {
+                    if (repass != pass12)
+                    {
+                        ViewData["ErrorNewPass"] = "Không trùng nhau";
+                        ViewData["ErrorReNewPass"] = "Không trùng nhau";
+                        return View(nvs);
+                    }
+                    if (repass.Length < 6 || pass12.Length < 6)
+                    {
+                        ViewData["ErrorNewPass"] = "Không được ít hơn 6 ký tự";
+                        ViewData["ErrorReNewPass"] = "Không được ít hơn 6 ký tự";
+                        return View(nvs);
+                    }
+                    nvs.NGAYSUA = DateTime.Now;
+                    nvs.ID_PHONGBAN = int.Parse(pb);
+                    nvs.ID_LOAINHANVIEN = int.Parse(lnv);
+                    nvs.ID_PHANQUYEN = int.Parse(pq);
+                    nvs.PASS = GenerateMD5(pass12);
+                    UpdateModel(nvs);
+                    data.SubmitChanges();
+                    return RedirectToAction("Nhanvien");
+                } 
+            }
+            catch
+            {
+                NHANVIEN tt = data.NHANVIENs.SingleOrDefault(s => s.ID_NHANVIEN == id);
+                ViewData["phongban1204"] = new SelectList(data.PHONGBANs, "ID_PHONGBAN", "TEN", tt.ID_PHONGBAN);
+                ViewData["loainhanvien1204"] = new SelectList(data.LOAINHANVIENs, "ID_LOAINHANVIEN", "TEN", tt.ID_LOAINHANVIEN);
+                ViewData["phanquyen1204"] = new SelectList(data.PHANQUYENs, "ID_PHANQUYEN", "TEN", tt.ID_PHANQUYEN);
+                return View(tt);
+            }
+        }
         public ActionResult Themchinhanh()
         {
             return PartialView();
