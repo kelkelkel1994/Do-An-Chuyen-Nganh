@@ -543,6 +543,9 @@
     <Content Include="vendors\jquery\src\var\support.js" />
     <Content Include="vendors\jquery\src\var\toString.js" />
     <Content Include="vendors\jquery\src\wrap.js" />
+    <Content Include="Views\Error\403.html" />
+    <Content Include="Views\Error\404.html" />
+    <Content Include="Views\Error\500.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -73,7 +73,13 @@ namespace DACN_ver_2.Controllers
         //xem PYC
         public ActionResult XemPYC(int id)
         {
+            
             var detail = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
+            if (detail == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
             ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_PYC == id).Count();
             return View(detail);
         }
