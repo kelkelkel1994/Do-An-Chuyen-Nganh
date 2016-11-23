@@ -57,7 +57,7 @@ namespace DACN_ver_2.Controllers
         // load danh sach tai san dat
         public ActionResult BanggiadatNB()
         {
-            var a = data.DATs.ToList();
+            var a = data.DATs.ToList().Where(s=>s.TRANGTHAI == true);
             return View(a);
         }
 

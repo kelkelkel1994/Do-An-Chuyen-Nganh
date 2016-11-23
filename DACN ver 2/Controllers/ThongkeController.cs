@@ -141,8 +141,8 @@ namespace DACN_ver_2.Controllers
         public ContentResult GetSoHop2()
         {
             var res = (from tags in data.HOPDONGs
-                       where tags.ID_TRANGTHAI == 2 && tags.NGAYTAO.Value.Year == DateTime.Now.Year//ĐANG THỰC HIỆN
-                       group tags by tags.NGAYTAO.Value.Month into gp
+                       where tags.ID_TRANGTHAI == 2 && tags.NGAYLAP.Value.Year == DateTime.Now.Year//ĐANG THỰC HIỆN
+                       group tags by tags.NGAYLAP.Value.Month into gp
                        select new
                        {
                            thang = gp.Key,

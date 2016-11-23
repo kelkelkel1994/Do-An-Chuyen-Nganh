@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DACN" Class="DatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=VOIANGA\SQLEXPRESS;Initial Catalog=DACN;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[List-CT-DAT]" Member="List_CT_DATs">
+    <Type Name="List_CT_DAT">
+      <Column Name="ID_CHUNGTHU" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SOCHUNGTHU" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.BANGGIADAT" Member="BANGGIADATs">
     <Type Name="BANGGIADAT">
       <Column Name="ID_BANGGIADAT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -161,7 +167,7 @@
     <Type Name="CHUNGTHUTDG">
       <Column Name="ID_CHUNGTHU" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="ID_PYC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ID_HOPDONG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_HOPDONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SOCHUNGTHU" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
       <Column Name="NGAYXUAT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="THOIDIEMTDG" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />

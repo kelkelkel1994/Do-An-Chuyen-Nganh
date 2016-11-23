@@ -161,6 +161,14 @@ namespace DACN_ver_2.Models
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<List_CT_DAT> List_CT_DATs
+		{
+			get
+			{
+				return this.GetTable<List_CT_DAT>();
+			}
+		}
+		
 		public System.Data.Linq.Table<BANGGIADAT> BANGGIADATs
 		{
 			get
@@ -422,6 +430,51 @@ namespace DACN_ver_2.Models
 			get
 			{
 				return this.GetTable<TRANGTHAI>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[List-CT-DAT]")]
+	public partial class List_CT_DAT
+	{
+		
+		private int _ID_CHUNGTHU;
+		
+		private string _SOCHUNGTHU;
+		
+		public List_CT_DAT()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CHUNGTHU", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int ID_CHUNGTHU
+		{
+			get
+			{
+				return this._ID_CHUNGTHU;
+			}
+			set
+			{
+				if ((this._ID_CHUNGTHU != value))
+				{
+					this._ID_CHUNGTHU = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOCHUNGTHU", DbType="VarChar(250)")]
+		public string SOCHUNGTHU
+		{
+			get
+			{
+				return this._SOCHUNGTHU;
+			}
+			set
+			{
+				if ((this._SOCHUNGTHU != value))
+				{
+					this._SOCHUNGTHU = value;
+				}
 			}
 		}
 	}
@@ -4283,7 +4336,7 @@ namespace DACN_ver_2.Models
 		
 		private int _ID_PYC;
 		
-		private int _ID_HOPDONG;
+		private System.Nullable<int> _ID_HOPDONG;
 		
 		private string _SOCHUNGTHU;
 		
@@ -4335,7 +4388,7 @@ namespace DACN_ver_2.Models
     partial void OnID_CHUNGTHUChanged();
     partial void OnID_PYCChanging(int value);
     partial void OnID_PYCChanged();
-    partial void OnID_HOPDONGChanging(int value);
+    partial void OnID_HOPDONGChanging(System.Nullable<int> value);
     partial void OnID_HOPDONGChanged();
     partial void OnSOCHUNGTHUChanging(string value);
     partial void OnSOCHUNGTHUChanged();
@@ -4422,8 +4475,8 @@ namespace DACN_ver_2.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HOPDONG", DbType="Int NOT NULL")]
-		public int ID_HOPDONG
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_HOPDONG", DbType="Int")]
+		public System.Nullable<int> ID_HOPDONG
 		{
 			get
 			{
@@ -4802,7 +4855,7 @@ namespace DACN_ver_2.Models
 					}
 					else
 					{
-						this._ID_HOPDONG = default(int);
+						this._ID_HOPDONG = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("HOPDONG");
 				}

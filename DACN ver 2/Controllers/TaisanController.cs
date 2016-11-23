@@ -75,7 +75,12 @@ namespace DACN_ver_2.Controllers
         public ActionResult SuaCHCC(int id)
         {
             CANHOCHUNGCU chcc = data.CANHOCHUNGCUs.FirstOrDefault(s => s.ID_CHCC == id);
+            ViewData["ct"] = new SelectList(data
+                                                .CHUNGTHUTDGs
+                                                .Where(s => s.TRANGTHAI == true)
+                                                .ToList(), "ID_CHUNGTHU", "SOCHUNGTHU", chcc.ID_CHUNGTHU);
             ViewData["tp12"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
+            ViewData["ct"] = new SelectList(data.CHUNGTHUTDGs.Where(s=>s.TRANGTHAI == true).ToList(), "ID_CHUNGTHU", "SOCHUNGTHU");
             ViewData["tiendo12"] = new SelectList(data.TIENDOs, "ID_TIENDO", "TEN");
             ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
             ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
@@ -182,23 +187,23 @@ namespace DACN_ver_2.Controllers
             if (int.Parse(Session["Quyen"].ToString()) == 1)
             {
 
-
+                DAT dat = data.DATs.FirstOrDefault(s => s.ID_DAT == id);
                 var tp = data.TINHTHANHs.OrderBy(p => p.TEN);
                 ViewBag.Tentp = tp;
+                ViewData["ct"] = new SelectList(data.List_CT_DATs, "ID_CHUNGTHU", "SOCHUNGTHU", dat.ID_CHUNGTHU);
                 ViewData["tp12"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
-                ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
-                ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
-                ViewData["ddpl12"] = new SelectList(data.DACDIEMPHAPLies, "ID_DDPL", "TEN");
-                ViewData["loaihinh12"] = new SelectList(data.LOAIHINHs, "ID_LOAIHINH", "TEN");
-                ViewData["ddpl12"] = new SelectList(data.DACDIEMPHAPLies.Where(s => s.ID_LOAITAISAN == 1), "ID_DDPL", "TEN");
-                ViewData["loaithongtin12"] = new SelectList(data.LOAITHONGTINs.Where(s => s.ID_LOAITAISAN == 1), "ID_LTT", "TEN");
-                ViewData["chitietloai12"] = new SelectList(data.CHITIETLOAIs, "ID_CHITIETLOAI", "TEN");
-                ViewData["capduong12"] = new SelectList(data.CAPDUONGs, "ID_CAPDUONG", "TEN");
-                ViewData["ketcau12"] = new SelectList(data.KETCAUDUONGs, "ID_KETCAUDUONG", "TEN");
-                ViewData["chieurongmatduong12"] = new SelectList(data.CHIEURONGMATDUONGs, "ID_CRMD", "TEN");
-                ViewData["quanhuyen12"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN");
+                ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV", dat.NGUOILAPPHIEU);
+                ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV", dat.NGUOIKIEMDUYET);
+                ViewData["loaihinh12"] = new SelectList(data.LOAIHINHs, "ID_LOAIHINH", "TEN", dat.ID_LOAIHINH);
+                ViewData["ddpl12"] = new SelectList(data.DACDIEMPHAPLies.Where(s => s.ID_LOAITAISAN == 1), "ID_DDPL", "TEN", dat.ID_DDPL);
+                ViewData["loaithongtin12"] = new SelectList(data.LOAITHONGTINs.Where(s => s.ID_LOAITAISAN == 1), "ID_LTT", "TEN", dat.ID_LTT);
+                ViewData["chitietloai12"] = new SelectList(data.CHITIETLOAIs.Where(s=>s.ID_LOAITAISAN == dat.CHITIETLOAI.ID_LOAITAISAN), "ID_CHITIETLOAI", "TEN", dat.ID_CHITIETLOAI);
+                ViewData["capduong12"] = new SelectList(data.CAPDUONGs, "ID_CAPDUONG", "TEN", dat.ID_CAPDUONG);
+                ViewData["ketcau12"] = new SelectList(data.KETCAUDUONGs, "ID_KETCAUDUONG", "TEN", dat.ID_KETCAUDUONG);
+                ViewData["chieurongmatduong12"] = new SelectList(data.CHIEURONGMATDUONGs, "ID_CRMD", "TEN", dat.ID_CRMD);
+                ViewData["quanhuyen12"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN", dat.ID_QUANHUYEN);
 
-                DAT dat = data.DATs.FirstOrDefault(s => s.ID_DAT == id);
+                
                 return View(dat);
             }
             else
@@ -211,7 +216,7 @@ namespace DACN_ver_2.Controllers
         public ActionResult SuaDat(int id, FormCollection collection)
         {
             DAT dat = data.DATs.FirstOrDefault(s => s.ID_DAT == id);
-
+            dat.ID_CHUNGTHU = int.Parse(collection["ct"]);
             dat.NGUOILAPPHIEU = int.Parse(collection["nlp12"]);
             dat.NGUOIKIEMDUYET = int.Parse(collection["nkd12"]);
             dat.ID_DDPL = int.Parse(collection["ddpl12"]);
@@ -229,6 +234,16 @@ namespace DACN_ver_2.Controllers
             data.SubmitChanges();
             return RedirectToAction("XemDAT", "Taisan", new { id = dat.ID_DAT});
         }
+        //xoa dat
+        public ActionResult XoaDAT(int id)
+        {
+            DAT d = data.DATs.FirstOrDefault(s => s.ID_DAT == id);
+            d.TRANGTHAI = false;
+            UpdateModel(d);
+            data.SubmitChanges();
+            return RedirectToAction("BanggiadatNB", "Tracuu");
+        }
+        
         //Them văn phong cho thue
         public ActionResult ThemVPCT()
         {
@@ -287,6 +302,7 @@ namespace DACN_ver_2.Controllers
         public ActionResult SuaVPCT(int id)
         {
             VANPHONGCHOTHUE vp = data.VANPHONGCHOTHUEs.FirstOrDefault(s => s.ID_VPCT == id);
+            ViewData["ct"] = new SelectList(data.CHUNGTHUTDGs.Where(s => s.TRANGTHAI == true).ToList(), "ID_CHUNGTHU", "SOCHUNGTHU");
             ViewData["tp12"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
             ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
             ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");

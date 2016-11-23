@@ -253,7 +253,11 @@ namespace DACN_ver_2.Controllers
                 var hd = collection["hd"];
                 var pyc = collection["pyc"];
                 ct.SOCHUNGTHU = collection["SOCHUNGTHU"] + "/2016/CTTDG-AMAX";
-                ct.ID_HOPDONG = int.Parse(hd);
+                if(collection["hd"] != "")
+                {
+                    ct.ID_HOPDONG = int.Parse(hd);
+                }
+                
                 ct.ID_PYC = int.Parse(pyc);
                 ct.NGAYTAO = DateTime.Now;
                 ct.TRANGTHAI = true;
