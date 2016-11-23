@@ -13,24 +13,24 @@ namespace DACN_ver_2.Controllers
     {
         DatabaseClassesDataContext data = new DatabaseClassesDataContext();
         // GET: Login
-        public List<Dangnhap> kiemtradangnhap()
-        {
-            List<Dangnhap> ktdangnhap = Session["Login"] as List<Dangnhap>;
-            if (ktdangnhap == null)
-            {
-                //Neu gio hang chua ton tai thi khoi tao listGiohang
-                ktdangnhap = new List<Dangnhap>();
-                Session["Login"] = ktdangnhap;
-            }
-            return ktdangnhap;
-        }
+        //public List<Dangnhap> kiemtradangnhap()
+        //{
+        //    List<Dangnhap> ktdangnhap = Session["ID"] as List<Dangnhap>;
+        //    if (ktdangnhap == null)
+        //    {
+        //        //Neu gio hang chua ton tai thi khoi tao listGiohang
+        //        ktdangnhap = new List<Dangnhap>();
+        //        Session["ID"] = ktdangnhap;
+        //    }
+        //    return ktdangnhap;
+        //}
         public string BamMD5(string yourString)
         {
             return string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(yourString)).Select(s => s.ToString("x2")));
         }
         public ActionResult Login()
         {
-            if(Session["Login"] != null)
+            if(Session["ID"] != null)
             {
                 return RedirectToAction("Logout", "Login");
             }else
@@ -64,18 +64,18 @@ namespace DACN_ver_2.Controllers
                 NHANVIEN TK = data.NHANVIENs.SingleOrDefault(n => n.USER == user && n.PASS == pass);
                 if (TK != null)
                 {
-                    List<Dangnhap> ktdangnhap = kiemtradangnhap();
-                    //Kiem tra sách này tồn tại trong Session["Giohang"] chưa?
-                    Dangnhap dn = ktdangnhap.Find(n => n.iID == TK.ID_NHANVIEN);
-                    if (dn == null)
-                    {
-                        dn = new Dangnhap(TK.ID_NHANVIEN);
-                        ktdangnhap.Add(dn);
-                    }
-                    else
-                    {
-                        return View();
-                    }
+                    //List<Dangnhap> ktdangnhap = kiemtradangnhap();
+                    ////Kiem tra sách này tồn tại trong Session["Giohang"] chưa?
+                    //Dangnhap dn = ktdangnhap.Find(n => n.iID == TK.ID_NHANVIEN);
+                    //if (dn == null)
+                    //{
+                    //    dn = new Dangnhap(TK.ID_NHANVIEN);
+                    //    ktdangnhap.Add(dn);
+                    //}
+                    //else
+                    //{
+                    //    return View();
+                    //}
                     Session["ID"] = TK.ID_NHANVIEN;
                     Session["Quyen"] = TK.ID_PHANQUYEN;
                     if (TK.ID_PHANQUYEN == 1)
@@ -103,17 +103,18 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Logout()
         {
-            List<Dangnhap> ktdangnhap = kiemtradangnhap();
-            ktdangnhap.Clear();
-            Session["Login"] = null;
+            //List<Dangnhap> ktdangnhap = kiemtradangnhap();
+            //ktdangnhap.Clear();
+            Session["ID"] = null;
+            Session["Quyen"] = null;
             return RedirectToAction("Login", "Login");
         }
 
         
         public ActionResult Topnavigation()
         {
-            List<Dangnhap> ktdangnhap = kiemtradangnhap();
-            var thongtin = ktdangnhap.FirstOrDefault(s => s.iID == int.Parse(Session["ID"].ToString()));
+            //List<Dangnhap> ktdangnhap = kiemtradangnhap();
+            var thongtin = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == int.Parse(Session["ID"].ToString()));
             return PartialView(thongtin);
         }
         public ActionResult Leftnavigation()
@@ -121,14 +122,14 @@ namespace DACN_ver_2.Controllers
             try
             {
 
-                if (Session["Login"] == null)
+                if (Session["ID"] == null)
                 {
                     return RedirectToAction("Login", "Login");
                 }
                 else
                 {
-                    List<Dangnhap> ktdangnhap = kiemtradangnhap();
-                    var thongtin = ktdangnhap.FirstOrDefault(s => s.iID == int.Parse(Session["ID"].ToString()));
+                    //List<Dangnhap> ktdangnhap = kiemtradangnhap();
+                    var thongtin = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == int.Parse(Session["ID"].ToString()));
                     return PartialView(thongtin);
                 }
             }

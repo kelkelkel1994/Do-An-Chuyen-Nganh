@@ -12,56 +12,51 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Chứng thư<small>năm 2016</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li>
-                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="#">Settings 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Settings 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
-                        </ul>
+                        
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
                         <br />
 
-
                         <div class="row">
-                            <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                PYC số:
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <a href="/Kinhdoanh/XemPYC/@Model.ID_PYC"> @Html.DisplayFor(model => model.PHIEUYEUCAU.SOPYC)</a>
+                            </div>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Ngày lập phiếu:
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.DisplayFor(model => model.PHIEUYEUCAU.NGAYVIETPHIEU)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                 Số Chứng thư:
                             </label>
-                            <div class="col-md-4 col-sm-3 col-xs-12">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
                                 @Html.DisplayFor(model => model.SOCHUNGTHU)
                             </div>
-                            <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                 Ngày xuất chứng thư:
                             </label>
-                            <div class="col-md-4 col-sm-3 col-xs-12">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
                                 @Html.DisplayFor(model => model.NGAYXUAT)
                             </div>
                         </div>
                         <div class="row">
-                            <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                 Khách hàng:
                             </label>
-                            <div class="col-md-4 col-sm-3 col-xs-12">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
                                 @Html.DisplayFor(model => model.PHIEUYEUCAU.KHACHHANG.TENKH)
                             </div>
-                            <label class="control-label col-md-2 col-sm-3 col-xs-12">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                 Thẩm định viên:
                             </label>
-                            <div class="col-md-4 col-sm-3 col-xs-12">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
                                @Html.DisplayFor(model => model.PHIEUYEUCAU.NHANVIEN.TENNV)
                             </div>
                         </div>
@@ -75,7 +70,7 @@
                         </div>
                         <div class="row">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                Cách tiép cận:
+                                Cách tiếp cận:
                             </label>
                             <div class="col-md-8 col-sm-6 col-xs-12">
                                 @Html.DisplayFor(model => model.CACHTIEPCANTDG)

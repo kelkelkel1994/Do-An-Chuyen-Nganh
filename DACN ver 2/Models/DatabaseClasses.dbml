@@ -635,6 +635,7 @@
       <Column Name="TRANGTHAIXEM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="ID_PYC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TN" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="NHANVIEN_THONGBAO" Member="NHANVIEN" ThisKey="ID_NGUOIGUI" OtherKey="ID_NHANVIEN" Type="NHANVIEN" IsForeignKey="true" />
       <Association Name="NHANVIEN_THONGBAO1" Member="NHANVIEN1" ThisKey="ID_NGUOINHAN" OtherKey="ID_NHANVIEN" Type="NHANVIEN" IsForeignKey="true" />
       <Association Name="PHIEUYEUCAU_THONGBAO" Member="PHIEUYEUCAU" ThisKey="ID_PYC" OtherKey="ID_PYC" Type="PHIEUYEUCAU" IsForeignKey="true" />

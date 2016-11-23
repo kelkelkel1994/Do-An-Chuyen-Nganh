@@ -97,7 +97,7 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Profile(int id)
         {
-            if (Session["Login"] == null)
+            if (Session["ID"] == null)
             {
                 return RedirectToAction("Login", "Login");
             }
@@ -288,6 +288,7 @@ namespace DACN_ver_2.Controllers
             ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
             var nv = collection["Nhanvien3"];
             tb.ID_NGUOIGUI = int.Parse(Session["ID"].ToString());
+            tb.TN = 1;
             data.THONGBAOs.InsertOnSubmit(tb);
             tb.ID_NGUOINHAN = int.Parse(nv);
             tb.NGAYGUI = DateTime.Now;
@@ -296,5 +297,12 @@ namespace DACN_ver_2.Controllers
             data.SubmitChanges();
             return Redirect(strURL);
         }
+        public ActionResult HienTB()
+        {
+            int ngnhan = int.Parse(Session["ID"].ToString());
+            var tb = data.THONGBAOs.Where(s => s.TN == 1 && s.ID_NGUOINHAN == ngnhan);
+            return PartialView(tb.ToList());
+        }
     }
+    
 }

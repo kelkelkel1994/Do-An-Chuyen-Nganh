@@ -68,6 +68,11 @@
                                         </td>
                                         <td>
                                             <a href='~/Taisan/XemDAT/@item.ID_DAT' class="btn btn-info"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                            @if (int.Parse(Session["Quyen"].ToString()) == 1)
+                                            {
+                                                <a href='~/Taisan/SuaDAT/@item.ID_DAT' class="btn btn-success"><i class="glyphicon glyphicon-edit"></i></a>
+                                            }
+                                            
                                         </td>
                                     </tr>
                                 }

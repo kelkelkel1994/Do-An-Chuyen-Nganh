@@ -15067,6 +15067,8 @@ namespace DACN_ver_2.Models
 		
 		private System.Nullable<int> _ID_PYC;
 		
+		private System.Nullable<int> _TN;
+		
 		private EntityRef<NHANVIEN> _NHANVIEN;
 		
 		private EntityRef<NHANVIEN> _NHANVIEN1;
@@ -15093,6 +15095,8 @@ namespace DACN_ver_2.Models
     partial void OnTRANGTHAIChanged();
     partial void OnID_PYCChanging(System.Nullable<int> value);
     partial void OnID_PYCChanged();
+    partial void OnTNChanging(System.Nullable<int> value);
+    partial void OnTNChanged();
     #endregion
 		
 		public THONGBAO()
@@ -15271,6 +15275,26 @@ namespace DACN_ver_2.Models
 					this._ID_PYC = value;
 					this.SendPropertyChanged("ID_PYC");
 					this.OnID_PYCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TN", DbType="Int")]
+		public System.Nullable<int> TN
+		{
+			get
+			{
+				return this._TN;
+			}
+			set
+			{
+				if ((this._TN != value))
+				{
+					this.OnTNChanging(value);
+					this.SendPropertyChanging();
+					this._TN = value;
+					this.SendPropertyChanged("TN");
+					this.OnTNChanged();
 				}
 			}
 		}

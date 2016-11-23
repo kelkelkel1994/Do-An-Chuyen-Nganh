@@ -1,5 +1,5 @@
-﻿@model DACN_ver_2.Models.Dangnhap
-
+﻿
+@model DACN_ver_2.Models.NHANVIEN
 <div class="top_nav">
     <div class="nav_menu">
         <nav>
@@ -9,19 +9,19 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <img src="~/images/Avatar/@Html.DisplayFor(model => model.sAvatar)" alt="@Html.DisplayFor(model => model.sTennv)">@Html.DisplayFor(model => model.sTennv)
+                        <img src="~/images/Avatar/@Html.DisplayFor(model => model.ANH)" alt="@Html.DisplayFor(model => model.TENNV)">@Html.DisplayFor(model => model.TENNV)
                         <span class="fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li>@Html.ActionLink("Profile", "Profile", "Nhanvien", new { id = Model.iID }, null)@*<a href="javascript:;"> Profile</a>*@</li>
+                        <li>@Html.ActionLink("Thông tin", "Profile", "Nhanvien", new { id = Model.ID_NHANVIEN }, null)@*<a href="javascript:;"> Profile</a>*@</li>
                         
-                        <li><a href="javascript:;">Help</a></li>
+                        <li>@Html.ActionLink("Tin nhắn", "GuiThongBao", "Nhanvien")</li>
                         <li><a href="/Login/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                     </ul>
                 </li>
                 <li role="presentation" class="dropdown">
                     
-                    @Html.Action("ThongbaoTOP", "Nhanvien", new { id = Model.iID })
+                    @Html.Action("ThongbaoTOP", "Nhanvien", new { id = Model.ID_NHANVIEN })
                 </li>
             </ul>
         </nav>

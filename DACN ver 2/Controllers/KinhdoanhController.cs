@@ -15,11 +15,19 @@ namespace DACN_ver_2.Controllers
         DatabaseClassesDataContext data = new DatabaseClassesDataContext();
         public ActionResult Index()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
         }
         [HttpGet]
         public ActionResult ThemPYC()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
             ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
             ViewData["Loaitaisan3"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
@@ -33,6 +41,10 @@ namespace DACN_ver_2.Controllers
         {
             try
             {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
                 //TODO: Add insert logic here
                 var nv = collection["Nhanvien3"];
                 var lts = collection["Loaitaisan3"];
@@ -61,7 +73,10 @@ namespace DACN_ver_2.Controllers
             }
             catch
             {
-
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
                 ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV");
                 ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH");
                 ViewData["Loaitaisan3"] = new SelectList(data.LOAITAISANs.ToList().OrderBy(s => s.TEN), "ID_LOAITAISAN", "TEN");
@@ -73,7 +88,10 @@ namespace DACN_ver_2.Controllers
         //xem PYC
         public ActionResult XemPYC(int id)
         {
-            
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var detail = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
             if (detail == null)
             {
@@ -86,12 +104,20 @@ namespace DACN_ver_2.Controllers
         //them file dinh kem
         public ActionResult ThemfilePYC(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var d = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
             return View(d);
         }
 
         public ActionResult SaveDropzoneJsUploadedFiles(int id, FILEDINHKEM dk)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             string fName = "";
 
             foreach (string fileName in Request.Files)
@@ -133,13 +159,20 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult DanhsachFilePYC(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var sa = data.FILEDINHKEMs.ToList().Where(s => s.ID_PYC == id).OrderBy(s => s.ID_FILEDINHKEM);
             return PartialView(sa);
         }
         //sua PYC
         public ActionResult SuaPYC(int id)
         {
-
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var pyc = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
             ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_PYC == id).Count();
             ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV", pyc.ID_NHANVIEN);
@@ -152,6 +185,10 @@ namespace DACN_ver_2.Controllers
         {
             try
             {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
                 // TODO: Add update logic here
                 PHIEUYEUCAU pyc = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
                 var nv = collection["Nhanvien3"];
@@ -167,6 +204,10 @@ namespace DACN_ver_2.Controllers
             }
             catch
             {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
                 var pyc = data.PHIEUYEUCAUs.FirstOrDefault(s => s.ID_PYC == id);
                 ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 2), "ID_NHANVIEN", "TENNV", pyc.ID_NHANVIEN);
                 ViewData["Khachhang3"] = new SelectList(data.KHACHHANGs.ToList().OrderBy(s => s.TENKH), "ID_KH", "TENKH", pyc.ID_KH);
@@ -178,6 +219,10 @@ namespace DACN_ver_2.Controllers
         //Danh sach PYC
         public ActionResult DanhsachPYC()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var pyc = data.PHIEUYEUCAUs.ToList();
             return View(pyc);
         }
@@ -186,6 +231,10 @@ namespace DACN_ver_2.Controllers
         //Thêm Chứng thư
         public ActionResult ThemCT()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             ViewData["hd"] = new SelectList(data.HOPDONGs.ToList().OrderBy(s => s.SOHD), "ID_HOPDONG", "SOHD");
             ViewData["pyc"] = new SelectList(data.PHIEUYEUCAUs.ToList().OrderByDescending(s => s.NGAYVIETPHIEU), "ID_PYC", "SOPYC");
             return View();
@@ -196,6 +245,10 @@ namespace DACN_ver_2.Controllers
         {
             try
             {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
                 // TODO: Add insert logic here
                 var hd = collection["hd"];
                 var pyc = collection["pyc"];
@@ -210,6 +263,10 @@ namespace DACN_ver_2.Controllers
             }
             catch
             {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
                 ViewData["hd"] = new SelectList(data.HOPDONGs.ToList().OrderBy(s => s.SOHD), "ID_HOPDONG", "SOHD");
                 ViewData["pyc"] = new SelectList(data.PHIEUYEUCAUs.ToList().OrderByDescending(s => s.NGAYVIETPHIEU), "ID_PYC", "SOPYC");
                 return View();
@@ -219,6 +276,10 @@ namespace DACN_ver_2.Controllers
         //danhsach chung thu
         public ActionResult DanhsachCT()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var ct = data.CHUNGTHUTDGs.ToList();
             return View(ct);
         }
@@ -226,6 +287,10 @@ namespace DACN_ver_2.Controllers
         //thêm hợp đồng
         public ActionResult ThemHD()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             ViewData["loaihd"] = new SelectList(data.LOAIHOPDONGs.ToList().OrderBy(s => s.TEN), "ID_LOAIHOPDONG", "TEN");
             ViewData["loaitrangthai"] = new SelectList(data.TRANGTHAIs.ToList().OrderBy(s => s.TEN), "ID_TRANGTHAI", "TEN");
             ViewData["kinhdoanh"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 3), "ID_NHANVIEN", "TENNV");
@@ -238,6 +303,10 @@ namespace DACN_ver_2.Controllers
         {
             try
             {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
                 // TODO: Add insert logic here
                 var lhd = collection["loaihd"];
                 var ltt = collection["loaitrangthai"];
@@ -256,6 +325,10 @@ namespace DACN_ver_2.Controllers
             }
             catch
             {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
                 ViewData["loaihd"] = new SelectList(data.LOAIHOPDONGs.ToList().OrderBy(s => s.TEN), "ID_LOAIHOPDONG", "TEN");
                 ViewData["loaitrangthai"] = new SelectList(data.TRANGTHAIs.ToList().OrderBy(s => s.TEN), "ID_TRANGTHAI", "TEN");
                 ViewData["kinhdoanh"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 3), "ID_NHANVIEN", "TENNV");
@@ -268,12 +341,20 @@ namespace DACN_ver_2.Controllers
         // danh sách hợp đồng
         public ActionResult DanhsachHD()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var hd = data.HOPDONGs.ToList().OrderBy(s => s.ID_HOPDONG).Where(s=>s.TRANGTHAI == true);
             return View(hd);
         }
         //Xem chi tiết hop đồng
         public ActionResult XemHD(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var detail = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
             ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_HOPDONG == id).Count();
             return View(detail);
@@ -282,7 +363,10 @@ namespace DACN_ver_2.Controllers
         //sua hd
         public ActionResult SuaHD(int id)
         {
-
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var hd = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
             ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_HOPDONG == id).Count();
             ViewData["lhd3"] = new SelectList(data.LOAIHOPDONGs.ToList().OrderBy(s => s.TEN), "ID_LOAIHOPDONG", "TEN", hd.ID_LOAIHOPDONG);
@@ -296,6 +380,10 @@ namespace DACN_ver_2.Controllers
         {
             try
             {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
                 // TODO: Add update logic here
                 HOPDONG hd = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
                 ViewData["lhd3"] = new SelectList(data.LOAIHOPDONGs.ToList().OrderBy(s => s.TEN), "ID_LOAIHOPDONG", "TEN", hd.ID_LOAIHOPDONG);
@@ -314,6 +402,10 @@ namespace DACN_ver_2.Controllers
             }
             catch
             {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
                 var hd = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
                 ViewData["Nhanvien3"] = new SelectList(data.NHANVIENs.ToList().OrderBy(s => s.TENNV).Where(s => s.PHONGBAN.ID_PHONGBAN == 3), "ID_NHANVIEN", "TENNV", hd.ID_NHANVIEN);
                 ViewData["Loaihopdong3"] = new SelectList(data.TRANGTHAIs.ToList().OrderBy(s => s.TEN), "ID_TRANGTHAI", "TEN", hd.ID_TRANGTHAI);
@@ -325,6 +417,10 @@ namespace DACN_ver_2.Controllers
         //xoa hd
         public ActionResult XoaHD(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var xpb = data.HOPDONGs
                 .FirstOrDefault(s => s.ID_HOPDONG == id);
             return PartialView(xpb);
@@ -334,6 +430,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult XoaHD(int id, FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add delete logic here
@@ -352,17 +452,29 @@ namespace DACN_ver_2.Controllers
         //thê file hop đồng
         public ActionResult ThemfileHD(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var d = data.HOPDONGs.FirstOrDefault(s => s.ID_HOPDONG == id);
             return View(d);
         }
         //danh sách file chứng thư
         public ActionResult DanhsachFileHD(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var sa = data.FILEDINHKEMs.ToList().Where(s => s.ID_HOPDONG == id).OrderBy(s => s.ID_FILEDINHKEM);
             return PartialView(sa);
         }
         public ActionResult SaveDropzoneJsUploadedFilesHD(int id, FILEDINHKEM dk)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             string fName = "";
 
             foreach (string fileName in Request.Files)
@@ -406,6 +518,10 @@ namespace DACN_ver_2.Controllers
         // danh sahv khach hang
         public ActionResult Danhsachkhachhang()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var danhsach = data.KHACHHANGs
                 .ToList()
                 .OrderBy(s => s.ID_KH);
@@ -414,11 +530,19 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Themkhachhang()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return PartialView();
         }
         [HttpPost]
         public ActionResult Themkhachhang(KHACHHANG kh)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add insert logic here
@@ -436,12 +560,20 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Suakhachhang(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var spb = data.KHACHHANGs.FirstOrDefault(s => s.ID_KH == id);
             return PartialView(spb);
         }
         [HttpPost]
         public ActionResult Suakhachhang(int id, FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add update logic here
@@ -459,6 +591,10 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Xoakhachhang(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var xpb = data.KHACHHANGs
                 .FirstOrDefault(s => s.ID_KH == id);
             return PartialView(xpb);
@@ -468,6 +604,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Xoakhachhang(int id, FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add delete logic here
@@ -485,6 +625,10 @@ namespace DACN_ver_2.Controllers
         //Xem va in chung thu
         public ActionResult ChiTietCT(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var ct = from c in data.CHUNGTHUTDGs
                      where c.ID_CHUNGTHU == id
                      select c;
@@ -492,6 +636,10 @@ namespace DACN_ver_2.Controllers
         }
         public ActionResult XemTruoc(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var ct = from c in data.CHUNGTHUTDGs
                      where c.ID_CHUNGTHU == id
                      select c;
@@ -500,6 +648,10 @@ namespace DACN_ver_2.Controllers
         }
         public ActionResult PrintChiTietCT(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return new ActionAsPdf(
                            "ChiTietCT",
                            new { id = id })
@@ -516,6 +668,10 @@ namespace DACN_ver_2.Controllers
         //Xem chứng thư
         public ActionResult XemCTChungThu(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var detail = data.CHUNGTHUTDGs.FirstOrDefault(s => s.ID_CHUNGTHU == id);
             ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_CHUNGTHU == id).Count();
             return View(detail);
@@ -524,17 +680,29 @@ namespace DACN_ver_2.Controllers
         //thê file chứng thư
         public ActionResult ThemfileCT(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var d = data.CHUNGTHUTDGs.FirstOrDefault(s => s.ID_CHUNGTHU == id);
             return View(d);
         }
         //danh sách file chứng thư
         public ActionResult DanhsachFileCT(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var sa = data.FILEDINHKEMs.ToList().Where(s => s.ID_CHUNGTHU == id).OrderBy(s => s.ID_FILEDINHKEM);
             return PartialView(sa);
         }
         public ActionResult SaveDropzoneJsUploadedFilesCT(int id, FILEDINHKEM dk)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             string fName = "";
 
             foreach (string fileName in Request.Files)
@@ -577,12 +745,20 @@ namespace DACN_ver_2.Controllers
         //sửa nội dung chứng thư
         public ActionResult SuaNDCT()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var x = data.NOIDUNGCTs.FirstOrDefault(s => s.ID_NOIDUNG == 1);
             return View(x);
         }
         [HttpPost]
         public ActionResult SuaNDCT(FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add update logic here
@@ -599,6 +775,10 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult LoadFile(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var abc = data.FILEDINHKEMs.FirstOrDefault(s => s.ID_FILEDINHKEM == id);
             return View(abc);
         }

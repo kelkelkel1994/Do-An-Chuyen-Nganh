@@ -15,7 +15,7 @@ namespace DACN_ver_2.Controllers
         // GET: Main
         public ActionResult Index()
         {
-            if(Session["Login"] == null)
+            if(Session["ID"] == null)
             {
                 return RedirectToAction("Login", "Login");
             }

@@ -18,7 +18,7 @@ namespace DACN_ver_2.Controllers
         public ActionResult Error()
         {
             Response.StatusCode = 500;
-            return View();
+            return PartialView();
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DACN_ver_2.Models.THONGBAO>
+<h3>Nội dung tin nhắn</h3>
+<table class="table">
+    <tr>
+        <th>
+            Người gửi
+        </th>
+
+        <th>
+            Nội dung
+        </th>
+        <th>
+            Thời gian
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHANVIEN.TENNV)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NOIDUNG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYGUI)
+            </td>
+
+        </tr>
+    }
+
+</table>

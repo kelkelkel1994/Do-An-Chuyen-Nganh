@@ -786,6 +786,8 @@
     <Content Include="Views\Taisan\SuaCHCC.cshtml" />
     <Content Include="Views\Taisan\SuaVPCT.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Nhanvien\HienTB.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,13 +1,12 @@
-﻿@model DACN_ver_2.Models.Dangnhap
-
+﻿@model DACN_ver_2.Models.NHANVIEN
 
 <div class="profile">
     <div class="profile_pic">
-        <img src="~/images/Avatar/@Html.DisplayFor(model => model.sAvatar)" alt="..." class="img-circle profile_img">
+        <img src="~/images/Avatar/@Html.DisplayFor(model => model.ANH)" alt="..." class="img-circle profile_img">
     </div>
     <div class="profile_info">
         <span>Welcome,</span>
-        <h2>@Html.DisplayFor(model => model.sTennv)</h2>
+        <h2>@Html.DisplayFor(model => model.TENNV)</h2>
     </div>
 </div>     
 
@@ -17,7 +16,7 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
                             <h3>General</h3>
-                            @Html.Action("Menuleft", "Login", new { id = Model.iPhongban})
+                            @Html.Action("Menuleft", "Login", new { id = Model.ID_PHONGBAN})
                             
                         </div>
                     </div>  

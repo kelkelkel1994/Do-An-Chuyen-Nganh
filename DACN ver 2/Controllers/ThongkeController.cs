@@ -23,10 +23,10 @@ namespace DACN_ver_2.Controllers
             var res = (from tags in data.HOPDONGs
                        select new
                        {
-                           tags.ID_NHANVIEN,
+                           tags.PHIEUYEUCAU.ID_NHANVIEN,
                            tags.TONGTIEN
                        }).GroupBy(a => a.ID_NHANVIEN).Select(b => new
-                       { manv = b.Key, tennv = data.NHANVIENs.Single(d => d.ID_NHANVIEN == b.Key).TENNV, tong = b.Sum(d => d.TONGTIEN) }
+                       { manv = b.Key, tennv = data.NHANVIENs.Single(d => d.ID_NHANVIEN == b.Key && d.ID_PHONGBAN == 2).TENNV, tong = b.Sum(d => d.TONGTIEN) }
                        ).ToList();
             return Content(JsonConvert.SerializeObject(res));
         }
