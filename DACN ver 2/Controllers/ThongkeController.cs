@@ -129,8 +129,8 @@ namespace DACN_ver_2.Controllers
         public ContentResult GetSoHop1()
         {
             var res = (from tags in data.HOPDONGs
-                       where tags.ID_TRANGTHAI == 1 && tags.NGAYTAO.Value.Year==DateTime.Now.Year//ĐANG CHỜ
-                       group tags by tags.NGAYTAO.Value.Month into gp
+                       where tags.ID_TRANGTHAI == 1 && tags.NGAYLAP.Value.Year==DateTime.Now.Year//ĐANG CHỜ
+                       group tags by tags.NGAYLAP.Value.Month into gp
                        select new
                        {
                            thang = gp.Key,
@@ -153,8 +153,8 @@ namespace DACN_ver_2.Controllers
         public ContentResult GetSoHop3()
         {
             var res = (from tags in data.HOPDONGs
-                       where tags.ID_TRANGTHAI == 3 && tags.NGAYTAO.Value.Year == DateTime.Now.Year//ĐÃ KKẾT THÚC
-                       group tags by tags.NGAYTAO.Value.Month into gp
+                       where tags.ID_TRANGTHAI == 3 && tags.NGAYLAP.Value.Year == DateTime.Now.Year//ĐÃ KKẾT THÚC
+                       group tags by tags.NGAYLAP.Value.Month into gp
                        select new
                        {
                            thang = gp.Key,
@@ -165,8 +165,8 @@ namespace DACN_ver_2.Controllers
         public ContentResult GetSoHop4()
         {
             var res = (from tags in data.HOPDONGs
-                       where tags.ID_TRANGTHAI == 4 && tags.NGAYTAO.Value.Year == DateTime.Now.Year//ĐÃ HUỶ
-                       group tags by tags.NGAYTAO.Value.Month into gp
+                       where tags.ID_TRANGTHAI == 4 && tags.NGAYLAP.Value.Year == DateTime.Now.Year//ĐÃ HUỶ
+                       group tags by tags.NGAYLAP.Value.Month into gp
                        select new
                        {
                            thang = gp.Key,
