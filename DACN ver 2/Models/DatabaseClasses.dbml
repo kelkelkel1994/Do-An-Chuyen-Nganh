@@ -1,28 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DACN" Class="DatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-IT\SQLEXPRESS;Initial Catalog=DACN;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.BANGGIADAT" Member="BANGGIADATs">
-    <Type Name="BANGGIADAT">
-      <Column Name="ID_BANGGIADAT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ID_QUANHUYEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TENDUONG" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="DOANTU" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="VT1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VT2" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VT3" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VT4" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VT5" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ID_LOAIHINH" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NGAYTAO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NGAYSUA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="NGUOITAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NGUOISUA" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="ID_CHITIETLOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="CHITIETLOAI_BANGGIADAT" Member="CHITIETLOAI" ThisKey="ID_CHITIETLOAI" OtherKey="ID_CHITIETLOAI" Type="CHITIETLOAI" IsForeignKey="true" />
-      <Association Name="LOAIHINH_BANGGIADAT" Member="LOAIHINH" ThisKey="ID_LOAIHINH" OtherKey="ID_LOAIHINH" Type="LOAIHINH" IsForeignKey="true" />
-      <Association Name="QUANHUYEN_BANGGIADAT" Member="QUANHUYEN" ThisKey="ID_QUANHUYEN" OtherKey="ID_QUANHUYEN" Type="QUANHUYEN" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.VANPHONGCHOTHUE" Member="VANPHONGCHOTHUEs">
     <Type Name="VANPHONGCHOTHUE">
       <Column Name="ID_VPCT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -55,6 +32,29 @@
       <Association Name="NHANVIEN_VANPHONGCHOTHUE" Member="NHANVIEN" ThisKey="NGUOILAPPHIEU" OtherKey="ID_NHANVIEN" Type="NHANVIEN" IsForeignKey="true" />
       <Association Name="NHANVIEN_VANPHONGCHOTHUE1" Member="NHANVIEN1" ThisKey="NGUOIKIEMDUYET" OtherKey="ID_NHANVIEN" Type="NHANVIEN" IsForeignKey="true" />
       <Association Name="QUANHUYEN_VANPHONGCHOTHUE" Member="QUANHUYEN" ThisKey="ID_QUANHUYEN" OtherKey="ID_QUANHUYEN" Type="QUANHUYEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BANGGIADAT" Member="BANGGIADATs">
+    <Type Name="BANGGIADAT">
+      <Column Name="ID_BANGGIADAT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_QUANHUYEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TENDUONG" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="DOANTU" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="VT1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VT2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VT3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VT4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VT5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_LOAIHINH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NGAYTAO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NGAYSUA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NGUOITAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NGUOISUA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ID_CHITIETLOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CHITIETLOAI_BANGGIADAT" Member="CHITIETLOAI" ThisKey="ID_CHITIETLOAI" OtherKey="ID_CHITIETLOAI" Type="CHITIETLOAI" IsForeignKey="true" />
+      <Association Name="LOAIHINH_BANGGIADAT" Member="LOAIHINH" ThisKey="ID_LOAIHINH" OtherKey="ID_LOAIHINH" Type="LOAIHINH" IsForeignKey="true" />
+      <Association Name="QUANHUYEN_BANGGIADAT" Member="QUANHUYEN" ThisKey="ID_QUANHUYEN" OtherKey="ID_QUANHUYEN" Type="QUANHUYEN" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CANHOCHUNGCU" Member="CANHOCHUNGCUs">
@@ -149,8 +149,8 @@
       <Column Name="NGUOISUA" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="ID_LOAITAISAN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="CHITIETLOAI_BANGGIADAT" Member="BANGGIADATs" ThisKey="ID_CHITIETLOAI" OtherKey="ID_CHITIETLOAI" Type="BANGGIADAT" />
       <Association Name="CHITIETLOAI_VANPHONGCHOTHUE" Member="VANPHONGCHOTHUEs" ThisKey="ID_CHITIETLOAI" OtherKey="ID_CHITIETLOAI" Type="VANPHONGCHOTHUE" />
+      <Association Name="CHITIETLOAI_BANGGIADAT" Member="BANGGIADATs" ThisKey="ID_CHITIETLOAI" OtherKey="ID_CHITIETLOAI" Type="BANGGIADAT" />
       <Association Name="CHITIETLOAI_CANHOCHUNGCU" Member="CANHOCHUNGCUs" ThisKey="ID_CHITIETLOAI" OtherKey="ID_CHITIETLOAI" Type="CANHOCHUNGCU" />
       <Association Name="CHITIETLOAI_CONGTRINHXAYDUNG" Member="CONGTRINHXAYDUNGs" ThisKey="ID_CHITIETLOAI" OtherKey="ID_CHITIETLOAI" Type="CONGTRINHXAYDUNG" />
       <Association Name="CHITIETLOAI_DAT" Member="DATs" ThisKey="ID_CHITIETLOAI" OtherKey="ID_CHITIETLOAI" Type="DAT" />
@@ -408,8 +408,8 @@
       <Column Name="NGUOITAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NGUOISUA" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="LOAIHINH_BANGGIADAT" Member="BANGGIADATs" ThisKey="ID_LOAIHINH" OtherKey="ID_LOAIHINH" Type="BANGGIADAT" />
       <Association Name="LOAIHINH_VANPHONGCHOTHUE" Member="VANPHONGCHOTHUEs" ThisKey="ID_LOAIHINH" OtherKey="ID_LOAIHINH" Type="VANPHONGCHOTHUE" />
+      <Association Name="LOAIHINH_BANGGIADAT" Member="BANGGIADATs" ThisKey="ID_LOAIHINH" OtherKey="ID_LOAIHINH" Type="BANGGIADAT" />
       <Association Name="LOAIHINH_CANHOCHUNGCU" Member="CANHOCHUNGCUs" ThisKey="ID_LOAIHINH" OtherKey="ID_LOAIHINH" Type="CANHOCHUNGCU" />
       <Association Name="LOAIHINH_CONGTRINHXAYDUNG" Member="CONGTRINHXAYDUNGs" ThisKey="ID_LOAIHINH" OtherKey="ID_LOAIHINH" Type="CONGTRINHXAYDUNG" />
       <Association Name="LOAIHINH_DAT" Member="DATs" ThisKey="ID_LOAIHINH" OtherKey="ID_LOAIHINH" Type="DAT" />
@@ -485,9 +485,6 @@
       <Column Name="ADMIN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="KINHDOANH" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="THAMDINH" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="ADMIN1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="KINHDOANH1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="THAMDINH1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="MENU_SUBMENU" Member="SUBMENUs" ThisKey="ID_MENU" OtherKey="ID_MENU" Type="SUBMENU" />
     </Type>
   </Table>
@@ -603,8 +600,8 @@
       <Column Name="NGUOITAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NGUOISUA" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="QUANHUYEN_BANGGIADAT" Member="BANGGIADATs" ThisKey="ID_QUANHUYEN" OtherKey="ID_QUANHUYEN" Type="BANGGIADAT" />
       <Association Name="QUANHUYEN_VANPHONGCHOTHUE" Member="VANPHONGCHOTHUEs" ThisKey="ID_QUANHUYEN" OtherKey="ID_QUANHUYEN" Type="VANPHONGCHOTHUE" />
+      <Association Name="QUANHUYEN_BANGGIADAT" Member="BANGGIADATs" ThisKey="ID_QUANHUYEN" OtherKey="ID_QUANHUYEN" Type="BANGGIADAT" />
       <Association Name="QUANHUYEN_CANHOCHUNGCU" Member="CANHOCHUNGCUs" ThisKey="ID_QUANHUYEN" OtherKey="ID_QUANHUYEN" Type="CANHOCHUNGCU" />
       <Association Name="QUANHUYEN_DAT" Member="DATs" ThisKey="ID_QUANHUYEN" OtherKey="ID_QUANHUYEN" Type="DAT" />
       <Association Name="TINHTHANH_QUANHUYEN" Member="TINHTHANH" ThisKey="ID_TINHTHANH" OtherKey="ID_TINHTHANH" Type="TINHTHANH" IsForeignKey="true" />

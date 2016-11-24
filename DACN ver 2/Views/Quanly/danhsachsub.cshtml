@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DACN_ver_2.Models.SUBMENU>
+
+<div class="col-md-12 col-sm-6 col-xs-12">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Tên Sub
+            </th>
+
+            <th>
+                Tên Controler
+            </th>
+            <th>
+                Ten View
+            </th>
+            <th>
+                Admin
+            </th>
+            <th>
+                Kinh doanh
+            </th>
+            <th>
+                Tham định
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TEN)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CONTROLLER)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VIEW)
+                </td>
+                <td>
+                    @if (item.ADMIN == true)
+                    {
+                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                    }
+                    else
+                    {
+                        <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
+                    }
+                </td>
+                <td>
+                    @if (item.KINHDOANH == true)
+                    {
+                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                    }
+                    else
+                    {
+                        <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
+                    }
+                </td>
+                <td>
+                    @if (item.THAMDINH == true)
+                    {
+                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                    }
+                    else
+                    {
+                        <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("SetSubMenu", "SetSubMenu", new { id = item.ID_SUBMENU }) |
+                    @*@Html.ActionLink("Details", "Details", new { id = item.ID_SUBMENU }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID_SUBMENU })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

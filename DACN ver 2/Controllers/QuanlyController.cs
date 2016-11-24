@@ -217,5 +217,66 @@ namespace DACN_ver_2.Controllers
                 return View();
             }
         }
+        public ActionResult SetMenu(int id)
+        {
+            MENU menu = data.MENUs.SingleOrDefault(a => a.ID_MENU == id);
+            ViewData["admin1"] = data.MENUs.SingleOrDefault(a => a.ID_MENU == id).ADMIN.Value;
+            ViewData["kinhdoanh1"] = data.MENUs.SingleOrDefault(a => a.ID_MENU == id).KINHDOANH.Value;
+            ViewData["thamdinh1"] = data.MENUs.SingleOrDefault(a => a.ID_MENU == id).THAMDINH.Value;
+            return View(menu);
+        }
+        [HttpPost]
+        public ActionResult SetMenu(int id, FormCollection collection)
+        {
+
+            var a1 = collection["admin1"].Contains("true");
+            var b1 = collection["kinhdoanh1"].Contains("true");
+            var c1 = collection["thamdinh1"].Contains("true");
+            MENU menu = data.MENUs.SingleOrDefault(a => a.ID_MENU == id);
+            menu.ADMIN = Convert.ToBoolean(a1);
+            menu.KINHDOANH = Convert.ToBoolean(b1);
+            menu.THAMDINH = Convert.ToBoolean(c1);
+
+
+            UpdateModel(menu);
+            data.SubmitChanges();
+            return RedirectToAction("SetMenu", "Quanly", new { id = id });
+
+        }
+
+        public ActionResult SetSubMenu(int id)
+        {
+            SUBMENU submenu = data.SUBMENUs.SingleOrDefault(a => a.ID_SUBMENU == id);
+            ViewData["admin12"] = data.SUBMENUs.SingleOrDefault(a => a.ID_SUBMENU == id).ADMIN.Value;
+            ViewData["kinhdoanh12"] = data.SUBMENUs.SingleOrDefault(a => a.ID_SUBMENU == id).KINHDOANH.Value;
+            ViewData["thamdinh12"] = data.SUBMENUs.SingleOrDefault(a => a.ID_SUBMENU == id).THAMDINH.Value;
+            ViewData["tenmenu"] = new SelectList(data.MENUs.ToList().OrderBy(s => s.TEN), "ID_MENU", "TEN", submenu.ID_MENU);
+            return View(submenu);
+        }
+        [HttpPost]
+
+        public ActionResult SetSubMenu(int id, FormCollection collection)
+        {
+            var a1 = collection["admin12"].Contains("true");
+            var b1 = collection["kinhdoanh12"].Contains("true");
+            var c1 = collection["thamdinh12"].Contains("true");
+
+            SUBMENU submenu = data.SUBMENUs.SingleOrDefault(a => a.ID_SUBMENU == id);
+            ViewData["tenmenu"] = new SelectList(data.MENUs.ToList().OrderBy(s => s.TEN), "ID_MENU", "TEN", submenu.ID_MENU);
+
+            submenu.ADMIN = Convert.ToBoolean(a1);
+            submenu.KINHDOANH = Convert.ToBoolean(b1);
+            submenu.THAMDINH = Convert.ToBoolean(c1);
+            submenu.ID_MENU = int.Parse(collection["tenmenu"]);
+            UpdateModel(submenu);
+            data.SubmitChanges();
+            return RedirectToAction("SetMenu", "Quanly", new { id = submenu.ID_MENU });
+        }
+
+        public ActionResult danhsachsub(int id)
+        {
+            var ds = data.SUBMENUs.ToList().Where(a => a.ID_MENU == id).OrderBy(a => a.ID_SUBMENU);
+            return PartialView(ds);
+        }
     }
 }

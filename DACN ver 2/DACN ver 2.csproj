@@ -790,6 +790,9 @@
     <Content Include="Views\Nhanvien\HienTB.cshtml" />
     <Content Include="Views\Kinhdoanh\SuaCT.cshtml" />
     <Content Include="Views\Error\Denied.cshtml" />
+    <Content Include="Views\Quanly\SetMenu.cshtml" />
+    <Content Include="Views\Quanly\SetSubMenu.cshtml" />
+    <Content Include="Views\Quanly\danhsachsub.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
