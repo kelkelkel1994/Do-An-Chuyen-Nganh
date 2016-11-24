@@ -20,5 +20,10 @@ namespace DACN_ver_2.Controllers
             Response.StatusCode = 500;
             return PartialView();
         }
+        public ActionResult Denied()
+        {
+            Response.StatusCode = 403;
+            return PartialView();
+        }
     }
 }

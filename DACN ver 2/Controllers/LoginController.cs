@@ -144,24 +144,24 @@ namespace DACN_ver_2.Controllers
             
             if(id == 1)
             {
-                var menu1 = data.MENUs.ToList().Where(s => s.ADMIN == true);
+                var menu1 = data.MENUs.ToList().Where(s => s.ADMIN == true && s.TRANGTHAI == true);
                 return PartialView(menu1);
             }
             else if(id == 2)
             {
-                var menu1 = data.MENUs.ToList().Where(s => s.THAMDINH == true);
+                var menu1 = data.MENUs.ToList().Where(s => s.THAMDINH == true && s.TRANGTHAI == true);
                 return PartialView(menu1);
             }
             else
             {
-                var menu1 = data.MENUs.ToList().Where(s => s.KINHDOANH == true);
+                var menu1 = data.MENUs.ToList().Where(s => s.KINHDOANH == true && s.TRANGTHAI == true);
                 return PartialView(menu1);
             }            
         }
 
         public ActionResult Submenu(int id)
         {
-            var submenu = data.SUBMENUs.ToList().Where(s => s.ID_MENU == id);
+            var submenu = data.SUBMENUs.ToList().Where(s => s.ID_MENU == id && s.TRANGTHAI == true);
             return PartialView(submenu);
         }
     }

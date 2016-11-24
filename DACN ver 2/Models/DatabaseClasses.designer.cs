@@ -132,7 +132,7 @@ namespace DACN_ver_2.Models
     #endregion
 		
 		public DatabaseClassesDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DACNConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DACNConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -159,14 +159,6 @@ namespace DACN_ver_2.Models
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<List_CT_DAT> List_CT_DATs
-		{
-			get
-			{
-				return this.GetTable<List_CT_DAT>();
-			}
 		}
 		
 		public System.Data.Linq.Table<BANGGIADAT> BANGGIADATs
@@ -432,49 +424,12 @@ namespace DACN_ver_2.Models
 				return this.GetTable<TRANGTHAI>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[List-CT-DAT]")]
-	public partial class List_CT_DAT
-	{
 		
-		private int _ID_CHUNGTHU;
-		
-		private string _SOCHUNGTHU;
-		
-		public List_CT_DAT()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CHUNGTHU", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int ID_CHUNGTHU
+		public System.Data.Linq.Table<List_CT_DAT> List_CT_DATs
 		{
 			get
 			{
-				return this._ID_CHUNGTHU;
-			}
-			set
-			{
-				if ((this._ID_CHUNGTHU != value))
-				{
-					this._ID_CHUNGTHU = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOCHUNGTHU", DbType="VarChar(250)")]
-		public string SOCHUNGTHU
-		{
-			get
-			{
-				return this._SOCHUNGTHU;
-			}
-			set
-			{
-				if ((this._SOCHUNGTHU != value))
-				{
-					this._SOCHUNGTHU = value;
-				}
+				return this.GetTable<List_CT_DAT>();
 			}
 		}
 	}
@@ -11672,6 +11627,12 @@ namespace DACN_ver_2.Models
 		
 		private System.Nullable<bool> _THAMDINH;
 		
+		private System.Nullable<bool> _ADMIN1;
+		
+		private System.Nullable<bool> _KINHDOANH1;
+		
+		private System.Nullable<bool> _THAMDINH1;
+		
 		private EntitySet<SUBMENU> _SUBMENUs;
 		
     #region Extensibility Method Definitions
@@ -11702,6 +11663,12 @@ namespace DACN_ver_2.Models
     partial void OnKINHDOANHChanged();
     partial void OnTHAMDINHChanging(System.Nullable<bool> value);
     partial void OnTHAMDINHChanged();
+    partial void OnADMIN1Changing(System.Nullable<bool> value);
+    partial void OnADMIN1Changed();
+    partial void OnKINHDOANH1Changing(System.Nullable<bool> value);
+    partial void OnKINHDOANH1Changed();
+    partial void OnTHAMDINH1Changing(System.Nullable<bool> value);
+    partial void OnTHAMDINH1Changed();
     #endregion
 		
 		public MENU()
@@ -11946,6 +11913,66 @@ namespace DACN_ver_2.Models
 					this._THAMDINH = value;
 					this.SendPropertyChanged("THAMDINH");
 					this.OnTHAMDINHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ADMIN1", DbType="Bit")]
+		public System.Nullable<bool> ADMIN1
+		{
+			get
+			{
+				return this._ADMIN1;
+			}
+			set
+			{
+				if ((this._ADMIN1 != value))
+				{
+					this.OnADMIN1Changing(value);
+					this.SendPropertyChanging();
+					this._ADMIN1 = value;
+					this.SendPropertyChanged("ADMIN1");
+					this.OnADMIN1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KINHDOANH1", DbType="Bit")]
+		public System.Nullable<bool> KINHDOANH1
+		{
+			get
+			{
+				return this._KINHDOANH1;
+			}
+			set
+			{
+				if ((this._KINHDOANH1 != value))
+				{
+					this.OnKINHDOANH1Changing(value);
+					this.SendPropertyChanging();
+					this._KINHDOANH1 = value;
+					this.SendPropertyChanged("KINHDOANH1");
+					this.OnKINHDOANH1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THAMDINH1", DbType="Bit")]
+		public System.Nullable<bool> THAMDINH1
+		{
+			get
+			{
+				return this._THAMDINH1;
+			}
+			set
+			{
+				if ((this._THAMDINH1 != value))
+				{
+					this.OnTHAMDINH1Changing(value);
+					this.SendPropertyChanging();
+					this._THAMDINH1 = value;
+					this.SendPropertyChanged("THAMDINH1");
+					this.OnTHAMDINH1Changed();
 				}
 			}
 		}
@@ -16685,6 +16712,51 @@ namespace DACN_ver_2.Models
 		{
 			this.SendPropertyChanging();
 			entity.TRANGTHAI1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[List-CT-DAT]")]
+	public partial class List_CT_DAT
+	{
+		
+		private int _ID_CHUNGTHU;
+		
+		private string _SOCHUNGTHU;
+		
+		public List_CT_DAT()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_CHUNGTHU", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int ID_CHUNGTHU
+		{
+			get
+			{
+				return this._ID_CHUNGTHU;
+			}
+			set
+			{
+				if ((this._ID_CHUNGTHU != value))
+				{
+					this._ID_CHUNGTHU = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SOCHUNGTHU", DbType="VarChar(250)")]
+		public string SOCHUNGTHU
+		{
+			get
+			{
+				return this._SOCHUNGTHU;
+			}
+			set
+			{
+				if ((this._SOCHUNGTHU != value))
+				{
+					this._SOCHUNGTHU = value;
+				}
+			}
 		}
 	}
 }

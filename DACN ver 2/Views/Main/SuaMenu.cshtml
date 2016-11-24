@@ -86,8 +86,20 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.ADMIN, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.ADMIN, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ADMIN, "", new { @class = "text-danger" })
+                        @if (Model.ADMIN == true)
+                        {
+                            <select class="form-control list-box tri-state" id="ADMIN" name="ADMIN">
+                                <option selected="selected" value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
+                        }
+                        else
+                        {
+                            <select class="form-control list-box tri-state" id="ADMIN" name="ADMIN">
+                                <option value="1">True</option>
+                                <option  selected="selected"  value="0">False</option>
+                            </select>
+                        }
                     </div>
                 </div>
 

@@ -680,7 +680,56 @@ namespace DACN_ver_2.Controllers
             ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_CHUNGTHU == id).Count();
             return View(detail);
         }
-
+        //sua chung thu
+        public ActionResult SuaCT(int id)
+        {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            var pyc = data.CHUNGTHUTDGs.FirstOrDefault(s => s.ID_CHUNGTHU == id && s.TRANGTHAI == true);
+            ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_CHUNGTHU == id && s.TRANGTHAI == true).Count();
+            ViewData["hopdong3"] = new SelectList(data.HOPDONGs.ToList().OrderBy(s => s.SOHD), "ID_HOPDONG", "SOHD", pyc.ID_HOPDONG);
+            ViewData["PYC3"] = new SelectList(data.PHIEUYEUCAUs.ToList().OrderBy(s => s.SOPYC), "ID_PYC", "SOPYC", pyc.ID_PYC);
+            return View(pyc);
+        }
+        [HttpPost]
+        public ActionResult SuaCT(int id, FormCollection collection)
+        {
+            try
+            {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
+                // TODO: Add update logic here
+                CHUNGTHUTDG pyc = data.CHUNGTHUTDGs.FirstOrDefault(s => s.ID_CHUNGTHU == id);
+                var hd = collection["hopdong3"];
+                if(hd != "")
+                {
+                    pyc.ID_HOPDONG = int.Parse(hd);
+                }
+                var a = collection["pyc3"];
+                
+                pyc.ID_PYC = int.Parse(a);
+                pyc.NGAYSUA = DateTime.Now;
+                UpdateModel(pyc);
+                data.SubmitChanges();
+                return RedirectToAction("XemCTChungthu", "Kinhdoanh", new { id = id });
+            }
+            catch
+            {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
+                var pyc = data.CHUNGTHUTDGs.FirstOrDefault(s => s.ID_CHUNGTHU == id && s.TRANGTHAI == true);
+                ViewBag.Demfile = data.FILEDINHKEMs.Where(s => s.ID_CHUNGTHU == id && s.TRANGTHAI == true).Count();
+                ViewData["hopdong3"] = new SelectList(data.HOPDONGs.ToList().OrderBy(s => s.SOHD), "ID_HOPDONG", "SOHD", pyc.ID_HOPDONG);
+                ViewData["PYC3"] = new SelectList(data.PHIEUYEUCAUs.ToList().OrderBy(s => s.SOPYC), "ID_PYC", "SOPYC", pyc.ID_PYC);
+                return View();
+            }
+        }
         //thê file chứng thư
         public ActionResult ThemfileCT(int id)
         {
@@ -769,7 +818,7 @@ namespace DACN_ver_2.Controllers
                 NOIDUNGCT x = data.NOIDUNGCTs.FirstOrDefault(s => s.ID_NOIDUNG == 1);
                 UpdateModel(x);
                 data.SubmitChanges();
-                return RedirectToAction("Kinhdoanh");
+                return RedirectToAction("Index");
             }
             catch
             {

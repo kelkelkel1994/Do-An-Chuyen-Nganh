@@ -1,11 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DACN" Class="DatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=VOIANGA\SQLEXPRESS;Initial Catalog=DACN;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.[List-CT-DAT]" Member="List_CT_DATs">
-    <Type Name="List_CT_DAT">
-      <Column Name="ID_CHUNGTHU" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="SOCHUNGTHU" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-    </Type>
-  </Table>
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-IT\SQLEXPRESS;Initial Catalog=DACN;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DACNConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BANGGIADAT" Member="BANGGIADATs">
     <Type Name="BANGGIADAT">
       <Column Name="ID_BANGGIADAT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -491,6 +485,9 @@
       <Column Name="ADMIN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="KINHDOANH" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="THAMDINH" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ADMIN1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KINHDOANH1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="THAMDINH1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="MENU_SUBMENU" Member="SUBMENUs" ThisKey="ID_MENU" OtherKey="ID_MENU" Type="SUBMENU" />
     </Type>
   </Table>
@@ -704,6 +701,12 @@
       <Column Name="NGUOISUA" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TRANGTHAI" Member="TRANGTHAI1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="TRANGTHAI_HOPDONG" Member="HOPDONGs" ThisKey="ID_TRANGTHAI" OtherKey="ID_TRANGTHAI" Type="HOPDONG" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[List-CT-DAT]" Member="List_CT_DATs">
+    <Type Name="List_CT_DAT">
+      <Column Name="ID_CHUNGTHU" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SOCHUNGTHU" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

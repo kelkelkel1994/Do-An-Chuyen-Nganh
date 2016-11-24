@@ -74,7 +74,9 @@ namespace DACN_ver_2.Controllers
         //sua CHCC
         public ActionResult SuaCHCC(int id)
         {
-            CANHOCHUNGCU chcc = data.CANHOCHUNGCUs.FirstOrDefault(s => s.ID_CHCC == id);
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                CANHOCHUNGCU chcc = data.CANHOCHUNGCUs.FirstOrDefault(s => s.ID_CHCC == id);
             ViewData["ct"] = new SelectList(data
                                                 .CHUNGTHUTDGs
                                                 .Where(s => s.TRANGTHAI == true)
@@ -93,6 +95,12 @@ namespace DACN_ver_2.Controllers
             ViewData["ketcau12"] = new SelectList(data.KETCAUDUONGs, "ID_KETCAUDUONG", "TEN");
             ViewData["quanhuyen12"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN");
             return View(chcc);
+            }
+            else
+            {
+                Response.StatusCode = 403;
+                return null;
+            }
         }
         [HttpPost]
         public ActionResult SuaCHCC(int id, FormCollection collection)
@@ -202,14 +210,12 @@ namespace DACN_ver_2.Controllers
                 ViewData["ketcau12"] = new SelectList(data.KETCAUDUONGs, "ID_KETCAUDUONG", "TEN", dat.ID_KETCAUDUONG);
                 ViewData["chieurongmatduong12"] = new SelectList(data.CHIEURONGMATDUONGs, "ID_CRMD", "TEN", dat.ID_CRMD);
                 ViewData["quanhuyen12"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN", dat.ID_QUANHUYEN);
-
-                
                 return View(dat);
             }
             else
             {
-                ViewBag.Thongbao = "0";
-                return RedirectToAction("Index", "Nhanvien");
+                Response.StatusCode = 403;
+                return null;
             }
         }
         [HttpPost]
@@ -237,12 +243,21 @@ namespace DACN_ver_2.Controllers
         //xoa dat
         public ActionResult XoaDAT(int id)
         {
-            DAT d = data.DATs.FirstOrDefault(s => s.ID_DAT == id);
-            d.TRANGTHAI = false;
-            UpdateModel(d);
-            data.SubmitChanges();
-            return RedirectToAction("BanggiadatNB", "Tracuu");
-        }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+
+                DAT d = data.DATs.FirstOrDefault(s => s.ID_DAT == id);
+                d.TRANGTHAI = false;
+                UpdateModel(d);
+                data.SubmitChanges();
+                return RedirectToAction("BanggiadatNB", "Tracuu");
+            }
+            else
+            {
+                Response.StatusCode = 403;
+                return null;
+            }
+}
         
         //Them văn phong cho thue
         public ActionResult ThemVPCT()
@@ -301,16 +316,25 @@ namespace DACN_ver_2.Controllers
         //sua VPCT
         public ActionResult SuaVPCT(int id)
         {
-            VANPHONGCHOTHUE vp = data.VANPHONGCHOTHUEs.FirstOrDefault(s => s.ID_VPCT == id);
-            ViewData["ct"] = new SelectList(data.CHUNGTHUTDGs.Where(s => s.TRANGTHAI == true).ToList(), "ID_CHUNGTHU", "SOCHUNGTHU");
-            ViewData["tp12"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
-            ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
-            ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
-            ViewData["loaihinh12"] = new SelectList(data.LOAIHINHs, "ID_LOAIHINH", "TEN");
-            ViewData["loaithongtin12"] = new SelectList(data.LOAITHONGTINs.Where(s => s.ID_LOAITAISAN == 3), "ID_LTT", "TEN");
-            ViewData["chitietloai12"] = new SelectList(data.CHITIETLOAIs.Where(s => s.ID_LOAITAISAN == 3), "ID_CHITIETLOAI", "TEN");
-            ViewData["quanhuyen12"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN");
-            return View(vp);
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+
+                VANPHONGCHOTHUE vp = data.VANPHONGCHOTHUEs.FirstOrDefault(s => s.ID_VPCT == id);
+                ViewData["ct"] = new SelectList(data.CHUNGTHUTDGs.Where(s => s.TRANGTHAI == true).ToList(), "ID_CHUNGTHU", "SOCHUNGTHU");
+                ViewData["tp12"] = new SelectList(data.TINHTHANHs, "ID_TINHTHANH", "TEN");
+                ViewData["nlp12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
+                ViewData["nkd12"] = new SelectList(data.NHANVIENs, "ID_NHANVIEN", "TENNV");
+                ViewData["loaihinh12"] = new SelectList(data.LOAIHINHs, "ID_LOAIHINH", "TEN");
+                ViewData["loaithongtin12"] = new SelectList(data.LOAITHONGTINs.Where(s => s.ID_LOAITAISAN == 3), "ID_LTT", "TEN");
+                ViewData["chitietloai12"] = new SelectList(data.CHITIETLOAIs.Where(s => s.ID_LOAITAISAN == 3), "ID_CHITIETLOAI", "TEN");
+                ViewData["quanhuyen12"] = new SelectList(data.QUANHUYENs, "ID_QUANHUYEN", "TEN");
+                return View(vp);
+            }
+            else
+            {
+                Response.StatusCode = 403;
+                return null;
+            }
         }
         [HttpPost]
         public ActionResult SuaVPCT(int id, FormCollection collection)
