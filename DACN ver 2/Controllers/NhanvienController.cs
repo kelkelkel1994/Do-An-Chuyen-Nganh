@@ -300,7 +300,7 @@ namespace DACN_ver_2.Controllers
         public ActionResult HienTB()
         {
             int ngnhan = int.Parse(Session["ID"].ToString());
-            var tb = data.THONGBAOs.Where(s => s.TN == 1 && s.ID_NGUOINHAN == ngnhan);
+            var tb = data.THONGBAOs.Where(s => s.TN == 1 && s.ID_NGUOINHAN == ngnhan).OrderByDescending(s=>s.NGAYGUI);
             return PartialView(tb.ToList());
         }
     }

@@ -536,48 +536,48 @@ namespace DACN_ver_2.Controllers
             }
         }
 
-//        public ActionResult Submenu(int id)
-//        {
-//    if (int.Parse(Session["Quyen"].ToString()) == 1)
-//    {
-//        var submenu = data.SUBMENUs.ToList().Where(s => s.ID_MENU == id);
-//            return PartialView(submenu);
-//}
-//            else
-//            {
-//                Response.StatusCode = 403;
-//                return null;
-//            }
-//        }
+        public ActionResult Submenu(int id)
+        {
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                var submenu = data.SUBMENUs.ToList().Where(s => s.ID_MENU == id);
+                return PartialView(submenu);
+            }
+            else
+            {
+                Response.StatusCode = 403;
+                return null;
+            }
+        }
 
-//        public ActionResult SuaMenu(int id)
-//        {
-//    if (int.Parse(Session["Quyen"].ToString()) == 1)
-//    {
-//        var sua = data.MENUs.FirstOrDefault(s => s.ID_MENU == id);
-//            return View(sua);
-//}
-//            else
-//            {
-//                Response.StatusCode = 403;
-//                return null;
-//            }
-//        }
-//        [HttpPost]
-//        public ActionResult SuaMenu(int id, FormCollection col)
-//        {
-//            MENU sua = data.MENUs.FirstOrDefault(s => s.ID_MENU == id);
-//            if (int.Parse(col["ADMIN"].ToString()) == 1)
-//            {
-//                sua.ADMIN = true;
-//            }
-//            else
-//                sua.ADMIN = false;
-            
-//            TryUpdateModel(sua);
-//            data.SubmitChanges();
-//            return RedirectToAction("SuaMenu", "Main", new { id = id });
-//        }
+        //        public ActionResult SuaMenu(int id)
+        //        {
+        //    if (int.Parse(Session["Quyen"].ToString()) == 1)
+        //    {
+        //        var sua = data.MENUs.FirstOrDefault(s => s.ID_MENU == id);
+        //            return View(sua);
+        //}
+        //            else
+        //            {
+        //                Response.StatusCode = 403;
+        //                return null;
+        //            }
+        //        }
+        //        [HttpPost]
+        //        public ActionResult SuaMenu(int id, FormCollection col)
+        //        {
+        //            MENU sua = data.MENUs.FirstOrDefault(s => s.ID_MENU == id);
+        //            if (int.Parse(col["ADMIN"].ToString()) == 1)
+        //            {
+        //                sua.ADMIN = true;
+        //            }
+        //            else
+        //                sua.ADMIN = false;
+
+        //            TryUpdateModel(sua);
+        //            data.SubmitChanges();
+        //            return RedirectToAction("SuaMenu", "Main", new { id = id });
+        //        }
 
     }
 }
