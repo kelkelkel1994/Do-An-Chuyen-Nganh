@@ -43,7 +43,15 @@
                     </div>
                     <div class="clearfix"></div>
                     <!-- menu profile quick info -->
-                    @{ Html.RenderAction("Leftnavigation", "Login"); }
+                    @{ if (Session["ID"] != null)
+                        {
+                            Html.RenderAction("Leftnavigation", "Login");
+                        }
+                        else
+                        {
+
+                        }
+                    }
                     @*@Html.Action("Leftnavigation", "Login")*@
                     <!-- /menu profile quick info -->
 
@@ -52,7 +60,15 @@
 
             <!-- left navigation -->
             <!-- top navigation -->
+@{ if (Session["ID"] != null)
+    {
             @Html.Action("Topnavigation", "Login")
+        }
+        else
+        {
+
+        } 
+    }
             <!-- top navigation -->
             <!-- page content -->
             @RenderBody()

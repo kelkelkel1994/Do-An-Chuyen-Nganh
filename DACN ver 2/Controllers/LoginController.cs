@@ -114,6 +114,10 @@ namespace DACN_ver_2.Controllers
         public ActionResult Topnavigation()
         {
             //List<Dangnhap> ktdangnhap = kiemtradangnhap();
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var thongtin = data.NHANVIENs.FirstOrDefault(s => s.ID_NHANVIEN == int.Parse(Session["ID"].ToString()));
             return PartialView(thongtin);
         }

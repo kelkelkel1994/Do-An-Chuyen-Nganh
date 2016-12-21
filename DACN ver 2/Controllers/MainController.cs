@@ -15,12 +15,12 @@ namespace DACN_ver_2.Controllers
         // GET: Main
         public ActionResult Index()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             if (int.Parse(Session["Quyen"].ToString()) == 1)
             {
-                if (Session["ID"] == null)
-                {
-                    return RedirectToAction("Login", "Login");
-                }
                 return View();
             }
             else
@@ -29,22 +29,30 @@ namespace DACN_ver_2.Controllers
                 return null;
             }
         }
-        
+
         public ActionResult Quantri()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             if (int.Parse(Session["Quyen"].ToString()) == 1)
             {
                 return View();
             }
-                else
-                {
-                    Response.StatusCode = 403;
-                    return null;
-                }
+            else
+            {
+                Response.StatusCode = 403;
+                return null;
+            }
         }
 
         public ActionResult Phongban()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             if (int.Parse(Session["Quyen"].ToString()) == 1)
             {
                 var pb = data.PHONGBANs
@@ -61,6 +69,10 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Loainhanvien()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             if (int.Parse(Session["Quyen"].ToString()) == 1)
             {
                 var loainv = data.LOAINHANVIENs
@@ -73,10 +85,14 @@ namespace DACN_ver_2.Controllers
                 Response.StatusCode = 403;
                 return null;
             }
-}
+        }
 
         public ActionResult Loaichinhanh()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             if (int.Parse(Session["Quyen"].ToString()) == 1)
             {
                 var cn = data.LOAICNs
@@ -92,27 +108,35 @@ namespace DACN_ver_2.Controllers
         }
         public ActionResult Nhanvien()
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             if (int.Parse(Session["Quyen"].ToString()) == 1)
             {
                 var nv = data.NHANVIENs.ToList().Where(c => c.TRANGTHAI == true).OrderBy(s => s.ID_NHANVIEN);
-            return View(nv);
-        }
+                return View(nv);
+            }
             else
             {
                 Response.StatusCode = 403;
                 return null;
             }
-}
-        
+        }
+
 
         public ActionResult Themnhanvien()
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        ViewData["Phongban2"] = new SelectList(data.PHONGBANs.ToList().OrderBy(s => s.TEN), "ID_PHONGBAN", "TEN");
-            ViewData["Loainhanvien2"] = new SelectList(data.LOAINHANVIENs.ToList().OrderBy(s => s.TEN), "ID_LOAINHANVIEN", "TEN");
-            return PartialView();
-}
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                if (Session["ID"] == null)
+                {
+                    return RedirectToAction("Login", "Login");
+                }
+                ViewData["Phongban2"] = new SelectList(data.PHONGBANs.ToList().OrderBy(s => s.TEN), "ID_PHONGBAN", "TEN");
+                ViewData["Loainhanvien2"] = new SelectList(data.LOAINHANVIENs.ToList().OrderBy(s => s.TEN), "ID_LOAINHANVIEN", "TEN");
+                return PartialView();
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -120,7 +144,7 @@ namespace DACN_ver_2.Controllers
             }
         }
         public bool kiemtrauser(string name)
-        {
+        {            
             var a = data.NHANVIENs.FirstOrDefault(s => s.USER == name);
             if (a == null)
             {
@@ -131,28 +155,32 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Themnhanvien(NHANVIEN nv, FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 ViewData["Phongban2"] = new SelectList(data.PHONGBANs.ToList().OrderBy(s => s.TEN), "ID_PHONGBAN", "TEN");
                 ViewData["Loainhanvien2"] = new SelectList(data.LOAINHANVIENs.ToList().OrderBy(s => s.TEN), "ID_LOAINHANVIEN", "TEN");
                 var c = collection["Phongban2"];
                 var b = collection["Loainhanvien2"];
-                
-                    nv.ID_PHONGBAN = int.Parse(c);
-                    nv.ID_LOAINHANVIEN = int.Parse(b);
-                    nv.NGAYTAO = DateTime.Now;
-                    nv.NGUOITAO = int.Parse(Session["ID"].ToString());
-                    nv.PASS = "e10adc3949ba59abbe56e057f20f883e";//pass 123456
-                    nv.TRANGTHAI = true;
-                    nv.ID_PHANQUYEN = 2;
+
+                nv.ID_PHONGBAN = int.Parse(c);
+                nv.ID_LOAINHANVIEN = int.Parse(b);
+                nv.NGAYTAO = DateTime.Now;
+                nv.NGUOITAO = int.Parse(Session["ID"].ToString());
+                nv.PASS = "e10adc3949ba59abbe56e057f20f883e";//pass 123456
+                nv.TRANGTHAI = true;
+                nv.ID_PHANQUYEN = 2;
                 nv.ANH = "user.jpg";
-                    data.NHANVIENs.InsertOnSubmit(nv);
-                    data.SubmitChanges();
-                    return RedirectToAction("Themnhanvien");
-                
+                data.NHANVIENs.InsertOnSubmit(nv);
+                data.SubmitChanges();
+                return RedirectToAction("Themnhanvien");
 
 
-}
+
+            }
             catch
             {
                 ViewData["Phongban2"] = new SelectList(data.PHONGBANs.ToList().OrderBy(s => s.TEN), "ID_PHONGBAN", "TEN");
@@ -167,14 +195,18 @@ namespace DACN_ver_2.Controllers
         //sua nhan vien
         public ActionResult SuaNhanvien(int id)
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        var tt = data.NHANVIENs.First(s => s.ID_NHANVIEN == id);
-            ViewData["phongban1204"] = new SelectList(data.PHONGBANs, "ID_PHONGBAN", "TEN", tt.ID_PHONGBAN);
-            ViewData["loainhanvien1204"] = new SelectList(data.LOAINHANVIENs, "ID_LOAINHANVIEN", "TEN", tt.ID_LOAINHANVIEN);
-            ViewData["phanquyen1204"] = new SelectList(data.PHANQUYENs, "ID_PHANQUYEN", "TEN", tt.ID_PHANQUYEN);
-            return View(tt);
-}
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                var tt = data.NHANVIENs.First(s => s.ID_NHANVIEN == id);
+                ViewData["phongban1204"] = new SelectList(data.PHONGBANs, "ID_PHONGBAN", "TEN", tt.ID_PHONGBAN);
+                ViewData["loainhanvien1204"] = new SelectList(data.LOAINHANVIENs, "ID_LOAINHANVIEN", "TEN", tt.ID_LOAINHANVIEN);
+                ViewData["phanquyen1204"] = new SelectList(data.PHANQUYENs, "ID_PHANQUYEN", "TEN", tt.ID_PHANQUYEN);
+                return View(tt);
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -186,6 +218,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult SuaNhanvien(int id, FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 NHANVIEN nvs = data.NHANVIENs.SingleOrDefault(s => s.ID_NHANVIEN == id);
@@ -206,7 +242,8 @@ namespace DACN_ver_2.Controllers
                     UpdateModel(nvs);
                     data.SubmitChanges();
                     return RedirectToAction("Nhanvien");
-                }else
+                }
+                else
                 {
                     if (repass != pass12)
                     {
@@ -229,7 +266,7 @@ namespace DACN_ver_2.Controllers
                     data.SubmitChanges();
                     return RedirectToAction("Nhanvien");
                 }
-    
+
             }
             catch
             {
@@ -242,10 +279,14 @@ namespace DACN_ver_2.Controllers
         }
         public ActionResult Themchinhanh()
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        return PartialView();
-}
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                return PartialView();
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -255,6 +296,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Themchinhanh(LOAICN cn)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add insert logic here
@@ -272,10 +317,14 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Themphongban()
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        return PartialView();
-}
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                return PartialView();
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -285,6 +334,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Themphongban(PHONGBAN pb)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add insert logic here
@@ -302,10 +355,14 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Themloainhanvien()
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        return PartialView();
-}
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                return PartialView();
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -315,6 +372,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Themloainhanvien(LOAINHANVIEN lnv)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add insert logic here
@@ -329,14 +390,18 @@ namespace DACN_ver_2.Controllers
                 return View();
             }
         }
-                
+
         public ActionResult Suaphongban(int id)
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        var spb = data.PHONGBANs.FirstOrDefault(s => s.ID_PHONGBAN == id);
-            return PartialView(spb);
-}
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                var spb = data.PHONGBANs.FirstOrDefault(s => s.ID_PHONGBAN == id);
+                return PartialView(spb);
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -346,6 +411,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Suaphongban(int id, FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add update logic here
@@ -363,12 +432,16 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Xoaphongban(int id)
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        var xpb = data.PHONGBANs
-                .FirstOrDefault(s => s.ID_PHONGBAN == id);
-            return PartialView(xpb);
-}
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                var xpb = data.PHONGBANs
+                        .FirstOrDefault(s => s.ID_PHONGBAN == id);
+                return PartialView(xpb);
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -380,6 +453,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Xoaphongban(int id, FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add delete logic here
@@ -396,11 +473,15 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Suachinhanh(int id)
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        var scn = data.LOAICNs.FirstOrDefault(s => s.ID_LOAICN == id);
-            return PartialView(scn);
-}
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                var scn = data.LOAICNs.FirstOrDefault(s => s.ID_LOAICN == id);
+                return PartialView(scn);
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -410,6 +491,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Suachinhanh(int id, FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add update logic here
@@ -427,12 +512,16 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Xoachinhanh(int id)
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        var a = data.LOAICNs
-                .FirstOrDefault(s => s.ID_LOAICN == id);
-            return PartialView(a);
-}
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                var a = data.LOAICNs
+                        .FirstOrDefault(s => s.ID_LOAICN == id);
+                return PartialView(a);
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -444,6 +533,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Xoachinhanh(int id, FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add delete logic here
@@ -460,11 +553,15 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Sualoainhanvien(int id)
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        var a = data.LOAINHANVIENs.FirstOrDefault(s => s.ID_LOAINHANVIEN == id);
-            return PartialView(a);
-}
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                var a = data.LOAINHANVIENs.FirstOrDefault(s => s.ID_LOAINHANVIEN == id);
+                return PartialView(a);
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -474,6 +571,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Sualoainhanvien(int id, FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add update logic here
@@ -491,12 +592,16 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Xoaloainhanvien(int id)
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        var a = data.LOAINHANVIENs
-                .FirstOrDefault(s => s.ID_LOAINHANVIEN == id);
-            return PartialView(a);
-}
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                var a = data.LOAINHANVIENs
+                        .FirstOrDefault(s => s.ID_LOAINHANVIEN == id);
+                return PartialView(a);
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -508,6 +613,10 @@ namespace DACN_ver_2.Controllers
         [HttpPost]
         public ActionResult Xoaloainhanvien(int id, FormCollection collection)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             try
             {
                 // TODO: Add delete logic here
@@ -524,11 +633,15 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Menu()
         {
-    if (int.Parse(Session["Quyen"].ToString()) == 1)
-    {
-        var menu = data.MENUs.ToList();
-            return View(menu);
-}
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            if (int.Parse(Session["Quyen"].ToString()) == 1)
+            {
+                var menu = data.MENUs.ToList();
+                return View(menu);
+            }
             else
             {
                 Response.StatusCode = 403;
@@ -538,6 +651,10 @@ namespace DACN_ver_2.Controllers
 
         public ActionResult Submenu(int id)
         {
+            if (Session["ID"] == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             if (int.Parse(Session["Quyen"].ToString()) == 1)
             {
                 var submenu = data.SUBMENUs.ToList().Where(s => s.ID_MENU == id);
