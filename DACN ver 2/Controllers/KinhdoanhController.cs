@@ -58,7 +58,6 @@ namespace DACN_ver_2.Controllers
                 pyc.ID_KH = int.Parse(kh);
                 data.PHIEUYEUCAUs.InsertOnSubmit(pyc);
                 data.SubmitChanges();
-
                 var id = data.PHIEUYEUCAUs.FirstOrDefault(s => s.SOPYC == pyc.SOPYC);
                 tb.ID_PYC = id.ID_PYC;
                 tb.ID_NGUOIGUI = 1;
@@ -253,11 +252,11 @@ namespace DACN_ver_2.Controllers
                 var hd = collection["hd"];
                 var pyc = collection["pyc"];
                 ct.SOCHUNGTHU = collection["SOCHUNGTHU"] + "/2016/CTTDG-AMAX";
-                if(collection["hd"] != "")
+                if (collection["hd"] != "")
                 {
                     ct.ID_HOPDONG = int.Parse(hd);
                 }
-                
+
                 ct.ID_PYC = int.Parse(pyc);
                 ct.NGAYTAO = DateTime.Now;
                 ct.TRANGTHAI = true;
@@ -349,7 +348,7 @@ namespace DACN_ver_2.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            var hd = data.HOPDONGs.ToList().OrderBy(s => s.ID_HOPDONG).Where(s=>s.TRANGTHAI == true);
+            var hd = data.HOPDONGs.ToList().OrderBy(s => s.ID_HOPDONG).Where(s => s.TRANGTHAI == true);
             return View(hd);
         }
         //Xem chi tiết hop đồng
@@ -705,12 +704,12 @@ namespace DACN_ver_2.Controllers
                 // TODO: Add update logic here
                 CHUNGTHUTDG pyc = data.CHUNGTHUTDGs.FirstOrDefault(s => s.ID_CHUNGTHU == id);
                 var hd = collection["hopdong3"];
-                if(hd != "")
+                if (hd != "")
                 {
                     pyc.ID_HOPDONG = int.Parse(hd);
                 }
                 var a = collection["pyc3"];
-                
+
                 pyc.ID_PYC = int.Parse(a);
                 pyc.NGAYSUA = DateTime.Now;
                 UpdateModel(pyc);
